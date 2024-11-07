@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
-import "node_modules/react-modal-video/scss/modal-video.scss";
+// import "node_modules/react-modal-video/scss/modal-video.scss";
 import { useEffect } from "react";
 import "../public/vendor/font-awesome/css/all.min.css";
 import "../public/vendor/glyphter/css/golftio.css";
