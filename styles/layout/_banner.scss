@@ -1,0 +1,119 @@
+/* ==== 
+ --------- (4.2) banner styles start ---------
+ ==== */
+
+// home one banner
+.banner {
+  padding: 266px 0px 240px;
+  background-image: radial-gradient(
+      circle at left center,
+      white 300px,
+      transparent 300px
+    ),
+    url("/images/banner/banner-one.png"),
+    linear-gradient(
+      90deg,
+      rgba(12, 169, 64, 0.1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  background-repeat: no-repeat;
+  background-position: left -110px center, right bottom, left top;
+  background-size: auto, contain, 100%;
+}
+
+// secondary banner
+.banner--secondary {
+  padding: 266px 0px 240px;
+  background-color: $white;
+  background-image: linear-gradient(
+      90deg,
+      #fdfffa 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("/images/banner/banner-two.png");
+  background-repeat: no-repeat;
+  background-position: left top, right top;
+  background-size: 100%, auto 100%;
+
+  .cmn-button {
+    &:nth-of-type(1) {
+      border: 1px solid $primary-color;
+      &:hover {
+        border: 1px solid #cecece;
+      }
+    }
+  }
+}
+
+// tertiary banner
+.banner--tertiary {
+  background-image: url("/images/flag-alt.png"),
+    linear-gradient(
+      90deg,
+      rgba(192, 217, 242, 0.13) 60%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("/images/banner/banner-three.png");
+  background-repeat: no-repeat;
+  background-position: left 20px bottom 30px, left top, right top;
+  background-size: 140px, 100%, auto 100%;
+}
+
+// inner banner
+.banner--inner {
+  padding: 196px 0px 80px;
+  position: relative;
+  background-image: url("/images/banner/her.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+
+  .banner--inner__content {
+    h2 {
+      color: $white;
+    }
+  }
+
+  .breadcrumb {
+    margin: 0px;
+    padding: 0px;
+    .breadcrumb-item {
+      margin-top: 0px;
+      color: $white;
+      padding: 0px 0px 0px 24px;
+      position: relative;
+      padding-right: 16px;
+      a {
+        color: $white;
+        font-weight: 400;
+        &:hover {
+          color: $white;
+        }
+      }
+      &::before {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        content: "\f105";
+        position: absolute;
+        left: 0px;
+        font-size: 14px;
+        color: $white;
+        padding: 0px;
+      }
+      &:first-of-type {
+        padding-left: 0px;
+        &::before {
+          content: none;
+        }
+      }
+    }
+    .active {
+      color: $white;
+      padding-right: 0px;
+    }
+  }
+}
+
+/* ==== 
+ --------- (4.2) banner styles end ---------
+ ==== */

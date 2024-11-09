@@ -1,0 +1,156 @@
+/* ==== 
+ --------- (3.1) buttons styles start ---------
+ ==== */
+
+.cmn-button {
+  padding: 15px 30px;
+  background: $white;
+  border-radius: 5px;
+  color: $white;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: $transition;
+  border: 1px solid transparent;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    width: 50%;
+    background-color: $primary-color;
+    z-index: -1;
+    transition: $transition;
+    border-radius: 5px 0px 0px 5px;
+    transform: scale(4) rotate(0deg);
+  }
+
+  &::after {
+    left: unset;
+    border-radius: 0px 5px 5px 0px;
+  }
+
+  &:hover {
+    color: $theme-color;
+    border: 1px solid #cecece;
+
+    &::before,
+    &::after {
+      width: 0px;
+      transform: scale(4) rotate(-45deg);
+    }
+  }
+}
+
+.cmn-button--secondary {
+  background-color: transparent;
+  border: 1px solid #cecece;
+  color: $theme-color;
+  &::before,
+  &::after {
+    width: 0px;
+  }
+
+  &:hover {
+    color: $white;
+    &::before,
+    &::after {
+      width: 50%;
+      transform: scale(4) rotate(-160deg);
+    }
+  }
+}
+
+// scroll to top with progress
+
+
+.progress-wrap {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50px;
+  background-color: $white;
+  box-shadow: inset 0 0 0 8px #c3b4ba7d;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 200ms linear;
+  z-index: 99;
+}
+
+.progress-wrap.active-progress {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.progress-wrap::after {
+  position: absolute;
+  content: "\f102";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  color: $primary-color;
+  left: 0%;
+  top: 0%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  z-index: 1;
+  transition: all 200ms linear;
+}
+
+.progress-wrap:hover::after {
+  opacity: 0;
+}
+
+.progress-wrap::before {
+  position: absolute;
+  content: "\f102";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  opacity: 0;
+  background: $primary-color;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  left: 0%;
+  top: 0%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  display: block;
+  z-index: 2;
+  transition: all 200ms linear;
+}
+
+.progress-wrap:hover::before {
+  opacity: 1;
+}
+
+.progress-wrap svg path {
+  fill: none;
+}
+
+.progress-wrap svg.progress-circle path {
+  stroke: $primary-color;
+  stroke-width: 4;
+  box-sizing: content-box;
+  transition: all 200ms linear;
+}
+
+/* ====  
+ --------- (3.1) buttons styles end ---------
+ ==== */
