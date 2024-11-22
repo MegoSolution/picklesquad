@@ -1,7 +1,7 @@
 // pages/api/program.js
 export default async function handler(req, res) {
   const BASE_URL = "http://localhost:3000/v1";
-  const BEARER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjY2IzMDU1MGJhZWIzZTFjOGY2YTciLCJpYXQiOjE3MzE3MjI1MTcsImV4cCI6MTczMTcyNDMxNywidHlwZSI6ImFjY2VzcyJ9.vAOtjISoclvXI6Qm2IFxbRPScDryHOBevc00tZxIysg";
+  const BEARER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjY2IzMDU1MGJhZWIzZTFjOGY2YTciLCJpYXQiOjE3MzE4NDc1MjksImV4cCI6MTczMTg0OTMyOSwidHlwZSI6ImFjY2VzcyJ9.NL7nJEafSRSm7_U69dDLMRGLAbU5ksBSGPjLeN8vCkY";
   const { method } = req;
   const { id, page, limit } = req.query;
 
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       const data = await response.json();
 
       // Filter the programs where type is 'public'
-      const publicPrograms = data.results.filter(program => program.type === 'public');
+      const publicPrograms = data.results.filter(program => program.type === 'public' && program.status === 'active');
       
       const totalFilteredResults = publicPrograms.length;
       const totalFilteredPages = Math.ceil(totalFilteredResults / limit);
