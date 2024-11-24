@@ -26,3 +26,8 @@
   margin-bottom: 15px;
   line-height: 1.6;
 }
+
+.program-actions {
+  display: flex;
+  gap: 20px;  /* Adds space between the buttons */
+}

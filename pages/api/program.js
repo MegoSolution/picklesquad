@@ -1,7 +1,7 @@
 // pages/api/program.js
 export default async function handler(req, res) {
   const BASE_URL = "http://localhost:3000/v1";
-  const BEARER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjY2IzMDU1MGJhZWIzZTFjOGY2YTciLCJpYXQiOjE3MzE4NDc1MjksImV4cCI6MTczMTg0OTMyOSwidHlwZSI6ImFjY2VzcyJ9.NL7nJEafSRSm7_U69dDLMRGLAbU5ksBSGPjLeN8vCkY";
+  const BEARER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjY2IzMDU1MGJhZWIzZTFjOGY2YTciLCJpYXQiOjE3MzI0NDAyNTUsImV4cCI6MTczMjQ0MjA1NSwidHlwZSI6ImFjY2VzcyJ9.Aq9KimXO6nH1OevSZpx-2hivjM4_f1cpDzYCcNwEziU";
   const { method } = req;
   const { id, page, limit } = req.query;
 
@@ -53,6 +53,39 @@ export default async function handler(req, res) {
         totalPages: totalFilteredPages, 
         totalResults: totalFilteredResults, 
       });
+    }
+
+    if (method === "POST" && req.body) {
+      const { programId, price } = req.body;
+
+      if (!programId || !price) {
+        return res.status(400).json({ error: "Missing required fields" });
+      }
+
+      const bookingData = {
+        program: programId,
+        amount: price,
+        user: '672ccb30550baeb3e1c8f6a7',
+        payment_method: 'online',
+        payment_status: 'completed',
+      };
+
+      const response = await fetch(`${BASE_URL}/programBookings`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`, 
+          "Content-Type": "application/json",  
+        },
+        body: JSON.stringify(bookingData), 
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create booking. Please try again.");
+      }
+
+      const data = await response.json();
+
+      return res.status(201).json({ message: "Program Booking successful!", bookingId: data.bookingId });
     }
 
     // Handle unsupported request methods

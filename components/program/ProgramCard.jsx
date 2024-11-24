@@ -1,7 +1,34 @@
 import Link from "next/link";
+import { useState } from "react";
 
 const ProgramCard = ({ data }) => {
   const { id, name, description, startTime, endTime, price, court, coach } = data;
+
+  const handleBooking = async () => {
+
+    try {
+      const response = await fetch("/api/program", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          programId: id,
+          price,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Program Booking failed. Please try again.");
+      }
+
+      const data = await response.json();
+      console.log('Program Booking created:', data);
+      alert(data.message);  
+    } catch (error) {
+      console.error('Error creating booking:', error);
+    } 
+  };
 
   return (
     <div className="program-single">
@@ -28,7 +55,7 @@ const ProgramCard = ({ data }) => {
             <i className="fa-solid fa-user"></i> Coach: {coach?.name || "N/A"}
           </p>
           <p>
-            <i className="fa-solid fa-dollar-sign"></i> Price: ${price}
+            <i className="fa-solid fa-dollar-sign"></i> Price: RM {price}
           </p>
         </div>
         <p className="secondary-text">{description}</p>
@@ -42,7 +69,7 @@ const ProgramCard = ({ data }) => {
           View Details
         </Link>
         <button
-          onClick={() => alert("Proceed to Payment")}
+          onClick={handleBooking}
           className="cmn-button"
         >
           Proceed to Payment
