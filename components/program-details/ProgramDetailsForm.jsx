@@ -35,6 +35,9 @@ const ProgramDetailsForm = () => {
   if (error) return <p>{error}</p>;
   if (!program) return <p>Program not found.</p>;
 
+  const adjustedStartTime = new Date(new Date(program.startTime).getTime() - 8 * 60 * 60 * 1000);
+  const adjustedEndTime = new Date(new Date(program.endTime).getTime() - 8 * 60 * 60 * 1000);
+
   const handleBooking = async () => {
     try {
       const response = await fetch("/api/program", {
@@ -66,8 +69,8 @@ const ProgramDetailsForm = () => {
       <div className="program-details-content">
         <div className="program-info">
           <p><strong>Description:</strong> {program.description}</p>
-          <p><strong>Start Time:</strong> {new Date(program.startTime).toLocaleString()}</p>
-          <p><strong>End Time:</strong> {new Date(program.endTime).toLocaleString()}</p>
+          <p><strong>Start Time:</strong> {adjustedStartTime.toLocaleString()}</p>
+          <p><strong>End Time:</strong> {adjustedEndTime.toLocaleString()}</p>
           <p><strong>Court:</strong> {program.court?.name || "N/A"}</p>
           <p><strong>Coach:</strong> {program.coach?.name || "N/A"}</p>
           <p><strong>Price:</strong> RM {program.price}</p>

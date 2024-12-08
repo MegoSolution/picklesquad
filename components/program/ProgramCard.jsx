@@ -4,6 +4,9 @@ import { useState } from "react";
 const ProgramCard = ({ data }) => {
   const { id, name, description, startTime, endTime, price, court, coach } = data;
 
+  const adjustedStartTime = new Date(new Date(startTime).getTime() - 8 * 60 * 60 * 1000);
+  const adjustedEndTime = new Date(new Date(endTime).getTime() - 8 * 60 * 60 * 1000);
+
   const handleBooking = async () => {
 
     try {
@@ -41,11 +44,11 @@ const ProgramCard = ({ data }) => {
         <div className="program__content-meta">
           <p>
             <i className="fa-solid fa-calendar-week"></i> Start:{" "}
-            {new Date(startTime).toLocaleString()}
+            {adjustedStartTime.toLocaleString()}
           </p>
           <p>
             <i className="fa-solid fa-calendar-week"></i> End:{" "}
-            {new Date(endTime).toLocaleString()}
+            {adjustedEndTime.toLocaleString()}
           </p>
           <p>
             <i className="fa-solid fa-map-marker-alt"></i> Court:{" "}
