@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/action';
 import Link from 'next/link';
 import { useState } from 'react';
+import GoogleLoginButton from "../SignUp/GoogleLoginButton"
 
 const SignInBody = () => {
   const [email, setEmail] = useState('');
@@ -53,17 +54,19 @@ const SignInBody = () => {
                 <div className="section__cta text-start">
                   <button
                     type="submit"
-                    className="cmn-button"
+                    className="sign-up-button"
                     onClick={useLogin}
                   >
                     Sign In
                   </button>
                 </div>
               </form>
+              <div id="googleSignInButton" className="mt-3"></div>
+                <GoogleLoginButton />
+            </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
