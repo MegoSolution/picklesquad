@@ -20,7 +20,7 @@ const BookingForm = () => {
   function generateDates() {
     const datesArray = [];
     const today = new Date();
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 14; i++) {
       const futureDate = new Date(today);
       futureDate.setDate(today.getDate() + i);
       const day = futureDate.toLocaleDateString("en-US", { weekday: "short" });
@@ -34,10 +34,10 @@ const BookingForm = () => {
   }
 
   const dates = generateDates();
+  const today = dates[0].value;
 
   // Set today's date by default and fetch available times
   useEffect(() => {
-    const today = dates[0].value;
     setSelectedDate(today);
     fetchAvailableTimes(today);
   }, []);
@@ -66,7 +66,7 @@ const BookingForm = () => {
 
   // Fetch available courts for the selected date and time
   const fetchAvailableCourts = (date, startTime, endTime, period) => {
-    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&period=${period}`, {
+    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${formatToTime24(startTime, period)}&end_time=${formatToTime24(endTime, period)}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${BEARER_TOKEN}`,
@@ -148,11 +148,8 @@ const BookingForm = () => {
     return equipmentTotal + courtTotal;
   };
 
-  const formatToDateTime = (date, hour, period) => {
-    // Parse the selected date
-    const selectedDate = new Date(date);
-  
-    // Determine the 24-hour format hour based on AM/PM
+  const formatToTime24 = (hour, period) => {
+    // Convert hour and period to 24-hour format
     let hour24 = parseInt(hour, 10);
     if (period === 'PM' && hour24 !== 12) {
       hour24 += 12; // Convert PM hour to 24-hour format (e.g., 1 PM becomes 13)
@@ -160,24 +157,31 @@ const BookingForm = () => {
       hour24 = 0; // Convert 12 AM to 0 hours for midnight
     }
   
-    // Set hours and minutes to selectedDate object
-    selectedDate.setHours(hour24, 0, 0, 0);
-  
-    // Format as ISO string
-    const malaysiaTime = new Date(selectedDate.getTime() + 8 * 60 * 60 * 1000);
-
-  // Format as ISO string
-    return malaysiaTime.toISOString();
+    // Return time as HH:mm string
+    return `${hour24.toString().padStart(2, '0')}:00`;
   };
   
+  const reset = () => {
+    setSelectedDate(today);
+    fetchAvailableTimes(today);
+    setSelectedTimeSlot([]);
+    setSelectedStartTime(null);
+    setSelectedEndTime(null);
+    setSelectedPeriod(null);
+    setAvailableTimes([]);
+    setAvailableCourts([]);
+    setSelectedCourt(null);
+    setQuantities({});
+  };
 
   // Handle checkout button click
   const handleCheckout = () => {
     const bookingData = {
       user: "672ca5d4c6b769bf589bd328", // Replace with the actual user ID
       court: selectedCourt,
-      startTime: formatToDateTime(selectedDate, selectedStartTime, selectedPeriod), // Combine date and start time
-      endTime: formatToDateTime(selectedDate, selectedEndTime, selectedPeriod), // Combine date and end time
+      date: selectedDate, // Date is stored separately
+      startTime: formatToTime24(selectedStartTime, selectedPeriod), // Convert to 24-hour format
+      endTime: formatToTime24(selectedEndTime, selectedPeriod),
       totalCost: calculateTotal(),
       status: "confirmed",
       equipments_rented: Object.keys(quantities).map(id => ({
@@ -204,6 +208,7 @@ const BookingForm = () => {
     })
     .then(data => {
       console.log('Booking created:', data);
+      reset();
       alert('Booking successfully created!');
     })
     .catch(error => console.error('Error creating booking:', error));
@@ -225,6 +230,7 @@ const BookingForm = () => {
                 key={index}
                 onClick={() => handleDateChange(date.value)}
                 className={`date-button ${selectedDate === date.value ? "selected" : ""}`}
+                disabled={index >= dates.length - 7} // Disable the last 7 buttons
               >
                 {date.display}
               </button>
@@ -232,6 +238,7 @@ const BookingForm = () => {
           </div>
         </div>
       </div>
+
 
       {/* Select Time Section */}
       <div className="section">
@@ -255,17 +262,25 @@ const BookingForm = () => {
       <div className="section">
         <h4 className="ms-2">Select Court</h4>
         <div className="centerlized-container">
-          <div className="court-container pt-3">
-            {availableCourts.map((court, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCourt(court.court_id)}
-                className={`court-button ${selectedCourt === court.court_id ? "selected" : ""}`}
-              >
-                {court.court_name}
-              </button>
-            ))}
-          </div>
+          {selectedStartTime === null ? (
+            <p className="no-selected-time-message">Please select a start time to view available courts.</p>
+          ) : availableCourts.length > 0 ? (
+            <div className="court-container pt-3">
+              {availableCourts.map((court, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedCourt(court.court_id)}
+                  className={`court-button ${
+                    selectedCourt === court.court_id ? "selected" : ""
+                  }`}
+                >
+                  {court.court_name}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="no-courts-message">There are no available courts at this time.</p>
+          )}
         </div>
       </div>
 
