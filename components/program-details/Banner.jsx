@@ -3,11 +3,11 @@ import SmallBanner from "../common/SmallBanner";
 
 const Banner = () => {
   return (
-    <SmallBanner title="Create Booking">
+    <SmallBanner title="">
       <Breadcrumb
         breadcrumbs={[
           ["User Dashboard", "/"],
-          ["Booking", "/"],
+          ["Program Details", "/"],
         ]}
       />
     </SmallBanner>

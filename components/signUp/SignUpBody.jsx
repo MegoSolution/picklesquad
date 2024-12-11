@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GoogleLoginButton from "./GoogleLoginButton"
 
 const SignUpBody = () => {
   return (
@@ -56,11 +57,14 @@ const SignUpBody = () => {
                   .
                 </p>
                 <div className="section__cta text-start">
-                  <button type="submit" className="cmn-button">
+                  <button type="submit" className="sign-up-button">
                     Sign Up
                   </button>
                 </div>
+                {/* Google Sign-In Button */}
               </form>
+              <div id="googleSignInButton" className="mt-3"></div>
+                <GoogleLoginButton />
             </div>
           </div>
         </div>

@@ -1,0 +1,112 @@
+.toggle-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.toggle-button {
+  flex: 1;
+  padding: 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+}
+
+.toggle-button.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.bookings-list {
+  margin-top: 20px;
+}
+
+.booking-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.no-bookings-message {
+  text-align: center;
+  color: gray;
+  font-size: 16px;
+}
+
+.booking-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options-container {
+  position: relative;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align the button to the left */
+  justify-content: center; /* Align content to the left */
+  width: 20px; /* Set your desired width */
+}
+
+.options-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0; /* Remove default margin */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0; /* Align the menu to the right edge of the container */
+  top: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 150px; /* Fixed width for the menu */
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show dropdown on hover */
+.options-container:hover .dropdown-menu {
+  display: block;
+}
+
+.view-history-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.view-history-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+

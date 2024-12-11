@@ -1,0 +1,66 @@
+import React, { useState } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
+const GoogleLoginButton: React.FC = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const response = await axios.post('http://localhost:3000/v1/auth/google-login', {
+          token: tokenResponse.access_token,
+        });
+
+        const { user, tokens } = response.data;
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('accessToken', tokens.accessToken);
+        localStorage.setItem('refreshToken', tokens.refreshToken);
+
+        console.log('Logged in successfully:', user);
+      } catch (error) {
+        console.error('Google login failed:', error);
+      }
+    },
+    onError: () => console.error('Google login failed'),
+  });
+
+  const googleButtonStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    padding: '10px',
+    fontSize: '16px',
+    color: '#757575',
+    backgroundColor: isHovered ? '#f7f7f7' : 'white',
+    border: '1px solid #D9D9D9',
+    borderRadius: '20px',
+    cursor: 'pointer',
+    gap: '10px',
+    transition: 'background-color 0.3s',
+  };
+
+  const googleIconStyle: React.CSSProperties = {
+    width: '20px',
+    height: '20px',
+  };
+
+  return (
+    <button
+      onClick={() => handleGoogleLogin()}
+      style={googleButtonStyle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <img
+        src="https://developers.google.com/identity/images/g-logo.png"
+        alt="Google logo"
+        style={googleIconStyle}
+      />
+      Sign in with Google
+    </button>
+  );
+};
+
+export default GoogleLoginButton;

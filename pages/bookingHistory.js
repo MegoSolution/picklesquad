@@ -1,5 +1,5 @@
-import Banner from "@/components/booking/Banner";
-import BookingBody from "@/components/booking/BookingBody";
+import Banner from "@/components/BookingHistory/Banner";
+import BookingHistoryBody from "@/components/BookingHistory/BookingHistoryBody";
 
 // Helper function to generate dates
 export default function Booking() {
@@ -9,7 +9,7 @@ export default function Booking() {
       <Banner />
 
       {/* Booking Form */}
-      <BookingBody />
+      <BookingHistoryBody />
     </>
   );
 }
