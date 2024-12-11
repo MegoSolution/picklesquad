@@ -1,17 +1,31 @@
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/action';
+import { login } from '../../../redux/action';
 import Link from 'next/link';
 import { useState } from 'react';
-import GoogleLoginButton from "../SignUp/GoogleLoginButton"
+import { useRouter } from 'next/router';
+import GoogleLoginButton from "../SignUp/GoogleLoginButton";
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:3000/v1';
 
 const SignInBody = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const useLogin = () => {
-    dispatch(login({ email, password }));
+  const useLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/login`, { email, password });
+      dispatch(login(response.data));
+      localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
+      router.push('/booking'); // Redirect to the dashboard page
+    } catch (err) {
+      setError('Login failed. Please check your credentials and try again.');
+    }
   };
 
   return (
@@ -25,7 +39,10 @@ const SignInBody = () => {
             <div className="authentication__wrapper">
               <h4>Sign in to Golftio</h4>
               <p>Sign in to your account and Join our club</p>
-              <form action="#" method="post">
+              <div className="error__inner">
+                {error && <p className="error">{error}</p>}
+              </div>
+              <form action="#" method="post" onSubmit={useLogin}>
                 <div className="input-single">
                   <label htmlFor="authEmailIn">Enter Your Email ID</label>
                   <input
@@ -55,7 +72,6 @@ const SignInBody = () => {
                   <button
                     type="submit"
                     className="sign-up-button"
-                    onClick={useLogin}
                   >
                     Sign In
                   </button>
@@ -64,9 +80,9 @@ const SignInBody = () => {
               <div id="googleSignInButton" className="mt-3"></div>
                 <GoogleLoginButton />
             </div>
-            </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };

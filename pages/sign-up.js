@@ -1,6 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navBar/NavBar";
-import SignUpBody from "@/components/signUp/SignUpBody";
+import SignUpBody from "@/components/auth/signup/SignUpBody";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 
 

@@ -3107,6 +3107,13 @@
   }
 }
 
+.error__message{
+  p{
+    color: #ff4d4d;
+    font-weight: bold;
+  }
+}
+
 .shop--main {
   background-color: $white;
 }

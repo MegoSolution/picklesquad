@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { navData } from "./navData";
 import Logo_light from "/public/images/Picklesquad_image/logo-07.png";
 import Logo from "/public/images/Picklesquad_image/logo-07.png";
+import { useSelector } from 'react-redux';
+import HandleLogout from '../auth/SignOutBody';
 
 const NavBar = ({ cls = "header--secondary" }) => {
   const [windowHeight, setWindowHeight] = useState(0);
   const [active, setActive] = useState(false);
   const [dropdownId, setDropdownId] = useState("");
   const [subDropdown, setSubDropdown] = useState("");
+  const user = useSelector((state) => state.user);
 
   const handleActive = () => {
     setActive(false);
@@ -160,14 +163,18 @@ const NavBar = ({ cls = "header--secondary" }) => {
                         );
                       }
                     )}
-                    <li className="nav__menu-item d-block d-md-none">
-                      <Link
-                        href="/sign-in"
-                        className="cmn-button cmn-button--secondary"
-                      >
-                        Sign In/Sign Up
-                      </Link>
-                    </li>
+
+                    {/* Sign In or Sign Up or Logout*/}
+                    {user ? (
+                      <>
+                      </>
+                    ) : (
+                      <li className="nav__menu-item d-block d-md-none">
+                        <Link href="/sign-in" className="cmn-button cmn-button--secondary">
+                          Sign In/Sign Up
+                        </Link>
+                      </li>
+                    )}
                   </ul>
                   <div className="social">
                     <Link href="/">
@@ -189,13 +196,13 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     <i className="golftio-cart"></i>
                   </Link>
                   <div className="nav__uncollapsed-item d-none d-md-flex">
-                    <Link
-                      href="/sign-in"
-                      className="cmn-button cmn-button--tertiary"
-                    >
-                      Sign In/Sign Up
-                    </Link>
-                    
+                    {user ? (
+                      <HandleLogout />
+                    ) : (
+                      <Link href="/sign-in" className="cmn-button cmn-button--tertiary">
+                        Sign In/Sign Up
+                      </Link>
+                    )}
                   </div>
                   <button
                     className="nav__bar d-block d-xl-none"
