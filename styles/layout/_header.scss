@@ -2,7 +2,7 @@
  --------- (4.1) header styles start ---------
  ==== */
 
-.header {
+ .header {
   position: fixed;
   top: 30px;
   left: 0px;
@@ -13,10 +13,11 @@
 
   .nav {
     padding: 30px 60px;
-    background-color: $white;
+    background: none; /* Removes the background */
     border-radius: 5px;
-    box-shadow: $shadow;
+    box-shadow: none; /* Retain the shadow */
   }
+  
 
   .nav__content {
     display: flex;
@@ -38,7 +39,7 @@
 
   .nav__menu-link {
     padding: 10px 12px;
-    color: $theme-color;
+    color: white;
     font-weight: 500;
 
     &:hover {
@@ -184,7 +185,7 @@
     align-items: center;
     gap: 24px;
     a {
-      color: $white;
+      color: $primary-color;
 
       i {
         font-size: 24px;
@@ -226,10 +227,11 @@
     display: flex;
     align-items: center;
     gap: 24px;
-
+    color: $primary-color
+    ;
     .cmn-button--secondary {
       &:hover {
-        color: $white;
+        color: $primary-color;
         border: 1px solid $primary-color;
       }
     }
@@ -238,7 +240,7 @@
       &:nth-last-of-type(1) {
         border: 1px solid $primary-color;
         &:hover {
-          border: 1px solid #cecece;
+          border: 1px solid $primary-color;
           background-color: transparent;
         }
       }
@@ -257,7 +259,7 @@
     .icon-bar {
       width: 35px;
       height: 2px;
-      background-color: $theme-color;
+      background-color: black;
       margin: 0px;
       display: block;
       transition: all 0.3s;
@@ -287,7 +289,7 @@
 }
 
 .header-active {
-  background-color: $white;
+  background: url('/images/grass.png');
   animation: header 0.5s linear;
   top: 0px;
   z-index: 99;

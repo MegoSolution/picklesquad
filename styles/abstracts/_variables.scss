@@ -1,24 +1,24 @@
 // (1.2) variables
 
-// dm sans google font source
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+// metropolis google font source
+@import url("https://fonts.googleapis.com/css2?family=Metropolis:wght@400;500;700&display=swap");
 
 // font family
-$dm: "DM Sans", sans-serif;
+$dm: "Metropolis", sans-serif;
 
 // theme default
 $theme-font: $dm;
-$theme-bg: #ffffff;
+$theme-bg: #FFF8F0;
 $theme-color: #3f3f3f;
 
 // colors
-$white: #ffffff;
+$white: #FFF8F0;
 $black: #000000;
-$primary-color: #0e7a31;
+$primary-color: #2C58A8;
 $secondary-color: #0ca9400d;
 $tertiary-color: #0ca9400a;
 $quaternary-color: #0ca94008;
-$quinary-color: #05441a;
+$quinary-color: #2C58A8;
 
 // transitions
 $transition: all 0.4s ease-in-out;

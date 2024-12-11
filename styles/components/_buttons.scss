@@ -62,6 +62,59 @@
   }
 }
 
+.cmn-button--tertiary {
+  background-color: #fff8f0;
+  border: 1px solid #cecece;
+  color: $theme-color;
+  font-size: 14px; /* Reduce font size for a smaller button */
+  padding: 6px 20px; /* Compact padding for smaller dimensions */
+  border-radius: 20px; /* Rounded edges for oval shape */
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0px;
+    height: 1px;
+    background-color: $theme-color;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    color: $white;
+    &::before,
+    &::after {
+      width: 500%; /* Expand width on hover */
+      transform: scale(4) rotate(-160deg);
+    }
+  }
+}
+.cmn-button--learn-more {
+  margin-top: 20px; /* Add space between buttons */
+  display: inline-block;
+  padding: 3px 15px; /* Adjust padding for the oval shape */
+  background: #2C58A8; /* Button background color */
+  border-radius: 30px; /* Creates the oval shape */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px; /* Adjust font size */
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+
+  &:hover {
+    background: darken(#2C58A8, 10%); /* Darkens the button on hover */
+    color: #ffffff; /* Keeps text white on hover */
+    transform: scale(0.95); /* Slightly enlarges the button */
+  }
+}
+
 // scroll to top with progress
 
 

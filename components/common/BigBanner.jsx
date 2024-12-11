@@ -4,31 +4,31 @@ const BigBanner = () => {
   return (
     <section className="banner--secondary">
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-end">
           <div className="col-12 col-lg-6 col-xl-7">
             <div
               className="banner__content wow fadeInUp"
               data-wow-duration="0.4s"
             >
-              <h5 className="banner__content-sub-title">
-                Play Golf Like A Pro
-              </h5>
+              
               <h1 className="banner__content-title">
-                Get the best golf experience
+              Ready to Pick Up The Paddle?
               </h1>
               <p className="primary-text banner__content-text">
-                Our staff are always on hand to make all members feel welcome.
-                Fully dedicated to golf lovers.
+              Start experiencing the awesomeness of pickleball
+with your family and friends by booking one of our
+courts – or if you feel like learning how to nail that
+perfect serve, feel free to take up a lesson.
               </p>
               <div className="banner__content-cta">
                 <Link href="/join-club" className="cmn-button">
-                  Join Our Club
+                Let's Play
                 </Link>
                 <Link
                   href="/about"
                   className="cmn-button cmn-button--secondary"
                 >
-                  About Us
+                  First Time
                 </Link>
               </div>
             </div>

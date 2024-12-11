@@ -59,39 +59,6 @@ export const navData = [
     ],
   },
   {
-    id: "au@2051",
-    itm: "Shop",
-    url: "/",
-    dropdown: true,
-    dropdown_itms: [
-      {
-        id: "du@01S",
-        dp_itm: "Shop",
-        url: "/shop",
-      },
-      {
-        id: "du@02S",
-        dp_itm: "Product Details",
-        url: "/product-details",
-      },
-      {
-        id: "du@03S",
-        dp_itm: "Cart",
-        url: "/cart",
-      },
-      {
-        id: "du@04S",
-        dp_itm: "Checkout",
-        url: "/checkout",
-      },
-      {
-        id: "du@05S",
-        dp_itm: "Successfull",
-        url: "/payment-successfull",
-      },
-    ],
-  },
-  {
     id: "au@2331",
     itm: "Pages",
     url: "/",

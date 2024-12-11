@@ -114,22 +114,55 @@ i {
 .banner__content {
   margin-top: -8px;
 
-  .section__content-sub-title,
+  .section__content-sub-title
+  {
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-size: auto;
+      text-align: center;
+  }
+
   .banner__content-sub-title {
     margin-bottom: 20px;
     color: $primary-color;
+    text-align: center;
   }
 
-  .section__content-title,
+  .section__content-title
+  {
+    font-size: 36px;
+    color: #2C58A8;
+    margin-bottom: 20px;
+    font-weight: bold;
+    
+    overflow: hidden; /* Optional: Hide overflow if the text is too long */
+    text-overflow: ellipsis; /* Optional: Add ellipsis for overflowed text */
+  }
+
   .banner__content-title {
+  
+    margin-left: 30px; 
+    color: white;
     margin-bottom: 24px;
   }
 
-  .section__content-text,
+  .section__content-text{
+    
+    margin-bottom: 20px;
+    color: #2C58A8;
+    &:nth-last-of-type(1) {
+      color: #2C58A8;
+      margin-bottom: 0px;
+      font-size: auto;
+      text-align: center;
+    }
+  }
   .banner__content-text {
+    margin-left: 30px;
     margin-bottom: 20px;
 
     &:nth-last-of-type(1) {
+      color: white;
       margin-bottom: 0px;
     }
   }
@@ -161,6 +194,7 @@ i {
 
   .section__content-cta,
   .banner__content-cta {
+    margin-left: 30px;
     display: flex;
     align-items: center;
     gap: 24px;

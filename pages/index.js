@@ -27,7 +27,7 @@ export default function Home() {
       <BigBanner />
 
       {/* Facility Secrtion */}
-      <Facility />
+      {/* <Facility />*/}
 
       {/* About Secrtion */}
       <About />

@@ -4,18 +4,11 @@
 
 // home one banner
 .banner {
-  padding: 266px 0px 240px;
-  background-image: radial-gradient(
-      circle at left center,
-      white 300px,
-      transparent 300px
-    ),
+  padding: 0px 0px 240px;
+  background-image: 
+    radial-gradient(circle at left center,  transparent 100px),
     url("/images/banner/banner-one.png"),
-    linear-gradient(
-      90deg,
-      rgba(12, 169, 64, 0.1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    linear-gradient(90deg, rgba(12, 169, 64, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
   background-repeat: no-repeat;
   background-position: left -110px center, right bottom, left top;
   background-size: auto, contain, 100%;
@@ -24,13 +17,9 @@
 // secondary banner
 .banner--secondary {
   padding: 266px 0px 240px;
-  background-color: $white;
-  background-image: linear-gradient(
-      90deg,
-      #fdfffa 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    url("/images/banner/banner-two.png");
+  background-color: none;
+  background-image: 
+    url("/images/banner/banner-two.jpg");
   background-repeat: no-repeat;
   background-position: left top, right top;
   background-size: 100%, auto 100%;
@@ -53,7 +42,7 @@
       rgba(192, 217, 242, 0.13) 60%,
       rgba(255, 255, 255, 0) 100%
     ),
-    url("/images/banner/banner-three.png");
+    url("/images/banner/banner-three.webp");
   background-repeat: no-repeat;
   background-position: left 20px bottom 30px, left top, right top;
   background-size: 140px, 100%, auto 100%;
@@ -87,7 +76,7 @@
         color: $white;
         font-weight: 400;
         &:hover {
-          color: $white;
+          color: none;
         }
       }
       &::before {

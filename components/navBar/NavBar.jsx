@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { navData } from "./navData";
-import Logo_light from "/public/images/logo-light.png";
-import Logo from "/public/images/logo.png";
+import Logo_light from "/public/images/Picklesquad_image/logo-07.png";
+import Logo from "/public/images/Picklesquad_image/logo-07.png";
 
 const NavBar = ({ cls = "header--secondary" }) => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -165,10 +165,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
                         href="/sign-in"
                         className="cmn-button cmn-button--secondary"
                       >
-                        Sign In
-                      </Link>
-                      <Link href="/sign-up" className="cmn-button">
-                        Sign Up
+                        Sign In/Sign Up
                       </Link>
                     </li>
                   </ul>
@@ -194,13 +191,11 @@ const NavBar = ({ cls = "header--secondary" }) => {
                   <div className="nav__uncollapsed-item d-none d-md-flex">
                     <Link
                       href="/sign-in"
-                      className="cmn-button cmn-button--secondary"
+                      className="cmn-button cmn-button--tertiary"
                     >
-                      Sign In
+                      Sign In/Sign Up
                     </Link>
-                    <Link href="/sign-up" className="cmn-button">
-                      Sign Up
-                    </Link>
+                    
                   </div>
                   <button
                     className="nav__bar d-block d-xl-none"

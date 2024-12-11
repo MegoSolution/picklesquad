@@ -1,111 +1,96 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import ModalVideo from "react-modal-video";
-import about_modal from "/public/images/about-modal.png";
-import about_two_thumb from "/public/images/about-two-thumb.png";
 
 const About = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <>
-      {/* TODO: Video Modal  */}
-      <ModalVideo
-        channel="youtube"
-        autoplay
-        isOpen={isOpen}
-        videoId="muczNvx9fgg"
-        onClose={() => setOpen(false)}
-      />
-
-      <section
-        className="section about--secondary wow fadeInUp"
-        data-wow-duration="0.4s"
-      >
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-5 col-xxl-5 d-none d-lg-block">
-              <div className="about--secondary__thumb dir-rtl">
-                <Image src={about_two_thumb} alt="Image" className="unset" />
-                <div className="about--secondary__thumb-experience">
-                  <h3>
-                    <span className="odometer" data-odometer-final="30"></span>{" "}
-                    <span>+</span>
-                  </h3>
-                  <p>
-                    Years <br /> of experience
-                  </p>
-                </div>
-                <div className="about--secondary__modal">
-                  <Image src={about_modal} alt="img" />
-                  <div className="play-wrapper">
-                    <button
-                      title="Youtube Video Player"
-                      className="play-btn"
-                      onClick={() => setOpen(true)}
-                    >
-                      <i className="fa-solid fa-play"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-7 col-xxl-6 offset-xxl-1">
+    <section
+      className="section about--secondary wow fadeInUp"
+      data-wow-duration="0.4s"
+    >
+       <div className="about-image-container">
+    <img src="/images/home/about.jpg" alt="Background Image" className="about-background-image" />
+  </div>
+      <div className="container-fluid"> {/* Changed to container-fluid for better responsiveness */}
+        <div className="about--secondary__content-wrapper">
+          <div className="row justify-content-center align-items-center vh-100">
+            <div className="col-lg-10 col-xxl-6 offset-xxl-1 text-center">
               <div className="section__content">
                 <h5 className="section__content-sub-title">About us</h5>
                 <h2 className="section__content-title">
-                  We have managed golf courses in your city
+                  Welcome To Picklesquad
                 </h2>
                 <p className="section__content-text">
-                  We offer a lot of courses of varying difficulty and beautiful
-                  scenery that golfers of all skill levels can enjoy. You will
-                  learn golf from professionals with our competent and
-                  experienced staff.{" "}
+                  We are not just a pickleball destination; it’s a revolutionary
+                  experience and awesome feeling you get from playing pickleball
+                  games on our world-class courts and hanging out with even
+                  cooler people.
                 </p>
+                <p className="section__content-text">
+                  Step onto the court with us, and together, let’s script the
+                  next chapter of pickleball excitement. Your story begins here.
+                </p>
+
                 <div className="row">
-                  <div className="col-sm-12 col-md-11 col-lg-12">
+                  <div className="col-12">
                     <div className="about--secondary__single">
-                      <div className="row section__row">
-                        <div className="col-6 col-sm-4 section__col">
-                          <div className="about--secondary__single-item">
-                            <div className="about--secondary__single-item__icon">
-                              <i className="golftio-flag"></i>
-                            </div>
-                            <h6>Professional Team</h6>
-                          </div>
-                        </div>
-                        <div className="col-6 col-sm-4 section__col">
-                          <div className="about--secondary__single-item">
-                            <div className="about--secondary__single-item__icon">
-                              <i className="golftio-shot-upper"></i>
-                            </div>
-                            <h6>Professional Trainings</h6>
-                          </div>
-                        </div>
-                        <div className="col-6 col-sm-4 section__col">
-                          <div className="about--secondary__single-item">
-                            <div className="about--secondary__single-item__icon">
-                              <i className="golftio-shot-ground"></i>
-                            </div>
-                            <h6>Facilities with Gym</h6>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="row section__row justify-content-center">
+  <div className="col-sm-6 col-md-4 text-center">
+    <div className="about--secondary__single-item">
+      <div className="about--secondary__single-item__icon">
+        <img
+          src="/images/Picklesquad_image/favicon-02.png"
+          alt="Professional Team Icon"
+        />
+      </div>
+      <h6>Professional Team</h6>
+      <Link href="/about" className="cmn-button--learn-more">
+        Learn More
+      </Link>
+    </div>
+  </div>
+  <div className="col-sm-6 col-md-4 text-center">
+    <div className="about--secondary__single-item">
+      <div className="about--secondary__single-item__icon">
+        <img
+          src="/images/Picklesquad_image/favicon-03.png"
+          alt="Professional Trainings Icon"
+        />
+      </div>
+      <h6>Professional Trainings</h6>
+      <Link href="/about" className="cmn-button--learn-more">
+        Learn More
+      </Link>
+    </div>
+  </div>
+  <div className="col-sm-6 col-md-4 text-center">
+    <div className="about--secondary__single-item">
+      <div className="about--secondary__single-item__icon">
+        <img
+          src="/images/Picklesquad_image/favicon-04.png"
+          alt="Facilities Icon"
+        />
+      </div>
+      <h6>Facilities</h6>
+      <Link href="/about" className="cmn-button--learn-more">
+        Learn More
+      </Link>
+    </div>
+  </div>
+</div>
+
                     </div>
                   </div>
                 </div>
-                <div className="section__content-cta">
-                  <Link href="/about" className="cmn-button">
-                    Read More
-                  </Link>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
