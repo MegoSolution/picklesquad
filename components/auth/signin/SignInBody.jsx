@@ -22,6 +22,7 @@ const SignInBody = () => {
       const response = await axios.post(`${BASE_URL}/auth/login`, { email, password });
       dispatch(login(response.data));
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       router.push('/booking'); // Redirect to the dashboard page
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');

@@ -8,12 +8,13 @@ const handleLogout = () => {
 
   const logoutUser = () => {
     localStorage.removeItem('tokens');
+    localStorage.removeItem('user');
     dispatch(logout());
     router.push('/sign-in');
   };
 
   return (
-    <button class="cmn-button cmn-button--tertiary" onClick={logoutUser}>Logout</button>
+    <button className="cmn-button cmn-button--tertiary" onClick={logoutUser}>Logout</button>
   );
 };
 

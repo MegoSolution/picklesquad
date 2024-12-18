@@ -28,9 +28,9 @@ const SignUpBody = () => {
         password,
       });
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
-      router.push('/booking'); // Redirect to the dashboard page
+      router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      setError('Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.');
     }
   };
 
@@ -56,7 +56,7 @@ const SignUpBody = () => {
                     name="auth-name"
                     id="authName"
                     required
-                    placeholder="John Doe"
+                    placeholder="Your name here"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>

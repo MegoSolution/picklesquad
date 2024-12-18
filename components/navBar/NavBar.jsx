@@ -165,15 +165,15 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     )}
 
                     {/* Sign In or Sign Up or Logout*/}
-                    {user ? (
-                      <>
-                      </>
-                    ) : (
+                    {!user ? (
                       <li className="nav__menu-item d-block d-md-none">
                         <Link href="/sign-in" className="cmn-button cmn-button--secondary">
                           Sign In/Sign Up
                         </Link>
                       </li>
+                    ) : (
+                      <>
+                      </>
                     )}
                   </ul>
                   <div className="social">
@@ -196,12 +196,12 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     <i className="golftio-cart"></i>
                   </Link>
                   <div className="nav__uncollapsed-item d-none d-md-flex">
-                    {user ? (
-                      <HandleLogout />
-                    ) : (
+                    {!user ? (
                       <Link href="/sign-in" className="cmn-button cmn-button--tertiary">
                         Sign In/Sign Up
                       </Link>
+                    ) : (
+                      <HandleLogout />
                     )}
                   </div>
                   <button
