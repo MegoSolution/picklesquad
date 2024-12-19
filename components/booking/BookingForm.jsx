@@ -11,10 +11,10 @@ const BookingForm = () => {
   const [selectedCourt, setSelectedCourt] = useState(null);
   const [equipment, setEquipment] = useState([]); // State to store equipment data
   const [quantities, setQuantities] = useState({});
+
   const COURT_FEE_PER_HOUR = 25;
 
   const BASE_URL = 'http://localhost:3000/v1';
-  const BEARER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjYTVkNGM2Yjc2OWJmNTg5YmQzMjgiLCJpYXQiOjE3MzE1ODc5OTMsImV4cCI6MTczMTU4OTc5MywidHlwZSI6ImFjY2VzcyJ9.OG_9NjsoFrhmx5hLXNGOM6Tyfohosqe0GEYY1w6Uhg8"; // Replace this with your actual token
 
   // Generate dates for selection
   function generateDates() {
@@ -40,10 +40,13 @@ const BookingForm = () => {
   useEffect(() => {
     setSelectedDate(today);
     fetchAvailableTimes(today);
+    fetchEquipment();
+    
   }, []);
 
   // Fetch available times for the selected date
   const fetchAvailableTimes = (date) => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
     fetch(`${BASE_URL}/bookings/availability/times?date=${date}`, {
       method: 'GET',
       headers: {
@@ -59,13 +62,14 @@ const BookingForm = () => {
     })
     .then(data => {
       setAvailableTimes(data.availableTimes || []);
-      console.log(data.availableTimes)
     })
     .catch(error => console.error('Error fetching available times:', error));
   };
 
   // Fetch available courts for the selected date and time
   const fetchAvailableCourts = (date, startTime, endTime, period) => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+
     fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${formatToTime24(startTime, period)}&end_time=${formatToTime24(endTime, period)}`, {
       method: 'GET',
       headers: {
@@ -85,13 +89,14 @@ const BookingForm = () => {
     .catch(error => console.error('Error fetching available courts:', error));
   };
 
-  // Fetch equipment data from API
-  useEffect(() => {
+  const fetchEquipment = () => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+
     fetch(`${BASE_URL}/equipments`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${BEARER_TOKEN}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${BEARER_TOKEN}`
       }
     })
     .then(response => {
@@ -104,11 +109,12 @@ const BookingForm = () => {
       setEquipment(data.results);
     })
     .catch(error => console.error('Error fetching equipment:', error));
-  }, []);
+  };
 
   // Handle date selection
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    setSelectedTimeSlot([]); // Clear time slots on date change
     setSelectedStartTime(null); // Reset time and court when date changes
     setSelectedEndTime(null); // Reset time and court when date changes
     setSelectedPeriod(null); // Reset time and court when date changes
@@ -120,13 +126,75 @@ const BookingForm = () => {
   // Handle time selection
   const handleTimeChange = (startTime, endTime, period) => {
     const fullTime = `${startTime} - ${endTime} ${period}`;
-    setSelectedTimeSlot(fullTime); // Store full time to differentiate between AM/PM
-    setSelectedStartTime(startTime); // Reset time and court when date changes
-    setSelectedEndTime(endTime); // Reset time and court when date changes
-    setSelectedPeriod(period); // Reset time and court when date changes
-    setSelectedCourt(null); // Reset court when time changes
-    fetchAvailableCourts(selectedDate, startTime, endTime, period);
+  
+    // If the slot is already selected, remove it
+    if (selectedTimeSlot.includes(fullTime)) {
+      const updatedSlots = selectedTimeSlot.filter((slot) => slot !== fullTime);
+  
+      // Ensure the remaining slots are sequential
+      for (let i = 1; i < updatedSlots.length; i++) {
+        const [, prevEnd, prevPeriod] = updatedSlots[i - 1].split(/[ -]+/);
+        const [currStart] = updatedSlots[i].split(/[ -]+/);
+  
+        if (formatToTime24(prevEnd, prevPeriod) !== formatToTime24(currStart, period)) {
+          alert("Deselecting this slot will break the sequential order.");
+          return;
+        }
+      }
+  
+      // Update the time slots and overall start and end times
+      setSelectedTimeSlot(updatedSlots);
+      if (updatedSlots.length > 0) {
+        const [firstStart, , firstPeriod] = updatedSlots[0].split(/[ -]+/);
+        const [, lastEnd, lastPeriod] = updatedSlots[updatedSlots.length - 1].split(/[ -]+/);
+        setSelectedStartTime(firstStart);
+        setSelectedEndTime(lastEnd);
+        setSelectedPeriod(lastPeriod);
+      } else {
+        setSelectedStartTime(null);
+        setSelectedEndTime(null);
+        setSelectedPeriod(null);
+      }
+      return;
+    }
+  
+    // If no slots are selected, add the first time slot
+    if (selectedTimeSlot.length === 0) {
+      setSelectedTimeSlot([fullTime]);
+      setSelectedStartTime(startTime);
+      setSelectedEndTime(endTime);
+      setSelectedPeriod(period);
+      fetchAvailableCourts(selectedDate, startTime, endTime, period);
+      return;
+    }
+  
+    // Extract the first and last selected time slots
+    const firstSlot = selectedTimeSlot[0];
+    const lastSlot = selectedTimeSlot[selectedTimeSlot.length - 1];
+    const [firstStart, , firstPeriod] = firstSlot.split(/[ -]+/);
+    const [, lastEnd, lastPeriod] = lastSlot.split(/[ -]+/);
+  
+    // Check if the new slot is sequential to the first or last slot
+    const isSequentialToStart =
+      formatToTime24(endTime, period) === formatToTime24(firstStart, firstPeriod);
+    const isSequentialToEnd =
+      formatToTime24(startTime, period) === formatToTime24(lastEnd, lastPeriod);
+  
+    // Ensure no gaps when adding a slot
+    if (isSequentialToStart) {
+      setSelectedTimeSlot([fullTime, ...selectedTimeSlot]);
+      setSelectedStartTime(startTime); // Update overall start time
+      fetchAvailableCourts(selectedDate, startTime, selectedEndTime, period);
+    } else if (isSequentialToEnd) {
+      setSelectedTimeSlot([...selectedTimeSlot, fullTime]);
+      setSelectedEndTime(endTime); // Update overall end time
+      fetchAvailableCourts(selectedDate, selectedStartTime, endTime, period);
+    } else {
+      alert("Please select sequential time slots.");
+    }
   };
+  
+  
 
   const handleQuantityChange = (id, delta) => {
     setQuantities(prevQuantities => ({
@@ -176,6 +244,8 @@ const BookingForm = () => {
 
   // Handle checkout button click
   const handleCheckout = () => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+
     const bookingData = {
       user: "672ca5d4c6b769bf589bd328", // Replace with the actual user ID
       court: selectedCourt,
@@ -244,17 +314,23 @@ const BookingForm = () => {
       <div className="section">
         <h4 className="ms-2">Select Time</h4>
         <div className="centerlized-container">
-          <div className="time-container pt-3">
-            {availableTimes.map((time, index) => (
-              <button
-                key={index}
-                onClick={() => handleTimeChange(time.start, time.end, time.endPeriod)}
-                className={`time-button ${selectedTimeSlot === `${time.start} - ${time.end} ${time.endPeriod}` ? "selected" : ""}`}
-              >
-                {time.start} - {time.end} {time.endPeriod}
-              </button>
-            ))}
-          </div>
+          {availableTimes.length > 0 ? (
+            <div className="time-container pt-3">
+              {availableTimes.map((time, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleTimeChange(time.start, time.end, time.endPeriod)}
+                  className={`time-button ${
+                    selectedTimeSlot.includes(`${time.start} - ${time.end} ${time.endPeriod}`) ? "selected" : ""
+                  }`}
+                >
+                  {time.start} - {time.end} {time.endPeriod}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="no-courts-message">No time slots available for the selected date.</p>
+          )}
         </div>
       </div>
 
@@ -289,16 +365,16 @@ const BookingForm = () => {
         <h4 className="ms-2">Select Equipment</h4>
         <div className="equipment-container pt-3">
           {equipment.map(item => (
-            <div key={item._id} className="equipment-item">
+            <div key={item.id} className="equipment-item ">
               <img src={item.image || "/images/default.png"} alt={item.name} className="equipment-image" />
               <p>{item.name}</p>
               <p>RM{item.rent_per_cost} each</p>
               <div className="quantity-control">
-                <button onClick={() => handleQuantityChange(item._id, -1)}>-</button>
-                <span>{quantities[item._id] || 0}</span>
-                <button onClick={() => handleQuantityChange(item._id, 1)}>+</button>
+                <button onClick={() => handleQuantityChange(item.id, -1)}>-</button>
+                <span>{quantities[item.id] || 0}</span>
+                <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
               </div>
-              <p>Total: RM{(quantities[item._id] || 0) * item.rent_per_cost}</p>
+              <p>Total: RM{(quantities[item.id] || 0) * item.rent_per_cost}</p>
             </div>
           ))}
         </div>
