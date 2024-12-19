@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from 'next/image';
+import { useLogout } from '../auth/SignOutBody';
 
 const Sidebar = () => {
+  const logoutUser = useLogout();
 
   return (
           <div className="col-lg-3 col-xl-3 section__col">
@@ -16,16 +18,18 @@ const Sidebar = () => {
                 <p className="secondary-text">Membership Level</p>
               </div>
               <h6 className="profile--side__bar-header">
-                0 
-                <span className="profile--side__bar-nav-link"> Bookings</span>
+                0&nbsp;
+                <a className="profile--side__bar-nav-link" href="/bookingHistory">
+                  Booking
+                </a>
               </h6>
               <div className="profile--side__bar-nav-link-div">
-                <Link href="/facility/1" className="profile--side__bar-nav-link">
+                <Link href="/profile" className="profile--side__bar-nav-link">
                   My Profile
                 </Link>
               </div>
              <div className="profile--side__bar-nav-link-div">
-                <Link href="/facility/1" className="profile--side__bar-nav-link">
+                <Link href="/bookingHistory" className="profile--side__bar-nav-link">
                   My Bookings
                 </Link>
               </div>
@@ -35,9 +39,9 @@ const Sidebar = () => {
                 </Link>
               </div>
               <div className="profile--side__bar-nav-link-div">
-                <Link href="/facility/1" className="profile--side__bar-nav-link">
+                <a className="profile--side__bar-nav-link" onClick={logoutUser}>
                   Logout
-                </Link>
+                </a>
               </div>
               {/* <div role="presentation">
                 <button
@@ -104,6 +108,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-
-

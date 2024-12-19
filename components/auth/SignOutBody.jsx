@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/action';
 import { useRouter } from 'next/router';
 
-const handleLogout = () => {
+export const useLogout = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -13,9 +13,17 @@ const handleLogout = () => {
     router.push('/sign-in');
   };
 
+  return logoutUser;
+};
+
+const SignOutButton = () => {
+  const logoutUser = useLogout();
+
   return (
-    <button className="cmn-button cmn-button--tertiary" onClick={logoutUser}>Logout</button>
+    <button className="cmn-button cmn-button--tertiary" onClick={logoutUser}>
+      Logout
+    </button>
   );
 };
 
-export default handleLogout;
+export default SignOutButton;

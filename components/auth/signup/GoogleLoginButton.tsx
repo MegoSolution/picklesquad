@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/action';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const GoogleLoginButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -13,11 +18,11 @@ const GoogleLoginButton: React.FC = () => {
         });
 
         const { user, tokens } = response.data;
+        dispatch(login(response.data));
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('accessToken', tokens.accessToken);
-        localStorage.setItem('refreshToken', tokens.refreshToken);
+        localStorage.setItem('tokens', JSON.stringify(tokens));
 
-        console.log('Logged in successfully:', user);
+        router.push('/booking');
       } catch (error) {
         console.error('Google login failed:', error);
       }

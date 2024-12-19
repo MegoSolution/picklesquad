@@ -12,17 +12,10 @@ const ProfileForm = () => {
   const [showModal, setShowModal] = useState(false);
   const [bookings, setBookings] = useState(0);
   const [error, setError] = useState('');
-  const tokens = localStorage.getItem('tokens');
 
-  const router = useRouter();
   useEffect(() => {
-    if (!tokens) {
-      router.push('/sign-in');
-    }
-    else{
-      fetchBookings();
-    }
-  }, [tokens]);
+    fetchBookings();
+  }, []);
 
   const fetchBookings = async () => {
     try {
@@ -112,16 +105,16 @@ const ProfileForm = () => {
         </div>
         <div className="profile-form">
           <div className="picklesquad-btns">
-            <p>Book A Court</p>
+            <a href="/booking">Book A Court</a>
           </div>
           <div className="picklesquad-btns">
-            <p>Programs</p>
+            <a href="/program">Program</a>
           </div>
           <div className="picklesquad-btns">
-            <p>Coach</p>
+            <a href="/coach">Coach</a>
           </div>
           <div className="picklesquad-btns">
-            <p>Membership</p>
+            <a href="/membership">Membership</a>
           </div>
         </div>
       </div>
