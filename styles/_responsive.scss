@@ -534,12 +534,13 @@
 
   .header-active {
     top: 0px;
-    background: url('/images/grass.png')
+    background: url('/images/header.jpg')
   }
 
   .header--secondary {
     .nav {
       padding: 27px 0px 26px;
+      background: url('/images/header.jpg')
     }
 
     .nav__menu-item--dropdown {
@@ -934,6 +935,7 @@
     .nav__bar {
       .icon-bar {
         background-color: $white;
+        background: url('/images/header.jpg')
       }
     }
   }
@@ -1034,6 +1036,7 @@
     .footer__single-logo {
       img {
         max-width: 150px;
+        margin-bottom: 20px;
       }
     }
 
@@ -1284,6 +1287,7 @@
   .header--secondary {
     .nav {
       padding: 23px 0px 24px;
+      background: url('/images/header.jpg')
     }
 
     .nav__menu-item {
@@ -1485,13 +1489,54 @@
   .footer {
     padding-top: 80px;
 
-    h5 {
-      font-size: 22px;
+    h5{
+      font-size: 24px;
       line-height: 32px;
     }
-
+    .footer__single-social {
+      margin-top: 40px;
+      text-align: center;
+    }
+    
+    .social-heading {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-icons li {
+      display: inline-block;
+    }
+    
+    .social-icons li a {
+      font-size: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .social-icons li a:hover {
+      color: #ffd700; /* Change to your preferred hover color */
+    }
+    
     .footer__single-content {
+      
       margin-top: 15px;
+      text-align: center;
+      
+      h4{
+        font-size: 24px;
+        line-height: 32px;
+      }
 
       ul {
         li {
@@ -1500,6 +1545,17 @@
       }
     }
 
+    .footer__single-content .social-heading {
+      font-size: 18px; /* Adjust the size as needed */
+      margin-bottom: 10px; /* Adds spacing between heading and icons */
+      text-transform: uppercase; /* Optional: Makes the text uppercase */
+    }
+    img {
+      margin-bottom: 20px;
+      max-width: 150px; /* Increases the logo size */
+      margin: 0 auto;
+      display: block; /* Centers the image */
+    }
     .section__row {
       margin-bottom: -40px;
     }
@@ -1664,6 +1720,7 @@
   .header--secondary {
     .nav {
       padding: 26px 0px 27px;
+      background: url('/images/header.jpg')
     }
   }
 

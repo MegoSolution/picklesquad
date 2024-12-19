@@ -7,8 +7,16 @@
   background-color: $quinary-color;
 
   h5 {
-    margin-top: -6px;
+    margin-top: 20px;
     color: $white;
+  }
+  .social {
+    display: flex;
+    align-items: center;
+    justify-content: flex; /* Ensures icons are centered */
+    gap: 10px; /* Adds spacing between the icons */
+    flex-wrap: wrap; /* Allows wrapping if needed */
+    margin-top: 20px; /* Adds spacing above the icons */
   }
 
   .footer__single-content {
@@ -62,9 +70,17 @@
     height: 1px;
     border: 0px;
     width: 100%;
-    background-color: #03561f;
+    background-color: #2C58A8;
   }
-
+  .copyright-text {
+    
+    overflow: hidden; /* Hides any overflow if the container is too small */
+    text-overflow: ellipsis; /* Adds "..." if text is clipped */
+    display: block; /* Ensures it's treated as a block element */
+    font-size: 14px; /* Adjust the font size as needed */
+    line-height: 1.5; /* Ensures proper spacing */
+  }
+  
   .section__row {
     margin-bottom: -60px;
   }
