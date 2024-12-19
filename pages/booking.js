@@ -1,8 +1,9 @@
 import Banner from "@/components/booking/Banner";
 import BookingBody from "@/components/booking/BookingBody";
+import withAuth from "@/pages/withAuth";
 
 // Helper function to generate dates
-export default function Booking() {
+function Booking() {
   return (
     <>
       {/* Banner Section */}
@@ -13,3 +14,5 @@ export default function Booking() {
     </>
   );
 }
+
+export default withAuth(Booking);

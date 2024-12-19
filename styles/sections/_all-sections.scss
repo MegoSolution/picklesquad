@@ -2045,6 +2045,7 @@
     background-color: $white;
     box-shadow: $shadow;
     border-radius: 10px;
+    margin-bottom: 30px;
 
     .faq-tab-btn {
       display: flex;
@@ -3104,6 +3105,13 @@
   margin-top: 60px;
   h2 {
     margin-bottom: 20px;
+  }
+}
+
+.error__message{
+  p{
+    color: #ff4d4d;
+    font-weight: bold;
   }
 }
 
