@@ -3,7 +3,7 @@ import SmallBanner from "../common/SmallBanner";
 
 const Banner = () => {
   return (
-    <SmallBanner title="Create Booking">
+    <SmallBanner title="Booking Record">
       <Breadcrumb
         breadcrumbs={[
           ["User Dashboard", "/"],

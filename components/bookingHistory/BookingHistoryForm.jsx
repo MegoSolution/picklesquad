@@ -5,10 +5,11 @@ const BookingHistoryForm = () => {
   const [bookings, setBookings] = useState([]);
 
   const BASE_URL = 'http://localhost:3000/v1';
-  const BEARER_TOKEN = "your-token-here"; // Replace this with your actual token
 
   // Fetch bookings based on view mode
   const fetchBookings = (mode) => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+
     fetch(`${BASE_URL}/bookings?mode=${mode}`, {
       method: "GET",
       headers: {
