@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ProgramCard = ({ data }) => {
+  const accessToken = useSelector((state) => state.accessToken);
+	const currentUser = useSelector(state => state.user);
   const { id, name, description, startTime, endTime, price, court, coach } = data;
 
   const adjustedStartTime = new Date(new Date(startTime).getTime() - 8 * 60 * 60 * 1000);
@@ -14,10 +17,12 @@ const ProgramCard = ({ data }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
           programId: id,
           price,
+          user: currentUser?.user._id,
         }),
       });
 

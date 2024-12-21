@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const ProgramDetailsForm = () => {
   const [program, setProgram] = useState(null);
@@ -7,12 +8,17 @@ const ProgramDetailsForm = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const { id } = router.query; // Fetch the program ID from URL
+  const accessToken = useSelector((state) => state.accessToken);
+  const currentUser = useSelector(state => state.user);
 
   useEffect(() => {
     if (!id) return; 
 
     fetch(`/api/program?id=${id}`, {
       method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`, 
+      },
     })
       .then((response) => {
         if (!response.ok) {
@@ -44,10 +50,12 @@ const ProgramDetailsForm = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
           programId: id,
           price: program.price, 
+          user: currentUser?.user._id,
         }),
       });
 
