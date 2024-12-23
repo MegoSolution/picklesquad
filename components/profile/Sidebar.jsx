@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 import { useLogout } from '../auth/SignOutBody';
 
 const Sidebar = () => {
   const logoutUser = useLogout();
+  const user = useSelector((state) => state.user?.user);
 
   return (
           <div className="col-lg-3 col-xl-3 section__col">
@@ -13,7 +15,7 @@ const Sidebar = () => {
               id="faq-tab"
               role="tablist"
             >
-              <h4 className="profile--side__bar-user-name"><b>Joyce</b></h4>
+              <h4 className="profile--side__bar-user-name"><b>{user?.name}</b></h4>
               <div className="profile--side__bar-nav-link-div-2">
                 <p className="secondary-text">Membership Level</p>
               </div>

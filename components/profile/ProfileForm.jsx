@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-
 import Image from 'next/image';
 import Modal from "./Modal";
 
@@ -10,37 +9,68 @@ const BASE_URL = 'http://localhost:3000/v1';
 
 const ProfileForm = () => {
   const [showModal, setShowModal] = useState(false);
-  const [bookings, setBookings] = useState(0);
+  const user = useSelector((state) => state.user?.user);
+  const tokens = useSelector((state) => state.user?.tokens);
+  const [bookings, setBookings] = useState([]);
+  const [programs, setPrograms] = useState([]);
+  const [totalBookingsResults, setBookingsTotalResults] = useState(0);
   const [error, setError] = useState('');
+  const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
+  const scrollRef = useRef(null);
+  
 
   useEffect(() => {
-    fetchBookings();
-  }, []);
+    if (user) {
+      fetchBookings(user);
+      fetchPrograms();
+    } else {
+      console.log('No user found'); // Debugging log
+    }
+  }, [user]);
 
-  const fetchBookings = async () => {
+  const fetchBookings = async (user) => {
     try {
-      const token = JSON.parse(localStorage.getItem('tokens')).access.token;
-      const today = new Date();
-      const startOfDay = format(today, 'yyyy-MM-ddT00:00:00.000Z');
-      const endOfDay = format(today, 'yyyy-MM-ddT23:59:59.999Z');
       const response = await axios.get(`${BASE_URL}/bookings`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokens.access.token}`,
         },
         params: { 
-          user: user.user._id,
-          status: ['confirmed', 'completed'],
-          startTime: { $gte: startOfDay, $lte: endOfDay },
+          user: user._id,
+          status: 'confirmed',
+          mode: 'upcoming', // Use mode to fetch upcoming bookings
         },
-
       });
-      setBookings(response.data);
-      console.log(response.data);
+
+      setBookings(response.data.results);
+      setBookingsTotalResults(response.data.totalResults);
+
       if (!response.data.birthdate && !response.data.gender) {
         setShowModal(true);
       }
     } catch (err) {
       setError('Failed to fetch user data.');
+      console.error('Error fetching bookings:', err); // Debugging log
+    }
+  };
+
+  const fetchPrograms = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/programs`, {
+        headers: {
+          Authorization: `Bearer ${tokens.access.token}`,
+        },
+      });
+
+      setPrograms(response.data.results);
+      console.log(response.data.results); // Debugging log
+      
+
+      if (!response.data.birthdate && !response.data.gender) {
+        setShowModal(true);
+      }
+    } catch (err) {
+      setError('Failed to fetch user data.');
+      console.error('Error fetching programs:', err); // Debugging log
     }
   };
 
@@ -52,24 +82,43 @@ const ProfileForm = () => {
     document.getElementById('faqFacility-tab').click();
   };
 
+  const handleNextBooking = () => {
+    setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
+  };
+
+  const handlePreviousBooking = () => {
+    setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
+  };
+
+  const scrollLeft = () => {
+    scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
+  };
+
+
+  const currentBooking = bookings[currentBookingIndex];
+
   return (
     <>
-    <div
-      className="profile__tab-btns wow fadeInUp"
-      data-wow-duration="0.4s"
-      id="faq-tab"
-      role="tablist"
-    >
-      <div>
-        <div className="faq__tab-single__inner">
+      <div
+        className="profile__tab-btns wow fadeInUp"
+        data-wow-duration="0.4s"
+        id="faq-tab"
+        role="tablist"
+      >
+        <div>
+          <div className="faq__tab-single__inner">
             <div className="profile-form-2">
               <div className="profile-header">
                 <button className="edit-button" onClick={handleEditClick}>
                   Edit Profile
                 </button>
                 <div className="profile-form-header-2">
-                  <h4>Hello, { 'Joyce'}</h4>
-                  <p>You have {bookings.totalResults} bookings today.</p>
+                  <h4>Hello, {user?.name}</h4>
+                  <p>You have {totalBookingsResults} upcoming bookings.</p>
                 </div>
               </div>
             </div>
@@ -77,84 +126,100 @@ const ProfileForm = () => {
               <div className="profile-form-header">
                 <h5>My Bookings</h5>
                 <div className="right-content">
-                  <a href="/bookings" className="view-all">View All</a>
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} />
+                  <a href="/booking" className="view-all">View All</a>
+                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={handlePreviousBooking} />
+                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={handleNextBooking} />
                 </div>
               </div>
               <div className="activity-tab">
-                <p>You don't have any future activities</p>
+                {bookings.length > 0 ? (
+                  <div key={currentBooking._id} className="booking-details">
+                    <p key={`${currentBooking._id}-date`}><b>Date:</b> {currentBooking.date.toString()}</p>
+                    <p key={`${currentBooking._id}-time`}><b>Time:</b> {currentBooking.startTime.toString()} - {currentBooking.endTime.toString()}</p>
+                    <p key={`${currentBooking._id}-status`}><b>Status:</b> {currentBooking.status.toString()}</p>
+                    <p key={`${currentBooking._id}-court`}><b>Court:</b> {currentBooking.court.toString()}</p>
+                  </div>
+                ) : (
+                  <p>You don't have any future activities</p>
+                )}
               </div>
             </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div
-      className="profile__tab-btns-2 wow fadeInUp"
-      data-wow-duration="0.4s"
-      role="tablist"
-    >
-      <div className="faq__tab-single__inner">
-        <div className="picklesquad-text">
-          <p>All Courts Playable</p>
-        </div>
-        <div className="picklesquad-header">
-          <h5>PICKLESQUAD</h5>
-        </div>
-        <div className="profile-form">
-          <div className="picklesquad-btns">
-            <a href="/booking">Book A Court</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/program">Program</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/coach">Coach</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/membership">Membership</a>
           </div>
         </div>
       </div>
-    </div>
 
+      <div
+        className="profile__tab-btns-2 wow fadeInUp"
+        data-wow-duration="0.4s"
+        role="tablist"
+      >
+        <div className="faq__tab-single__inner">
+          <div className="picklesquad-text">
+            <p>All Courts Playable</p>
+          </div>
+          <div className="picklesquad-header">
+            <h5>PICKLESQUAD</h5>
+          </div>
+          <div className="profile-form">
+            <div className="picklesquad-btns">
+              <a href="/booking">Book A Court</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/program">Program</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/coach">Coach</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/membership">Membership</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-
-    <div
-      className="profile__tab-btns wow fadeInUp"
-      data-wow-duration="0.4s"
-      id="faq-tab"
-      role="tablist"
-    >
-      <div>
+      <div
+        className="profile__tab-btns wow fadeInUp"
+        data-wow-duration="0.4s"
+        id="faq-tab"
+        role="tablist"
+      >
+        <div>
         <div className="faq__tab-single__inner">
             <div className="profile-form">
               <div className="profile-form-header">
                 <h5>Programs</h5>
                 <div className="right-content">
                   <a href="/bookings" className="view-all">View All</a>
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} />
+                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollLeft} />
+                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollRight} />
                 </div>
               </div>
-              <div className="programs-tab">
-                <div className="programs-tab-btns">
-                  <p>Open Play</p>
-                </div>
-                <div className="programs-tab-title">
-                  <h5>Open Play -Advance</h5>
-                </div>
-                <div className="programs-tab-time">
-                  <p><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> Every Tuesday </b></p>
-                </div>
+              <div className="programs-tab-container" ref={scrollRef}>
+                {programs.map((program) => (
+                  <a key={program.id} href={`/programs/${program.id}`} className="programs-tab">
+                    <div >
+                      <div className="programs-tab-btns">
+                        <p>{program.name}</p>
+                      </div>
+                      <div className="programs-tab-title">
+                        <h5>{program.description}</h5>
+                      </div>
+                      <div className="programs-tab-time">
+                        <p>
+                          <b>
+                            <Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> {program.startTime}
+                          </b>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
-    {showModal && <Modal userId={user.user._id} onClose={handleCloseModal} />}
+      {showModal && <Modal userId={user._id} onClose={handleCloseModal} />}
     </>
   );
 };

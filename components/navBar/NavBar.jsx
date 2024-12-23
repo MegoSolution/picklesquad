@@ -12,7 +12,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
   const [active, setActive] = useState(false);
   const [dropdownId, setDropdownId] = useState("");
   const [subDropdown, setSubDropdown] = useState("");
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user?.user);
 
   const handleActive = () => {
     setActive(false);
