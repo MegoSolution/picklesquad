@@ -34,7 +34,7 @@ const Sidebar = () => {
                 </Link>
               </div>
               <div className="profile--side__bar-nav-link-div">
-                <Link href="/facility/1" className="profile--side__bar-nav-link">
+                <Link href="/e-card" className="profile--side__bar-nav-link">
                   Show E-Card
                 </Link>
               </div>

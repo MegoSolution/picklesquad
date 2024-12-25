@@ -1,0 +1,75 @@
+.ecard-display {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ecard-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.ecard-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+.ecard-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ecard-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  pointer-events: none; /* Prevent interaction with the text overlay */
+}
+
+.ecard-name {
+  position: absolute;
+  top: 55%;
+  left: 10%; 
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.ecard-member-no {
+  position: absolute;
+  top: 78%; 
+  left: 10%;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ecard-valid-thru {
+  position: absolute;
+  top:78%;
+  left:72%; 
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ecard-image {
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .ecard-name,
+  .ecard-member-no,
+  .ecard-valid-thru {
+    font-size: 0.9rem;
+  }
+}

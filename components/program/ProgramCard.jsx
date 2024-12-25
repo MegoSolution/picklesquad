@@ -35,6 +35,7 @@ const ProgramCard = ({ data }) => {
       alert(data.message);  
     } catch (error) {
       console.error('Error creating booking:', error);
+      alert(error); 
     } 
   };
 
