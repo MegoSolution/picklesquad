@@ -16,9 +16,10 @@ import 'slick-carousel/slick/slick.css';
 //main css
 import '@/styles/globals.scss';
 import "../styles/booking/booking.scss";
- import "../styles/bookingHistory/bookingHistory.scss";
+import "../styles/bookingHistory/bookingHistory.scss";
 import "../styles/program/program.scss";
 import "../styles/program/programDetails.scss";
+import "../styles/profile/profile.scss";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {

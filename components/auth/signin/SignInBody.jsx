@@ -3,7 +3,7 @@ import { login } from '../../../redux/action';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import GoogleLoginButton from "../SignUp/GoogleLoginButton";
+import GoogleLoginButton from "../signup/GoogleLoginButton";
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/v1';
@@ -24,6 +24,8 @@ const SignInBody = () => {
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
       localStorage.setItem('membership', JSON.stringify(response.data.user.membership));
       router.push('/booking'); // Redirect to the dashboard page
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');
     }

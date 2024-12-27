@@ -289,7 +289,9 @@
 }
 
 .header-active {
-  background: url('/images/grass.png');
+  background: url('/images/header.jpg');
+  background-size: contain;
+
   animation: header 0.5s linear;
   top: 0px;
   z-index: 99;
@@ -297,6 +299,8 @@
 
   .nav {
     box-shadow: none !important;
+    background: url('/images/header.jpg');
+  background-size: contain;
   }
 }
 
