@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 const BookingHistoryForm = () => {
   const [viewMode, setViewMode] = useState("upcoming"); // "upcoming" or "history"
   const [bookings, setBookings] = useState([]);
+  const [selectedBooking, setSelectedBooking] = useState(null); // Store selected booking for modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal vis
+
 
   const BASE_URL = 'http://localhost:3000/v1';
 
@@ -36,6 +39,18 @@ const BookingHistoryForm = () => {
 
   const toggleViewMode = (mode) => {
     setViewMode(mode); // Update the view mode
+  };
+
+  // Open modal and set selected booking
+  const handleViewDetails = (booking) => {
+    setSelectedBooking(booking);
+    setIsModalOpen(true);
+  };
+
+  // Close modal
+  const handleCloseModal = () => {
+    setSelectedBooking(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -80,14 +95,13 @@ const BookingHistoryForm = () => {
                   <div className="options-container">
                     <button className="options-button">⋮</button> {/* Vertical ... */}
                     <div className="dropdown-menu">
-                      <button onClick={() => console.log("View Details")}>View Details</button>
+                      <button onClick={() => handleViewDetails(booking)}>View Details</button>
                       <button onClick={() => console.log("Cancel Order")}>Cancel Order</button>
                       <button onClick={() => console.log("Transfer Order")}>Transfer Order</button>
                     </div>
                   </div>
                 ) : (
-                  <a
-                  href={`/booking-history/${booking._id}`}
+                  <a onClick={() => handleViewDetails(booking)}
                   className="view-history-link"
                 >
                   View Details
@@ -105,6 +119,36 @@ const BookingHistoryForm = () => {
           </p>
         )}
       </div>
+    {/* Modal for Viewing Details */}
+    {isModalOpen && selectedBooking && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-button" onClick={handleCloseModal}>
+              &times;
+            </button>
+            <h4>Booking Details</h4>
+            <p>
+              <strong>Court:</strong> {selectedBooking.court.name} <br />
+              <strong>Date:</strong> {new Date(selectedBooking.date).toLocaleDateString()} <br />
+              <strong>Time:</strong> {selectedBooking.startTime} - {selectedBooking.endTime} <br />
+              <strong>Status:</strong> {selectedBooking.status} <br />
+              <strong>Total Price:</strong> RM{selectedBooking.totalCost}
+            </p>
+            {selectedBooking.equipments_rented && selectedBooking.equipments_rented.length > 0 && (
+              <>
+                <h5>Equipment Rented</h5>
+                <ul>
+                  {selectedBooking.equipments_rented.map((equipment) => (
+                    <li key={equipment.id}>
+                      {equipment.count} x {equipment.id.name} {/* Replace `id` with name if available */}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
