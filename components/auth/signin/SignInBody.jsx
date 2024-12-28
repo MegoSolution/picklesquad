@@ -22,6 +22,8 @@ const SignInBody = () => {
       const response = await axios.post(`${BASE_URL}/auth/login`, { email, password });
       dispatch(login(response.data));
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
+      localStorage.setItem('membership', JSON.stringify(response.data.user.membership));
+      router.push('/booking'); // Redirect to the dashboard page
       localStorage.setItem('user', JSON.stringify(response.data.user));
       router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {
