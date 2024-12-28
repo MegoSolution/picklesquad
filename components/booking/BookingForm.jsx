@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 
 const BookingForm = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [membership, setMembership] = useState(false);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState([]);
   const [selectedStartTime, setSelectedStartTime] = useState(null);
   const [selectedEndTime, setSelectedEndTime] = useState(null);
-  const [selectedPeriod, setSelectedPeriod] = useState(null);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [availableCourts, setAvailableCourts] = useState([]);
   const [selectedCourt, setSelectedCourt] = useState(null);
+  const [peakHours, setPeakHours] = useState([]);
   const [equipment, setEquipment] = useState([]); // State to store equipment data
   const [quantities, setQuantities] = useState({});
-
-  const COURT_FEE_PER_HOUR = 25;
+  const [equipmentTotals, setEquipmentTotals] = useState([]); // Array to store equipment ID and total price pairs
 
   const BASE_URL = 'http://localhost:3000/v1';
 
@@ -36,12 +36,23 @@ const BookingForm = () => {
   const dates = generateDates();
   const today = dates[0].value;
 
+  const toggleMembership = () => {
+    if (localStorage.getItem("membership")) {
+      localStorage.removeItem("membership");
+      setMembership(false);
+    } else {
+      const randomMembershipId = `MEM-${Math.random().toString(36).substring(2, 8)}`;
+      localStorage.setItem("membership", randomMembershipId);
+      setMembership(true);
+    }
+  };
+
   // Set today's date by default and fetch available times
   useEffect(() => {
+    setMembership(!!localStorage.getItem("membership"));
     setSelectedDate(today);
     fetchAvailableTimes(today);
     fetchEquipment();
-    
   }, []);
 
   // Fetch available times for the selected date
@@ -67,10 +78,11 @@ const BookingForm = () => {
   };
 
   // Fetch available courts for the selected date and time
-  const fetchAvailableCourts = (date, startTime, endTime, period) => {
+  const fetchAvailableCourts = (date, startTime, endTime) => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+    const memberId = JSON.parse(localStorage.getItem('membership'));
 
-    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${formatToTime24(startTime, period)}&end_time=${formatToTime24(endTime, period)}`, {
+    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&membership=${memberId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${BEARER_TOKEN}`,
@@ -84,15 +96,22 @@ const BookingForm = () => {
       return response.json();
     })
     .then(data => {
-      setAvailableCourts(data.availableCourts || []);
+      setAvailableCourts(
+        data.availableCourts.map((court) => ({
+          ...court,
+          base_rate: court.base_rate || 0,
+          peak_hour_rate: court.peak_hour_rate || 0,
+        }))
+      );
+      setPeakHours(data.peakHours || []);
     })
     .catch(error => console.error('Error fetching available courts:', error));
   };
 
   const fetchEquipment = () => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
-
-    fetch(`${BASE_URL}/equipments`, {
+    const memberId = JSON.parse(localStorage.getItem('membership'));
+    fetch(`${BASE_URL}/equipments?membership=${memberId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -117,103 +136,142 @@ const BookingForm = () => {
     setSelectedTimeSlot([]); // Clear time slots on date change
     setSelectedStartTime(null); // Reset time and court when date changes
     setSelectedEndTime(null); // Reset time and court when date changes
-    setSelectedPeriod(null); // Reset time and court when date changes
     setSelectedCourt(null);
     setAvailableCourts([]);
     fetchAvailableTimes(date);
   };
 
-  // Handle time selection
-  const handleTimeChange = (startTime, endTime, period) => {
-    const fullTime = `${startTime} - ${endTime} ${period}`;
-  
+  const handleTimeChange = (startTime, endTime, startPeriod, endPeriod) => {
+    const fullTime = `${startTime} ${startPeriod} - ${endTime} ${endPeriod}`;
+    const formattedStartTime = formatToTime24(parseInt(startTime, 10), startPeriod);
+    const formattedEndTime = formatToTime24(parseInt(endTime, 10), endPeriod);
+
     // If the slot is already selected, remove it
     if (selectedTimeSlot.includes(fullTime)) {
       const updatedSlots = selectedTimeSlot.filter((slot) => slot !== fullTime);
-  
+
       // Ensure the remaining slots are sequential
       for (let i = 1; i < updatedSlots.length; i++) {
-        const [, prevEnd, prevPeriod] = updatedSlots[i - 1].split(/[ -]+/);
-        const [currStart] = updatedSlots[i].split(/[ -]+/);
-  
-        if (formatToTime24(prevEnd, prevPeriod) !== formatToTime24(currStart, period)) {
+        const [, , prevEnd, prevPeriod] = updatedSlots[i - 1].split(/[ -]+/);
+        const [currStart, currStartPeriod] = updatedSlots[i].split(/[ -]+/);
+        if (formatToTime24(prevEnd, prevPeriod) !== formatToTime24(currStart, currStartPeriod)) {
           alert("Deselecting this slot will break the sequential order.");
           return;
         }
       }
-  
+
       // Update the time slots and overall start and end times
       setSelectedTimeSlot(updatedSlots);
+
       if (updatedSlots.length > 0) {
-        const [firstStart, , firstPeriod] = updatedSlots[0].split(/[ -]+/);
-        const [, lastEnd, lastPeriod] = updatedSlots[updatedSlots.length - 1].split(/[ -]+/);
-        setSelectedStartTime(firstStart);
-        setSelectedEndTime(lastEnd);
-        setSelectedPeriod(lastPeriod);
+        const [firstStart, firstPeriod] = updatedSlots[0].split(/[ -]+/);
+        const [, , lastEnd, lastPeriod] = updatedSlots[updatedSlots.length - 1].split(/[ -]+/);
+
+        setSelectedStartTime(formatToTime24(firstStart, firstPeriod));
+        setSelectedEndTime(formatToTime24(lastEnd, lastPeriod)); // React's state update
       } else {
         setSelectedStartTime(null);
         setSelectedEndTime(null);
-        setSelectedPeriod(null);
       }
       return;
     }
-  
+
     // If no slots are selected, add the first time slot
     if (selectedTimeSlot.length === 0) {
       setSelectedTimeSlot([fullTime]);
-      setSelectedStartTime(startTime);
-      setSelectedEndTime(endTime);
-      setSelectedPeriod(period);
-      fetchAvailableCourts(selectedDate, startTime, endTime, period);
+      setSelectedStartTime(formattedStartTime);
+      setSelectedEndTime(formattedEndTime);
       return;
     }
-  
+
     // Extract the first and last selected time slots
     const firstSlot = selectedTimeSlot[0];
     const lastSlot = selectedTimeSlot[selectedTimeSlot.length - 1];
-    const [firstStart, , firstPeriod] = firstSlot.split(/[ -]+/);
-    const [, lastEnd, lastPeriod] = lastSlot.split(/[ -]+/);
-  
+    const [firstStart, firstPeriod] = firstSlot.split(/[ -]+/);
+    const [, , lastEnd, lastPeriod] = lastSlot.split(/[ -]+/);
+
     // Check if the new slot is sequential to the first or last slot
-    const isSequentialToStart =
-      formatToTime24(endTime, period) === formatToTime24(firstStart, firstPeriod);
-    const isSequentialToEnd =
-      formatToTime24(startTime, period) === formatToTime24(lastEnd, lastPeriod);
-  
-    // Ensure no gaps when adding a slot
+    const isSequentialToStart = formatToTime24(endTime, endPeriod) === formatToTime24(firstStart, firstPeriod);
+    const isSequentialToEnd = formatToTime24(startTime, startPeriod) === formatToTime24(lastEnd, lastPeriod);
+
     if (isSequentialToStart) {
       setSelectedTimeSlot([fullTime, ...selectedTimeSlot]);
-      setSelectedStartTime(startTime); // Update overall start time
-      fetchAvailableCourts(selectedDate, startTime, selectedEndTime, period);
+      setSelectedStartTime(formattedStartTime); // Update overall start time
     } else if (isSequentialToEnd) {
       setSelectedTimeSlot([...selectedTimeSlot, fullTime]);
-      setSelectedEndTime(endTime); // Update overall end time
-      fetchAvailableCourts(selectedDate, selectedStartTime, endTime, period);
+      setSelectedEndTime(formattedEndTime); // Update overall end time
     } else {
       alert("Please select sequential time slots.");
     }
   };
-  
-  
+
+  useEffect(() => {
+    // Fetch available courts when selectedEndTime, selectedStartTime, and selectedTimeSlot change
+    if (selectedTimeSlot.length > 0 ) {
+      fetchAvailableCourts(selectedDate, selectedStartTime, selectedEndTime);
+    }
+  }, [selectedEndTime, selectedStartTime, selectedTimeSlot]);
 
   const handleQuantityChange = (id, delta) => {
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: Math.max(0, (prevQuantities[id] || 0) + delta)
-    }));
+    setQuantities((prevQuantities) => {
+      const newQuantities = {
+        ...prevQuantities,
+        [id]: Math.max(0, (prevQuantities[id] || 0) + delta),
+      };
+
+      // Calculate total price for the updated item
+      const equipmentItem = equipment.find((item) => item._id === id);
+      const price = membership && equipmentItem.discountedCost ? equipmentItem.discountedCost : equipmentItem.rent_per_cost;
+      const total = (newQuantities[id] || 0) * price;
+
+      // Update the totals array
+      setEquipmentTotals((prevTotals) => {
+        const updatedTotals = prevTotals.filter((item) => item.id !== id); // Remove old total for this ID
+        return [...updatedTotals, { id, total }]; // Add the updated total
+      });
+
+      return newQuantities;
+    });
   };
 
   const calculateTotal = () => {
-    // Calculate equipment total
-    const equipmentTotal = equipment.reduce((total, item) => {
-      const quantity = quantities[item._id] || 0;
-      return total + (quantity * item.rent_per_cost);
-    }, 0);
-
-    // Calculate court fee if a court is selected
-    const courtTotal = selectedCourt ? COURT_FEE_PER_HOUR : 0;
-
-    return equipmentTotal + courtTotal;
+    let total = 0;
+  
+    if (selectedCourt && selectedTimeSlot.length > 0) {
+      // Find the selected court details
+      const court = availableCourts.find((court) => court.court_id === selectedCourt);
+  
+      if (court) {
+        const baseRate = membership && court.discounted_base_rate ? court.discounted_base_rate : court.base_rate || 0;
+        const peakRate = membership && court.discounted_peaked_rate ? court.discounted_peaked_rate : court.peak_hour_rate || 0;
+        const peakStart = court.peak_hour_start ? parseInt(court.peak_hour_start.slice(0, 2), 10) : null;
+        const peakEnd = court.peak_hour_end ? parseInt(court.peak_hour_end.slice(0, 2), 10) : null;
+        
+        selectedTimeSlot.forEach((slot) => {
+          const [start, startPeriod, end, endPeriod] = slot.split(/[- ]+/); // Split by "-" or space
+          const startHour = convertTo24HourFormat(parseInt(start, 10), startPeriod);
+          const endHour = convertTo24HourFormat(parseInt(end, 10), endPeriod);
+          for (let hour = startHour; hour < endHour; hour++) {
+            const isPeakHour = peakStart !== null && peakEnd !== null && hour >= peakStart && hour < peakEnd;
+            total += isPeakHour ? peakRate : baseRate;
+          }
+        });
+      }
+    }
+  
+    // Add equipment total
+    const equipmentTotal = equipmentTotals.reduce((sum, item) => sum + item.total, 0);
+  
+    return total + equipmentTotal;
+  };
+  
+  const convertTo24HourFormat = (hour, period) => {
+    if (period === "PM" && hour !== 12) {
+      return hour + 12; // Convert PM to 24-hour format
+    } else if (period === "AM" && hour === 12) {
+      return 0; // Convert 12 AM to 0
+    }
+    return hour; // Return as is for other cases
   };
 
   const formatToTime24 = (hour, period) => {
@@ -235,7 +293,6 @@ const BookingForm = () => {
     setSelectedTimeSlot([]);
     setSelectedStartTime(null);
     setSelectedEndTime(null);
-    setSelectedPeriod(null);
     setAvailableTimes([]);
     setAvailableCourts([]);
     setSelectedCourt(null);
@@ -250,8 +307,8 @@ const BookingForm = () => {
       user: "672ca5d4c6b769bf589bd328", // Replace with the actual user ID
       court: selectedCourt,
       date: selectedDate, // Date is stored separately
-      startTime: formatToTime24(selectedStartTime, selectedPeriod), // Convert to 24-hour format
-      endTime: formatToTime24(selectedEndTime, selectedPeriod),
+      startTime: selectedStartTime, // Convert to 24-hour format
+      endTime: selectedEndTime,
       totalCost: calculateTotal(),
       status: "confirmed",
       equipments_rented: Object.keys(quantities).map(id => ({
@@ -290,6 +347,12 @@ const BookingForm = () => {
       <h3>Picklesquad</h3>
       <hr className="divider" />
 
+      <div className="section">
+        <button className="membership-toggle-button" onClick={toggleMembership}>
+          {membership ? "Disable Membership" : "Enable Membership"}
+        </button>
+      </div>
+
       {/* Select Date Section */}
       <div className="section">
         <h4 className="ms-2">Select Date</h4>
@@ -300,7 +363,7 @@ const BookingForm = () => {
                 key={index}
                 onClick={() => handleDateChange(date.value)}
                 className={`date-button ${selectedDate === date.value ? "selected" : ""}`}
-                disabled={index >= dates.length - 7} // Disable the last 7 buttons
+                disabled={!membership && index >= dates.length - 7} // Disable the last 7 buttons if no membership
               >
                 {date.display}
               </button>
@@ -319,9 +382,9 @@ const BookingForm = () => {
               {availableTimes.map((time, index) => (
                 <button
                   key={index}
-                  onClick={() => handleTimeChange(time.start, time.end, time.endPeriod)}
+                  onClick={() => handleTimeChange(time.start, time.end, time.startPeriod, time.endPeriod)}
                   className={`time-button ${
-                    selectedTimeSlot.includes(`${time.start} - ${time.end} ${time.endPeriod}`) ? "selected" : ""
+                    selectedTimeSlot.includes(`${time.start} ${time.startPeriod} - ${time.end} ${time.endPeriod}`) ? "selected" : ""
                   }`}
                 >
                   {time.start} - {time.end} {time.endPeriod}
@@ -368,13 +431,18 @@ const BookingForm = () => {
             <div key={item.id} className="equipment-item ">
               <img src={item.image || "/images/default.png"} alt={item.name} className="equipment-image" />
               <p>{item.name}</p>
-              <p>RM{item.rent_per_cost} each</p>
+              <p>Normal Price: RM{item.rent_per_cost} each</p>
+              <p>Member Price: RM{item.discountedCost} each</p>
               <div className="quantity-control">
-                <button onClick={() => handleQuantityChange(item.id, -1)}>-</button>
-                <span>{quantities[item.id] || 0}</span>
-                <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+                <button onClick={() => handleQuantityChange(item._id, -1)}>-</button>
+                <span>{quantities[item._id] || 0}</span>
+                <button onClick={() => handleQuantityChange(item._id, 1)}>+</button>
               </div>
-              <p>Total: RM{(quantities[item.id] || 0) * item.rent_per_cost}</p>
+              <p>
+                Total: RM
+                {(quantities[item._id] || 0) *
+                  (membership && item.discountedCost ? item.discountedCost : item.rent_per_cost)}
+              </p>            
             </div>
           ))}
         </div>
