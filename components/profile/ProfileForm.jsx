@@ -42,6 +42,7 @@ const ProfileForm = () => {
       });
 
       setBookings(response.data.results);
+      console.log(response.data.results);
       setBookingsTotalResults(response.data.totalResults);
 
       if (!response.data.birthdate && !response.data.gender) {
@@ -62,9 +63,7 @@ const ProfileForm = () => {
       });
 
       setPrograms(response.data.results);
-      console.log(response.data.results); // Debugging log
       
-
       if (!response.data.birthdate && !response.data.gender) {
         setShowModal(true);
       }
@@ -98,8 +97,13 @@ const ProfileForm = () => {
     scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
   };
 
-
   const currentBooking = bookings[currentBookingIndex];
+
+  const formatDate = (dateString) => {
+    const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', options);
+  };
 
   return (
     <>
@@ -134,10 +138,9 @@ const ProfileForm = () => {
               <div className="activity-tab">
                 {bookings.length > 0 ? (
                   <div key={currentBooking._id} className="booking-details">
-                    <p key={`${currentBooking._id}-date`}><b>Date:</b> {currentBooking.date.toString()}</p>
-                    <p key={`${currentBooking._id}-time`}><b>Time:</b> {currentBooking.startTime.toString()} - {currentBooking.endTime.toString()}</p>
-                    <p key={`${currentBooking._id}-status`}><b>Status:</b> {currentBooking.status.toString()}</p>
-                    <p key={`${currentBooking._id}-court`}><b>Court:</b> {currentBooking.court.toString()}</p>
+                    <p key={`${currentBooking._id}-date`}><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} />{formatDate(currentBooking.date)}</b></p>
+                    <p key={`${currentBooking._id}-time`}><b><Image src="/images/profile/time-icon.png" alt="Time" className="time" width={48} height={48} />{currentBooking.startTime} - {currentBooking.endTime}</b></p>
+                    <p key={`${currentBooking._id}-court`}><b><Image src="/images/profile/court-icon.png" alt="Court" className="court" width={48} height={48} />{currentBooking.court.name}</b></p>
                   </div>
                 ) : (
                   <p>You don't have any future activities</p>
@@ -207,7 +210,7 @@ const ProfileForm = () => {
                       <div className="programs-tab-time">
                         <p>
                           <b>
-                            <Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> {program.startTime}
+                            <Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> {formatDate(program.startTime)} - {formatDate(program.endTime)}
                           </b>
                         </p>
                       </div>
