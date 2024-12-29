@@ -8,6 +8,7 @@ export const useLogout = () => {
 
   const logoutUser = () => {
     localStorage.removeItem('tokens');
+    localStorage.removeItem('membership');
     localStorage.removeItem('user');
     dispatch(logout());
     router.push('/sign-in');

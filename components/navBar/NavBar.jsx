@@ -192,9 +192,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
                   </div>
                 </div>
                 <div className="nav__uncollapsed">
-                  <Link href="/cart" className="cart">
-                    <i className="golftio-cart"></i>
-                  </Link>
+                 
                   <div className="nav__uncollapsed-item d-none d-md-flex">
                     {!user ? (
                       <Link href="/sign-in" className="cmn-button cmn-button--tertiary">

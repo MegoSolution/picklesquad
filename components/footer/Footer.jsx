@@ -1,37 +1,62 @@
 import Image from "next/image";
 import Link from "next/link";
-import Social from "../social/Social";
-import logo_light from "/public/images/logo-light.png";
+import logo_light from "/public/images/Picklesquad_image/logo-07.png";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="row section__row">
-          <div className="col-md-6 col-lg-4 col-xl-3 section__col">
-            <div className="footer__single">
+        <div className="row">
+          {/* Left Column */}
+          <div className="col-lg-4 col-md-4">
+            <div className="footer__single-content">
               <Link href="/" className="footer__single-logo">
                 <Image src={logo_light} alt="Logo" />
               </Link>
-              <div className="footer__single-content">
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry...
-                </p>
-                {/* Socila */}
-                <Social
-                  items={[
-                    ["fa-facebook-f", "/"],
-                    ["fa-twitter", "/"],
-                    ["fa-square-instagram", "/"],
-                    ["fa-linkedin-in", "/"],
-                  ]}
-                />
+
+              <div className="footer__single">
+                <div className="footer__single-social">
+                  <h5>Social</h5>
+                  <ul className="social-icons horizontal-icons">
+                    <li>
+                      <Link href="/">
+                        <Image
+                          src="/images/picklesquad_image/footer/ig.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="https://www.instagram.com/picklesquad.my/">
+                        <Image
+                          src="/images/picklesquad_image/footer/fb.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/">
+                        <Image
+                          src="/images/picklesquad_image/footer/xhs.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-2 col-xl-3 section__col">
-            <div className="footer__single">
+
+          {/* Center Column */}
+          <div className="col-lg-4 col-md-4">
+            <div className="footer__single-content">
               <h5>Quick Links</h5>
               <div className="footer__single-content">
                 <ul>
@@ -54,8 +79,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-3 col-xl-3 section__col">
-            <div className="footer__single">
+
+          {/* Right Column */}
+          <div className="col-lg-4 col-md-4">
+            <div className="footer__single-content">
               <h5>Address</h5>
               <div className="footer__single-content">
                 <div className="footer__single-content__group">
@@ -63,49 +90,41 @@ const Footer = () => {
                   <p>(406) 555-0120</p>
                 </div>
                 <div className="footer__single-content__group">
-                  <p>deanna.curtis@example.com</p>
-                  <p>debra.holt@example.com</p>
+                  <p>picklesquad624@gmail.com</p>
                 </div>
                 <div className="footer__single-content__group">
-                  <p>285 Great North Road, Grey Lynn, Auckland 1021</p>
+                  <p>116, Jalan Jelutong, Jelutong, 11600 George Town, Pulau Pinang</p>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-3 col-xl-3 section__col">
-            <h5>Newsletter</h5>
-            <div className="footer__single">
-              <div className="footer__single-content">
-                <p>Subscribe our newsletter to get our latest update & news </p>
-                <form action="#" method="post" name="newsletterForm">
-                  <div className="newsletter">
-                    <input
-                      type="email"
-                      name="news-mail"
-                      id="newsMail"
-                      placeholder="Your email address"
-                      required
-                    />
-                    <button type="submit">
-                      <i className="golftio-paper-plane"></i>
-                    </button>
-                  </div>
-                </form>
+                <div className="google-maps">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.106378228659!2d100.3226291979826!3d5.400760967642268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac3c83808b273%3A0x85f16b7077c9e2f!2s116%2C%20Jalan%20Jelutong%2C%20Jelutong%2C%2011600%20George%20Town%2C%20Pulau%20Pinang!5e0!3m2!1sen!2smy!4v1734620241102!5m2!1sen!2smy"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Google Maps"
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
         <hr />
+
         <div className="row">
           <div className="col-12">
             <div className="copyright">
               <div className="row align-items-center">
                 <div className="col-lg-6">
-                  <p>
-                    Copyright &copy; <span id="copyYear"></span> 2023 Golftio.
-                    All Rights Reserved{" "}
+                  <p className="copyright-text">
+                    Copyright &copy; <span id="copyYear"></span> 2024 PickleSquad.
+                    All Rights Reserved 202401043375 (1589221­A)
                   </p>
                 </div>
+
                 <div className="col-lg-6">
                   <ul>
                     <li>

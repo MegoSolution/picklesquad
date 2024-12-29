@@ -1242,6 +1242,419 @@
   }
 }
 
+//private event
+.join--tertiary--pe {
+  background-image: url("/images/picklesquad_image/private-event.jpg");
+
+  .section__content--pe {
+    padding: 40px;
+    background-color: #2c58a8;
+    margin-top: 0px;
+
+    h2 {
+      margin-bottom: 60px;
+    }
+
+    .cmn-button {
+      margin-top: 40px;
+      border: 1px solid #f3e7c5;
+    }
+  }
+
+  .input-single {
+    input,
+    textarea {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+
+//coach
+.coach-session-section {
+  display: flex;
+  flex-direction: row; /* Default layout: text left, image right */
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+/* Text Container */
+.text-container-coach {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f3e9; /* Light cream background */
+  color: #2c58a8; /* Dark blue text color */
+  padding: 40px; /* Add padding for better spacing */
+  height: 100%;
+}
+
+.session-content {
+  max-width: 500px;
+  text-align: left; /* Align text to the left by default */
+}
+
+.session-content .sub-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2c58a8; /* Subtle grey color */
+  margin-bottom: 10px;
+}
+
+.session-content .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c58a8; /* Dark blue for heading */
+  margin-bottom: 20px;
+}
+
+.session-content p {
+  font-size: 1rem;
+  font-weight: normal; /* Ensure paragraph text is not bold */
+  line-height: 1.6;
+  color: #2c58a8; /* Medium grey text for description */
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+.first-time-btn {
+  background-color: #2c58a8; /* Dark blue */
+  color: #ffffff;
+  font-weight: bold;
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem; /* Standard button font size */
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+}
+
+.first-time-btn:hover {
+  background-color: #1e4276; /* Darker blue */
+  color: #f8f3e9; /* Light cream */
+}
+
+/* Image Container */
+.image-container {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.session-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fills its container */
+}
+
+/* Responsive Styles for Tablets and Smaller Screens */
+@media (max-width: 1024px) {
+  .coach-session-section {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .image-container {
+    order: 1; /* Ensure the image comes first */
+    height: 350px; /* Adjust height for tablet screens */
+  }
+
+  .text-container-coach {
+    order: 2; /* Ensure text comes after the image */
+    padding: 30px; /* Adjust padding for tablets */
+    text-align: center; /* Center-align text for tablets */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .session-content {
+    max-width: 600px; /* Allow slightly wider content for tablets */
+    text-align: center; /* Center-align text for tablets */
+  }
+
+  .session-content .title {
+    font-size: 2.5rem; /* Adjust title size for tablets */
+    margin-bottom: 15px; /* Reduce spacing below the title */
+  }
+
+  .session-content p {
+    font-size: 0.95rem; /* Slightly larger paragraph text for tablets */
+    line-height: 1.7; /* Increase line height for readability */
+    margin-bottom: 20px; /* Reduce spacing below the paragraph */
+  }
+
+  .first-time-btn {
+    width: 80%; /* Make the button longer on tablets */
+    max-width: none; /* Remove max-width restriction */
+    padding: 14px 0; /* Adjust padding for height */
+    font-size: 1.1rem; /* Slightly larger text for tablets */
+    margin-top: 20px; /* Add spacing above the button */
+  }
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .coach-session-section {
+    flex-direction: column; /* Stack image on top and text below */
+    height: auto; /* Adjust height for mobile screens */
+  }
+
+  .image-container {
+    order: 1; /* Ensure the image comes first */
+    height: 300px; /* Fixed height for the image */
+  }
+
+  .text-container-coach {
+    order: 2; /* Ensure text comes after the image */
+    padding: 20px; /* Adjust padding for smaller screens */
+    text-align: center; /* Center-align text for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .session-content .title {
+    font-size: 2rem; /* Smaller title for mobile */
+  }
+
+  .session-content p {
+    font-size: 0.9rem; /* Slightly smaller text for mobile */
+  }
+
+  .first-time-btn {
+    width: 70%; /* Button spans almost full width on mobile */
+    padding: 14px 0; /* Adjust padding for height */
+    font-size: 1rem; /* Standard font size for mobile */
+  }
+}
+
+/* Responsive Styles for Small Mobile Screens */
+@media (max-width: 480px) {
+  .coach-session-section {
+    flex-direction: column; /* Ensure image is on top and text below */
+  }
+
+  .image-container {
+    order: 1; /* Image comes first */
+  }
+
+  .text-container-coach {
+    order: 2; /* Text comes after the image */
+    text-align: center; /* Center-align text for small screens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .session-content {
+    max-width: 90%; /* Reduce content width for small devices */
+  }
+
+  .session-content .title {
+    font-size: 1.8rem; /* Smaller title for small devices */
+  }
+
+  .session-content p {
+    font-size: 0.85rem; /* Smaller text for better readability */
+  }
+
+  .first-time-btn {
+    width: 75%; /* Button takes up almost full width */
+    padding: 12px 0; /* Adjust padding for small devices */
+    font-size: 0.95rem; /* Adjust font size */
+  }
+}
+
+.private-event-section {
+  display: flex;
+  flex-direction: row; /* Default layout: image left, text right */
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.image-container {
+  flex: 1;
+  height: 100%;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fills its container */
+}
+
+.text-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c58a8; /* Blue background */
+  color: white;
+  padding: 40px; /* Add padding for better spacing */
+  height: 100%;
+}
+
+.event-content {
+  max-width: 500px;
+  text-align: left; /* Align text to the left */
+}
+
+.event-content .sub-title {
+  font-size: 1rem;
+  color: #ffffff !important;
+  margin-bottom: 15px;
+}
+
+.event-content .title {
+  font-size: 3rem;
+  color: #ffffff !important;
+  margin-bottom: 20px;
+}
+
+.event-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ffffff !important;
+  margin-bottom: 30px;
+}
+
+/* Updated Button Styling */
+.book-now-btn {
+  background-color: #F3E7C5; /* Retain the original color */
+  color: #2c58a8;
+  font-weight: bold;
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem; /* Standard button font size */
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+  margin-top: 15px; /* Add spacing above the button */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
+}
+
+.book-now-btn:hover {
+  background-color: #ffffff;
+  color: #2c58a8;
+}
+
+/* Responsive Styles for Tablets */
+@media (max-width: 1024px) {
+  .private-event-section {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Adjust height for tablets */
+  }
+
+  .image-container {
+    order: 1; /* Image appears on top */
+    height: 350px; /* Adjust height for tablet screens */
+  }
+
+  .text-container {
+    order: 2; /* Text appears below */
+    padding: 30px; /* Adjust padding for tablets */
+  }
+
+  .event-content {
+    max-width: 600px; /* Allow slightly wider content for tablets */
+    text-align: center; /* Center-align text for tablet screens */
+  }
+
+  .event-content .title {
+    font-size: 2.5rem; /* Adjust title size for tablets */
+    margin-bottom: 15px; /* Reduce spacing below the title */
+  }
+
+  .event-content p {
+    font-size: 1rem; /* Slightly larger paragraph text for tablets */
+    line-height: 1.7; /* Increase line height for readability */
+    margin-bottom: 20px; /* Reduce spacing below the paragraph */
+  }
+
+  .book-now-btn {
+    width: 80%; /* Make the button longer on tablets */
+    max-width: none; /* Remove max-width restriction */
+    padding: 14px 0; /* Adjust padding for height */
+    font-size: 1.1rem; /* Slightly larger text for tablets */
+    margin-top: 20px; /* Adjust spacing above the button */
+  }
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+  .private-event-section {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Adjust for mobile screens */
+  }
+
+  .image-container {
+    order: 1; /* Image appears on top */
+    height: 300px; /* Fixed height for the image */
+  }
+
+  .text-container {
+    order: 2; /* Text appears below */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .event-content .title {
+    font-size: 2rem; /* Smaller title for mobile */
+  }
+
+  .event-content p {
+    font-size: 0.9rem; /* Slightly smaller text for mobile */
+  }
+
+  .book-now-btn {
+    width: 90%; /* Button spans almost full width on mobile */
+    padding: 14px 0; /* Adjust padding for height */
+    font-size: 1rem; /* Standard font size for mobile */
+  }
+}
+
+/* Responsive Styles for Small Mobile Screens */
+@media (max-width: 480px) {
+  .event-content {
+    max-width: 88%; /* Reduce content width for small devices */
+    text-align: center; /* Center-align text for small screens */
+  }
+
+  .event-content .title {
+    font-size: 1.8rem; /* Smaller title for small devices */
+  }
+
+  .event-content p {
+    font-size: 0.8rem; /* Smaller text for better readability */
+  }
+
+  .book-now-btn {
+    width: 75%; /* Button spans almost full width */
+    padding: 12px 0; /* Adjust padding for small devices */
+    font-size: 0.95rem; /* Adjust button font size */
+  }
+}
+
 // sponsor
 .sponsor {
   padding: 60px 0px;
