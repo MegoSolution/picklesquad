@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BASE_URL } from '../../../utils/constants';
+import { BASE_URL } from '../../utils/constants';
 
 const BookingHistoryForm = () => {
   const [viewMode, setViewMode] = useState('upcoming'); // "upcoming" or "history"
