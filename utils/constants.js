@@ -1,0 +1,15 @@
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const RP_URL = process.env.NEXT_PUBLIC_RP_URL;
+const RP_APP_ID = process.env.NEXT_PUBLIC_RP_APP_ID;
+const RP_CURRENCY = process.env.NEXT_PUBLIC_RP_CURRENCY;
+const RP_RETURN_URL = process.env.NEXT_PUBLIC_RP_RETURN_URL;
+const RP_REQUEST_KEY = process.env.NEXT_PUBLIC_RP_REQUEST_KEY;
+
+export {
+  BASE_URL,
+  RP_URL,
+  RP_APP_ID,
+  RP_CURRENCY,
+  RP_RETURN_URL,
+  RP_REQUEST_KEY,
+};
