@@ -7,7 +7,6 @@ export default function Booking() {
     <>
       {/* Banner Section */}
       <Banner />
-
       {/* Booking Form */}
       <BookingHistoryBody />
     </>
