@@ -10,7 +10,7 @@ const PricingCardOne = ({ data, cls = "", btnCls = "" }) => {
           <i className={icon}></i>
         </div>
         <h2>
-          <span className="primary-text">$</span>
+          <span className="primary-text">RM</span>
           {price}
           <span className="primary-text">/Mo</span>
         </h2>
