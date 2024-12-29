@@ -13,8 +13,7 @@ const SupportSearch = () => {
                 Need any help, then search here
               </h2>
               <p>
-                Golftio Sports Club is a golf club with a history that goes back
-                to XX century. From a cricket club to soccer tournaments,
+                
               </p>
             </div>
           </div>
