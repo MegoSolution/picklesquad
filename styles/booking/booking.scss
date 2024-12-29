@@ -18,7 +18,7 @@
   padding: 20px 0 !important;
 }
 
-.centerlized-container{
+.centerlized-container {
   display: flex;
   justify-content: center;
 }
@@ -93,13 +93,18 @@
   width: 100%;
 }
 
+.book-now-button:disabled {
+  background-color: #ccc;
+}
+
 // Active State Styles
 .selected {
   background-color: #ff7f50;
   color: #fff;
 }
 
-.no-courts-message, .no-selected-time-message {
+.no-courts-message,
+.no-selected-time-message {
   text-align: center;
   color: red;
   font-size: 24px;

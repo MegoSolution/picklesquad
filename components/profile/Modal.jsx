@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-
-const BASE_URL = 'http://localhost:3000/v1';
+import { BASE_URL } from '../../utils/constants';
 
 const Modal = ({ userId, onClose }) => {
   const [birthDate, setBirthdate] = useState('');
@@ -12,24 +11,30 @@ const Modal = ({ userId, onClose }) => {
     e.preventDefault();
     try {
       const token = JSON.parse(localStorage.getItem('tokens')).access.token;
-      await axios.patch(`${BASE_URL}/users/${userId}`, {
-        birthDate,
-        gender,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.patch(
+        `${BASE_URL}/users/${userId}`,
+        {
+          birthDate,
+          gender,
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       onClose();
     } catch (err) {
-      setError('Failed to update profile.'+err);
+      setError('Failed to update profile.' + err);
     }
   };
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
         <h5>Complete Your Profile</h5>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -59,9 +64,9 @@ const Modal = ({ userId, onClose }) => {
             </select>
           </div>
           <div className="section__cta text-start">
-          <button type="submit" className="cmn-button profile-update-button">
-            Update Profile
-          </button>
+            <button type="submit" className="cmn-button profile-update-button">
+              Update Profile
+            </button>
           </div>
         </form>
       </div>
