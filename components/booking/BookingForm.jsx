@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 
 const BookingForm = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -13,6 +14,8 @@ const BookingForm = () => {
   const [equipment, setEquipment] = useState([]); // State to store equipment data
   const [quantities, setQuantities] = useState({});
   const [equipmentTotals, setEquipmentTotals] = useState([]); // Array to store equipment ID and total price pairs
+  const router = useRouter();
+  const { locationId } = router.query; // Get locationId from query parameters
 
   const BASE_URL = 'http://localhost:3000/v1';
 
@@ -58,7 +61,7 @@ const BookingForm = () => {
   // Fetch available times for the selected date
   const fetchAvailableTimes = (date) => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
-    fetch(`${BASE_URL}/bookings/availability/times?date=${date}`, {
+    fetch(`${BASE_URL}/bookings/availability/times?date=${date}&locationId=${locationId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${BEARER_TOKEN}`,
@@ -82,7 +85,7 @@ const BookingForm = () => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
     const memberId = JSON.parse(localStorage.getItem('membership'));
 
-    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&membership=${memberId}`, {
+    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&membership=${memberId}&locationId=${locationId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${BEARER_TOKEN}`,
