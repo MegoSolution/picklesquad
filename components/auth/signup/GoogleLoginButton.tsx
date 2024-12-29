@@ -4,6 +4,7 @@ import { login } from '../../../redux/action';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { BASE_URL } from '../../../utils/constants';
 
 const GoogleLoginButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,7 +14,7 @@ const GoogleLoginButton: React.FC = () => {
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const response = await axios.post('http://localhost:3000/v1/auth/google-login', {
+        const response = await axios.post(BASE_URL + '/auth/google-login', {
           token: tokenResponse.access_token,
         });
 

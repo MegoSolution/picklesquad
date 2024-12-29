@@ -1,10 +1,9 @@
-import Link from "next/link";
-import GoogleLoginButton from "./GoogleLoginButton";
-import { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
-
-const BASE_URL = 'http://localhost:3000/v1';
+import Link from 'next/link';
+import GoogleLoginButton from './GoogleLoginButton';
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { BASE_URL } from '../../../utils/constants';
 
 const SignUpBody = () => {
   const [name, setName] = useState('');
@@ -30,7 +29,9 @@ const SignUpBody = () => {
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
       router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {
-      setError('Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.');
+      setError(
+        'Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.'
+      );
     }
   };
 
@@ -45,9 +46,7 @@ const SignUpBody = () => {
             <div className="authentication__wrapper">
               <h4>Let's Get Started!</h4>
               <p>Please Enter your Email Address to join our club</p>
-              <div className="error__message">
-                {error && <p>{error}</p>}
-              </div>
+              <div className="error__message">{error && <p>{error}</p>}</div>
               <form action="#" method="post" onSubmit={handleSignUp}>
                 <div className="input-single">
                   <label htmlFor="authName">Name</label>
@@ -83,7 +82,9 @@ const SignUpBody = () => {
                   />
                 </div>
                 <div className="input-single">
-                  <label htmlFor="authConfirmPassword">Confirm Your Password</label>
+                  <label htmlFor="authConfirmPassword">
+                    Confirm Your Password
+                  </label>
                   <input
                     type="password"
                     name="auth-confirm-password"
@@ -94,10 +95,10 @@ const SignUpBody = () => {
                   />
                 </div>
                 <p>
-                  By clicking submit, you agree to{" "}
-                  <Link href="/privacy-policy">Terms of Use</Link>,{" "}
-                  <Link href="/privacy-policy">Privacy Policy</Link>,{" "}
-                  <Link href="/privacy-policy">E-sign</Link> &{" "}
+                  By clicking submit, you agree to{' '}
+                  <Link href="/privacy-policy">Terms of Use</Link>,{' '}
+                  <Link href="/privacy-policy">Privacy Policy</Link>,{' '}
+                  <Link href="/privacy-policy">E-sign</Link> &{' '}
                   <Link href="/privacy-policy">
                     communication Authorization
                   </Link>

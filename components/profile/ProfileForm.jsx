@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
 import Image from 'next/image';
-import Modal from "./Modal";
+import Modal from './Modal';
 
-const BASE_URL = 'http://localhost:3000/v1';
+import { BASE_URL } from '../../utils/constants';
 
 const ProfileForm = () => {
   const [showModal, setShowModal] = useState(false);
@@ -27,12 +27,11 @@ const ProfileForm = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        params: { 
+        params: {
           user: user.user._id,
           status: ['confirmed', 'completed'],
           startTime: { $gte: startOfDay, $lte: endOfDay },
         },
-
       });
       setBookings(response.data);
       console.log(response.data);
@@ -54,21 +53,21 @@ const ProfileForm = () => {
 
   return (
     <>
-    <div
-      className="profile__tab-btns wow fadeInUp"
-      data-wow-duration="0.4s"
-      id="faq-tab"
-      role="tablist"
-    >
-      <div>
-        <div className="faq__tab-single__inner">
+      <div
+        className="profile__tab-btns wow fadeInUp"
+        data-wow-duration="0.4s"
+        id="faq-tab"
+        role="tablist"
+      >
+        <div>
+          <div className="faq__tab-single__inner">
             <div className="profile-form-2">
               <div className="profile-header">
                 <button className="edit-button" onClick={handleEditClick}>
                   Edit Profile
                 </button>
                 <div className="profile-form-header-2">
-                  <h4>Hello, { 'Joyce'}</h4>
+                  <h4>Hello, {'Joyce'}</h4>
                   <p>You have {bookings.totalResults} bookings today.</p>
                 </div>
               </div>
@@ -77,66 +76,91 @@ const ProfileForm = () => {
               <div className="profile-form-header">
                 <h5>My Bookings</h5>
                 <div className="right-content">
-                  <a href="/bookings" className="view-all">View All</a>
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} />
+                  <a href="/bookings" className="view-all">
+                    View All
+                  </a>
+                  <Image
+                    src="/images/profile/left-arrow.png"
+                    alt="Left Arrow"
+                    className="arrow-left"
+                    width={24}
+                    height={24}
+                  />
+                  <Image
+                    src="/images/profile/right-arrow.png"
+                    alt="Right Arrow"
+                    className="arrow-right"
+                    width={24}
+                    height={24}
+                  />
                 </div>
               </div>
               <div className="activity-tab">
                 <p>You don't have any future activities</p>
               </div>
             </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div
-      className="profile__tab-btns-2 wow fadeInUp"
-      data-wow-duration="0.4s"
-      role="tablist"
-    >
-      <div className="faq__tab-single__inner">
-        <div className="picklesquad-text">
-          <p>All Courts Playable</p>
-        </div>
-        <div className="picklesquad-header">
-          <h5>PICKLESQUAD</h5>
-        </div>
-        <div className="profile-form">
-          <div className="picklesquad-btns">
-            <a href="/booking">Book A Court</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/program">Program</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/coach">Coach</a>
-          </div>
-          <div className="picklesquad-btns">
-            <a href="/membership">Membership</a>
           </div>
         </div>
       </div>
-    </div>
 
-
-
-    <div
-      className="profile__tab-btns wow fadeInUp"
-      data-wow-duration="0.4s"
-      id="faq-tab"
-      role="tablist"
-    >
-      <div>
+      <div
+        className="profile__tab-btns-2 wow fadeInUp"
+        data-wow-duration="0.4s"
+        role="tablist"
+      >
         <div className="faq__tab-single__inner">
+          <div className="picklesquad-text">
+            <p>All Courts Playable</p>
+          </div>
+          <div className="picklesquad-header">
+            <h5>PICKLESQUAD</h5>
+          </div>
+          <div className="profile-form">
+            <div className="picklesquad-btns">
+              <a href="/booking">Book A Court</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/program">Program</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/coach">Coach</a>
+            </div>
+            <div className="picklesquad-btns">
+              <a href="/membership">Membership</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="profile__tab-btns wow fadeInUp"
+        data-wow-duration="0.4s"
+        id="faq-tab"
+        role="tablist"
+      >
+        <div>
+          <div className="faq__tab-single__inner">
             <div className="profile-form">
               <div className="profile-form-header">
                 <h5>Programs</h5>
                 <div className="right-content">
-                  <a href="/bookings" className="view-all">View All</a>
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} />
+                  <a href="/bookings" className="view-all">
+                    View All
+                  </a>
+                  <Image
+                    src="/images/profile/left-arrow.png"
+                    alt="Left Arrow"
+                    className="arrow-left"
+                    width={24}
+                    height={24}
+                  />
+                  <Image
+                    src="/images/profile/right-arrow.png"
+                    alt="Right Arrow"
+                    className="arrow-right"
+                    width={24}
+                    height={24}
+                  />
                 </div>
               </div>
               <div className="programs-tab">
@@ -147,14 +171,25 @@ const ProfileForm = () => {
                   <h5>Open Play -Advance</h5>
                 </div>
                 <div className="programs-tab-time">
-                  <p><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> Every Tuesday </b></p>
+                  <p>
+                    <b>
+                      <Image
+                        src="/images/profile/calendar.png"
+                        alt="Calendar"
+                        className="calendar"
+                        width={48}
+                        height={48}
+                      />{' '}
+                      Every Tuesday{' '}
+                    </b>
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
-    {showModal && <Modal userId={user.user._id} onClose={handleCloseModal} />}
+      {showModal && <Modal userId={user.user._id} onClose={handleCloseModal} />}
     </>
   );
 };
