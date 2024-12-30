@@ -28,7 +28,6 @@ const SignInBody = () => {
         'membership',
         JSON.stringify(response.data.user.membership)
       );
-      router.push('/booking'); // Redirect to the dashboard page
       localStorage.setItem('user', JSON.stringify(response.data.user));
       router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {

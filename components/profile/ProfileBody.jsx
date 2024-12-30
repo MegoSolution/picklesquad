@@ -1,8 +1,8 @@
 import ProfileForm from './ProfileForm';
 
-const ProfileBody = () => {
+const ProfileBody = ({ programs }) => {
   return (
-    <ProfileForm />
+    <ProfileForm programs={programs} />
   );
 };
 

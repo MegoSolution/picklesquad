@@ -5,17 +5,19 @@ import { BASE_URL } from '../../utils/constants';
 const Modal = ({ userId, onClose }) => {
   const [birthDate, setBirthdate] = useState('');
   const [gender, setGender] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = JSON.parse(localStorage.getItem('tokens')).access.token;
-      await axios.patch(
+      const response = await axios.patch(
         `${BASE_URL}/users/${userId}`,
         {
           birthDate,
           gender,
+          phoneNumber,
         },
         {
           headers: {
@@ -23,6 +25,11 @@ const Modal = ({ userId, onClose }) => {
           },
         }
       );
+      // Update user data in local storage
+      const updatedUser = response.data;
+      console.log(updatedUser);
+      localStorage.setItem('user', JSON.stringify({ ...updatedUser }));
+
       onClose();
     } catch (err) {
       setError('Failed to update profile.' + err);
@@ -62,6 +69,18 @@ const Modal = ({ userId, onClose }) => {
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
+          </div>
+          <div className="input-single profile-input-single">
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={phoneNumber}
+              placeholder="Enter your phone number"
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
           </div>
           <div className="section__cta text-start">
             <button type="submit" className="cmn-button profile-update-button">
