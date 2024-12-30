@@ -12,7 +12,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
   const [active, setActive] = useState(false);
   const [dropdownId, setDropdownId] = useState("");
   const [subDropdown, setSubDropdown] = useState("");
-  const user = useSelector((state) => state.user?.user);
+  const [user, setUser] = useState(null);
 
   const handleActive = () => {
     setActive(false);
@@ -45,6 +45,8 @@ const NavBar = ({ cls = "header--secondary" }) => {
   };
 
   useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    setUser(storedUser);
     window.addEventListener("scroll", navBarTop);
     return () => {
       window.removeEventListener("scroll", navBarTop);
