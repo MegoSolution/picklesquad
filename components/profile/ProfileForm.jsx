@@ -1,34 +1,40 @@
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Modal from "./Modal";
+import Modal from './Modal';
+import { BASE_URL } from '../../utils/constants';
 
-const BASE_URL = 'http://localhost:3000/v1';
-
-const ProfileForm = () => {
+const ProfileForm = ({ programs }) => {
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.user?.user);
-  const tokens = useSelector((state) => state.user?.tokens);
+  const [user, setUser] = useState(null);
+  const [tokens, setTokens] = useState(null);
   const [bookings, setBookings] = useState([]);
-  const [programs, setPrograms] = useState([]);
   const [totalBookingsResults, setBookingsTotalResults] = useState(0);
   const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const scrollRef = useRef(null);
-  
+  console.log(programs);
 
   useEffect(() => {
-    if (user) {
-      fetchBookings(user);
-      fetchPrograms();
-    } else {
-      console.log('No user found'); // Debugging log
-    }
-  }, [user]);
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedTokens = JSON.parse(localStorage.getItem('tokens'));
+    setUser(storedUser);
+    setTokens(storedTokens);
 
-  const fetchBookings = async (user) => {
+    if (storedUser && storedTokens) {
+      fetchBookings(storedUser, storedTokens);
+      console.log(storedUser);
+
+      if (!storedUser.birthdate && !storedUser.gender && !storedUser.phoneNumber) {
+        setShowModal(true);
+      }
+    } else {
+      console.log('No user or tokens found'); // Debugging log
+    }
+  }, []);
+
+  const fetchBookings = async (user, tokens) => {
     try {
       const response = await axios.get(`${BASE_URL}/bookings`, {
         headers: {
@@ -42,34 +48,10 @@ const ProfileForm = () => {
       });
 
       setBookings(response.data.results);
-      console.log(response.data.results);
       setBookingsTotalResults(response.data.totalResults);
-
-      if (!response.data.birthdate && !response.data.gender) {
-        setShowModal(true);
-      }
     } catch (err) {
       setError('Failed to fetch user data.');
       console.error('Error fetching bookings:', err); // Debugging log
-    }
-  };
-
-  const fetchPrograms = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/programs`, {
-        headers: {
-          Authorization: `Bearer ${tokens.access.token}`,
-        },
-      });
-
-      setPrograms(response.data.results);
-      
-      if (!response.data.birthdate && !response.data.gender) {
-        setShowModal(true);
-      }
-    } catch (err) {
-      setError('Failed to fetch user data.');
-      console.error('Error fetching programs:', err); // Debugging log
     }
   };
 
@@ -198,25 +180,36 @@ const ProfileForm = () => {
                 </div>
               </div>
               <div className="programs-tab-container" ref={scrollRef}>
-                {programs.map((program) => (
-                  <a key={program.id} href={`/programs/${program.id}`} className="programs-tab">
-                    <div >
-                      <div className="programs-tab-btns">
-                        <p>{program.name}</p>
+                {programs && programs.length > 0 ? (
+                  programs.map((program) => (
+                    <a key={program.id} href={`/programs/${program.id}`} className="programs-tab">
+                      <div>
+                        <div className="programs-tab-btns">
+                          <p>{program.name}</p>
+                        </div>
+                        <div className="programs-tab-title">
+                          <h5>{program.description}</h5>
+                        </div>
+                        <div className="programs-tab-time">
+                          <p>
+                            <b>
+                              <Image
+                                src="/images/profile/calendar.png"
+                                alt="Calendar"
+                                className="calendar"
+                                width={48}
+                                height={48}
+                              />{" "}
+                              {formatDate(program.startTime)} - {formatDate(program.endTime)}
+                            </b>
+                          </p>
+                        </div>
                       </div>
-                      <div className="programs-tab-title">
-                        <h5>{program.description}</h5>
-                      </div>
-                      <div className="programs-tab-time">
-                        <p>
-                          <b>
-                            <Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} /> {formatDate(program.startTime)} - {formatDate(program.endTime)}
-                          </b>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                ))}
+                    </a>
+                  ))
+                ) : (
+                  <p>No programs available</p>
+                )}
               </div>
             </div>
           </div>

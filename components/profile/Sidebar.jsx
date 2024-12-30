@@ -1,35 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { useLogout } from '../auth/SignOutBody';
 
-const BASE_URL = 'http://localhost:3000/v1';
-
-const Sidebar = () => {
-  const [programs, setPrograms] = useState([]);
+const Sidebar = ({ programs }) => {
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
   const logoutUser = useLogout();
   const user = useSelector((state) => state.user?.user);
-  const tokens = useSelector((state) => state.user?.tokens);
-
-  useEffect(() => {
-    const fetchPrograms = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/programs`, {
-          headers: {
-            Authorization: `Bearer ${tokens.access.token}`,
-          },
-        });
-        setPrograms(response.data.results);
-      } catch (error) {
-        console.error("Error fetching programs:", error);
-      }
-    };
-
-    fetchPrograms();
-  }, [tokens]);
+  console.log(programs);
 
   const handleNextProgram = () => {
     setCurrentProgramIndex((prevIndex) => (prevIndex + 1) % programs.length);
