@@ -1,5 +1,6 @@
+import { BASE_URL } from '@/utils/constants';
+
 export default async function handler(req, res) {
-    const BASE_URL = "http://localhost:3000/v1";
     const BEARER_TOKEN = req.headers.authorization?.split(' ')[1];
     const { method } = req;
     const { id } = req.query;

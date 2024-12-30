@@ -1,8 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import {
+  RP_APP_ID,
+  RP_CURRENCY,
+  RP_REQUEST_KEY,
+  RP_RETURN_URL,
+  RP_URL,
+} from '../../utils/constants';
+import { calculateChecksum } from '@/utils/checksum';
+import { genOrderId } from '@/utils/bookings';
+import { flushSync } from 'react-dom';
 
 const ProgramDetailsForm = () => {
+  const formRef = useRef();
   const [program, setProgram] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,6 +21,14 @@ const ProgramDetailsForm = () => {
   const { id } = router.query; // Fetch the program ID from URL
   const accessToken = useSelector((state) => state.accessToken);
   const currentUser = useSelector(state => state.user);
+  const [bookingRes, setBookingRes] = useState(null);
+  const [formData, setFormData] = useState({
+    amount: null,
+    orderId: '',
+    ref1: '',
+    ref2: '',
+    checksum: null,
+  });
 
   useEffect(() => {
     if (!id) return; 
@@ -37,6 +56,37 @@ const ProgramDetailsForm = () => {
       });
   }, [id]);
 
+  
+  useEffect(() => {
+    if (!bookingRes) {
+      return;
+    }
+    const orderId = genOrderId({ bookingId: bookingRes.id });
+    flushSync(() =>
+      setFormData((prevFormData) => {
+        return {
+          ...prevFormData,
+          orderId,
+          checksum: calculateChecksum({
+            appId: RP_APP_ID,
+            currency: RP_CURRENCY,
+            amount:  Number(prevFormData.amount).toFixed(2) ,
+            orderId,
+            requestKey: RP_REQUEST_KEY,
+          }),
+        };
+      })
+    );
+    console.log(formRef.current)
+    
+  }, [bookingRes]);
+  
+  useEffect(() => {
+    if (formData.checksum) {
+      handlePayNow();
+    }
+  }, [formData.checksum]);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (!program) return <p>Program not found.</p>;
@@ -45,8 +95,19 @@ const ProgramDetailsForm = () => {
   const adjustedEndTime = new Date(new Date(program.endTime).getTime() - 8 * 60 * 60 * 1000);
 
   const handleBooking = async () => {
+    if (!currentUser?.user?._id) {
+      alert('Please login to proceed to checkout');
+    }
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      amount: program.price,
+      ref1: new Date(program.startTime).getTime() / 1000,
+      ref2: program.court.id,
+      ref3: currentUser.user._id,
+    }));
+    adjustedStartTime.toLocaleString()
     try {
-      const response = await fetch("/api/program", {
+      const bookingRes = await fetch("/api/program", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,15 +120,23 @@ const ProgramDetailsForm = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Program Booking failed. Please try again.");
+      if (bookingRes.ok) {
+        const resData = await bookingRes.json();
+        flushSync(() => setBookingRes(resData.data));
+      } else {
+        alert('Failed to create program booking');
       }
 
-      const data = await response.json();
-      console.log("Program Booking created:", data);
-      alert(data.message);
     } catch (error) {
       console.error("Error creating booking:", error);
+    }
+  };
+
+  const handlePayNow = () => {
+    if (formRef.current && formData.amount && formData.checksum) {
+      formRef.current.submit();
+    } else {
+      alert('Please fill in all the required fields');
     }
   };
 
@@ -84,6 +153,17 @@ const ProgramDetailsForm = () => {
           <p><strong>Price:</strong> RM {program.price}</p>
         </div>
       </div>
+
+      <form method="post" action={RP_URL} ref={formRef}>
+        <input type="hidden" name="appId" value={RP_APP_ID} />
+        <input type="hidden" name="currency" value={RP_CURRENCY} />
+        <input type="hidden" name="amount" value={formData.amount} />
+        <input type="hidden" name="orderId" value={formData.orderId} />
+        <input type="hidden" name="ref1" value={bookingRes?.id || ''} />
+        <input type="hidden" name="returnURL" value={RP_RETURN_URL} />
+        <input type="hidden" name="checkSum" value={formData.checksum} />
+      </form>
+
       <div className="program-actions">
         <button className="cmn-button" onClick={handleBooking}>
           Proceed to Payment

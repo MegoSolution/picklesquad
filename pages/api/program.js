@@ -76,8 +76,7 @@ export default async function handler(req, res) {
         program: programId,
         amount: price,
         user: user,
-        payment_method: 'online',
-        payment_status: 'completed',
+        status: 'pending',
       };
 
       const response = await fetch(`${BASE_URL}/programBookings`, {
@@ -95,10 +94,7 @@ export default async function handler(req, res) {
 
       const data = await response.json();
 
-      return res.status(201).json({
-        message: 'Program Booking successful!',
-        bookingId: data.bookingId,
-      });
+      return res.status(201).json({ data });
     }
 
     // Handle unsupported request methods
