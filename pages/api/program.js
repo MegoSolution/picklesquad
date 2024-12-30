@@ -2,10 +2,13 @@
 import { BASE_URL } from '@/utils/constants';
 
 export default async function handler(req, res) {
-  const BEARER_TOKEN =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzJjY2IzMDU1MGJhZWIzZTFjOGY2YTciLCJpYXQiOjE3MzI0NDAyNTUsImV4cCI6MTczMjQ0MjA1NSwidHlwZSI6ImFjY2VzcyJ9.Aq9KimXO6nH1OevSZpx-2hivjM4_f1cpDzYCcNwEziU';
+  const BEARER_TOKEN = req.headers.authorization?.split(' ')[1];
   const { method } = req;
   const { id, page, limit } = req.query;
+
+  if (!BEARER_TOKEN) {
+    return res.status(400).json({ error: "Authorization token is missing" });
+  }
 
   try {
     if (method === 'GET' && id) {
@@ -63,7 +66,7 @@ export default async function handler(req, res) {
     }
 
     if (method === 'POST' && req.body) {
-      const { programId, price } = req.body;
+      const { programId, price, user } = req.body;
 
       if (!programId || !price) {
         return res.status(400).json({ error: 'Missing required fields' });
@@ -72,9 +75,8 @@ export default async function handler(req, res) {
       const bookingData = {
         program: programId,
         amount: price,
-        user: '672ccb30550baeb3e1c8f6a7',
-        payment_method: 'online',
-        payment_status: 'completed',
+        user: user,
+        status: 'pending',
       };
 
       const response = await fetch(`${BASE_URL}/programBookings`, {
@@ -92,10 +94,7 @@ export default async function handler(req, res) {
 
       const data = await response.json();
 
-      return res.status(201).json({
-        message: 'Program Booking successful!',
-        bookingId: data.bookingId,
-      });
+      return res.status(201).json({ data });
     }
 
     // Handle unsupported request methods
