@@ -22,7 +22,7 @@ const About = () => {
       {/* Main Content */}
       <div className="container-fluid">
         <div className="about--secondary__content-wrapper">
-          <div className="row justify-content-center align-items-center vh-100">
+          <div className="row justify-content-center align-items-center">
             <div className="col-lg-10 col-xxl-6 offset-xxl-1 text-center">
               <div className="section__content">
                 {/* Title and Introduction */}
