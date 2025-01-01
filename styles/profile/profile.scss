@@ -149,6 +149,28 @@
   }
 }
 
+.profile--side__bar-nav-link.disabled {
+  color: grey;
+  cursor: not-allowed;
+  position: relative; /* Ensure the tooltip is positioned relative to the element */
+}
+
+.profile--side__bar-nav-link[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: #3E65B6;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(10px);
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none; /* Prevent tooltip interaction */
+}
+
+
 .profile--side__bar-nav-link-div{
   margin-top:20px;
   margin-bottom:20px;
