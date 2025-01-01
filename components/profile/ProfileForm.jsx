@@ -13,7 +13,6 @@ const ProfileForm = ({ programs, onEditClick }) => {
   const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const scrollRef = useRef(null);
-  console.log(programs);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));

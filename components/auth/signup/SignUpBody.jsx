@@ -27,6 +27,11 @@ const SignUpBody = () => {
         password,
       });
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
+      localStorage.setItem(
+        'membership',
+        JSON.stringify(response.data.user.membership)
+      );
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       router.push('/profile'); // Redirect to the dashboard page
     } catch (err) {
       setError(

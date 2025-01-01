@@ -72,7 +72,8 @@ const SignInBody = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <p className="forget secondary-text">
+                <p className="auth-links secondary-text">
+                  <Link href="/sign-up">Don't have an account? Sign Up</Link>
                   <Link href="/contact-us">Forgot Password?</Link>
                 </p>
                 <div className="section__cta text-start">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { navData } from "./navData";
 import Logo_light from "/public/images/Picklesquad_image/logo-07.png";
 import Logo from "/public/images/Picklesquad_image/logo-07.png";
+import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
 import HandleLogout from "../auth/SignOutBody";
 
@@ -13,6 +14,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
   const [dropdownId, setDropdownId] = useState("");
   const [subDropdown, setSubDropdown] = useState("");
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   const handleActive = () => {
     setActive(false);
@@ -146,12 +148,14 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     {!user ? (
                       <li className="nav__menu-item d-block d-md-none">
                         <Link href="/sign-in" className="cmn-button cmn-button--secondary">
-                          Sign In/Sign Up
+                          Sign In
                         </Link>
                       </li>
                     ) : (
                       <li className="nav__menu-item d-block d-md-none">
-                        <HandleLogout />
+                        <Link href="/booking" className="cmn-button cmn-button--secondary">
+                          Book Now
+                        </Link>
                       </li>
                     )}
                   </ul>
@@ -160,12 +164,23 @@ const NavBar = ({ cls = "header--secondary" }) => {
 
                 <div className="nav__uncollapsed">
                   <div className="nav__uncollapsed-item d-none d-md-flex">
-                    {!user ? (
-                      <Link href="/sign-in" className="cmn-button-nav">
-                        Sign In/Sign Up
-                      </Link>
-                    ) : (
-                      <HandleLogout />
+                    {router.pathname !== '/sign-in' && router.pathname !== '/sign-up' && (
+                    <>
+                      {!user ? (
+                        <>
+                          <Link href="/sign-in" className="cmn-button cmn-button-nav">
+                            Sign In
+                          </Link>
+                          <Link href="/booking" className="btn btn-light book-now-btn-nav">
+                            Book Now
+                          </Link>
+                        </>
+                      ) : (
+                        <Link href="/booking" className="btn btn-light book-now-btn-nav">
+                          Book Now
+                        </Link>
+                      )}
+                    </>
                     )}
                   </div>
                   <button

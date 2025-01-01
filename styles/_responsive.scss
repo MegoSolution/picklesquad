@@ -99,10 +99,11 @@
 }
 
 .cmn-button-nav {
-  padding: 5px 8px; /* Adjust padding for the button size */
-  font-size: 12px; /* Adjust font size for smaller text */
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  font-size: 15px; /* Standard button font size */
   font-weight: bold; /* Bold text */
-  color: #2C58A8 !important; /* Blue text color */
+  color: #2C58A8; /* Blue text color */
   background-color: #f3e9b8; /* Light yellow background */
   border: 2px solid #2C58A8; /* Blue border */
   border-radius: 20px; /* Rounded corners */
@@ -110,6 +111,9 @@
   text-decoration: none; /* Remove underline */
   display: inline-block; /* Ensure proper alignment */
   transition: all 0.3s ease; /* Smooth transition on hover */
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
 }
 
 /* Hover Effect */
