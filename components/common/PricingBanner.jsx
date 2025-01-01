@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const BigBanner = () => {
+const PricingBanner = () => {
   return (
-    <section className="banner--secondary">
+    <section className="banner--secondary-pricing">
       <div className="container">
         <div className="row justify-content-end">
           <div className="col-12 col-lg-6 col-xl-7">
@@ -22,14 +22,9 @@ perfect serve, feel free to take up a lesson.
               </p>
               <div className="banner__content-cta">
                 <Link href="/join-club" className="cmn-button">
-                Let's Play
+                View Schedule
                 </Link>
-                <Link
-                  href="/about"
-                  className="cmn-button"
-                >
-                  First Time
-                </Link>
+        
               </div>
             </div>
           </div>
@@ -39,4 +34,4 @@ perfect serve, feel free to take up a lesson.
   );
 };
 
-export default BigBanner;
+export default PricingBanner;

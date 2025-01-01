@@ -185,7 +185,7 @@
     align-items: center;
     gap: 24px;
     a {
-      color: $primary-color;
+      color: #ffffff;
 
       i {
         font-size: 24px;
@@ -291,16 +291,16 @@
 .header-active {
   background: url('/images/header.jpg');
   background-size: contain;
-
+  
   animation: header 0.5s linear;
   top: 0px;
   z-index: 99;
-  box-shadow: $shadow;
 
   .nav {
     box-shadow: none !important;
-    background: url('/images/header.jpg');
+    ;
   background-size: contain;
+  
   }
 }
 
@@ -345,7 +345,7 @@
   .nav {
     padding: 30px 0px 29px;
     background-color: transparent;
-    border-bottom: 1px solid #2C58A8;
+   
     border-radius: 0px;
     box-shadow: none;
   }
@@ -407,7 +407,7 @@
 }
 
 .header--secondary.header-active {
-  background-color: #032810;
+  background-color: transparent;
   .nav {
     border-bottom: 1px solid transparent;
   }

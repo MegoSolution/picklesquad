@@ -6,6 +6,7 @@ import JoinClub from "@/components/common/JoinClub";
 import Sponsor from "@/components/common/Sponsor";
 import Team from "@/components/common/Team";
 import Testimonial from "@/components/common/Testimonial";
+import FinalView from "@/components/about/FinalView";
 
 export default function About() {
   return (
@@ -18,21 +19,23 @@ export default function About() {
 
       {/* Club section */}
       <Club />
-
-      {/* Team section */}
-      <Team />
-
       {/* Counter section */}
       <Counter />
+      {/* Final View section */}
+      <FinalView />
+
+      {/* Team section */}
+
+      
 
       {/* Testimonial section */}
-      <Testimonial />
+     
 
       {/* JoinClub section */}
-      <JoinClub />
+     
 
       {/* Sponsor section */}
-      <Sponsor />
+      
     </>
   );
 }

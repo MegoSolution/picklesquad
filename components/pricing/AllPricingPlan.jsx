@@ -1,60 +1,92 @@
-import MonthlyPlans from "./MonthlyPlans";
-import YearlyPlans from "./YearlyPlans";
+import Link from "next/link";
 
-const AllPricingPlan = () => {
+function PricingPlan() {
   return (
-    <section className="section pricing wow fadeInUp" data-wow-duration="0.4s">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-7">
-            <div className="section__header">
-              <div className="toggle-plan" id="pricing-tab" role="tablist">
-                <div role="presentation">
-                  <button
-                    //   href="#plan-monthly"
-                    className="plan-toggle active"
-                    id="plan-monthly-tab"
-                    data-bs-toggle="pill"
-                    data-bs-target="#plan-monthly"
-                    type="button"
-                    role="tab"
-                    aria-controls="plan-monthly"
-                    aria-selected="true"
-                  >
-                    Per Month
-                  </button>
+    <>
+      <section className="faq pricing-plan">
+        <div className="container">
+          {/* Header Section */}
+          <div className="section-header text-center">
+            <h2 className="section-title">Pricing</h2>
+            <p>Ready to Pick Up The Paddle?</p>
+            <p>
+              Start experiencing the awesomeness of pickleball with your family
+              and friends by booking one of our courts – or if you feel like
+              learning how to nail that perfect serve, feel free to take up a
+              lesson.
+            </p>
+          </div>
+
+          {/* Pricing Details */}
+          <div className="pricing-details">
+            <div className="row">
+              {/* Peak Hours */}
+              <div className="col-md-6">
+                <div className="pricing-card">
+                  <h4>Peak Hours</h4>
+                  <p>Weekday: 12PM - 4PM</p>
+                  <p>Weekend & Public Holiday: 8AM - 11AM, 5PM - 12AM</p>
+                  <div className="price-table">
+                    <div>
+                      <span>Regular Court:</span>
+                      <span>RMxx</span>
+                    </div>
+                    <div>
+                      <span>VIP Court:</span>
+                      <span>RMxx</span>
+                    </div>
+                  </div>
                 </div>
-                <div role="presentation">
-                  <button
-                    //   href="#plan-yearly"
-                    className="plan-toggle"
-                    id="plan-yearly-tab"
-                    data-bs-toggle="pill"
-                    data-bs-target="#plan-yearly"
-                    type="button"
-                    role="tab"
-                    aria-controls="plan-yearly"
-                    aria-selected="false"
-                  >
-                    Per Year
-                  </button>
+              </div>
+
+              {/* Off-Peak Hours */}
+              <div className="col-md-6">
+                <div className="pricing-card">
+                  <h4>Off-Peak Hours</h4>
+                  <p>Weekday: 8AM - 11AM</p>
+                  <p>Weekday: 5PM - 12AM</p>
+                  <div className="price-table">
+                    <div>
+                      <span>Regular Court:</span>
+                      <span>RMxx</span>
+                    </div>
+                    <div>
+                      <span>VIP Court:</span>
+                      <span>RMxx</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-12 tab-content" id="pricing-tabContent">
-            {/* Monthly Plans */}
-            <MonthlyPlans />
 
-            {/* Yearly Plans */}
-            <YearlyPlans />
+          {/* Equipment Details */}
+          <div className="equipment-details text-center">
+            <h4>Equipment</h4>
+            <div className="equipment-table">
+              <div>
+                <span>Paddle Rental:</span>
+                <span>RM5/paddle</span>
+              </div>
+              <div>
+                <span>Ball (For Sale):</span>
+                <span>RM9/ball</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
-export default AllPricingPlan;
+          {/* Call to Action */}
+          <div className="cta-section text-center">
+            <Link href="/schedule" className="cmn-button">
+              View Schedule
+            </Link>
+          </div>
+
+           
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default PricingPlan;
