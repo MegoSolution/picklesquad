@@ -32,7 +32,8 @@ const SignUpBody = ({ onToggleForm }) => {
         JSON.stringify(response.data.user.membership)
       );
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      router.push('/profile'); // Redirect to the dashboard page
+      const redirect = router.query.redirect || '/profile';
+      router.push(redirect); // Redirect to the specified page or profile page
     } catch (err) {
       setError(
         'Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.'

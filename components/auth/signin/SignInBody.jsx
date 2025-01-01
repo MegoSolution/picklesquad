@@ -29,7 +29,8 @@ const SignInBody = ({ onToggleForm }) => {
         JSON.stringify(response.data.user.membership)
       );
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      router.push('/profile'); // Redirect to the dashboard page
+      const redirect = router.query.redirect || '/profile';
+      router.push(redirect); // Redirect to the specified page or profile page
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');
     }

@@ -46,6 +46,14 @@ const NavBar = ({ cls = "header--secondary" }) => {
     };
   }, []);
 
+  const handleBookNowClick = () => {
+    if (user) {
+      router.push('/booking');
+    } else {
+      router.push('/sign-in?redirect=/booking');
+    }
+  };
+
   return (
     <header className={`header ${cls} ${windowHeight > 50 ? "header-active" : ""}`}>
       <div className="container">
@@ -144,7 +152,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
                       );
                     })}
 
-                    {/* Sign In/Sign Up or Logout */}
+                    {/* Sign In/Sign Up or Book Now */}
                     {!user ? (
                       <li className="nav__menu-item d-block d-md-none">
                         <Link href="/sign-in" className="cmn-button cmn-button--secondary">
@@ -153,9 +161,9 @@ const NavBar = ({ cls = "header--secondary" }) => {
                       </li>
                     ) : (
                       <li className="nav__menu-item d-block d-md-none">
-                        <Link href="/booking" className="cmn-button cmn-button--secondary">
+                        <button onClick={handleBookNowClick} className="cmn-button cmn-button--secondary">
                           Book Now
-                        </Link>
+                        </button>
                       </li>
                     )}
                   </ul>
@@ -171,14 +179,14 @@ const NavBar = ({ cls = "header--secondary" }) => {
                           <Link href="/sign-in" className="cmn-button cmn-button-nav">
                             Sign In
                           </Link>
-                          <Link href="/booking" className="btn btn-light book-now-btn-nav">
+                          <button onClick={handleBookNowClick} className="btn btn-light book-now-btn-nav">
                             Book Now
-                          </Link>
+                          </button>
                         </>
                       ) : (
-                        <Link href="/booking" className="btn btn-light book-now-btn-nav">
+                        <button onClick={handleBookNowClick} className="btn btn-light book-now-btn-nav">
                           Book Now
-                        </Link>
+                        </button>
                       )}
                     </>
                     )}
