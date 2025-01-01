@@ -7,7 +7,7 @@ import GoogleLoginButton from '../signup/GoogleLoginButton';
 import { BASE_URL } from '../../../utils/constants';
 import axios from 'axios';
 
-const SignInBody = () => {
+const SignInBody = ({ onToggleForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -73,7 +73,9 @@ const SignInBody = () => {
                   />
                 </div>
                 <p className="auth-links secondary-text">
-                  <Link href="/sign-up">Don't have an account? Sign Up</Link>
+                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                    Don't have an account? Sign Up
+                  </a>
                   <Link href="/contact-us">Forgot Password?</Link>
                 </p>
                 <div className="section__cta text-start">

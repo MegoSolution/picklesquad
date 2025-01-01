@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { BASE_URL } from '../../../utils/constants';
 
-const SignUpBody = () => {
+const SignUpBody = ({ onToggleForm }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -99,7 +99,7 @@ const SignUpBody = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                <p>
+                {/* <p>
                   By clicking submit, you agree to{' '}
                   <Link href="/privacy-policy">Terms of Use</Link>,{' '}
                   <Link href="/privacy-policy">Privacy Policy</Link>,{' '}
@@ -108,6 +108,11 @@ const SignUpBody = () => {
                     communication Authorization
                   </Link>
                   .
+                </p> */}
+                <p className="auth-links secondary-text">
+                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                    Already have an account? Sign In
+                  </a>
                 </p>
                 <div className="section__cta text-start">
                   <button type="submit" className="sign-up-button">
