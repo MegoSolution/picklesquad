@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { BASE_URL } from '../../../utils/constants';
 
-const SignUpBody = () => {
+const SignUpBody = ({ onToggleForm }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +27,13 @@ const SignUpBody = () => {
         password,
       });
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
-      router.push('/profile'); // Redirect to the dashboard page
+      localStorage.setItem(
+        'membership',
+        JSON.stringify(response.data.user.membership)
+      );
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      const redirect = router.query.redirect || '/profile';
+      router.push(redirect); // Redirect to the specified page or profile page
     } catch (err) {
       setError(
         'Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.'
@@ -94,7 +100,7 @@ const SignUpBody = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                <p>
+                {/* <p>
                   By clicking submit, you agree to{' '}
                   <Link href="/privacy-policy">Terms of Use</Link>,{' '}
                   <Link href="/privacy-policy">Privacy Policy</Link>,{' '}
@@ -103,6 +109,11 @@ const SignUpBody = () => {
                     communication Authorization
                   </Link>
                   .
+                </p> */}
+                <p className="auth-links secondary-text">
+                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                    Already have an account? Sign In
+                  </a>
                 </p>
                 <div className="section__cta text-start">
                   <button type="submit" className="sign-up-button">

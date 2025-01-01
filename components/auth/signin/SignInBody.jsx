@@ -7,7 +7,7 @@ import GoogleLoginButton from '../signup/GoogleLoginButton';
 import { BASE_URL } from '../../../utils/constants';
 import axios from 'axios';
 
-const SignInBody = () => {
+const SignInBody = ({ onToggleForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -29,7 +29,8 @@ const SignInBody = () => {
         JSON.stringify(response.data.user.membership)
       );
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      router.push('/profile'); // Redirect to the dashboard page
+      const redirect = router.query.redirect || '/profile';
+      router.push(redirect); // Redirect to the specified page or profile page
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');
     }
@@ -72,7 +73,10 @@ const SignInBody = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <p className="forget secondary-text">
+                <p className="auth-links secondary-text">
+                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                    Don't have an account? Sign Up
+                  </a>
                   <Link href="/contact-us">Forgot Password?</Link>
                 </p>
                 <div className="section__cta text-start">

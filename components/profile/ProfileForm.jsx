@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Modal from './Modal';
 import { BASE_URL } from '../../utils/constants';
 
-const ProfileForm = ({ programs }) => {
+const ProfileForm = ({ programs, onEditClick }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null);
   const [tokens, setTokens] = useState(null);
@@ -14,7 +13,6 @@ const ProfileForm = ({ programs }) => {
   const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const scrollRef = useRef(null);
-  console.log(programs);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -59,10 +57,6 @@ const ProfileForm = ({ programs }) => {
     setShowModal(false);
   };
 
-  const handleEditClick = () => {
-    document.getElementById('faqFacility-tab').click();
-  };
-
   const handleNextBooking = () => {
     setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
   };
@@ -99,7 +93,7 @@ const ProfileForm = ({ programs }) => {
           <div className="faq__tab-single__inner">
             <div className="profile-form-2">
               <div className="profile-header">
-                <button className="edit-button" onClick={handleEditClick}>
+                <button className="edit-button" onClick={onEditClick}>
                   Edit Profile
                 </button>
                 <div className="profile-form-header-2">

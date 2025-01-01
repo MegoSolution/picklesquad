@@ -11,52 +11,15 @@ const AboutUs = () => {
             <div className="section__content">
               <h5 className="section__content-sub-title">About us</h5>
               <h2 className="section__content-title">
-                We Are The Best Golf Club In Your Local Area
+                Let's Talk About Picklesquad<br/>and Our Journey
               </h2>
-              <p className="section__content-text">
-                We offer a lot of courses of varying difficulty and beautiful
-                scenery that golfers of all skill levels can enjoy. You will
-                learn golf from professionals with our competent and experienced
-                staff. You will have a great fun with our magnificent
-                illuminated field.
+              <p className="section__content-text--aboutus">
+              Founded in 2024 by a group of dynamic and energetic friends born after the 2000s—often referred to as "after 00's"—Picklesquad is a testament to how shared passions can blossom into something extraordinary. 
+              Brought together by their sporty nature and mutual love for staying active, this group of friends initially met through recreational sports events and fitness meetups. 
+              Their vibrant energy and adventurous spirit naturally gravitated them toward exploring new activities and trends in the sports world.
               </p>
-              <div className="about__section-inner">
-                <div className="about__section-inner__single">
-                  <div className="about__section-inner__single-thumb">
-                    <i className="golftio-flag"></i>
-                  </div>
-                  <div className="about__section-inner__single-content">
-                    <h5>Professional Team</h5>
-                    <p className="secondary-text">
-                      Modern & latest equipment with expert coaching
-                    </p>
-                  </div>
-                </div>
-                <div className="about__section-inner__single">
-                  <div className="about__section-inner__single-thumb">
-                    <i className="golftio-shot-great-upper"></i>
-                  </div>
-                  <div className="about__section-inner__single-content">
-                    <h5>Professional Trainings</h5>
-                    <p className="secondary-text">
-                      Modern & latest equipment with expert coaching
-                    </p>
-                  </div>
-                </div>
-                <div className="about__section-inner__single">
-                  <div className="about__section-inner__single-thumb">
-                    <i className="golftio-sticks"></i>
-                  </div>
-                  <div className="about__section-inner__single-content">
-                    <h5>Practice Facilities</h5>
-                    <p className="secondary-text">
-                      Modern & latest equipment with expert coaching
-                    </p>
-                  </div>
-                </div>
-              </div>
               <div className="section__content-cta">
-                <Link href="/about" className="cmn-button">
+                <Link href="#club" scroll={false} className="btn btn-primary first-time-btn">
                   Read More
                 </Link>
               </div>
@@ -67,12 +30,12 @@ const AboutUs = () => {
               <Image src={about_thumb} alt="Image" className="unset" />
               <div className="about__experience">
                 <div className="about__experience-thumb">
-                  <i className="golftio-ball"></i>
+                  <i className="golftio-hands"></i>
                 </div>
                 <h3>
-                  <span>30 +</span>
+                  <span>10 +</span>
                 </h3>
-                <p>Years of experience</p>
+                <p>Years of Friendship</p>
               </div>
             </div>
           </div>

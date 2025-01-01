@@ -149,7 +149,7 @@
     background-color: #fff8f0; /* White box background */
     max-width: 1200px; /* Limit the width */
     margin: 0 auto; /* Center align horizontally */
-    padding: 60px 20px; /* Reduce padding for a compact look */
+    
     border-radius: 10px; /* Rounded corners for the box */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     position: relative;
@@ -387,7 +387,6 @@
 .club {
   overflow-x: clip;
   @include background($secondary-color, no-repeat, auto, left 40px bottom 70px);
-  background-image: url("/images/flag-bg.png");
 
   .club__thumb {
     position: relative;
@@ -607,7 +606,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(5, 68, 26, 0.8);
+    background-color: #2C58A8;
     z-index: -1;
   }
 
@@ -1304,30 +1303,129 @@ html {
 
 .session-content {
   max-width: 500px;
-  text-align: left; /* Align text to the left by default */
+  text-align: left;
 }
 
 .session-content .sub-title {
   font-size: 1rem;
   font-weight: bold;
-  color: #2c58a8; /* Subtle grey color */
+  color: #2c58a8;
   margin-bottom: 10px;
 }
 
 .session-content .title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #2c58a8; /* Dark blue for heading */
+  color: #2c58a8;
   margin-bottom: 20px;
 }
 
 .session-content p {
   font-size: 1rem;
-  font-weight: normal; /* Ensure paragraph text is not bold */
+  font-weight: normal;
   line-height: 1.6;
-  color: #2c58a8; /* Medium grey text for description */
+  color: #2c58a8;
   margin-bottom: 30px;
 }
+
+.session-details {
+  margin-bottom: 20px;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff8f0;
+  border: 1px solid black;
+}
+
+.details-table td {
+  padding: 12px;
+  border: 1px solid black;
+  color: #2c58a8;
+}
+
+.detail-label {
+  font-weight: bold;
+  text-align: left;
+  color: #2c58a8;
+}
+
+.detail-value {
+  text-align: right;
+  color: #2c58a8;
+}
+
+
+/*two*/
+.session-details--two {
+  margin-bottom: 20px;
+}
+
+.details-table--two {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border: 1px solid black;
+}
+
+.details-table--two td {
+  padding: 12px;
+  border: 1px solid black;
+  color: #2c58a8;
+}
+
+.detail-label--two {
+  font-weight: bold;
+  text-align: left;
+  color: #ffffff;
+}
+
+.detail-value--two {
+  text-align: right;
+  color: #ffffff;
+}
+
+
+.additional-info {
+  margin-top: 20px;
+}
+/* Adjust table for phone mode */
+@media only screen and (max-width: 768px) {
+  .details-table--two {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff8f0;
+    border: 1px solid black;
+  }
+
+  .details-table--two td {
+    padding: 12px;
+    border: 1px solid black;
+    text-align: left;
+    color: #2c58a8;
+  }
+
+  .details-table--two tr {
+    display: table-row;
+    width: 100%;
+  }
+
+  .details-table--two tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Alternate row coloring */
+  }
+
+  .details-table--two td:first-child {
+    font-weight: bold;
+    text-align: left;
+    background-color: #e8e8e8;
+    color: #2c58a8;
+  }
+}
+
 
 /* Button Styling */
 .first-time-btn {
@@ -1555,6 +1653,27 @@ html {
 }
 
 .book-now-btn:hover {
+  background-color: #ffffff;
+  color: #2c58a8;
+}
+
+.book-now-btn-nav{
+  background-color: #F3E7C5; /* Retain the original color */
+  color: #2c58a8 !important;
+  font-weight: bold;
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem; /* Standard button font size */
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
+}
+
+.book-now-btn-nav:hover {
   background-color: #ffffff;
   color: #2c58a8;
 }

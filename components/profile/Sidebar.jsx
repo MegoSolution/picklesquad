@@ -1,14 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
 import { useLogout } from '../auth/SignOutBody';
+import ECardModal from '../eCard/ECardModal';
 
 const Sidebar = ({ programs }) => {
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
+  const [showECardModal, setShowECardModal] = useState(false);
+  const [isMember, setIsMember] = useState(false);
+  const [user, setUser] = useState(null);
   const logoutUser = useLogout();
-  const user = useSelector((state) => state.user?.user);
   console.log(programs);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    setUser(storedUser);
+    if (storedUser && storedUser.membership) {
+      setIsMember(true);
+    }
+  }, []);
 
   const handleNextProgram = () => {
     setCurrentProgramIndex((prevIndex) => (prevIndex + 1) % programs.length);
@@ -24,6 +34,14 @@ const Sidebar = ({ programs }) => {
     const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB', options);
+  };
+
+  const handleShowECard = () => {
+    setShowECardModal(true);
+  };
+
+  const handleCloseECardModal = () => {
+    setShowECardModal(false);
   };
 
   return (
@@ -50,14 +68,24 @@ const Sidebar = ({ programs }) => {
           </Link>
         </div>
         <div className="profile--side__bar-nav-link-div">
-          <Link href="/bookingHistory" className="profile--side__bar-nav-link">
+          <Link href="/booking-history" className="profile--side__bar-nav-link">
             My Bookings
           </Link>
         </div>
         <div className="profile--side__bar-nav-link-div">
-          <Link href="/facility/1" className="profile--side__bar-nav-link">
-            Show E-Card
-          </Link>
+          {isMember ? (
+            <a className="profile--side__bar-nav-link" onClick={handleShowECard}>
+              Show E-Card
+            </a>
+          ) : (
+            <a
+              className="profile--side__bar-nav-link disabled"
+              title="Only for Member"
+              onClick={(e) => e.preventDefault()} // Prevent default action for disabled link
+            >
+              Show E-Card
+            </a>
+          )}
         </div>
         <div className="profile--side__bar-nav-link-div">
           <a className="profile--side__bar-nav-link" onClick={logoutUser}>
@@ -88,6 +116,7 @@ const Sidebar = ({ programs }) => {
           )}
         </div>
       </div>
+      {showECardModal && <ECardModal onClose={handleCloseECardModal} />}
     </div>
   );
 };

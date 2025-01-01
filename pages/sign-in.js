@@ -1,20 +1,20 @@
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navBar/NavBar";
-import SignInBody from "@/components/auth/signin/SignInBody";
+import AuthPage from "@/components/auth/AuthPage";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
 
 export default function SignIn() {
   return (
     <>
       <GoogleOAuthProvider clientId="58880361690-dtpoqfr38r9n53dnmvvt2dul0fhfkml4.apps.googleusercontent.com">
-      {/* NavBar Secrtion */}
-      <NavBar cls="" />
+        {/* NavBar Section */}
+        <NavBar cls="" />
 
-      {/* Sign In Body Secrtion */}
-      <SignInBody />
+        {/* Auth Page Section */}
+        <AuthPage />
 
-      {/* Footer Secrtion */}
-      <Footer />
+        {/* Footer Section */}
+        <Footer />
       </GoogleOAuthProvider>
     </>
   );
