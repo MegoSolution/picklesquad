@@ -1,3 +1,4 @@
+import Image from "next/image";
 import pricingPlanDataMonthly from "@/data/pricingPlanDataMonthly";
 import pricingPlanDataYearly from "@/data/pricingPlanDataYearly";
 import PricingCardOne from "../card/PricingCardOne";
@@ -5,9 +6,11 @@ import PricingCardOne from "../card/PricingCardOne";
 const PricingPlan = () => {
   return (
     <section
-      className="section pricing pricing--secondary wow fadeInUp"
+      className="section pricing pricing--secondary pricing-background wow fadeInUp"
       data-wow-duration="0.4s"
     >
+      
+
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-7">
@@ -15,7 +18,10 @@ const PricingPlan = () => {
               <h5 className="section__header-sub-title">Pricing Plan</h5>
               <h2 className="section__header-title">Membership Pricing</h2>
               <p>
-                Join the PickleSquad family and enjoy exclusive benefits tailored to enhance your pickleball experience. From priority court bookings to personalized coaching sessions, our membership plans cater to all skill levels and ensure you get the most out of every game.
+                Join the PickleSquad family and enjoy exclusive benefits tailored
+                to enhance your pickleball experience. From priority court
+                bookings to personalized coaching sessions, our membership plans
+                cater to all skill levels and ensure you get the most out of every game.
               </p>
               <div
                 className="toggle-plan toggle-plan-alt"

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import club_thumb from "/public/images/club-thumb.png";
+import club_thumb from "/public/images/club-thumb.jpg";
 
 const Club = () => {
   return (
-    <section className="section club club--alt">
+    <section id="club" className="section club club--alt">
       <div className="container">
         <div className="row section__row">
           <div className="col-lg-6 col-xl-5 section__col d-none d-lg-block">
@@ -16,48 +16,47 @@ const Club = () => {
               <div className="club__thumb-experience">
                 <h3>
                   {/* <span className="odometer" data-odometer-final="30"></span> */}
-                  <span>30 +</span>
+                  <span>1</span>
                 </h3>
                 <p>
-                  Years <br />
-                  of experience
+                  Year <br />
+                  ago
                 </p>
               </div>
             </div>
           </div>
           <div className="col-lg-6 offset-xl-1 section__col">
             <div className="section__content">
-              <h5 className="section__content-sub-title">Club View</h5>
-              <h2 className="section__content-title">
-                Play and enjoy our club for free
+              <h5 className="section__content-sub-title">How We Born?</h5>
+              <h2 className="section__content-title text-centered">
+              Where Premium Pickleball Happens
               </h2>
               <p className="section__content-text">
-                We offer a lot of courses of varying difficulty and beautiful
-                scenery that golfers of all skill levels can enjoy. You will
-                learn golf from professionals with our competent and experienced
-                staff. You will have a great fun with our magnificent
-                illuminated field.
+              That’s when we had our big idea: 
+              why not create a space where others could experience the joy of pickleball just like we did? 
+              A place where the community could come together, have fun, and make unforgettable memories. 
+              With that vision, Picklesquad was born.
               </p>
               <div className="section__content-inner">
                 <ul>
                   <li>
-                    <i className="golftio-pin-checked"></i>300+ Golf
-                    Competitions
+                    <i className="golftio-pin-checked"></i>Top-notch courts
                   </li>
                   <li>
-                    <i className="golftio-pin-checked"></i>Proficient on Golf
+                    <i className="golftio-pin-checked"></i>Superb Location
                   </li>
                   <li>
-                    <i className="golftio-pin-checked"></i>Amateur Championships
+                    <i className="golftio-pin-checked"></i>Youthful and Modern Vibes
                   </li>
                   <li>
-                    <i className="golftio-pin-checked"></i>Individual Support
+                    <i className="golftio-pin-checked"></i>Ultimate Pickleball Experience
                   </li>
                 </ul>
+                
               </div>
-              <div className="section__content-cta">
-                <Link href="/join-club" className="cmn-button">
-                  Join Our Club
+              <div className="section__content-cta ">
+                <Link href="#View" scroll={false} className="btn btn-primary first-time-btn">
+                  Look Now
                 </Link>
               </div>
             </div>
