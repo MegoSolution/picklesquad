@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-import club_thumb from "/public/images/club-thumb.png";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Club = () => {
   return (
@@ -33,7 +32,7 @@ const Club = () => {
                     <i className="golftio-pin-checked"></i>Amateur Championships
                   </li>
                   <li>
-                    <i className="golftio-pin-checked"></i>Individual Support{" "}
+                    <i className="golftio-pin-checked"></i>Individual Support{' '}
                   </li>
                 </ul>
               </div>
@@ -46,7 +45,6 @@ const Club = () => {
           </div>
           <div className="col-lg-6 col-xl-5 offset-xl-1 section__col d-none d-lg-block">
             <div className="club__thumb wow fadeInUp" data-wow-duration="0.4s">
-              <Image src={club_thumb} alt="Image" className="unset" />
               <div className="club__thumb-experience">
                 <h3>
                   <span>30 +</span>
