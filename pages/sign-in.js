@@ -1,7 +1,7 @@
-import Footer from "@/components/footer/Footer";
-import NavBar from "@/components/navBar/NavBar";
-import AuthPage from "@/components/auth/AuthPage";
-import { GoogleOAuthProvider } from '@react-oauth/google'; 
+import AuthPage from '@/components/auth/AuthPage';
+import Footer from '@/components/footer/Footer';
+import NavBar from '@/components/navBar/NavBar';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function SignIn() {
   return (
@@ -13,7 +13,7 @@ export default function SignIn() {
         {/* Auth Page Section */}
         <AuthPage />
 
-        {/* Footer Section */}
+        {/* Footer Secrtion */}
         <Footer />
       </GoogleOAuthProvider>
     </>

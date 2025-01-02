@@ -5,6 +5,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { BASE_URL } from '../../../utils/constants';
+import toast, { Toaster } from 'react-hot-toast';
 
 const GoogleLoginButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -23,7 +24,11 @@ const GoogleLoginButton: React.FC = () => {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('tokens', JSON.stringify(tokens));
 
-        router.push('/booking');
+        toast.success('Login Successful');
+
+        setTimeout(() => {
+          router.push('/booking');
+        }, 2000);
       } catch (error) {
         console.error('Google login failed:', error);
       }
@@ -53,19 +58,22 @@ const GoogleLoginButton: React.FC = () => {
   };
 
   return (
-    <button
-      onClick={() => handleGoogleLogin()}
-      style={googleButtonStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <img
-        src="https://developers.google.com/identity/images/g-logo.png"
-        alt="Google logo"
-        style={googleIconStyle}
-      />
-      Sign in with Google
-    </button>
+    <>
+      <button
+        onClick={() => handleGoogleLogin()}
+        style={googleButtonStyle}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <img
+          src="https://developers.google.com/identity/images/g-logo.png"
+          alt="Google logo"
+          style={googleIconStyle}
+        />
+        Sign in with Google
+      </button>
+      <Toaster />
+    </>
   );
 };
 

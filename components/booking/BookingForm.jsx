@@ -10,6 +10,7 @@ import {
 import { calculateChecksum } from '@/utils/checksum';
 import { generateDates, genOrderId } from '@/utils/bookings';
 import { flushSync } from 'react-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const BookingForm = () => {
   const formRef = useRef();
@@ -385,6 +386,7 @@ const BookingForm = () => {
 
       if (bookingRes.ok) {
         const resData = await bookingRes.json();
+        toast.success('Booking Successful, Redirecting to Payment...');
         flushSync(() => setBookingRes(resData));
       } else {
         alert('Failed to create booking');
@@ -607,6 +609,7 @@ const BookingForm = () => {
           Check Out
         </button>
       </div>
+      <Toaster />
     </div>
   );
 };
