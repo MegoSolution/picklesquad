@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Banner from "@/components/ecard/Banner";
-import ECardDisplay from "@/components/ecard/ECardDisplay";
-import withAuth from "@/pages/withAuth";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import ECardDisplay from '@/components/eCard/ECardDisplay';
+import withAuth from '@/pages/withAuth';
+import { useSelector } from 'react-redux';
+import Banner from '@/components/eCard/Banner';
 
 const PremiumECard = () => {
   const currentUser = useSelector((state) => state.user);
@@ -13,13 +13,13 @@ const PremiumECard = () => {
   }, []);
 
   // Get the user role with a fallback
-  const userRole = currentUser?.user?.role || "guest";
+  const userRole = currentUser?.user?.role || 'guest';
 
   if (!isClient) {
-    return null; 
+    return null;
   }
 
-  if (userRole !== "premiumUser") {
+  if (userRole !== 'premiumUser') {
     return (
       <div className="premium-ecard-container">
         <Banner />
