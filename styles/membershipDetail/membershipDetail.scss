@@ -1,0 +1,144 @@
+.membership-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: #2C58A8;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.membership-summary {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+
+  .membership-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+
+    h4 {
+      color: #2C58A8;
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .duration, .price {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #2C58A8;
+    }
+
+    .benefits {
+      margin-top: 20px;
+
+      h5 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+          margin-bottom: 8px;
+          padding-left: 25px;
+          position: relative;
+
+          &::before {
+            content: "✓";
+            color: #2C58A8;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+
+    .description {
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+      white-space: pre-line;
+    }
+  }
+}
+
+.payment-section {
+  .payment-methods {
+    text-align: center;
+  }
+
+  .payment-button {
+    background-color: #2C58A8;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #1a4080;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
+
+.description-section {
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+
+  h5 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    color: #666;
+    font-size: 14px;
+    white-space: pre-line;
+    margin-bottom: 10px;
+  }
+
+  .price-description {
+    color: #2C58A8;
+    font-size: 14px;
+    font-style: italic;
+  }
+}
+
+.benefits {
+  ul {
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.4;
+    }
+  }
+} 
