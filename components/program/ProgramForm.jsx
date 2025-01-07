@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import ProgramCard from "./ProgramCard";
 import Pagination from "../pagination/PaginationProgram";
+import { useSelector } from "react-redux";
 
 const ProgramForm = () => {
   const [programData, setProgramData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const itemsPerPage = 9;
+  const accessToken = useSelector((state) => state.accessToken);
 
   const fetchPrograms = (page) => {
     fetch(`/api/program?page=${page}&limit=${itemsPerPage}`, {
       method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`, 
+      },
     })
       .then((response) => {
         if (!response.ok) {

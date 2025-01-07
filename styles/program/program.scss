@@ -43,7 +43,7 @@
 
 .program-section .program-buttons {
   display: flex;
-  justify-content: space-between; /* Align buttons horizontally */
+  justify-content: center;
   align-items: center; /* Ensure buttons are vertically aligned */
   margin-top: 10px;
   gap: 10px; /* Add space between buttons */
@@ -53,6 +53,7 @@
 .program-section .cmn-button--secondary {
   flex: 1; /* Ensure buttons take up equal space */
   text-align: center; /* Center the text inside buttons */
+  justify-content: center;
   margin: 0; /* Remove any extra margins that might misalign buttons */
 }
 

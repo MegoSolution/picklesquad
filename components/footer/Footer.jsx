@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Social from "../social/Social";
 import logo_light from "/public/images/Picklesquad_image/logo-07.png";
 
 const Footer = () => {
@@ -14,30 +13,44 @@ const Footer = () => {
               <Link href="/" className="footer__single-logo">
                 <Image src={logo_light} alt="Logo" />
               </Link>
-              
-  <div className="footer__single">
-  
-  <div className="footer__single-social">
-  <h5>Social</h5>
-    <ul className="social-icons">
-      <li>
-        <Link href="/">
-          <i className="fa fa-facebook-f"></i>
-        </Link>
-      </li>
-      <li>
-        <Link href="https://www.instagram.com/picklesquad.my/">
-          <i className="fa fa-square-instagram"></i>
-        </Link>
-      </li>
-      <li>
-        <Link href="/">
-          <i className="fa fa-xhs"></i>
-        </Link>
-      </li>
-    </ul>
-  </div>
-</div>
+
+              <div className="footer__single">
+                <div className="footer__single-social">
+                  <h5>Social</h5>
+                  <ul className="social-icons horizontal-icons">
+                    <li>
+                      <Link href="/">
+                        <Image
+                          src="/images/picklesquad_image/footer/ig.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="https://www.instagram.com/picklesquad.my/">
+                        <Image
+                          src="/images/picklesquad_image/footer/fb.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/">
+                        <Image
+                          src="/images/picklesquad_image/footer/xhs.png"
+                          alt="Instagram"
+                          width={45}
+                          height={45}
+                        />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -105,12 +118,12 @@ const Footer = () => {
           <div className="col-12">
             <div className="copyright">
               <div className="row align-items-center">
-              <div className="col-lg-6">
-  <p className="copyright-text">
-    Copyright &copy; <span id="copyYear"></span> 2024 PickleSquad.
-    All Rights Reserved 202401043375 (1589221­A)
-  </p>
-</div>
+                <div className="col-lg-6">
+                  <p className="copyright-text">
+                    Copyright &copy; <span id="copyYear"></span> 2024 PickleSquad.
+                    All Rights Reserved 202401043375 (1589221­A)
+                  </p>
+                </div>
 
                 <div className="col-lg-6">
                   <ul>

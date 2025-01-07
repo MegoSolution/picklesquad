@@ -26,7 +26,7 @@ perfect serve, feel free to take up a lesson.
                 </Link>
                 <Link
                   href="/about"
-                  className="cmn-button cmn-button--secondary"
+                  className="cmn-button"
                 >
                   First Time
                 </Link>

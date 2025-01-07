@@ -1,3 +1,4 @@
+import Image from "next/image";
 import pricingPlanDataMonthly from "@/data/pricingPlanDataMonthly";
 import pricingPlanDataYearly from "@/data/pricingPlanDataYearly";
 import PricingCardOne from "../card/PricingCardOne";
@@ -5,18 +6,22 @@ import PricingCardOne from "../card/PricingCardOne";
 const PricingPlan = () => {
   return (
     <section
-      className="section pricing pricing--secondary wow fadeInUp"
+      className="section pricing pricing--secondary pricing-background wow fadeInUp"
       data-wow-duration="0.4s"
     >
+      
+
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-7">
             <div className="section__header">
               <h5 className="section__header-sub-title">Pricing Plan</h5>
-              <h2 className="section__header-title">Our exclusive offer</h2>
+              <h2 className="section__header-title">Membership Pricing</h2>
               <p>
-                Golftio Sports Club is a golf club with a history that goes back
-                to XX century. From a cricket club to soccer tournaments,
+                Join the PickleSquad family and enjoy exclusive benefits tailored
+                to enhance your pickleball experience. From priority court
+                bookings to personalized coaching sessions, our membership plans
+                cater to all skill levels and ensure you get the most out of every game.
               </p>
               <div
                 className="toggle-plan toggle-plan-alt"
@@ -34,7 +39,7 @@ const PricingPlan = () => {
                     aria-controls="plan-monthly"
                     aria-selected="true"
                   >
-                    Per Month
+                    Monthly
                   </button>
                 </div>
                 <div role="presentation">
@@ -48,7 +53,7 @@ const PricingPlan = () => {
                     aria-controls="plan-yearly"
                     aria-selected="false"
                   >
-                    Per Year
+                    Annually
                   </button>
                 </div>
               </div>

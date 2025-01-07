@@ -1,4 +1,4 @@
-const { default: BookingHistoryForm } = require("./BookingHistoryForm");
+import BookingHistoryForm from './BookingHistoryForm';
 
 const BookingHistoryBody = () => {
   return (

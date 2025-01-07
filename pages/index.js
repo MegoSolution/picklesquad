@@ -1,18 +1,14 @@
 import BigBanner from "@/components/common/BigBanner";
-import Shop from "@/components/common/Shop";
-import Team from "@/components/common/Team";
-import TestimonialOne from "@/components/common/TestimonialOne";
 import Footer from "@/components/footer/Footer";
 import About from "@/components/home/About";
-import Event from "@/components/home/Event";
-import Facility from "@/components/home/Facility";
-import JoinClub from "@/components/home/JoinClub";
-import OurClub from "@/components/home/OurClub";
+import CoachSession from "@/components/home/CoachSession";
+import PrivateEvent from "@/components/home/PrivateEvent";
+import Programmes from "@/components/home/Programmes";
 import PricingPlan from "@/components/home/PricingPlan";
-import Training from "@/components/home/Training";
 import NavBar from "@/components/navBar/NavBar";
 import Preloader from "@/components/preloader/Preloader";
 import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
+import CourtRental from "@/components/home/CourtRental";
 
 export default function Home() {
   return (
@@ -26,35 +22,44 @@ export default function Home() {
       {/* Big Banner Secrtion */}
       <BigBanner />
 
-      {/* Facility Secrtion */}
-      {/* <Facility />*/}
-
-      {/* About Secrtion */}
+      {/* About Section */}
       <About />
+
+      {/* Coach Session Secrtion */}
+      <CoachSession />
+      
+      {/* Pricing Plan Secrtion */}
+      <PrivateEvent />
+
+      {/* Programmes Secrtion */}
+      <Programmes />
 
       {/* Pricing Plan Secrtion */}
       <PricingPlan />
 
+      {/* Court Rental Secrtion */}
+      <CourtRental />
+
       {/* Our Club Secrtion */}
-      <OurClub />
+      
 
       {/* Training Secrtion */}
-      <Training />
+      
 
       {/* Event Secrtion */}
-      <Event />
+      
 
       {/* Join Club Secrtion */}
-      <JoinClub />
+      
 
-      {/* Team Secrtion */}
-      <Team />
+      {/* Team Section */}
+      
 
       {/* Testimonial One Secrtion */}
-      <TestimonialOne />
+     
 
       {/* Shop Secrtion */}
-      <Shop />
+      
 
       {/* Footer Secrtion */}
       <Footer />

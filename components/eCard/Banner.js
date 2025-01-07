@@ -1,13 +1,14 @@
+import React from "react";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import SmallBanner from "../common/SmallBanner";
 
 const Banner = () => {
   return (
-    <SmallBanner title="Pricing Plan">
+    <SmallBanner title="Your Premium E-Card">
       <Breadcrumb
         breadcrumbs={[
-          ["Home", "/"],
-          ["Pricing Plan", "/"],
+          ["User Dashboard", "/"],
+          ["E-Card", "/"],
         ]}
       />
     </SmallBanner>
