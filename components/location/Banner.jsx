@@ -6,7 +6,7 @@ const Banner = () => {
     <SmallBanner title="Select Location">
       <Breadcrumb
         breadcrumbs={[
-          ["User Dashboard", "/"],
+          ["User Dashboard", "/profile"],
           ["Location", "/"],
         ]}
       />

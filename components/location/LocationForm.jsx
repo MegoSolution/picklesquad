@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
-
 const LocationForm = () => {
-  const [locations, setLocations] = useState([]); // State to store location data
-  const [loading, setLoading] = useState(true); // State to manage loading state
-  const [error, setError] = useState(null); // State to handle errors
+  const [locations, setLocations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const BASE_URL = 'http://localhost:3000/v1'; // Replace with your API base URL
-
+  const BASE_URL = 'http://localhost:3000/v1';
   const router = useRouter();
 
   // Fetch all available locations
@@ -43,13 +42,21 @@ const LocationForm = () => {
     fetchLocations();
   }, []);
 
-  const handleBookNow = (locationId) => {
-    router.push(`/booking?locationId=${locationId}`);
+  const handleLocationSelect = (location) => {
+    setSelectedLocation(location.id);
+  };
+
+  const handleNext = () => {
+    if (!selectedLocation) {
+      alert('Please select a location first');
+      return;
+    }
+    router.push(`/booking?locationId=${selectedLocation}`);
   };
 
   return (
     <div className="location-container">
-      <h3>Available Locations</h3>
+      <h3>Choose Court Location</h3>
       <hr className="divider" />
 
       {loading && <p>Loading locations...</p>}
@@ -61,25 +68,31 @@ const LocationForm = () => {
         )}
 
         {!loading && !error && locations.map((location) => (
-          <div key={location.id} className="location-item">
-            <h4>{location.name}</h4>
-            <p>{location.address}</p>
-            <div className="location-footer">
-              <img
-                src={location.image || '/images/default-location.png'}
-                alt={location.name}
-                className="location-image"
-              />
-              <button
-                className="book-now-button"
-                onClick={() => handleBookNow(location.id)}
-              >
-                Book Now
-              </button>
+          <div 
+            key={location.id} 
+            className={`location-item ${selectedLocation === location.id ? 'selected' : ''}`}
+            onClick={() => handleLocationSelect(location)}
+          >
+            <img
+              src={location.image || '/images/default-location.png'}
+              alt={location.name}
+              className="location-image"
+            />
+            <div className="location-details">
+              <h4>{location.name}</h4>
+              <p>{location.address}</p>
+              <p>{location.contact_number}</p>
             </div>
           </div>
         ))}
       </div>
+
+      <button 
+        className="navigation-next-button"
+        onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
   );
 };

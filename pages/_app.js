@@ -21,6 +21,8 @@ import "../styles/location/location.scss";
 import "../styles/program/program.scss";
 import "../styles/program/programDetails.scss";
 import "../styles/profile/profile.scss";
+import "../styles/membership/membership.scss";
+import "../styles/membershipdetail/membershipdetail.scss";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
