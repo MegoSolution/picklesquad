@@ -218,6 +218,7 @@
       h2.section__content-title {
         font-size: 45px;
         margin-bottom: 20px;
+        
         font-weight: bold;
         white-space: nowrap; /* Prevent text wrapping */
         overflow: hidden; /* Optional: Hide overflow if the text is too long */
@@ -1033,162 +1034,11 @@
   }
 }
 
-// shop
-.shop {
-  @include background(
-    $secondary-color,
-    no-repeat,
-    160px,
-    right 20px bottom 30px
-  );
-  // background-image: url("/images/player-bg.png");
 
-  .shop__card {
-    padding: 10px 10px 30px;
-    background-color: $white;
-    box-shadow: $secondary-shadow;
-    border-radius: 5px;
-
-    &:hover {
-      .shop__card-thumb {
-        img {
-          transform: scale(1.2) rotate(-6deg);
-        }
-      }
-    }
-  }
-
-  .shop__card-thumb {
-    border-radius: 5px;
-    overflow: hidden;
-
-    a {
-      display: block;
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    img {
-      width: 100%;
-      border-radius: 5px;
-      transition: $transition;
-    }
-  }
-
-  .shop__card-info {
-    padding: 30px 20px 0px;
-
-    h5 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: $primary-color;
-
-      span {
-        text-decoration: line-through;
-        color: #929292;
-      }
-    }
-  }
-
-  .shop__card-review {
-    padding: 0px 20px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    i {
-      font-size: 24px;
-      color: #ffd600;
-    }
-  }
-
-  .shop__card-cta {
-    margin-top: 30px;
-    padding: 0px 20px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-
-    .cmn-button {
-      padding: 12px 24px;
-    }
-  }
-}
-
-.shop--secondary {
-  background-color: $white;
-  background-position: left 30px bottom 40px;
-  background-image: url("/images/player-bg.png");
-
-  .shop__card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 10px;
-  }
-
-  .shop__card-thumb {
-    width: 100%;
-    max-width: 250px;
-  }
-
-  .shop__card-info,
-  .shop__card-review,
-  .shop__card-cta {
-    padding: 0px;
-  }
-}
-
-// team
-.team {
-  .team__slider,
-  .team__slider--secondary {
-    margin-top: -10px;
-  }
-
-  .team__slider-card {
-    padding: 10px 10px 30px;
-    background-color: $white;
-    box-shadow: $tertiary-shadow;
-    border-radius: 5px;
-    margin-bottom: 40px;
-    margin-top: 10px;
-
-    &:hover {
-      img {
-        transform: scale(1.2) rotate(-6deg);
-      }
-    }
-
-    .team__slider-card__thumb {
-      overflow: hidden;
-      border-radius: 5px;
-    }
-
-    img {
-      border-radius: 5px;
-      width: 100%;
-      transition: $transition;
-    }
-  }
-
-  .team__slider-card__content {
-    text-align: center;
-    padding-top: 30px;
-  }
-
-  .social {
-    margin-top: 20px;
-  }
-}
 
 // join club
 .join-club {
-  background-image: url("/images/join-bg.png"),
+  background-image: url("/images/picklesquad_image/contact.jpg"),
     linear-gradient($secondary-color 50%, $secondary-color 50%);
   background-repeat: no-repeat;
   background-size: auto 100%, 100%;
@@ -1197,7 +1047,9 @@
   .section__content {
     h2 {
       margin-bottom: 0px;
+      text-align: center;
     }
+
   }
 
   .join-club__form {
@@ -1424,6 +1276,128 @@ html {
     background-color: #e8e8e8;
     color: #2c58a8;
   }
+}
+/* Container for Pricing Table */
+.table-container-pricing {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Full width */
+  margin-top: 20px;
+  border: 1px solid #ffffff; /* White border for the table */
+  border-radius: 5px;
+  overflow: hidden; /* Ensures content stays within bounds */
+}
+
+/* Row Styling */
+.table-row-pricing {
+  display: flex;
+  width: 100%; /* Full row width */
+}
+
+/* Left Column Styling */
+.table-left-pricing {
+  background-color: #934523; /* Deep red color */
+  color: #ffffff; /* White text color */
+  flex: 1; /* Column takes up one part of the width */
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px; /* Letter spacing for readability */
+  line-height: 1.5; /* Adjust line height for better visual appearance */
+  font-size: 1.1rem; /* Consistent font size */
+  border: 1px solid #ffffff; /* White border around cells */
+}
+
+/* Right Column Styling */
+.table-right-pricing {
+  background-color: #F3E7C5; /* Cream color */
+  color: #2C58A8; /* Blue text color */
+  flex: 2; /* Column takes up two parts of the width */
+  padding: 15px;
+  font-size: 1.1rem; /* Slightly smaller text */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.6; /* Line height for better readability */
+  border: 1px solid #ffffff; /* White border around cells */
+}
+
+/* Spacer for consistent vertical spacing */
+.spacer {
+  height: 30px; /* Height for spacing between sections */
+}
+
+/* Container for Pricing Tables */
+.pricing-table-container {
+  margin-top: 30px; /* Top margin for spacing */
+}
+
+.pricing-header {
+  display: flex;
+  align-items: center; /* Vertically aligns items */
+  justify-content: flex-start; /* Aligns items to the left */
+  color: #F3E7C5; /* Cream color */
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px; /* Spacing below the header */
+}
+.pricing-header img {
+  width: 40px; /* Adjust size for the icon */
+  height: 40px;
+  margin-right: 10px; /* Space between icon and text */
+}
+.pricing-header-text {
+  display: flex;
+  flex-direction: column; /* Aligns text vertically */
+}
+
+.pricing-header-title {
+  font-size: 1rem; /* Title size */
+  color: #F3E7C5;
+  margin: 0; /* Removes default margin */
+}
+
+.pricing-header-time {
+  font-size: 1.2rem; /* Time size */
+  color: #F3E7C5;
+  margin: 0; /* Removes default margin */
+}
+/* Logo Styling for Opening Hours */
+.opening-hours-logo {
+  width: 50px; /* Adjust size for logo */
+  height: 50px;
+  vertical-align: middle; /* Align logo with text */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+/* Pricing Table Styling */
+.pricing-table {
+  width: 100%; /* Full width table */
+  border-collapse: collapse; /* Collapse borders for neatness */
+  text-align: center; /* Center-align text */
+  background-color: #F3E7C5; /* Cream background */
+  border: 1px solid #ffffff; /* White border around table */
+}
+
+/* Header Cells in Pricing Table */
+.pricing-label {
+  background-color: #934523; /* Deep red background */
+  color: #ffffff; /* White text */
+  font-weight: bold; /* Bold text */
+  padding: 10px; /* Padding for spacing */
+}
+
+/* Value Cells in Pricing Table */
+.pricing-value {
+  color: #2C58A8; /* Blue text */
+  padding: 10px; /* Padding for spacing */
+  font-weight: bold; /* Bold text */
+  border: 2px solid #ffffff; /* White border around cells */
 }
 
 

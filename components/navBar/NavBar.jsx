@@ -54,6 +54,21 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     <Image src={cls === "" ? Logo : Logo_light} alt="Logo" />
                   </Link>
                 </div>
+
+                <div className="nav__uncollapsed">
+                  <Link href="/sign-in" className="cmn-button-nav">
+                    Sign In / Sign Up
+                  </Link>
+                  <button
+                    className="nav__bar d-block d-xl-none"
+                    onClick={() => setActive(!active)}
+                  >
+                    <span className="icon-bar top-bar"></span>
+                    <span className="icon-bar middle-bar"></span>
+                    <span className="icon-bar bottom-bar"></span>
+                  </button>
+                </div>
+
                 <div className={`nav__menu ${active ? "nav__menu-active" : ""}`}>
                   <div className="nav__menu-logo d-flex d-xl-none">
                     <Link href="/" className="text-center hide-nav">
@@ -139,48 +154,13 @@ const NavBar = ({ cls = "header--secondary" }) => {
                         </li>
                       );
                     })}
-
-                    {/* Sign In/Sign Up or Logout */}
-                    {!user ? (
-                      <li className="nav__menu-item d-block d-md-none">
-                        <Link href="/sign-in" className="cmn-button cmn-button--secondary">
-                          Sign In/Sign Up
-                        </Link>
-                      </li>
-                    ) : (
-                      <li className="nav__menu-item d-block d-md-none">
-                        <HandleLogout />
-                      </li>
-                    )}
                   </ul>
-
-                </div>
-
-                <div className="nav__uncollapsed">
-                  <div className="nav__uncollapsed-item d-none d-md-flex">
-                    {!user ? (
-                      <Link href="/sign-in" className="cmn-button-nav">
-                        Sign In/Sign Up
-                      </Link>
-                    ) : (
-                      <HandleLogout />
-                    )}
-                  </div>
-                  <button
-                    className="nav__bar d-block d-xl-none"
-                    onClick={() => setActive(!active)}
-                  >
-                    <span className="icon-bar top-bar"></span>
-                    <span className="icon-bar middle-bar"></span>
-                    <span className="icon-bar bottom-bar"></span>
-                  </button>
                 </div>
               </div>
             </nav>
           </div>
         </div>
       </div>
-      <div className={`backdrop ${active ? "backdrop-active" : ""}`}></div>
     </header>
   );
 };

@@ -70,7 +70,7 @@ const About = () => {
                               />
                             </div>
                             <h6>Professional Trainings</h6>
-                            <Link href="/about" className="cmn-button--learn-more">
+                            <Link href="/programmes" className="cmn-button--learn-more">
                               Learn More
                             </Link>
                           </div>
@@ -86,7 +86,7 @@ const About = () => {
                               />
                             </div>
                             <h6>Facilities</h6>
-                            <Link href="/about" className="cmn-button--learn-more">
+                            <Link href="/pricing" className="cmn-button--learn-more">
                               Learn More
                             </Link>
                           </div>

@@ -11,7 +11,7 @@ const FinalView = () => {
             learning how to nail that perfect serve, feel free to take up a
             lesson.
           </p>
-          <a href="/book" className="btn btn-primary first-time-btn">
+          <a href="/sign-in" className="btn btn-primary first-time-btn">
             Join Us!
           </a>
         </div>

@@ -20,17 +20,17 @@ with your family and friends by booking one of our
 courts – or if you feel like learning how to nail that
 perfect serve, feel free to take up a lesson.
               </p>
-              <div className="banner__content-cta">
-                <Link href="/join-club" className="cmn-button">
+             
+                <Link href="/sign-in" className="cmn-button">
                 Let's Play
                 </Link>
                 <Link
-                  href="/about"
+                  href="/programmes"
                   className="cmn-button"
                 >
                   First Time
                 </Link>
-              </div>
+              
             </div>
           </div>
         </div>

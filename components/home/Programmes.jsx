@@ -12,7 +12,7 @@ with your family and friends by booking one of our
 courts – or if you feel like learning how to nail that
 perfect serve, feel free to take up a lesson.
           </p>
-          <a href="/book" className="btn btn-primary first-time-btn">
+          <a href="/programmes" className="btn btn-primary first-time-btn">
             View Schedule
           </a>
         </div>

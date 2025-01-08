@@ -35,7 +35,7 @@ const Intro = () => {
           <div className="additional-info">
             <p className="sub-title">Number of recommended lessons:</p>
             <p className="info-description">
-              Participants are expected to attend just one Intro Lesson.
+              Participants are expected to attend just one Intro lesson.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ const Intro = () => {
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/view.png"
+          src="/images/programmes/intro.jpg"
           alt="Coach Session"
           className="session-image"
         />

@@ -3,7 +3,7 @@ const OpenPlay = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/private-event.jpg"
+          src="/images/programmes/openplay.jpg"
           alt="Private Event"
           className="event-image"
         />
@@ -21,12 +21,12 @@ const OpenPlay = () => {
                 <tr>
                   <td className="detail-label--two">Skill Level</td>
                   <td className="detail-value--two" colSpan="3">
-                    A total newbie to the sport.
+                    Advanced
                   </td>
                 </tr>
                 <tr>
                   <td className="detail-label--two">Intensity</td>
-                  <td className="detail-value--two">0-1</td>
+                  <td className="detail-value--two">5</td>
                   <td className="detail-label--two">Duration</td>
                   <td className="detail-value--two">90 mins</td>
                 </tr>
@@ -34,7 +34,7 @@ const OpenPlay = () => {
             </table>
           </div>
           <h5 className="sub-title">Number of recommended lessons:</h5>
-          <p>1-5 lessons</p>
+          <p>2-3 Intermediate Lessons Before Joining</p>
           <a href="/book" className="btn btn-light book-now-btn">
             Book a Slot!
           </a>

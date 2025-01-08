@@ -11,7 +11,7 @@ const CoachSession = () => {
             learning how to nail that perfect serve, feel free to take up a
             lesson.
           </p>
-          <a href="/book" className="btn btn-primary first-time-btn">
+          <a href="/programmes" className="btn btn-primary first-time-btn">
             First Time
           </a>
         </div>

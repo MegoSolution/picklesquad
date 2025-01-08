@@ -46,7 +46,7 @@ const Advance = () => {
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/view.png"
+          src="/images/programmes/intermediate.jpg"
           alt="Coach Session"
           className="session-image"
         />

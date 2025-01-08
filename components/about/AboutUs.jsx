@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import about_thumb from "/public/images/about-thumb.png";
+import about_thumb from "/public/images/about-thumb.jpg";
 
 const AboutUs = () => {
   return (

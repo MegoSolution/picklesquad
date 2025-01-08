@@ -17,6 +17,19 @@
     }
   }
 }
+.cmn-button-nav {
+  background-color: #2c58a8;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cmn-button-nav:hover {
+  background-color: #1a3a6e;
+}
 
 .banner--secondary-pricing {
   display: flex; /* Align content horizontally */
@@ -24,7 +37,7 @@
   justify-content: space-between; /* Space out the logo and text content */
   padding: 0 40px; /* Add horizontal padding for better spacing */
   height: 100vh; /* Full-screen height */
-  background-image: url(/images/banner/pricing.png);
+  background-image: url(/images/banner/pricing.jpg);
   background-repeat: no-repeat; /* Prevent image repetition */
   background-size: cover; /* Ensure the image covers the entire section */
   background-position: center; /* Center the background image */
@@ -110,6 +123,8 @@
   text-decoration: none; /* Remove underline */
   display: inline-block; /* Ensure proper alignment */
   transition: all 0.3s ease; /* Smooth transition on hover */
+  white-space: nowrap;
+  margin-left: -20px;
 }
 
 /* Hover Effect */
@@ -131,6 +146,7 @@
   // join club
   .join-club {
     background-position: right -200px top, left top;
+    background-color: #f8f3e9;
   }
 
   .join-club--secondary {
@@ -147,7 +163,17 @@
     background-size: cover; /* Ensure the image covers the entire section */
     background-position: center; /* Center the background image */
   }
-   
+  .banner--secondary-pricing {
+    display: flex; /* Align content horizontally */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Space out the logo and text content */
+    padding: 0 40px; /* Add horizontal padding for better spacing */
+    height: 100vh; /* Full-screen height */
+    background-image: url(/images/banner/pricing.jpg);
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the background image */
+  } 
   
   .banner--tertiary {
     background-image: url("/images/flag-alt.png"),
@@ -713,6 +739,7 @@
       input,
       textarea {
         padding: 10px 16px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -1828,7 +1855,7 @@
       margin-bottom: 5px;
 
       &:nth-last-of-type(1) {
-        margin-top: 20px;
+        
 
         .cmn-button {
           width: 100%;
@@ -1901,6 +1928,7 @@
   // club
   .club {
     background-position: right 15px bottom 20px;
+    background-color: #f8f3e9;
   }
 
   // sponsor
@@ -2255,7 +2283,11 @@
       }
     }
   }
-  
+  .pricing-container {
+    margin-top: 320px; /* Adds 300px margin at the top */
+    position: relative;
+    z-index: 1; /* Ensures it appears above other elements */
+  }
   /* Pagination */
   .pagination {
     gap: 8px;
@@ -2295,7 +2327,17 @@
     background-size: cover; /* Makes the background image cover the entire area */
     background-position: center top; /* Focus on the top center */
   }
-  
+  .banner--secondary-pricing {
+    display: flex; /* Align content horizontally */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Space out the logo and text content */
+    padding: 0 40px; /* Add horizontal padding for better spacing */
+    height: 100vh; /* Full-screen height */
+    background-image: url(/images/banner/pricing-phone.jpg);
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the background image */
+  }
   .banner--inner {
     padding: 200px 20px 40px; /* Moves the content further down */
   }
@@ -2327,22 +2369,26 @@
   }
   
   .cmn-button {
-    padding: 10px 100px; /* Adjust padding for a longer and taller button */
-    font-size: 16px; /* Adjust text size */
-    font-weight: bold; /* Bold text */
-    border-radius: 50px; /* Fully rounded edges */
-    text-align: center; /* Center the text */
-    color: #ffffff; /* White text color */
-    background-color: #2C58A8; /* Blue background */
-    border: 2px solid #ffffff; /* White border */
-    display: inline-block; /* Ensure proper alignment and spacing */
-    transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+    display: block; /* Ensure the button takes up full width in its container */
+    margin: 20px auto; /* Centers the button horizontally */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: bold; /* Makes the text bold */
+    background-color: #F3E7C5; /* Button color */
+    color: #ffffff; /* Text color */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    text-align: center; /* Center-align text */
+    white-space: nowrap;
   }
-  
+  .button-container {
+    text-align: center; /* Centers the button horizontally */
+    margin-top: 20px; /* Adds space above the button */
+  }
   .cmn-button--secondary {
     
-    border: 2px solid #ffffff;
-    color: #ffffff;
+    border: 2px solid #2C58A8;
+    color: #2C58A8;
   }
   
   
