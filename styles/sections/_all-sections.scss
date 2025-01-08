@@ -378,7 +378,7 @@
       height: 1px;
       border: 0px;
       opacity: 1;
-      background-color: rgba(12, 169, 64, 0.15);
+      background-color: #f8f3e9;
       margin: 20px 0px;
     }
   }
@@ -387,7 +387,7 @@
 // club
 .club {
   overflow-x: clip;
-  @include background($secondary-color, no-repeat, auto, left 40px bottom 70px);
+  @include background(#f8f3e9, no-repeat, auto, left 40px bottom 70px);
 
   .club__thumb {
     position: relative;
@@ -1039,7 +1039,7 @@
 // join club
 .join-club {
   background-image: url("/images/picklesquad_image/contact.jpg"),
-    linear-gradient($secondary-color 50%, $secondary-color 50%);
+    linear-gradient(#f8f3e9 50%, #f8f3e9 50%);
   background-repeat: no-repeat;
   background-size: auto 100%, 100%;
   background-position: right top, left top;

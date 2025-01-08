@@ -136,7 +136,7 @@ i {
     color: #2C58A8;
     margin-bottom: 20px;
     font-weight: bold;
-    
+    text-align: center;
     overflow: hidden; /* Optional: Hide overflow if the text is too long */
     text-overflow: ellipsis; /* Optional: Add ellipsis for overflowed text */
   }
@@ -166,7 +166,7 @@ i {
       color: #2C58A8;
       margin-bottom: 0px;
       font-size: auto;
-      text-align: justify;
+      text-align: center;
     }
   }
   .banner__content-text {

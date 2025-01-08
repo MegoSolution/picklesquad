@@ -19,7 +19,7 @@ const Footer = () => {
                   <h5>Social</h5>
                   <ul className="social-icons horizontal-icons">
                     <li>
-                      <Link href="/">
+                      <Link href="https://www.instagram.com/picklesquad.my/">
                         <Image
                           src="/images/picklesquad_image/footer/ig.png"
                           alt="Instagram"

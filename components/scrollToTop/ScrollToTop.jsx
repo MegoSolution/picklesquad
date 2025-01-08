@@ -5,7 +5,7 @@ const WhatsAppButton = () => {
 
   // Function to handle WhatsApp redirection
   const goToWhatsAppHandler = () => {
-    const whatsappNumber = "60184040438"; // Replace with your WhatsApp number
+    const whatsappNumber = "60123164698"; // Replace with your WhatsApp number
     const defaultMessage = "Hello, I would like to inquire about your court.";
     const encodedMessage = encodeURIComponent(defaultMessage);
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
