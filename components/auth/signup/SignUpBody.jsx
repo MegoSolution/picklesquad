@@ -43,7 +43,7 @@ const SignUpBody = ({ onToggleForm }) => {
 
   return (
     <section
-      className="section section--space-bottom authentication wow fadeInUp"
+      className="section section--space-bottom authentication auth-page wow fadeInUp"
       data-wow-duration="0.4s"
     >
       <div className="container">

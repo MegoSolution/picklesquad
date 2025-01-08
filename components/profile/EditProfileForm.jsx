@@ -36,8 +36,10 @@ const EditProfileForm = ({ user, onClose }) => {
   };
 
   return (
-    <div className="edit-profile-form">
-      <h2>Edit Profile</h2>
+    <div className="edit-profile__tab">
+      <button className="back-button" onClick={onClose}>
+        &lt; Back
+      </button>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="input-single profile-input-single">
@@ -101,9 +103,6 @@ const EditProfileForm = ({ user, onClose }) => {
         <div className="section__cta text-start">
           <button type="submit" className="cmn-button profile-update-button">
             Update Profile
-          </button>
-          <button type="button" className="cmn-button profile-cancel-button" onClick={onClose}>
-            Cancel
           </button>
         </div>
       </form>
