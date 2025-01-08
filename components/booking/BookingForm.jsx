@@ -66,14 +66,18 @@ const BookingForm = () => {
 
   // Fetch available times for the selected date
   const fetchAvailableTimes = (date) => {
-    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
-    fetch(`${BASE_URL}/bookings/availability/times?date=${date}&locationId=${locationId}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorageDetails.BEARER_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-    })
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
+      .token;
+    fetch(
+      `${BASE_URL}/bookings/availability/times?date=${date}&locationId=${locationId}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorageDetails.BEARER_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch available times');
@@ -90,14 +94,17 @@ const BookingForm = () => {
 
   // Fetch available courts for the selected date and time
   const fetchAvailableCourts = (date, startTime, endTime) => {
-    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
+      .token;
 
-    fetch(`${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&locationId=${locationId}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${BEARER_TOKEN}`,
-        'Content-Type': 'application/json'
-
+    fetch(
+      `${BASE_URL}/bookings/availability/courts?date=${date}&start_time=${startTime}&end_time=${endTime}&locationId=${locationId}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
       }
     )
       .then((response) => {
