@@ -38,15 +38,14 @@ const SignInBody = ({ onToggleForm }) => {
 
   return (
     <section
-      className="section section--space-bottom authentication authentication--alt wow fadeInUp"
+      className="section section--space-bottom authentication auth-page authentication--alt wow fadeInUp"
       data-wow-duration="0.4s"
     >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8 col-xxl-6">
             <div className="authentication__wrapper">
-              <h4>Sign in to Golftio</h4>
-              <p>Sign in to your account and Join our club</p>
+              <h4 className='sign-in-header'>Sign In</h4>
               <div className="error__inner">
                 {error && <p className="error">{error}</p>}
               </div>
@@ -74,7 +73,7 @@ const SignInBody = ({ onToggleForm }) => {
                   />
                 </div>
                 <p className="auth-links secondary-text">
-                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                  <a onClick={onToggleForm} className="sign-in-link">
                     Don't have an account? Sign Up
                   </a>
                   <Link href="/contact-us">Forgot Password?</Link>
