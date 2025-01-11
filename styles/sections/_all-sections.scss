@@ -170,21 +170,9 @@
   height: 100%;
   object-fit: cover; /* Ensures the image covers the entire area */
 }
-  .about--secondary__content-wrapper h2 {
-    font-size: 2rem; /* Smaller title */
-    margin-bottom: 20px; /* Adjust spacing */
-  }
   
-  .about--secondary__content-wrapper h5 {
-    font-size: 1rem; /* Smaller subtitle */
-    margin-bottom: 10px; /* Adjust spacing */
-  }
   
-  .about--secondary__content-wrapper p {
-    font-size: 0.9rem; /* Smaller paragraph text */
-    line-height: 1.5; /* Adjust line spacing */
-    margin-bottom: 15px; /* Adjust spacing */
-  }
+  
   
   
   .about--secondary__thumb {
@@ -1159,21 +1147,20 @@ html {
 }
 
 .session-content .sub-title {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #2c58a8;
   margin-bottom: 10px;
 }
 
 .session-content .title {
-  font-size: 2.5rem;
+
   font-weight: bold;
   color: #2c58a8;
   margin-bottom: 20px;
 }
 
 .session-content p {
-  font-size: 1rem;
   font-weight: normal;
   line-height: 1.6;
   color: #2c58a8;
@@ -1412,9 +1399,9 @@ html {
   transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
-  font-size: 1rem; /* Standard button font size */
+  font-size: 22px; /* Standard button font size */
   width: auto; /* Default width */
-  max-width: 200px; /* Prevent overly large buttons */
+  
 }
 
 .first-time-btn:hover {
@@ -1585,24 +1572,24 @@ html {
 }
 
 .event-content {
-  max-width: 500px;
+  max-width: 600px;
   text-align: left; /* Align text to the left */
 }
 
 .event-content .sub-title {
-  font-size: 1rem;
+
   color: #ffffff !important;
   margin-bottom: 15px;
 }
 
 .event-content .title {
-  font-size: 3rem;
+
   color: #ffffff !important;
   margin-bottom: 20px;
 }
 
 .event-content p {
-  font-size: 1rem;
+
   line-height: 1.5;
   color: #ffffff !important;
   margin-bottom: 30px;
@@ -1619,9 +1606,9 @@ html {
   transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
-  font-size: 1rem; /* Standard button font size */
+  font-size: 22px; /* Standard button font size */
   width: auto; /* Default width */
-  max-width: 200px; /* Prevent overly large buttons */
+
   margin-top: 15px; /* Add spacing above the button */
   margin-bottom: 0; /* Ensure spacing below is consistent */
 }

@@ -130,9 +130,8 @@ i {
     text-align: center;
   }
 
-  .section__content-title
-  {
-    font-size: 36px;
+  .section__content-title {
+    font-size: clamp(24px, 5vw, 50px); /* Adjust between 24px (min), 5vw (dynamic), and 36px (max) */
     color: #2C58A8;
     margin-bottom: 20px;
     font-weight: bold;
@@ -140,6 +139,7 @@ i {
     overflow: hidden; /* Optional: Hide overflow if the text is too long */
     text-overflow: ellipsis; /* Optional: Add ellipsis for overflowed text */
   }
+  
 
   .banner__content-title {
     color: white;

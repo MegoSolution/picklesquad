@@ -42,6 +42,47 @@
   background-size: cover; /* Ensure the image covers the entire section */
   background-position: center; /* Center the background image */
 }
+ // heading styles
+ h1,
+ .banner__content-title {
+   font-size: 36px;
+   line-height: 46px;
+   
+ }
+
+ h2,
+ .section__content-title,
+ .section__header-title {
+   font-size: 65px ;
+   line-height: 65px;
+  
+  color: #2C58A8;
+ }
+
+ h3 {
+   font-size: 24px;
+   line-height: 34px;
+ }
+
+ h4 {
+   font-size: 20px;
+   line-height: 30px;
+ }
+
+ h5 {
+   font-size: 30px;
+   line-height: 28px;
+ }
+ p{
+  font-size: 25px;
+   line-height: 28px;
+   color:#2C58A8;
+
+ }
+ h6 {
+   font-size: 16px;
+   line-height: 26px;
+ }
 
 .banner--secondary {
   display: flex; /* Align content horizontally */
@@ -78,20 +119,34 @@
   margin-right: auto; /* Push the content to the left */
 }
 
-.banner__content-title {
-  font-size: 50px; 
-  line-height: 48px;
+.banner__content-pricing-title {
+  font-size: 72px; /* Larger title for better prominence */
+  line-height: 80px; /* Adequate spacing between lines */
   font-weight: bold;
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Adjust margin for better spacing */
+  margin-top: 20px; /* Top margin remains */
+  
+}
+
+.banner__content-title {
+  font-size: 72px; /* Larger title for better prominence */
+  line-height: 80px; /* Adequate spacing between lines */
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 30px; /* Adjust margin for better spacing */
+  margin-top: 250px; /* Top margin remains */
+  
 }
 
 .banner__content-text {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 25px; /* Larger body text for better readability */
+  line-height: 35px; /* Enhanced spacing for multi-line text */
   color: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Increase margin for spacing */
+ 
 }
+
 
 .banner__content-cta {
   display: flex;
@@ -100,7 +155,7 @@
 
 .cmn-button {
   padding: 15px 50px; /* Adjust padding for a longer and taller button */
-  font-size: 16px; /* Adjust text size */
+  font-size: 22px; /* Adjust text size */
   font-weight: bold; /* Bold text */
   border-radius: 50px; /* Fully rounded edges */
   text-align: center; /* Center the text */
@@ -113,8 +168,8 @@
 }
 
 .cmn-button-nav {
-  padding: 5px 8px; /* Adjust padding for the button size */
-  font-size: 12px; /* Adjust font size for smaller text */
+  
+  font-size: 20px; /* Adjust font size for smaller text */
   font-weight: bold; /* Bold text */
   color: #2C58A8 !important; /* Blue text color */
   background-color: #f3e9b8; /* Light yellow background */
@@ -126,6 +181,7 @@
   transition: all 0.3s ease; /* Smooth transition on hover */
   white-space: nowrap;
   margin-left: -20px;
+  margin-right: 20px;
 }
 .booking-history-container {
   background-color: #fff;
@@ -647,7 +703,7 @@
   
 @media (max-width: 540px) {
   .about--secondary__content-wrapper {
-    padding: 170px 10px;
+    padding: 200px 10px;
     margin-top: 0;
     max-width: 100%;
     border-radius: 5px;
@@ -2443,6 +2499,13 @@
     line-height: 38px;
     color: #ffffff; /* Ensure readability on the banner */
     margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  .banner__content-pricing-title {
+    font-size: 28px; /* Match the font size of the second image */
+    line-height: 38px;
+    color: #ffffff; /* Ensure readability on the banner */
+    margin-top: 50px;
     margin-bottom: 15px;
   }
   

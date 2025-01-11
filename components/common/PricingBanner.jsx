@@ -11,7 +11,7 @@ const PricingBanner = () => {
               data-wow-duration="0.4s"
             >
               
-              <h1 className="banner__content-title">
+              <h1 className="banner__content-pricing-title">
               Book Your Session
               </h1>
               <p className="primary-text banner__content-text">

@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../../utils/constants";
 
 const BookingHistoryForm = () => {
   const [viewMode, setViewMode] = useState("all"); // Default to "all"
   const [bookings, setBookings] = useState([]);
 
-  const BASE_URL = "http://localhost:3000/v1";
-
   const fetchBookings = (mode) => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem("tokens")).access.token;
 
-    fetch(`${BASE_URL}/bookings?mode=${mode}`, {
+    const modeParam =
+      mode === "all" ? "" : `mode=${mode === "completed" ? "history" : mode}`;
+    const url = `${BASE_URL}/bookings${modeParam ? `?${modeParam}` : ""}`;
+
+    fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${BEARER_TOKEN}`,
@@ -42,7 +45,7 @@ const BookingHistoryForm = () => {
 
       {/* Tabs */}
       <div className="tabs-container">
-        {["all", "upcoming", "completed", "canceled"].map((tab) => (
+        {["all", "upcoming", "completed"].map((tab) => (
           <button
             key={tab}
             className={`tab-button ${viewMode === tab ? "active" : ""}`}
@@ -59,8 +62,16 @@ const BookingHistoryForm = () => {
           bookings.map((booking) => (
             <div key={booking._id} className="booking-item">
               <div className="date-badge">
-                <span>{new Date(booking.date).toLocaleString("en-US", { weekday: "short" })}</span>
-                <span>{new Date(booking.date).toLocaleDateString("en-US", { month: "short" })}</span>
+                <span>
+                  {new Date(booking.date).toLocaleString("en-US", {
+                    weekday: "short",
+                  })}
+                </span>
+                <span>
+                  {new Date(booking.date).toLocaleDateString("en-US", {
+                    month: "short",
+                  })}
+                </span>
                 <span>{new Date(booking.date).getDate()}</span>
               </div>
               <div className="booking-details">
@@ -68,16 +79,19 @@ const BookingHistoryForm = () => {
                   <strong>Booking ID:</strong> {booking._id}
                 </p>
                 <p>
-                  <strong>Activity:</strong> {booking.activity || "Not Specified"}
+                  <strong>Activity:</strong>{" "}
+                  {booking.activity || "Not Specified"}
                 </p>
                 <p>
-                  <strong>Time:</strong> {booking.startTime} - {booking.endTime}
+                  <strong>Time:</strong> {booking.startTime} -{" "}
+                  {booking.endTime}
                 </p>
                 <p>
                   <strong>Paid:</strong> RM{booking.totalCost}
                 </p>
                 <p className={`status ${booking.status.toLowerCase()}`}>
-                  {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                  {booking.status.charAt(0).toUpperCase() +
+                    booking.status.slice(1)}
                 </p>
               </div>
             </div>

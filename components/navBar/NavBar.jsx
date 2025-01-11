@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { navData } from "./navData";
 import Logo_light from "/public/images/Picklesquad_image/logo-07.png";
 import Logo from "/public/images/Picklesquad_image/logo-07.png";
+import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
 import HandleLogout from "../auth/SignOutBody";
 
@@ -12,7 +13,8 @@ const NavBar = ({ cls = "header--secondary" }) => {
   const [active, setActive] = useState(false);
   const [dropdownId, setDropdownId] = useState("");
   const [subDropdown, setSubDropdown] = useState("");
-  const user = useSelector((state) => state.user);
+  const [user, setUser] = useState(null);
+  const router = useRouter();
 
   const handleActive = () => {
     setActive(false);
@@ -36,11 +38,21 @@ const NavBar = ({ cls = "header--secondary" }) => {
   };
 
   useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    setUser(storedUser);
     window.addEventListener("scroll", navBarTop);
     return () => {
       window.removeEventListener("scroll", navBarTop);
     };
   }, []);
+
+  const handleBookNowClick = () => {
+    if (user) {
+      router.push('/booking');
+    } else {
+      router.push('/sign-in?redirect=/booking');
+    }
+  };
 
   return (
     <header className={`header ${cls} ${windowHeight > 50 ? "header-active" : ""}`}>
@@ -54,21 +66,6 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     <Image src={cls === "" ? Logo : Logo_light} alt="Logo" />
                   </Link>
                 </div>
-
-                <div className="nav__uncollapsed">
-                  <Link href="/sign-in" className="cmn-button-nav">
-                    Sign In / Sign Up
-                  </Link>
-                  <button
-                    className="nav__bar d-block d-xl-none"
-                    onClick={() => setActive(!active)}
-                  >
-                    <span className="icon-bar top-bar"></span>
-                    <span className="icon-bar middle-bar"></span>
-                    <span className="icon-bar bottom-bar"></span>
-                  </button>
-                </div>
-
                 <div className={`nav__menu ${active ? "nav__menu-active" : ""}`}>
                   <div className="nav__menu-logo d-flex d-xl-none">
                     <Link href="/" className="text-center hide-nav">
@@ -95,6 +92,7 @@ const NavBar = ({ cls = "header--secondary" }) => {
                           >
                             {itm}
                           </Link>
+                          
                           {dropdown_itms && (
                             <ul
                               className={`nav__dropdown ${
@@ -154,13 +152,61 @@ const NavBar = ({ cls = "header--secondary" }) => {
                         </li>
                       );
                     })}
+
+                    {/* Sign In/Sign Up or Book Now */}
+                    {!user ? (
+                      <li className="nav__menu-item d-block d-md-none">
+                        <Link href="/sign-in" className="nav__menu-link">
+                          Sign In
+                        </Link>
+                      </li>
+                    ) : (
+                      <li className="nav__menu-item d-block d-md-none">
+                        <button onClick={handleBookNowClick} className="nav__menu-link">
+                          Book Now
+                        </button>
+                      </li>
+                    )}
                   </ul>
+
+                </div>
+
+                <div className="nav__uncollapsed">
+                  <div className="nav__uncollapsed-item d-none d-md-flex">
+                    {router.pathname !== '/sign-in' && router.pathname !== '/sign-up' && (
+                    <>
+                      {!user ? (
+                        <>
+                          <Link href="/sign-in" className="cmn-button-nav">
+                            Sign In
+                          </Link>
+                          <button onClick={handleBookNowClick} className="cmn-button-nav">
+                            Book Now
+                          </button>
+                        </>
+                      ) : (
+                        <button onClick={handleBookNowClick} className="btn btn-light book-now-btn-nav">
+                          Book Now
+                        </button>
+                      )}
+                    </>
+                    )}
+                  </div>
+                  <button
+                    className="nav__bar d-block d-xl-none"
+                    onClick={() => setActive(!active)}
+                  >
+                    <span className="icon-bar top-bar"></span>
+                    <span className="icon-bar middle-bar"></span>
+                    <span className="icon-bar bottom-bar"></span>
+                  </button>
                 </div>
               </div>
             </nav>
           </div>
         </div>
       </div>
+      <div className={`backdrop ${active ? "backdrop-active" : ""}`}></div>
     </header>
   );
 };
