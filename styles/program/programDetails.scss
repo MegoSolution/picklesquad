@@ -1,5 +1,5 @@
 .program-details {
-  max-width: 1200px;
+  max-width: 50%;
   margin: 40px auto;
   padding: 40px; 
   background-color: #f9f9f9;
@@ -8,26 +8,258 @@
   font-family: 'Arial', sans-serif;
 }
 
-.program-details .program-title {
-  font-size: 32px;
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 300px; 
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.program-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 45%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 70%;
+}
+
+.program-title {
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
+  margin: 0;
+  line-height: 1.2;
+  color: white;
+  word-wrap: break-word; 
 }
 
 .program-details .program-details-content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .program-details .program-info p {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   line-height: 1.6;
 }
 
 .program-actions {
   display: flex;
   gap: 20px;  /* Adds space between the buttons */
+}
+.program-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-top: 3px solid #161616;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.footer-detail {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+.footer-icon {
+  font-size: 18px;
+  color: #007bff; /* Blue color for icons */
+  margin-top: 2px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.3; /* Adjust line spacing for tighter gaps */
+}
+
+.footer-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff; /* Blue color for the price */
+}
+
+.footer-button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer-button:hover {
+  background: #0056b3;
+}
+
+.footer-image-icon {
+  width: 20px; /* Adjust to your icon size */
+  height: 20px; /* Adjust to your icon size */
+  object-fit: contain;
+}
+
+.event-dates-container {
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Arial", sans-serif;
+  max-width: 50%;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.event-header h2 {
+  font-size: 35px;
+  color: #3e76b2;
+}
+
+.view-all-link {
+  font-size: 14px;
+  color: #3e76b2;
+  text-decoration: none;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-items {
+  display: flex;
+  gap: 15px;
+  padding: 10px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  justify-content: flex-start; /* Ensures items are aligned properly */
+}
+
+.carousel-items::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row; /* Align children (icon and details) in a row */
+  align-items: flex-start; /* Vertically center-align the icon and details */
+  gap: 15px; /* Add spacing between the icon and details */
+  width: 250px;
+  height: 150px;
+  padding: 15px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e90ff, #ff5a5f);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  max-height: 200px;
+}
+
+.event-card::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+.event-icon {
+  flex-shrink: 0; /* Prevent the icon from resizing */
+}
+
+.event-icon img {
+  width: 40px; 
+  height: 40px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column; /* Align text vertically */
+  justify-content: left;
+}
+
+.event-details h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #f0f0f0; /* Subtle color variation */
+  line-height: 1.3;
+}
+
+.event-date {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #f0f0f0; /* Subtle color variation */
+  line-height: 1.3;
+}
+
+.event-coach {
+  font-size: 12px;
+  margin: 0;
+  color: #ffffff; /* Slightly lighter color */
+  line-height: 1.3;
+}
+
+.event-status {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  gap: 5px; /* Space between the icon and the text */
+}
+
+.event-status.open {
+  color: rgb(91, 214, 91);
+}
+
+.status-icon {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  object-fit: contain; /* Ensure the image scales properly */
+}
+
+
+.scroll-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #007bff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.left-btn {
+  left: -20px;
+}
+
+.right-btn {
+  right: -20px;
 }
