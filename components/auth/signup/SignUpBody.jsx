@@ -1,12 +1,11 @@
-import Link from "next/link";
-import GoogleLoginButton from "./GoogleLoginButton";
-import { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import GoogleLoginButton from './GoogleLoginButton';
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { BASE_URL } from '../../../utils/constants';
 
-const BASE_URL = 'http://localhost:3000/v1';
-
-const SignUpBody = () => {
+const SignUpBody = ({ onToggleForm }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,15 +27,23 @@ const SignUpBody = () => {
         password,
       });
       localStorage.setItem('tokens', JSON.stringify(response.data.tokens));
-      router.push('/profile'); // Redirect to the dashboard page
+      localStorage.setItem(
+        'membership',
+        JSON.stringify(response.data.user.membership)
+      );
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      const redirect = router.query.redirect || '/profile';
+      router.push(redirect); // Redirect to the specified page or profile page
     } catch (err) {
-      setError('Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.');
+      setError(
+        'Registration failed. Please try again. Please make sure that your password is at least 8 characters long and contains at least one letter and one number.'
+      );
     }
   };
 
   return (
     <section
-      className="section section--space-bottom authentication wow fadeInUp"
+      className="section section--space-bottom authentication auth-page wow fadeInUp"
       data-wow-duration="0.4s"
     >
       <div className="container">
@@ -45,9 +52,7 @@ const SignUpBody = () => {
             <div className="authentication__wrapper">
               <h4>Let's Get Started!</h4>
               <p>Please Enter your Email Address to join our club</p>
-              <div className="error__message">
-                {error && <p>{error}</p>}
-              </div>
+              <div className="error__message">{error && <p>{error}</p>}</div>
               <form action="#" method="post" onSubmit={handleSignUp}>
                 <div className="input-single">
                   <label htmlFor="authName">Name</label>
@@ -83,7 +88,9 @@ const SignUpBody = () => {
                   />
                 </div>
                 <div className="input-single">
-                  <label htmlFor="authConfirmPassword">Confirm Your Password</label>
+                  <label htmlFor="authConfirmPassword">
+                    Confirm Your Password
+                  </label>
                   <input
                     type="password"
                     name="auth-confirm-password"
@@ -93,15 +100,20 @@ const SignUpBody = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                <p>
-                  By clicking submit, you agree to{" "}
-                  <Link href="/privacy-policy">Terms of Use</Link>,{" "}
-                  <Link href="/privacy-policy">Privacy Policy</Link>,{" "}
-                  <Link href="/privacy-policy">E-sign</Link> &{" "}
+                {/* <p>
+                  By clicking submit, you agree to{' '}
+                  <Link href="/privacy-policy">Terms of Use</Link>,{' '}
+                  <Link href="/privacy-policy">Privacy Policy</Link>,{' '}
+                  <Link href="/privacy-policy">E-sign</Link> &{' '}
                   <Link href="/privacy-policy">
                     communication Authorization
                   </Link>
                   .
+                </p> */}
+                <p className="auth-links secondary-text">
+                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
+                    Already have an account? Sign In
+                  </a>
                 </p>
                 <div className="section__cta text-start">
                   <button type="submit" className="sign-up-button">

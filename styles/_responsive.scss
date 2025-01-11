@@ -17,19 +17,6 @@
     }
   }
 }
-.cmn-button-nav {
-  background-color: #2c58a8;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.cmn-button-nav:hover {
-  background-color: #1a3a6e;
-}
 
 .banner--secondary-pricing {
   display: flex; /* Align content horizontally */
@@ -155,7 +142,7 @@
 
 .cmn-button {
   padding: 15px 50px; /* Adjust padding for a longer and taller button */
-  font-size: 22px; /* Adjust text size */
+  font-size: 16px; /* Adjust text size */
   font-weight: bold; /* Bold text */
   border-radius: 50px; /* Fully rounded edges */
   text-align: center; /* Center the text */
@@ -164,14 +151,14 @@
   border: 2px solid #ffffff; /* White border */
   display: inline-block; /* Ensure proper alignment and spacing */
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */
-  margin-top: 20px;
 }
 
 .cmn-button-nav {
-  
-  font-size: 20px; /* Adjust font size for smaller text */
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  font-size: 15px; /* Standard button font size */
   font-weight: bold; /* Bold text */
-  color: #2C58A8 !important; /* Blue text color */
+  color: #2C58A8; /* Blue text color */
   background-color: #f3e9b8; /* Light yellow background */
   border: 2px solid #2C58A8; /* Blue border */
   border-radius: 20px; /* Rounded corners */
@@ -179,10 +166,18 @@
   text-decoration: none; /* Remove underline */
   display: inline-block; /* Ensure proper alignment */
   transition: all 0.3s ease; /* Smooth transition on hover */
-  white-space: nowrap;
-  margin-left: -20px;
-  margin-right: 20px;
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
 }
+
+/* Hover Effect */
+.cmn-button-nav:hover {
+  background-color: #2C58A8; /* Change background to blue on hover */
+  color: #ffffff !important; /* Change text color to light yellow on hover */
+  border-color: #f3e9b8; /* Change border to light yellow */
+}
+
 .booking-history-container {
   background-color: #fff;
   padding: 20px;
@@ -268,14 +263,12 @@
 
 .status.canceled {
   color: #f44336;
+  width: auto; /* Default width */
+  max-width: 200px; /* Prevent overly large buttons */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
 }
 
-/* Hover Effect */
-.cmn-button-nav:hover {
-  background-color: #2C58A8; /* Change background to blue on hover */
-  color: #ffffff !important; /* Change text color to light yellow on hover */
-  border-color: #f3e9b8; /* Change border to light yellow */
-}
+
 
 
 .cmn-button--secondary {
@@ -1094,7 +1087,7 @@
       transition: 0.3s ease-in-out;
 
       &::-webkit-scrollbar {
-        width: 0px;
+        display: none;
       }
     }
 

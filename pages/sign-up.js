@@ -1,22 +1,21 @@
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navBar/NavBar";
-import SignUpBody from "@/components/auth/signup/SignUpBody";
+import AuthPage from "@/components/auth/AuthPage";
 import { GoogleOAuthProvider } from '@react-oauth/google'; 
-
 
 export default function SignUp() {
   return (
     <>
-    <GoogleOAuthProvider clientId="58880361690-dtpoqfr38r9n53dnmvvt2dul0fhfkml4.apps.googleusercontent.com">
-      {/* NavBar Secrtion */}
-      <NavBar cls="" />
+      <GoogleOAuthProvider clientId="58880361690-dtpoqfr38r9n53dnmvvt2dul0fhfkml4.apps.googleusercontent.com">
+        {/* NavBar Section */}
+        <NavBar cls="" />
 
-      {/* SignUp Body Secrtion */}
-      <SignUpBody />
+        {/* Auth Page Section */}
+        <AuthPage />
 
-      {/* Footer Secrtion */}
-      <Footer />
-    </GoogleOAuthProvider>
+        {/* Footer Section */}
+        <Footer />
+      </GoogleOAuthProvider>
     </>
   );
 }

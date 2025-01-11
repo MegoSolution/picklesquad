@@ -156,13 +156,13 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     {/* Sign In/Sign Up or Book Now */}
                     {!user ? (
                       <li className="nav__menu-item d-block d-md-none">
-                        <Link href="/sign-in" className="nav__menu-link">
+                        <Link href="/sign-in" className="cmn-button cmn-button--secondary">
                           Sign In
                         </Link>
                       </li>
                     ) : (
                       <li className="nav__menu-item d-block d-md-none">
-                        <button onClick={handleBookNowClick} className="nav__menu-link">
+                        <button onClick={handleBookNowClick} className="cmn-button cmn-button--secondary">
                           Book Now
                         </button>
                       </li>
@@ -177,10 +177,10 @@ const NavBar = ({ cls = "header--secondary" }) => {
                     <>
                       {!user ? (
                         <>
-                          <Link href="/sign-in" className="cmn-button-nav">
+                          <Link href="/sign-in" className="cmn-button cmn-button-nav">
                             Sign In
                           </Link>
-                          <button onClick={handleBookNowClick} className="cmn-button-nav">
+                          <button onClick={handleBookNowClick} className="btn btn-light book-now-btn-nav">
                             Book Now
                           </button>
                         </>

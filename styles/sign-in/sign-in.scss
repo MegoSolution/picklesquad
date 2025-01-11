@@ -1,0 +1,23 @@
+@import '../abstracts/_variables';
+
+/* Add this to your CSS file */
+.auth-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-page {
+    background-image: url("/images/auth/auth-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sign-in-header{
+    color: $primary-color;
+}
+
+.sign-in-link{
+    color: $primary-color;
+}
