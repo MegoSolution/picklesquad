@@ -14,7 +14,9 @@ import { flushSync } from 'react-dom';
 
 const ProgramDetailsForm = () => {
   const formRef = useRef();
+  const scrollRef = useRef(null);
   const [program, setProgram] = useState(null);
+  const [programData, setProgramData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -29,9 +31,14 @@ const ProgramDetailsForm = () => {
     ref2: '',
     checksum: null,
   });
+  const [currentPage, setCurrentPage] = useState(1); // Page state
+  const eventsPerPage = 4; // Number of events per page
 
   useEffect(() => {
     if (!id) return; 
+
+    fetchPrograms();
+    console.log(programData);
 
     fetch(`/api/program?id=${id}`, {
       method: "GET",
@@ -48,6 +55,7 @@ const ProgramDetailsForm = () => {
       .then((data) => {
         setProgram(data);
         setLoading(false);
+        console.log(data)
       })
       .catch((error) => {
         console.error("Error fetching program details:", error);
@@ -56,7 +64,25 @@ const ProgramDetailsForm = () => {
       });
   }, [id]);
 
-  
+  const fetchPrograms = () => {
+    fetch(`/api/program`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch program data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setProgramData(data.results || []);
+      })
+      .catch((error) => console.error("Error fetching programs:", error));
+  };
+
   useEffect(() => {
     if (!bookingRes) {
       return;
@@ -93,6 +119,23 @@ const ProgramDetailsForm = () => {
 
   const adjustedStartTime = new Date(new Date(program.startTime).getTime() - 8 * 60 * 60 * 1000);
   const adjustedEndTime = new Date(new Date(program.endTime).getTime() - 8 * 60 * 60 * 1000);
+
+  // Calculate the paginated events
+  const startIndex = (currentPage - 1) * eventsPerPage;
+  const paginatedEvents = programData.slice(startIndex, startIndex + eventsPerPage);
+
+  // Handlers for pagination
+  const handleNext = () => {
+    if (startIndex + eventsPerPage < programData.length) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
 
   const handleBooking = async () => {
     if (!currentUser?.user?._id) {
@@ -141,42 +184,120 @@ const ProgramDetailsForm = () => {
   };
 
   return (
-    <div className="program-details-container">
-      <h1 className="program-title">{program.name}</h1>
-      <div className="program-details-content">
-        <div className="program-info">
-          <p><strong>Description:</strong> {program.description}</p>
-          <p><strong>Start Time:</strong> {adjustedStartTime.toLocaleString()}</p>
-          <p><strong>End Time:</strong> {adjustedEndTime.toLocaleString()}</p>
-          <p><strong>Court:</strong> {program.court?.name || "N/A"}</p>
-          <p><strong>Coach:</strong> {program.coach?.name || "N/A"}</p>
-          <p><strong>Price:</strong> RM {program.price}</p>
+    <>
+      <div className="program-details">
+        <div className="image-container">
+          <img
+            src="\images\Picklesquad_image\banner-one.jpg"
+            alt="Program"
+            className="program-image"
+          />
+          <div className="text-overlay">
+            <h1 className="program-title">{program.name || "Program Title"}</h1>
+          </div>
+        </div>
+  
+        <div className="program-details-content">
+          <div className="program-info">
+            <p>{program.description}</p>
+            <p><strong>Start Time:</strong> {adjustedStartTime.toLocaleString()}</p>
+            <p><strong>End Time:</strong> {adjustedEndTime.toLocaleString()}</p>
+            <p><strong>Court:</strong> {program.court?.name || "N/A"} - {program.court?.location?.name || "N/A"}</p>
+          </div>
+          <p><strong>*** REMARK: Each registration is valid for one individual.</strong></p>
+        </div>
+  
+        <form method="post" action={RP_URL} ref={formRef}>
+          <input type="hidden" name="appId" value={RP_APP_ID} />
+          <input type="hidden" name="currency" value={RP_CURRENCY} />
+          <input type="hidden" name="amount" value={formData.amount} />
+          <input type="hidden" name="orderId" value={formData.orderId} />
+          <input type="hidden" name="ref1" value={bookingRes?.id || ''} />
+          <input type="hidden" name="returnURL" value={RP_RETURN_URL} />
+          <input type="hidden" name="checkSum" value={formData.checksum} />
+        </form>
+  
+        <div className="program-footer">
+          <div className="footer-detail">
+            <img 
+              src="\images\Picklesquad_image\program_listing3.png" 
+              alt="Pricing Icon" 
+              className="footer-image-icon"
+            />
+            <span className="footer-text">
+              <strong>HOST:</strong> <br /> {program.coach?.name || "N/A"}
+            </span>
+          </div>
+          <div className="footer-detail">
+            <img 
+              src="\images\Picklesquad_image\program_listing.png" 
+              alt="Pricing Icon" 
+              className="footer-image-icon"
+            />
+            <div className="footer-text">
+              <strong>PRICING:</strong>
+              <div>{program.sessions || "1 Session"}</div>
+            </div>
+          </div>
+          <div className="footer-detail">
+            <span className="footer-price">RM {program.price?.toFixed(2) || "0.00"}</span>
+          </div>
+          <button className="program-button" onClick={handleBooking}>
+            Book Now
+          </button>
         </div>
       </div>
-
-      <form method="post" action={RP_URL} ref={formRef}>
-        <input type="hidden" name="appId" value={RP_APP_ID} />
-        <input type="hidden" name="currency" value={RP_CURRENCY} />
-        <input type="hidden" name="amount" value={formData.amount} />
-        <input type="hidden" name="orderId" value={formData.orderId} />
-        <input type="hidden" name="ref1" value={bookingRes?.id || ''} />
-        <input type="hidden" name="returnURL" value={RP_RETURN_URL} />
-        <input type="hidden" name="checkSum" value={formData.checksum} />
-      </form>
-
-      <div className="program-actions">
-        <button className="cmn-button" onClick={handleBooking}>
-          Proceed to Payment
+  
+      <div className="event-dates-container">
+        <div className="event-header">
+          <h2>Event Dates</h2>
+          <a href="/program" className="view-all-link">View All</a>
+        </div>
+        <div className="carousel">
+        <button
+          className="scroll-btn left-btn"
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+        >
+          &#9664;
         </button>
-        <button 
-        className="cmn-button cmn-button--secondary"
-        onClick={() => router.back()}
-      >
-        Back
-      </button>
+          <div className="carousel-items" ref={scrollRef}>
+            {paginatedEvents.map((event, index) => (
+              <div key={index} className="event-card">
+                <div className="event-icon">
+                  <img src="/images/profile/calendar.png" alt="Calendar" />
+                </div>
+                <div className="event-details">
+                  <h4>{event.name}</h4>
+                  <p className="event-date">
+                    {new Date(event.startTime).toUTCString().slice(0, 16)}{" "}
+                    {new Date(event.startTime).toUTCString().slice(17, 22)}-
+                    {new Date(event.endTime).toUTCString().slice(17, 22)}
+                  </p>
+                  <p className="event-coach">coach {event.coach?.name || "N/A"}</p>
+                  <p className="event-status open">
+                  <img 
+                    src="\images\Picklesquad_image\program_listing2.png" 
+                    alt="Open Icon" 
+                    className="status-icon" 
+                  />
+                  OPEN
+                </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button
+          className="scroll-btn right-btn"
+          onClick={handleNext}
+          disabled={startIndex + eventsPerPage >= programData.length}
+          >
+            &#9654;
+        </button>
+        </div>
       </div>
-    </div>
-  );
+    </>
+  );  
 };
 
 export default ProgramDetailsForm;
