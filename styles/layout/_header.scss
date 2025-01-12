@@ -41,7 +41,8 @@
     padding: 10px 12px;
     color: white;
     font-weight: 500;
-
+    font-size: 22px;
+    white-space: nowrap;
     &:hover {
       color: $primary-color;
     }

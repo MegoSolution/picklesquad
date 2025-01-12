@@ -8,7 +8,7 @@ const Advance = () => {
           Intermediate <br /> Group Lesson
           </h2>
           <p>
-          Take your pickleball skills to the next level with our Intermediate Group Lessons! Perfect for players who have mastered the basics and are ready to refine their techniques, improve game strategy, and elevate their performance. This program offers dynamic drills, game play analysis, and expert guidance to help you build confidence and dominate the court. Join us to sharpen your skills in a fun and engaging environment with fellow pickleball enthusiasts!</p>
+          Take your pickleball skills to the next level with our Intermediate Group Lessons! Perfect for players who have mastered the basics and are ready to refine their techniques, improve game strategy, and elevate their performance. This program offers dynamic drills, game play analysis, and expert guidance to help you build confidence and dominate the court. </p>
 
           {/* Table Section */}
           <div className="session-details">
@@ -46,7 +46,7 @@ const Advance = () => {
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/view.png"
+          src="/images/programmes/intermediate.jpg"
           alt="Coach Session"
           className="session-image"
         />

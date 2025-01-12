@@ -18,7 +18,7 @@ const CourtRental= () => {
             learning how to nail that perfect serve, feel free to take up a
             lesson.
           </p>
-          <a href="/book" className="btn btn-light book-now-btn">
+          <a href="/sign-in" className="btn btn-light book-now-btn">
             Book Now
           </a>
         </div>

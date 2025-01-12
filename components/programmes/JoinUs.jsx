@@ -17,7 +17,7 @@ const JoinUs = () => {
           Whether you are a beginner or advanced players, we provide expert instruction and opportunities for everyone.
           </p>
           <a href="#Intro" scroll={false}  className="btn btn-light book-now-btn">
-           View Programmes
+           View Program
           </a>
         </div>
       </div>

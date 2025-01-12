@@ -1,38 +1,41 @@
 import { useEffect, useState } from "react";
 
-const ScrollToTop = () => {
+const WhatsAppButton = () => {
   const [windowHeight, setWindowHeight] = useState(0);
 
-  const goToTopHandler = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-    });
+  // Function to handle WhatsApp redirection
+  const goToWhatsAppHandler = () => {
+    const whatsappNumber = "60123164698"; // Replace with your WhatsApp number
+    const defaultMessage = "Hello, I would like to inquire about your court.";
+    const encodedMessage = encodeURIComponent(defaultMessage);
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappLink, "_blank");
   };
 
-  const goToTop = () => {
-    if (window !== undefined) {
-      let height = window.scrollY;
+  const trackScrollPosition = () => {
+    if (typeof window !== "undefined") {
+      const height = window.scrollY;
       setWindowHeight(height);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", goToTop);
+    window.addEventListener("scroll", trackScrollPosition);
     return () => {
-      window.removeEventListener("scroll", goToTop);
+      window.removeEventListener("scroll", trackScrollPosition);
     };
   }, []);
 
   return (
     <button
-      type={"button"}
-      className={`scrollToTop ${windowHeight > 200 && "active"}`}
-      onClick={goToTopHandler}
+      type="button"
+      className={`scrollToTop ${windowHeight > 200 ? "active" : ""}`}
+      onClick={goToWhatsAppHandler}
     >
-      <i className="fa-solid fa-arrow-up"></i>
+      <i className="fa-brands fa-whatsapp"></i>
     </button>
   );
 };
 
-export default ScrollToTop;
+export default WhatsAppButton;

@@ -19,7 +19,7 @@ const Footer = () => {
                   <h5>Social</h5>
                   <ul className="social-icons horizontal-icons">
                     <li>
-                      <Link href="/">
+                      <Link href="https://www.instagram.com/picklesquad.my/">
                         <Image
                           src="/images/picklesquad_image/footer/ig.png"
                           alt="Instagram"
@@ -32,17 +32,17 @@ const Footer = () => {
                       <Link href="https://www.instagram.com/picklesquad.my/">
                         <Image
                           src="/images/picklesquad_image/footer/fb.png"
-                          alt="Instagram"
+                          alt="Fb"
                           width={45}
                           height={45}
                         />
                       </Link>
                     </li>
                     <li>
-                      <Link href="/">
+                      <Link href="https://www.xiaohongshu.com/user/profile/64e3303d0000000001013553?xsec_token=YBnr_lCzpCOzSs_WHO6I6xO0Hw5ukyGo6M9KHNlN6R1vU=&xsec_source=app_share&xhsshare=CopyLink&appuid=65b7021e000000000d01eafc&apptime=1736257901&share_id=e784b3ca58414feba428c2a0fffad89b">
                         <Image
                           src="/images/picklesquad_image/footer/xhs.png"
-                          alt="Instagram"
+                          alt="XHS"
                           width={45}
                           height={45}
                         />
@@ -83,11 +83,11 @@ const Footer = () => {
           {/* Right Column */}
           <div className="col-lg-4 col-md-4">
             <div className="footer__single-content">
-              <h5>Address</h5>
+              <h5>Find Us At</h5>
               <div className="footer__single-content">
                 <div className="footer__single-content__group">
-                  <p>(480) 555-0103</p>
-                  <p>(406) 555-0120</p>
+                  <p>(+60) 12-316 4698</p>
+                
                 </div>
                 <div className="footer__single-content__group">
                   <p>picklesquad624@gmail.com</p>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from '../../utils/constants';
 
 const BookingHistoryForm = () => {
-  const [viewMode, setViewMode] = useState('upcoming'); // "upcoming" or "history"
+  const [viewMode, setViewMode] = useState('all'); // Default to "all"
   const [bookings, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null); // Store selected booking for modal
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal vis
@@ -26,18 +26,17 @@ const BookingHistoryForm = () => {
         return response.json();
       })
       .then((data) => {
-        setBookings(data.results || []); // Set bookings from API response
+        setBookings(data.results || []);
       })
       .catch((error) => console.error('Error fetching bookings:', error));
   };
 
-  // Fetch bookings whenever the view mode changes
   useEffect(() => {
     fetchBookings(viewMode);
   }, [viewMode]);
 
   const toggleViewMode = (mode) => {
-    setViewMode(mode); // Update the view mode
+    setViewMode(mode);
   };
 
   // Open modal and set selected booking
@@ -53,28 +52,20 @@ const BookingHistoryForm = () => {
   };
 
   return (
-    <div className="booking-container">
-      <h3>Picklesquad</h3>
-      <hr className="divider" />
+    <div className="booking-history-container">
+      <h3 className="section-title">Booking History</h3>
 
-      {/* Toggle Buttons */}
-      <div className="toggle-container">
-        <button
-          className={`toggle-button ${
-            viewMode === 'upcoming' ? 'selected' : ''
-          }`}
-          onClick={() => toggleViewMode('upcoming')}
-        >
-          Upcoming Bookings
-        </button>
-        <button
-          className={`toggle-button ${
-            viewMode === 'history' ? 'selected' : ''
-          }`}
-          onClick={() => toggleViewMode('history')}
-        >
-          Booking History
-        </button>
+      {/* Tabs */}
+      <div className="tabs-container">
+        {['all', 'upcoming', 'completed'].map((tab) => (
+          <button
+            key={tab}
+            className={`tab-button ${viewMode === tab ? "active" : ""}`}
+            onClick={() => toggleViewMode(tab)}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </button>
+        ))}
       </div>
 
       {/* Booking List */}
@@ -82,44 +73,38 @@ const BookingHistoryForm = () => {
         {bookings.length > 0 ? (
           bookings.map((booking) => (
             <div key={booking._id} className="booking-item">
-              <h4>{booking.court.name || 'Court Name Unavailable'}</h4>
-              <p>
-                <strong>Date:</strong>{' '}
-                {new Date(booking.date).toLocaleDateString()} <br />
-                <strong>Time:</strong> {booking.startTime} - {booking.endTime}{' '}
-                <br />
-                <strong>Status:</strong> {booking.status}
-              </p>
-              <div className="booking-item-footer">
+              <div className="date-badge">
+                <span>
+                  {new Date(booking.date).toLocaleString("en-US", {
+                    weekday: "short",
+                  })}
+                </span>
+                <span>
+                  {new Date(booking.date).toLocaleDateString("en-US", {
+                    month: "short",
+                  })}
+                </span>
+                <span>{new Date(booking.date).getDate()}</span>
+              </div>
+              <div className="booking-details">
                 <p>
-                  <strong>Total Price:</strong> RM{booking.totalCost}
+                  <strong>Booking ID:</strong> {booking._id}
                 </p>
-
-                {/* Conditional rendering based on viewMode */}
-                {viewMode === 'upcoming' ? (
-                  <div className="options-container">
-                    <button className="options-button">⋮</button>{' '}
-                    {/* Vertical ... */}
-                    <div className="dropdown-menu">
-                      <button onClick={() => handleViewDetails(booking)}>
-                        View Details
-                      </button>
-                      <button onClick={() => console.log('Cancel Order')}>
-                        Cancel Order
-                      </button>
-                      <button onClick={() => console.log('Transfer Order')}>
-                        Transfer Order
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <a
-                    onClick={() => handleViewDetails(booking)}
-                    className="view-history-link"
-                  >
-                    View Details
-                  </a>
-                )}
+                <p>
+                  <strong>Activity:</strong>{" "}
+                  {booking.activity || "Not Specified"}
+                </p>
+                <p>
+                  <strong>Time:</strong> {booking.startTime} -{" "}
+                  {booking.endTime}
+                </p>
+                <p>
+                  <strong>Paid:</strong> RM{booking.totalCost}
+                </p>
+                <p className={`status ${booking.status.toLowerCase()}`}>
+                  {booking.status.charAt(0).toUpperCase() +
+                    booking.status.slice(1)}
+                </p>
               </div>
             </div>
           ))

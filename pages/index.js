@@ -7,7 +7,7 @@ import Programmes from "@/components/home/Programmes";
 import PricingPlan from "@/components/home/PricingPlan";
 import NavBar from "@/components/navBar/NavBar";
 import Preloader from "@/components/preloader/Preloader";
-import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
+import WhatsAppButton from "@/components/scrollToTop/ScrollToTop";
 import CourtRental from "@/components/home/CourtRental";
 
 export default function Home() {
@@ -40,32 +40,11 @@ export default function Home() {
       {/* Court Rental Secrtion */}
       <CourtRental />
 
-      {/* Our Club Secrtion */}
       
-
-      {/* Training Secrtion */}
-      
-
-      {/* Event Secrtion */}
-      
-
-      {/* Join Club Secrtion */}
-      
-
-      {/* Team Section */}
-      
-
-      {/* Testimonial One Secrtion */}
-     
-
-      {/* Shop Secrtion */}
-      
-
-      {/* Footer Secrtion */}
       <Footer />
 
       {/* Scroll To Top */}
-      <ScrollToTop />
+      <WhatsAppButton />
     </>
   );
 }
