@@ -151,6 +151,20 @@
   border: 2px solid #ffffff; /* White border */
   display: inline-block; /* Ensure proper alignment and spacing */
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+ 
+}
+.cmn-button-home {
+  padding: 15px 50px; /* Adjust padding for a longer and taller button */
+  font-size: 16px; /* Adjust text size */
+  font-weight: bold; /* Bold text */
+  border-radius: 50px; /* Fully rounded edges */
+  text-align: center; /* Center the text */
+  color: #ffffff; /* White text color */
+  background-color: #2C58A8; /* Blue background */
+  border: 2px solid #ffffff; /* White border */
+  display: inline-block; /* Ensure proper alignment and spacing */
+  transition: all 0.3s ease; /* Add a smooth transition for hover effects */
+  margin-top: 15px;
 }
 
 .cmn-button-nav {
@@ -169,6 +183,7 @@
   width: auto; /* Default width */
   max-width: 200px; /* Prevent overly large buttons */
   margin-bottom: 0; /* Ensure spacing below is consistent */
+  white-space: nowrap;
 }
 
 /* Hover Effect */

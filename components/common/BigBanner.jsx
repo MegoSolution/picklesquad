@@ -20,13 +20,13 @@ with your family and friends by booking one of our
 courts – or if you feel like learning how to nail that
 perfect serve, feel free to take up a lesson.
               </p>
-             
-                <Link href="/sign-in" className="cmn-button">
+             <br/>
+                <Link href="/sign-in" className="cmn-button-home">
                 Let's Play
-                </Link><br />
+                </Link><br /><br />
                 <Link
                   href="/programmes"
-                  className="cmn-button"
+                  className="cmn-button-home"
                 >
                   First Time
                 </Link>

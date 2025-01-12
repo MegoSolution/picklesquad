@@ -9,6 +9,7 @@ import NavBar from "@/components/navBar/NavBar";
 import Preloader from "@/components/preloader/Preloader";
 import WhatsAppButton from "@/components/scrollToTop/ScrollToTop";
 import CourtRental from "@/components/home/CourtRental";
+import MembershipBody from "@/components/membership/MembershipBody";
 
 export default function Home() {
   return (
@@ -35,11 +36,11 @@ export default function Home() {
       <Programmes />
 
       {/* Pricing Plan Secrtion */}
-      <PricingPlan />
+      <MembershipBody />
 
       {/* Court Rental Secrtion */}
       <CourtRental />
-
+      
       
       <Footer />
 
