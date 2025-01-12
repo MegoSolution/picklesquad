@@ -92,7 +92,7 @@ const BookingHistoryForm = () => {
                 </p>
                 <p>
                   <strong>Activity:</strong>{" "}
-                  {booking.activity || "Not Specified"}
+                  {booking.court || "Not Specified"}
                 </p>
                 <p>
                   <strong>Time:</strong> {booking.startTime} -{" "}
