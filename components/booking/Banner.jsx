@@ -6,7 +6,7 @@ const Banner = () => {
     <SmallBanner title="Create Booking">
       <Breadcrumb
         breadcrumbs={[
-          ["User Dashboard", "/"],
+          ["User Dashboard", "/profile"],
           ["Booking", "/"],
         ]}
       />

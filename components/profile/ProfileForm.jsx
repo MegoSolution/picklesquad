@@ -106,7 +106,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
               <div className="profile-form-header">
                 <h5>My Bookings</h5>
                 <div className="right-content">
-                  <a href="/booking" className="view-all">View All</a>
+                  <a href="/booking-history" className="view-all">View All</a>
                   <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={handlePreviousBooking} />
                   <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={handleNextBooking} />
                 </div>
@@ -141,7 +141,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
           </div>
           <div className="profile-form">
             <div className="picklesquad-btns">
-              <a href="/booking">Book A Court</a>
+              <a href="/location">Book A Court</a>
             </div>
             <div className="picklesquad-btns">
               <a href="/program">Program</a>
