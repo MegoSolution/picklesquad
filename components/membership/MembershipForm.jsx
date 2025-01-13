@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import MembershipCard from "./MembershipCard";
+import {
+  BASE_URL,
+} from '../../utils/constants';
 
 const MembershipForm = () => {
   const [memberships, setMemberships] = useState([]);
@@ -8,7 +11,6 @@ const MembershipForm = () => {
   const [availableDurations, setAvailableDurations] = useState([]);
   const [selectedDuration, setSelectedDuration] = useState(null);
 
-  const BASE_URL = 'http://localhost:3000/v1';
 
   const getDurationLabel = (months) => {
     switch (months) {

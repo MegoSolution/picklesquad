@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import {
+  BASE_URL,
+} from '../../utils/constants';
 
 const LocationForm = () => {
   const [locations, setLocations] = useState([]);
@@ -7,7 +10,6 @@ const LocationForm = () => {
   const [error, setError] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const BASE_URL = 'http://localhost:3000/v1';
   const router = useRouter();
 
   // Fetch all available locations

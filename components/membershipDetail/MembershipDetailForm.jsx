@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import {
+  BASE_URL,
+} from '../../utils/constants';
 
 const MembershipDetailForm = () => {
   const [membership, setMembership] = useState(null);
@@ -7,8 +10,6 @@ const MembershipDetailForm = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const { duration } = router.query;
-
-  const BASE_URL = 'http://localhost:3000/v1';
 
   useEffect(() => {
     const fetchMembershipDetail = async () => {
@@ -105,7 +106,7 @@ const MembershipDetailForm = () => {
             className="payment-button"
             onClick={handlePayment}
           >
-            Proceed to Payment
+            Join Now
           </button>
         </div>
       </div>
