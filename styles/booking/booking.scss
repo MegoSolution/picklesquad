@@ -66,19 +66,50 @@
   width: 45%;
   border: 1px solid #ddd;
   border-radius: 5px;
+
+  .equipment-name {
+    font-size: 18px !important;
+    text-align: center;
+    color: black;
+  }
+
+  .equipment-price {
+    font-size: 18px !important;
+    color: #666;
+    text-align: center;
+    color: black;
+  }
+
+  .equipment-total {
+    font-size: 20px !important;
+    font-weight: 500;
+    color: #2C58A8;
+    margin: 5px 0;
+    text-align: center;
+    color: black;
+  }
 }
 
 .equipment-image {
   width: 100px;
   height: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .quantity-control {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
+  
+  button {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  
+  span {
+    font-size: 14px;
+  }
 }
 
 .book-now-button {

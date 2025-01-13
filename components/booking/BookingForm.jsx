@@ -129,13 +129,16 @@ const BookingForm = () => {
   };
 
   const fetchEquipment = () => {
+    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
+      .token;
+
     fetch(
-      `${BASE_URL}/equipments?membership=${localStorageDetails.membership}`,
+      `${BASE_URL}/equipments`,
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorageDetails.BEARER_TOKEN}`,
+          Authorization: `Bearer ${BEARER_TOKEN}`,
         },
       }
     )
@@ -569,25 +572,21 @@ const BookingForm = () => {
         <h4 className="ms-2">Select Equipment</h4>
         <div className="equipment-container pt-3">
           {equipment.map((item) => (
-            <div key={item.id} className="equipment-item ">
+            <div key={item.id} className="equipment-item">
               <img
                 src={item.image || '/images/default.png'}
                 alt={item.name}
                 className="equipment-image"
               />
-              <p>{item.name}</p>
-              <p>Normal Price: RM{item.rent_per_cost} each</p>
-              <p>Member Price: RM{item.discountedCost} each</p>
+              <p className="equipment-name">{item.name}</p>
+              <p className="equipment-price">Normal Price: RM{item.rent_per_cost} each</p>
+              <p className="equipment-price">Member Price: RM{item.discountedCost} each</p>
               <div className="quantity-control">
-                <button onClick={() => handleQuantityChange(item._id, -1)}>
-                  -
-                </button>
+                <button onClick={() => handleQuantityChange(item._id, -1)}>-</button>
                 <span>{quantities[item._id] || 0}</span>
-                <button onClick={() => handleQuantityChange(item._id, 1)}>
-                  +
-                </button>
+                <button onClick={() => handleQuantityChange(item._id, 1)}>+</button>
               </div>
-              <p>
+              <p className="equipment-total">
                 Total: RM
                 {(quantities[item._id] || 0) *
                   (membership && item.discountedCost
