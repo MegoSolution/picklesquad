@@ -16,6 +16,7 @@ import 'slick-carousel/slick/slick.css';
 //main css
 import '@/styles/globals.scss';
 import '../styles/booking/booking.scss';
+import '../styles/receipt/receipt.scss';
 import '../styles/bookingHistory/bookingHistory.scss';
 import '../styles/location/location.scss';
 import '../styles/program/program.scss';
