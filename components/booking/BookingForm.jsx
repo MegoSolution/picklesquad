@@ -7,6 +7,8 @@ import {
   RP_REQUEST_KEY,
   RP_RETURN_URL,
   RP_URL,
+  SP_SECRET_KEY,
+  SP_URL,
 } from '../../utils/constants';
 import { calculateChecksum } from '@/utils/checksum';
 import { generateDates, genOrderId } from '@/utils/bookings';
@@ -132,16 +134,13 @@ const BookingForm = () => {
     const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
       .token;
 
-    fetch(
-      `${BASE_URL}/equipments`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${BEARER_TOKEN}`,
-        },
-      }
-    )
+    fetch(`${BASE_URL}/equipments`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${BEARER_TOKEN}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch equipment data');
@@ -439,23 +438,29 @@ const BookingForm = () => {
   }, []);
 
   useEffect(() => {
-    if (!bookingRes) {
+    if (!bookingRes || !bookingRes.payment) {
       return;
     }
 
-    const orderId = genOrderId({ bookingId: bookingRes.id });
+    if (!bookingRes.payment.mandate_reference) {
+      alert('Failed to create booking, no mandate reference');
+      return;
+    }
+
+    const orderId = bookingRes.payment.mandate_reference;
+    const bookingId = bookingRes.id;
 
     flushSync(() =>
       setFormData((prevFormData) => {
         return {
           ...prevFormData,
           orderId,
+          bookingId,
           checksum: calculateChecksum({
-            appId: RP_APP_ID,
-            currency: RP_CURRENCY,
+            secretKey: SP_SECRET_KEY,
             amount: prevFormData.amount,
+            detail: bookingId,
             orderId,
-            requestKey: RP_REQUEST_KEY,
           }),
         };
       })
@@ -579,12 +584,20 @@ const BookingForm = () => {
                 className="equipment-image"
               />
               <p className="equipment-name">{item.name}</p>
-              <p className="equipment-price">Normal Price: RM{item.rent_per_cost} each</p>
-              <p className="equipment-price">Member Price: RM{item.discountedCost} each</p>
+              <p className="equipment-price">
+                Normal Price: RM{item.rent_per_cost} each
+              </p>
+              <p className="equipment-price">
+                Member Price: RM{item.discountedCost} each
+              </p>
               <div className="quantity-control">
-                <button onClick={() => handleQuantityChange(item._id, -1)}>-</button>
+                <button onClick={() => handleQuantityChange(item._id, -1)}>
+                  -
+                </button>
                 <span>{quantities[item._id] || 0}</span>
-                <button onClick={() => handleQuantityChange(item._id, 1)}>+</button>
+                <button onClick={() => handleQuantityChange(item._id, 1)}>
+                  +
+                </button>
               </div>
               <p className="equipment-total">
                 Total: RM
@@ -603,14 +616,14 @@ const BookingForm = () => {
         <h4>Total Amount: RM{calculateTotal()}</h4>
       </div>
 
-      <form method="post" action={RP_URL} ref={formRef}>
-        <input type="hidden" name="appId" value={RP_APP_ID} />
-        <input type="hidden" name="currency" value={RP_CURRENCY} />
+      <form method="post" action={SP_URL} ref={formRef}>
+        <input type="hidden" name="detail" value={formData.bookingId} />
         <input type="hidden" name="amount" value={formData.amount} />
-        <input type="hidden" name="orderId" value={formData.orderId} />
-        <input type="hidden" name="ref1" value={bookingRes?.id || ''} />
-        <input type="hidden" name="returnURL" value={RP_RETURN_URL} />
-        <input type="hidden" name="checkSum" value={formData.checksum} />
+        <input type="hidden" name="order_id" value={formData.orderId} />
+        <input type="hidden" name="name" value={''} />
+        <input type="hidden" name="email" value={''} />
+        <input type="hidden" name="phone" value={''} />
+        <input type="hidden" name="hash" value={formData.checksum} />
       </form>
 
       {/* Booking Button */}

@@ -5,6 +5,10 @@ const RP_CURRENCY = process.env.NEXT_PUBLIC_RP_CURRENCY;
 const RP_RETURN_URL = process.env.NEXT_PUBLIC_RP_RETURN_URL;
 const RP_REQUEST_KEY = process.env.NEXT_PUBLIC_RP_REQUEST_KEY;
 
+const SP_MERCHANT_ID = process.env.NEXT_PUBLIC_SP_MERCHANT_ID;
+const SP_SECRET_KEY = process.env.NEXT_PUBLIC_SP_SECRET_KEY;
+const SP_URL = process.env.NEXT_PUBLIC_SP_URL;
+
 export {
   BASE_URL,
   RP_URL,
@@ -12,4 +16,7 @@ export {
   RP_CURRENCY,
   RP_RETURN_URL,
   RP_REQUEST_KEY,
+  SP_MERCHANT_ID,
+  SP_SECRET_KEY,
+  SP_URL,
 };
