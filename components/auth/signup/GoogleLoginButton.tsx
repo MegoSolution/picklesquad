@@ -27,7 +27,7 @@ const GoogleLoginButton: React.FC = () => {
         toast.success('Login Successful');
 
         setTimeout(() => {
-          router.push('/booking');
+          router.push('/location');
         }, 2000);
       } catch (error) {
         console.error('Google login failed:', error);
