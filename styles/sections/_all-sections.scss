@@ -104,7 +104,7 @@
       }
     }
   }
-
+  
   .about__section-inner {
     margin-top: 32px;
     display: flex;
@@ -143,7 +143,7 @@
 .about--secondary {
   background-color: #2C58A8;
   overflow-x: clip;
-  
+  padding-bottom: 50px; 
   
   .about--secondary__content-wrapper {
     background-color: #fff8f0; /* White box background */
@@ -156,6 +156,8 @@
     z-index: 2; 
     text-align: center;  
     margin-top: -10%;
+    padding-top: 100px; /* Add padding to the top */
+    padding-bottom: 100px; /* Add padding to the bottom */
   }
 
   .background-image {
@@ -597,6 +599,7 @@
     inset: 0;
     background-color: #2C58A8;
     z-index: -1;
+    margin-top: -30px;
   }
 
   .counter__card {
@@ -1401,7 +1404,7 @@ html {
   text-align: center;
   font-size: 22px; /* Standard button font size */
   width: auto; /* Default width */
-  
+  margin-bottom: 20px;
 }
 
 .first-time-btn:hover {

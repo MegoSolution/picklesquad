@@ -186,7 +186,7 @@
     align-items: center;
     gap: 24px;
     a {
-      color: #ffffff;
+      color: #2C58A8;
 
       i {
         font-size: 24px;
@@ -290,7 +290,7 @@
 }
 
 .header-active {
-  background: url('/images/header.jpg');
+  background-color: #2C58A8;
   background-size: contain;
   
   animation: header 0.5s linear;

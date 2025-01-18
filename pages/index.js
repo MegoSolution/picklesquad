@@ -3,7 +3,7 @@ import Footer from "@/components/footer/Footer";
 import About from "@/components/home/About";
 import CoachSession from "@/components/home/CoachSession";
 import PrivateEvent from "@/components/home/PrivateEvent";
-import Programmes from "@/components/home/Programmes";
+
 import PricingPlan from "@/components/home/PricingPlan";
 import NavBar from "@/components/navBar/NavBar";
 import Preloader from "@/components/preloader/Preloader";
@@ -26,22 +26,21 @@ export default function Home() {
       {/* About Section */}
       <About />
 
+      {/* Court Rental Secrtion */}
+      <CourtRental />
+      
       {/* Coach Session Secrtion */}
       <CoachSession />
       
       {/* Pricing Plan Secrtion */}
       <PrivateEvent />
 
-      {/* Programmes Secrtion */}
-      <Programmes />
 
       {/* Pricing Plan Secrtion */}
       <MembershipBody />
 
-      {/* Court Rental Secrtion */}
-      <CourtRental />
       
-      
+
       <Footer />
 
       {/* Scroll To Top */}
