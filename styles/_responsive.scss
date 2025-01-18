@@ -17,6 +17,22 @@
     }
   }
 }
+.private-event-section .image-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.private-event-section .full-size-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.private-event-section .gap-button {
+  margin-top: 20px; /* Add gap */
+  display: inline-block;
+}
 
 .banner--secondary-pricing {
   display: flex; /* Align content horizontally */
@@ -42,7 +58,7 @@
  .section__header-title {
    font-size: 65px ;
    line-height: 65px;
-  
+  margin-bottom: 25px;
   color: #2C58A8;
  }
 
@@ -59,17 +75,50 @@
  h5 {
    font-size: 30px;
    line-height: 28px;
+   color:#2C58A8;
+   margin-top: 50px;
+   margin-bottom: 20px;
  }
  p{
   font-size: 25px;
    line-height: 28px;
    color:#2C58A8;
-
  }
  h6 {
    font-size: 16px;
    line-height: 26px;
  }
+
+/* H5 styling for the title */
+.about-text h5 {
+  font-size: 30px;
+  line-height: 40px;
+  color: #2C58A8;
+  margin-bottom: 20px;
+}
+
+/* H2 styling for the main title */
+.about-text h2 {
+  font-size: 65px;
+  line-height: 75px;
+  margin-bottom: 20px;
+  color: #2C58A8;
+}
+
+/* P styling for the paragraphs */
+.section__content-text p {
+  font-size: 25px;
+  line-height: 28px;
+  color: #2C58A8;
+  margin-bottom: 40px !important;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+
+.padding-about {
+  padding-left: 50px;
+}
 
 .banner--secondary {
   display: flex; /* Align content horizontally */
@@ -117,18 +166,18 @@
 }
 
 .banner__content-title {
-  font-size: 72px; /* Larger title for better prominence */
+  font-size: 60px; /* Larger title for better prominence */
   line-height: 80px; /* Adequate spacing between lines */
   font-weight: bold;
   color: #ffffff;
-  margin-bottom: 30px; /* Adjust margin for better spacing */
+
   margin-top: 250px; /* Top margin remains */
   
 }
 
 .banner__content-text {
-  font-size: 25px; /* Larger body text for better readability */
-  line-height: 35px; /* Enhanced spacing for multi-line text */
+  font-size: 20px; /* Larger body text for better readability */
+  line-height: 30px; /* Enhanced spacing for multi-line text */
   color: #ffffff;
   margin-bottom: 40px; /* Increase margin for spacing */
  
@@ -545,7 +594,7 @@
 }
 
 .about--secondary__single-item h6 {
-  font-size: 16px; /* Adjust font size for titles */
+  font-size: 20px; /* Adjust font size for titles */
   font-weight: bold;
   margin-bottom: 10px; /* Add spacing below title */
 }
@@ -1877,7 +1926,26 @@
     font-size: 18px;
     line-height: 28px;
   }
-
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Ensure proper alignment on small screens */
+    justify-content: center; /* Center links on mobile */
+    gap: 10px; /* Add space between items */
+  }
+  
+  .footer-links li {
+    display: inline; /* Inline elements to appear in one line */
+  }
+  
+  .footer-links li:not(:last-child)::after {
+    content: "|"; /* Add separator after each item except the last */
+    margin-left: 10px; /* Add space between the item and the separator */
+    color: #ffffff; /* Ensure the separator matches the text color */
+  }
+  
   // heading styles
   h1,
   .banner__content-title {
@@ -2876,7 +2944,26 @@
       align-items: flex-start;
       padding: 20px;
     }
-
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap; /* Ensure proper alignment on small screens */
+      justify-content: center; /* Center links on mobile */
+      gap: 10px; /* Add space between items */
+    }
+    
+    .footer-links li {
+      display: inline; /* Inline elements to appear in one line */
+    }
+    
+    .footer-links li:not(:last-child)::after {
+      content: "|"; /* Add separator after each item except the last */
+      margin-left: 10px; /* Add space between the item and the separator */
+      color: #ffffff; /* Ensure the separator matches the text color */
+    }
+    
     .shop__card-info {
       padding: 0px;
     }
@@ -2923,6 +3010,26 @@
       }
     }
   }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Ensure proper alignment on small screens */
+    justify-content: center; /* Center links on mobile */
+    gap: 10px; /* Add space between items */
+  }
+  
+  .footer-links li {
+    display: inline; /* Inline elements to appear in one line */
+  }
+  
+  .footer-links li:not(:last-child)::after {
+    content: "|"; /* Add separator after each item except the last */
+    margin-left: 10px; /* Add space between the item and the separator */
+    color: #ffffff; /* Ensure the separator matches the text color */
+  }
+  
 
   .banner--secondary {
     background-image: linear-gradient(

@@ -186,7 +186,7 @@ const ProgramDetailsForm = () => {
   return (
     <>
       <div className="program-details">
-        <div className="image-container">
+        <div className="image-container-program">
           <img
             src="\images\Picklesquad_image\banner-one.jpg"
             alt="Program"

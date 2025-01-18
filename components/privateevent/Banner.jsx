@@ -1,11 +1,13 @@
 const Banner = () => {
   return (
-    <div style={{ height: "150px" }}>
-      <img
-        src="/images/header.jpg"
-        alt="Header Banner"
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-      />
+    <div
+      style={{
+        height: "150px",
+        backgroundColor: "#2C58A8", // Set the background color
+        width: "100%",
+      }}
+    >
+      {/* Optionally, you can include text or leave it empty */}
     </div>
   );
 };
