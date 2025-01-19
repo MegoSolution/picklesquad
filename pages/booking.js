@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Banner from "@/components/booking/Banner";
 import BookingBody from "@/components/booking/BookingBody";
 import withAuth from "@/pages/withAuth";
 
-// Helper function to generate dates
 function Booking() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.query.locationId) {
+      router.replace('/location');
+    }
+  }, [router]);
+
   return (
     <>
       {/* Banner Section */}
