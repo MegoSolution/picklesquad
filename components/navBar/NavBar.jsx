@@ -228,12 +228,17 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                         </button>
                       </>
                     ) : (
-                      <button
-                        onClick={handleBookNowClick}
-                        className="btn btn-light book-now-btn-nav"
-                      >
-                        Book Now
-                      </button>
+                      <>
+                        <button
+                          onClick={handleBookNowClick}
+                          className="btn btn-light book-now-btn-nav"
+                        >
+                          Book Now
+                        </button>
+                        <Link href="/profile" className="profile-icon">
+                          <img src="/images/profile-icon-1.png" alt="Profile" />
+                        </Link>
+                      </>
                     )}
                   </div>
                 </div>
