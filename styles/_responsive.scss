@@ -17,6 +17,13 @@
     }
   }
 }
+
+.nav__logo {
+  img {
+    max-width: 200px;
+  }
+}
+
 .private-event-section .image-container {
   width: 100%;
   height: auto;
@@ -1031,6 +1038,7 @@
 
   .authentication__wrapper {
     margin-top: 220px;
+    margin-bottom: 20px;
   }
 
   // club view
