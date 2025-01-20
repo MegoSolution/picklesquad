@@ -8,8 +8,8 @@ export default function Support() {
       {/* Banner Secrtion */}
       <Banner />
 
-      {/* Support Search Secrtion */}
-      <SupportSearch />
+      {/* Support Search Secrtion 
+      <SupportSearch />*/}
 
       {/* Support Aection Secrtion */}
       <SupportAection />
