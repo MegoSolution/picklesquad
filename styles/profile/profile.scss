@@ -258,6 +258,10 @@
 .profile-update-button {
   width: 100%;
   justify-content: center;
+
+  &::before {
+    background-color: #2C58A8 !important;
+  }
 }
 
 .profile-header {

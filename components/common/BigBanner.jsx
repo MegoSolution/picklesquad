@@ -21,15 +21,15 @@ courts – or if you feel like learning how to nail that
 perfect serve, feel free to take up a lesson.
               </p>
              <br/>
-                <Link href="/sign-in" className="cmn-button-home">
+             <div className="button-container">
+              <Link href="/sign-in" className="cmn-button-home">
                 Let's Play
-                </Link><br /><br />
-                <Link
-                  href="/programmes"
-                  className="cmn-button-home"
-                >
-                  First Time
-                </Link>
+              </Link>
+              <Link href="/programmes" className="cmn-button-home">
+                First Time
+              </Link>
+            </div>
+            <br /><br />
               
             </div>
           </div>

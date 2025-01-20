@@ -215,7 +215,7 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                         {pathname !== '/sign-in' && pathname !== '/sign-up' && (
                           <Link
                             href="/sign-in"
-                            className="cmn-button cmn-button-nav"
+                            className="btn btn-light book-now-btn-nav"
                           >
                             Sign In
                           </Link>

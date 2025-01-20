@@ -3167,6 +3167,17 @@
   }
 }
 
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+  }
+}
+
 /* ==== 
   --------- (6.0) responsive styles end ---------
   ==== */

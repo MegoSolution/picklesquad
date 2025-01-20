@@ -7,14 +7,13 @@ import toast, { Toaster } from 'react-hot-toast';
 const ResetPassword = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
   const router = useRouter();
   const { token } = router.query;
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match.');
+      toast.error('Passwords do not match.');
       return;
     }
     try {
