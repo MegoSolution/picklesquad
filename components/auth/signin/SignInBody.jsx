@@ -9,8 +9,11 @@ import axios from 'axios';
 
 const SignInBody = ({ onToggleForm }) => {
   const [email, setEmail] = useState('');
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [message, setMessage] = useState('');
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -36,6 +39,17 @@ const SignInBody = ({ onToggleForm }) => {
     }
   };
 
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(forgotPasswordEmail);
+      await axios.post(`${BASE_URL}/auth/forgot-password`, { email: forgotPasswordEmail });
+      setMessage('A reset password link has been sent to your email.');
+    } catch (error) {
+      setMessage('Error sending reset password email.');
+    }
+  };
+
   return (
     <section
       className="section section--space-bottom authentication auth-page authentication--alt wow fadeInUp"
@@ -45,47 +59,75 @@ const SignInBody = ({ onToggleForm }) => {
         <div className="row justify-content-center">
           <div className="col-lg-8 col-xxl-6">
             <div className="authentication__wrapper">
-              <h4 className='sign-in-header'>Sign In</h4>
-              <div className="error__inner">
-                {error && <p className="error">{error}</p>}
-              </div>
-              <form action="#" method="post" onSubmit={useLogin}>
-                <div className="input-single">
+              {showForgotPassword ? (
+                <>
+                <h4 className='sign-in-header'>Forgot Password</h4>
+                <form onSubmit={handleForgotPassword}>
                   <label htmlFor="authEmailIn">Enter Your Email ID</label>
-                  <input
+                  <div className="input-single">
+                    <input
                     type="email"
-                    name="auth-email-in"
-                    id="authEmailIn"
-                    required
-                    placeholder="Your email ID here"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                    value={forgotPasswordEmail}
+                    onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required />
+                  </div>
+                  <div className="section__cta text-start">
+                    <button type="submit" className="sign-up-button">
+                      Send Reset Link
+                    </button>
+                  </div>
+                  {message && <p>{message}</p>}
+                  <p className="auth-links secondary-text">
+                    <a onClick={() => setShowForgotPassword(false)}>Back to Sign In</a>
+                  </p>
+                </form>
+                </>
+              ) : (
+                <div>
+                  <h4 className='sign-in-header'>Sign In</h4>
+                  <div className="error__inner">
+                    {error && <p className="error">{error}</p>}
+                  </div>
+                  <form action="#" method="post" onSubmit={useLogin}>
+                    <div className="input-single">
+                      <label htmlFor="authEmailIn">Enter Your Email ID</label>
+                      <input
+                        type="email"
+                        name="auth-email-in"
+                        id="authEmailIn"
+                        required
+                        placeholder="Your email ID here"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="input-single">
+                      <label htmlFor="authPassword">Enter Password</label>
+                      <input
+                        type="password"
+                        name="auth-password"
+                        id="authPassword"
+                        required
+                        placeholder="Enter Your Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                    <p className="auth-links secondary-text">
+                      <a onClick={onToggleForm} className="sign-in-link">
+                        Don't have an account? Sign Up
+                      </a>
+                      <a onClick={() => setShowForgotPassword(true)}>Forgot Password?</a>
+                    </p>
+                    <div className="section__cta text-start">
+                      <button type="submit" className="sign-up-button">
+                        Sign In
+                      </button>
+                    </div>
+                  </form>
+                  <div id="googleSignInButton" className="mt-3"></div>
+                  <GoogleLoginButton />
                 </div>
-                <div className="input-single">
-                  <label htmlFor="authPassword">Enter Password</label>
-                  <input
-                    type="password"
-                    name="auth-password"
-                    id="authPassword"
-                    required
-                    placeholder="Enter Your Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <p className="auth-links secondary-text">
-                  <a onClick={onToggleForm} className="sign-in-link">
-                    Don't have an account? Sign Up
-                  </a>
-                  <Link href="/contact-us">Forgot Password?</Link>
-                </p>
-                <div className="section__cta text-start">
-                  <button type="submit" className="sign-up-button">
-                    Sign In
-                  </button>
-                </div>
-              </form>
-              <div id="googleSignInButton" className="mt-3"></div>
-              <GoogleLoginButton />
+              )}
             </div>
           </div>
         </div>

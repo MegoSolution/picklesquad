@@ -15,6 +15,7 @@ const NavBar = ({ cls = 'header--secondary' }) => {
   const [subDropdown, setSubDropdown] = useState('');
   const [user, setUser] = useState(null);
   const router = useRouter();
+  const { pathname } = router;
 
   const handleActive = () => {
     setActive(false);
@@ -209,44 +210,46 @@ const NavBar = ({ cls = 'header--secondary' }) => {
 
                 <div className="nav__uncollapsed">
                   <div className="nav__uncollapsed-item d-none d-md-flex">
-                    {router.pathname !== '/sign-in' &&
-                      router.pathname !== '/sign-up' && (
-                        <>
-                          {!user ? (
-                            <>
-                              <Link
-                                href="/sign-in"
-                                className="cmn-button cmn-button-nav"
-                              >
-                                Sign In
-                              </Link>
-                              <button
-                                onClick={handleBookNowClick}
-                                className="btn btn-light book-now-btn-nav"
-                              >
-                                Book Now
-                              </button>
-                            </>
-                          ) : (
-                            <button
-                              onClick={handleBookNowClick}
-                              className="btn btn-light book-now-btn-nav"
-                            >
-                              Book Now
-                            </button>
-                          )}
-                        </>
-                      )}
+                    {!user ? (
+                      <>
+                        {pathname !== '/sign-in' && pathname !== '/sign-up' && (
+                          <Link
+                            href="/sign-in"
+                            className="cmn-button cmn-button-nav"
+                          >
+                            Sign In
+                          </Link>
+                        )}
+                        <button
+                          onClick={handleBookNowClick}
+                          className="btn btn-light book-now-btn-nav"
+                        >
+                          Book Now
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={handleBookNowClick}
+                          className="btn btn-light book-now-btn-nav"
+                        >
+                          Book Now
+                        </button>
+                        <Link href="/profile" className="profile-icon">
+                          <img src="/images/profile-icon-1.png" alt="Profile" />
+                        </Link>
+                      </>
+                    )}
                   </div>
-                  <button
-                    className="nav__bar d-block d-xl-none"
-                    onClick={() => setActive(!active)}
-                  >
-                    <span className="icon-bar top-bar"></span>
-                    <span className="icon-bar middle-bar"></span>
-                    <span className="icon-bar bottom-bar"></span>
-                  </button>
                 </div>
+                <button
+                  className="nav__bar d-block d-xl-none"
+                  onClick={() => setActive(!active)}
+                >
+                  <span className="icon-bar top-bar"></span>
+                  <span className="icon-bar middle-bar"></span>
+                  <span className="icon-bar bottom-bar"></span>
+                </button>
               </div>
             </nav>
           </div>
