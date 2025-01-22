@@ -140,6 +140,7 @@ const MembershipDetailForm = () => {
           checksum: calculateChecksumRecurring({
             orderId,
             recurringId: formData.recurringId,
+            secretKey: SP_SECRET_KEY,
           }),
         };
       })

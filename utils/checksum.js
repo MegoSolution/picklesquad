@@ -13,7 +13,7 @@ function calculateChecksum({ secretKey, detail, amount, orderId }) {
   return sha256Hash;
 }
 
-function calculateChecksumRecurring({ recurringId, orderId }) {
+function calculateChecksumRecurring({ secretKey, recurringId, orderId }) {
   // Concatenate the string in the required format
   const str = `${recurringId}${orderId}`;
 
