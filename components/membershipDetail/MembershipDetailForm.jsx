@@ -44,6 +44,10 @@ const MembershipDetailForm = () => {
 
       const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
         .token;
+
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userId = user._id;
+
       const response = await fetch(`${BASE_URL}/membership`, {
         method: 'POST',
         headers: {
@@ -51,6 +55,7 @@ const MembershipDetailForm = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          userId,
           membershipId: membership.membershipId,
           membershipType: membership.membershipType,
           duration: membership.duration,
