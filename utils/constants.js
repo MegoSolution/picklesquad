@@ -8,6 +8,8 @@ const RP_REQUEST_KEY = process.env.NEXT_PUBLIC_RP_REQUEST_KEY;
 const SP_MERCHANT_ID = process.env.NEXT_PUBLIC_SP_MERCHANT_ID;
 const SP_SECRET_KEY = process.env.NEXT_PUBLIC_SP_SECRET_KEY;
 const SP_URL = process.env.NEXT_PUBLIC_SP_URL;
+const SP_RECURRING_URL = process.env.NEXT_PUBLIC_SP_RECURRING_URL;
+const SP_RECURRING_ID = process.env.NEXT_PUBLIC_SP_RECURRING_ID;
 
 export {
   BASE_URL,
@@ -19,4 +21,6 @@ export {
   SP_MERCHANT_ID,
   SP_SECRET_KEY,
   SP_URL,
+  SP_RECURRING_URL,
+  SP_RECURRING_ID,
 };
