@@ -15,7 +15,7 @@ function calculateChecksum({ secretKey, detail, amount, orderId }) {
 
 function calculateChecksumRecurring({ secretKey, recurringId, orderId }) {
   // Concatenate the string in the required format
-  const str = `${recurringId}${orderId}`;
+  const str = `${secretKey}${recurringId}${orderId}`;
 
   // Generate HMAC-SHA256 hash
   const sha256Hash = CryptoJS.HmacSHA256(str, secretKey).toString(
