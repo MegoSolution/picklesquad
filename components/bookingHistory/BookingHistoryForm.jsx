@@ -18,8 +18,8 @@ const BookingHistoryForm = () => {
       .token;
 
     const url = mode 
-      ? `${BASE_URL}/bookings?mode=${mode}&page=${page}&limit=${ITEMS_PER_PAGE}`
-      : `${BASE_URL}/bookings?page=${page}&limit=${ITEMS_PER_PAGE}`;
+      ? `${BASE_URL}/bookings/user?mode=${mode}&page=${page}&limit=${ITEMS_PER_PAGE}`
+      : `${BASE_URL}/bookings/user?page=${page}&limit=${ITEMS_PER_PAGE}`;
 
     fetch(url, {
       method: 'GET',
