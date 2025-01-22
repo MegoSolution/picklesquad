@@ -100,7 +100,6 @@ const MembershipDetailForm = () => {
       </div>
 
       <div className="payment-section">
-        <h3>Payment Details</h3>
         <div className="payment-methods">
           <button 
             className="payment-button"

@@ -46,14 +46,7 @@ const LocationForm = () => {
 
   const handleLocationSelect = (location) => {
     setSelectedLocation(location.id);
-  };
-
-  const handleNext = () => {
-    if (!selectedLocation) {
-      alert('Please select a location first');
-      return;
-    }
-    router.push(`/booking?locationId=${selectedLocation}`);
+    router.push(`/booking?locationId=${location.id}`);
   };
 
   return (
@@ -88,13 +81,6 @@ const LocationForm = () => {
           </div>
         ))}
       </div>
-
-      <button 
-        className="navigation-next-button"
-        onClick={handleNext}
-      >
-        Next
-      </button>
     </div>
   );
 };

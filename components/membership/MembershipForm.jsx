@@ -40,12 +40,9 @@ const MembershipForm = () => {
       try {
         setLoading(true);
         setError(null);
-        
-        const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access.token;
         const response = await fetch(`${BASE_URL}/memberbenefitextra`, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${BEARER_TOKEN}`,
             'Content-Type': 'application/json'
           }
         });
@@ -55,7 +52,13 @@ const MembershipForm = () => {
         }
 
         const data = await response.json();
-        setMemberships(data.results || []);
+        const formattedResults = data.results?.map(membership => ({
+          ...membership,
+          freeGifts: membership.freeGifts?.map(gift => 
+            typeof gift === 'object' ? gift.name : gift
+          )
+        })) || [];
+        setMemberships(formattedResults);
         const durations = [...new Set(
           data.results.flatMap(membership => 
             membership.prices.map(price => price.duration)

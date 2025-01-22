@@ -6,6 +6,18 @@
   min-height: 500px;
   padding-bottom: 80px;
   font-family: "Metropolis", sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  h3 {
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
 }
 .divider {
   margin: 10px 0;
@@ -15,6 +27,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .location-item {
   border: 1px solid #ddd;
@@ -24,14 +42,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
   width: 40%;
 
+  @media (max-width: 768px) {
+    width: 90%;
+    max-width: 400px;
+  }
+
   &:hover {
     border-color: #8B4513;
     border-width: 2px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   &.selected {
@@ -54,9 +79,17 @@
   object-fit: cover;
   border-radius: 8px 8px 0 0;
   margin: 0;
+
+  @media (max-width: 768px) {
+    height: 150px;  // Slightly smaller image for mobile
+  }
 }
 .location-details {
   padding: 15px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
 
   h4 {
     color: #000;
@@ -72,12 +105,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+
+    @media (max-width: 768px) {
+      font-size: 15px;
+      min-height: 20px;
+      line-height: 20px;
+    }
   }
 
   p {
     color: #2C58A8;
     margin: 0;
     font-family: "Metropolis", sans-serif;
+    
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 }
 .next-button {
@@ -95,24 +138,9 @@
 }
 .error {
   color: red;
-}
-.navigation-next-button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 30px;
-  background-color: #2C58A8;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-family: "Metropolis", sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    background-color: #3869C5;
-    color: white;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 0 15px;
   }
 }
