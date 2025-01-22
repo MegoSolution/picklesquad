@@ -149,6 +149,7 @@ const MembershipDetailForm = () => {
 
   useEffect(() => {
     if (formData.checksum) {
+      console.log(formData);
       console.log(formData.checksum);
       handlePayNow();
     }

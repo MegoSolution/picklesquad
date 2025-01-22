@@ -14,6 +14,7 @@ function calculateChecksum({ secretKey, detail, amount, orderId }) {
 }
 
 function calculateChecksumRecurring({ secretKey, recurringId, orderId }) {
+  console.log('DEBUG', secretKey, recurringId, orderId);
   // Concatenate the string in the required format
   const str = `${secretKey}${recurringId}${orderId}`;
 
