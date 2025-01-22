@@ -1,7 +1,7 @@
-const generateDates = () => {
+const generateDates = (totalDays = 14) => {
   const datesArray = [];
   const today = new Date();
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < totalDays; i++) {
     const futureDate = new Date(today);
     futureDate.setDate(today.getDate() + i);
     const day = futureDate.toLocaleDateString('en-US', { weekday: 'short' });

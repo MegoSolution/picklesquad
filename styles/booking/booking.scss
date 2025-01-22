@@ -1,3 +1,11 @@
+.booking-page-section {
+  padding: 40px 0 60px;  // 40px top, 60px bottom
+
+  @media (max-width: 768px) {
+    padding: 30px 0 40px;  // Slightly less padding on mobile
+  }
+}
+
 .booking-container {
   max-width: 50%;
   margin: 0 auto;

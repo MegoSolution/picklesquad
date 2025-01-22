@@ -45,8 +45,38 @@ const BookingForm = () => {
     checksum: null,
   });
 
-  // Generate dates for selection
-  const dates = generateDates();
+  // Add new state for advance booking days
+  const [advanceBookingDays, setAdvanceBookingDays] = useState(7); // Default to 7 days as fallback
+
+  // Add new function to fetch member benefits
+  const fetchMemberBenefits = async () => {
+    try {
+      const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens'))?.access.token;
+      
+      const response = await fetch(`${BASE_URL}/memberBenefitExtra/basic`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch member benefits');
+      }
+
+      const data = await response.json();
+      if (data.advanceBookingDays) {
+        setAdvanceBookingDays(data.advanceBookingDays);
+      }
+    } catch (error) {
+      console.error('Error fetching member benefits:', error);
+      // Keep default 7 days if API fails
+    }
+  };
+
+  // Update the generateDates call to use the dynamic advanceBookingDays
+  const dates = generateDates(advanceBookingDays+7);
   const today = dates[0].value;
 
   // TODO: Remove this before launch
@@ -467,6 +497,11 @@ const BookingForm = () => {
     }
   }, [formData.checksum]);
 
+  // Add useEffect to fetch member benefits when component mounts
+  useEffect(() => {
+    fetchMemberBenefits();
+  }, []);
+
   return (
     <div className="booking-container">
       <h3>Picklesquad</h3>
@@ -484,7 +519,7 @@ const BookingForm = () => {
                 className={`date-button ${
                   selectedDate === date.value ? 'selected' : ''
                 }`}
-                disabled={!membership && index >= dates.length - 7} // Disable the last 7 buttons if no membership
+                disabled={!membership && index >= dates.length - advanceBookingDays} // Disable the last 7 buttons if no membership
               >
                 {date.display}
               </button>
