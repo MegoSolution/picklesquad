@@ -37,7 +37,7 @@ function PricingPlan() {
           <div className="table-row-pricing">
             <div className="table-left-pricing">OFF-PEAK HOURS</div>
             <div className="table-right-pricing">
-              Weekday 12PM - 4PM
+              Weekday 11AM - 4PM
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ function PricingPlan() {
         <div className="table-container-pricing">
           <div className="table-row-pricing">
             <div className="table-left-pricing">BALL (FOR SALE)</div>
-            <div className="table-right-pricing">RM9 /ball</div>
+            <div className="table-right-pricing">RM10 /ball</div>
           </div>
           <div className="table-row-pricing">
             <div className="table-left-pricing">PADDLE RENTAL</div>

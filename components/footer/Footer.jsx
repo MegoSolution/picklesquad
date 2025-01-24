@@ -63,7 +63,8 @@ const Footer = () => {
               <p>(+60) 12-316 4698</p>
               <p>picklesquad624@gmail.com</p>
               <h5>Jelutong</h5>
-              <p>116, Jalan Jelutong, Jelutong, 11600 George Town, Pulau Pinang</p>
+              <p>Picklesquad Sdn Bhd (202401043375) <br/>
+              175, Jalan Jelutong , 11600 Georgetown , Penang , Malaysia</p>
               <h5>Bukit Mertajam</h5>
               <p>Bukit Mertajam, 14000 Penang</p>
             </div>

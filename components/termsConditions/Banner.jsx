@@ -3,11 +3,11 @@ import SmallBanner from "../common/SmallBanner";
 
 const Banner = () => {
   return (
-    <SmallBanner title="Terms Of Use">
+    <SmallBanner title="Terms and Condition">
       <Breadcrumb
         breadcrumbs={[
           ["Home", "/"],
-          ["Terms Of Use", "/"],
+          ["Terms Of Use", "/terms-conditions"],
         ]}
       />
     </SmallBanner>

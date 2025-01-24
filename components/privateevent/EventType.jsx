@@ -1,21 +1,26 @@
-import Image from "next/image";
 import Link from "next/link";
-import club_thumb from "/public/images/Picklesquad_image/view.png";
 
-const WhyChooseUs = () => {
+const EventType = () => {
   return (
-    <div id="View" className="coach-session-section">
-      <div className="text-container-coach">
-        <div className="session-content">
-          <h5 className="section__content-sub-title">
+    <div className="private-event-section">
+      <div className="image-container">
+        <img
+          src="/images/picklesquad_image/first-time.jpg"
+          alt="Private Event"
+          className="event-image"
+        />
+      </div>
+      <div className="text-container">
+        <div className="event-content ">
+        <h5 className="section__content-sub-title font-white">
               Why Choose Us?
           </h5>
-          <h2 className="section__content-title">
+          <h2 className="section__content-title font-white">
             Host Your Private Event Hosting
           </h2>
             
           <div className="section__content-inner">
-            <ul className="feature-list">
+            <ul className="feature-list-2">
               <li>
                 <i className="golftio-pin-checked"></i>
                 <div>
@@ -56,25 +61,14 @@ const WhyChooseUs = () => {
           </div>
             
           <div className="section__content-cta">
-            <Link href="#Contact" scroll={false} className="btn btn-primary first-time-btn">
-              Plan Now
+            <Link href="#Contact" scroll={false} className="btn btn-light book-now-btn">
+              Book Your Private Event Now
             </Link>
           </div>
         </div>
       </div>
-      <div className="image-container">
-        <Image
-          src={club_thumb} 
-          alt="Coach Session"
-          className="session-image"
-        />
-      </div>
     </div>
-
-    
   );
 };
 
-
-
-export default WhyChooseUs;
+export default EventType;
