@@ -3,7 +3,7 @@ const CourtRental= () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/court-rental.png"
+          src="/images/home/court-rental.png"
           alt="Private Event"
           className="event-image"
         />

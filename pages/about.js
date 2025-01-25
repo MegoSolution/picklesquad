@@ -2,10 +2,6 @@ import AboutUs from "@/components/about/AboutUs";
 import Banner from "@/components/about/Banner";
 import Club from "@/components/about/Club";
 import Counter from "@/components/common/Counter";
-import JoinClub from "@/components/common/JoinClub";
-import Sponsor from "@/components/common/Sponsor";
-import Team from "@/components/common/Team";
-import Testimonial from "@/components/common/Testimonial";
 import FinalView from "@/components/about/FinalView";
 
 export default function About() {

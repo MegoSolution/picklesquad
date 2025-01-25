@@ -87,7 +87,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.instagram.com/picklesquad.my/">
                     <Image
-                      src="/images/picklesquad_image/footer/ig.png"
+                      src="/images/footer/ig.png"
                       alt="Instagram"
                       width={50}
                       height={50}
@@ -97,7 +97,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.facebook.com/">
                     <Image
-                      src="/images/picklesquad_image/footer/fb.png"
+                      src="/images/footer/fb.png"
                       alt="Facebook"
                       width={50}
                       height={50}
@@ -107,7 +107,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.xiaohongshu.com/">
                     <Image
-                      src="/images/picklesquad_image/footer/xhs.png"
+                      src="/images/footer/xhs.png"
                       alt="Xiaohongshu"
                       width={50}
                       height={50}

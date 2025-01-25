@@ -17,7 +17,7 @@ With personalized setups tailored to your theme and needs, PickleSquad transform
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/view.png"
+          src="/images/privateevent/view.png"
           alt="Coach Session"
           className="session-image"
         />

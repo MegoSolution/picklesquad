@@ -5,7 +5,7 @@ const EventType = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/first-time.jpg"
+          src="/images/privateevent/first-time.jpg"
           alt="Private Event"
           className="event-image"
         />

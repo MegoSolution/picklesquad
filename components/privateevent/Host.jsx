@@ -3,7 +3,7 @@ const Host = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/host.jpg"
+          src="/images/privateevent/host.jpg"
           alt="Private Event"
           className="event-image full-size-image" // Added class for full size
         />

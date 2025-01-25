@@ -18,7 +18,7 @@ const FinalView = () => {
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/view.png"
+          src="/images/aboutus/view.png"
           alt="Coach Session"
           className="session-image"
         />

@@ -3,7 +3,7 @@ const PrivateEvent = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/private-event.jpg"
+          src="/images/home/private-event.jpg"
           alt="Private Event"
           className="event-image"
         />

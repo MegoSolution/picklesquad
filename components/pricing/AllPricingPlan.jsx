@@ -5,7 +5,7 @@ function PricingPlan() {
     <section
       className="faq pricing-plan"
       style={{
-        backgroundImage: "url('/images/pricing-02.png')",
+        backgroundImage: "url('/images/pricing.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
