@@ -55,7 +55,7 @@ const MembershipDetailForm = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId,
+          user: userId,
           membershipId: membership.membershipId,
           membershipType: membership.membershipType,
           duration: membership.duration,
