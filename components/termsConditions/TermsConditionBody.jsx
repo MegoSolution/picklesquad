@@ -4,13 +4,10 @@ const TermsConditionBody = () => {
       className="section privacy-policy wow fadeInUp"
       data-wow-duration="0.4s"
     >
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-10 col-xl-8">
+      <div className="privacy-policy container">
             <div className="privacy-policy__inner">
               {/* Terms of Use */}
               <div className="privacy-policy__single">
-                <h5>Terms and Condition</h5>
                 <h6>1. General Terms</h6>
                 <p className="secondary-text">
                 1.1 By accessing or using the services offered by PickleSquad, you agree to comply with and
@@ -280,8 +277,6 @@ its control, such as natural disasters, strikes, or government actions.
               <hr />
             </div>
           </div>
-        </div>
-      </div>
     </section>
   );
 };
