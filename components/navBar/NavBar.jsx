@@ -5,8 +5,6 @@ import { navData } from './navData';
 import Logo_light from '/public/images/Picklesquad_image/logo-07.png';
 import Logo from '/public/images/Picklesquad_image/logo-07.png';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import HandleLogout from '../auth/SignOutBody';
 
 const NavBar = ({ cls = 'header--secondary' }) => {
   const [windowHeight, setWindowHeight] = useState(0);

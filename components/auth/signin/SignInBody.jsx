@@ -62,10 +62,11 @@ const SignInBody = ({ onToggleForm }) => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-xxl-6">
+            <img className="sign-in-logo" src="/images/Picklesquad_image/logo-07.png" alt="Logo" />
               <div className="authentication__wrapper">
                 {showForgotPassword ? (
                   <>
-                    <h4 className='sign-in-header'>Forgot Password</h4>
+                    <h4 className='sign-in-header'>Sign In</h4>
                     <form onSubmit={handleForgotPassword}>
                       <label htmlFor="authEmailIn">Enter Your Email ID</label>
                       <div className="input-single">
@@ -128,6 +129,18 @@ const SignInBody = ({ onToggleForm }) => {
                     </form>
                     <div id="googleSignInButton" className="mt-3"></div>
                     <GoogleLoginButton />
+                    <div className="terms-text">
+                      <p>
+                        By signing in, I agree to the Picklesquad 
+                        <a href="/terms-conditions" target="_blank" rel="noopener noreferrer">
+                          Terms of Use
+                        </a> 
+                        and 
+                        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+                          Privacy Policy.
+                        </a>
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>

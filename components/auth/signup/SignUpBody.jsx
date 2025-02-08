@@ -43,19 +43,19 @@ const SignUpBody = ({ onToggleForm }) => {
 
   return (
     <section
-      className="section section--space-bottom authentication auth-page wow fadeInUp"
+      className="section section--space-bottom authentication auth-page authentication--alt wow fadeInUp"
       data-wow-duration="0.4s"
     >
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8 col-xxl-6">
+          <img className="sign-in-logo" src="/images/Picklesquad_image/logo-07.png" alt="Logo" />
             <div className="authentication__wrapper">
-              <h4>Let's Get Started!</h4>
-              <p>Please Enter your Email Address to join our club</p>
+            <h4 className='sign-in-header'>Sign Up</h4>
               <div className="error__message">{error && <p>{error}</p>}</div>
               <form action="#" method="post" onSubmit={handleSignUp}>
+                <label htmlFor="authName">Name</label>
                 <div className="input-single">
-                  <label htmlFor="authName">Name</label>
                   <input
                     type="text"
                     name="auth-name"
@@ -65,8 +65,8 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
+                <label htmlFor="authEmail">Email</label>
                 <div className="input-single">
-                  <label htmlFor="authEmail">Enter Your Email ID</label>
                   <input
                     type="email"
                     name="auth-email"
@@ -76,8 +76,9 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
+                <label htmlFor="authPassword">Password</label>
                 <div className="input-single">
-                  <label htmlFor="authPassword">Enter Your Password</label>
+
                   <input
                     type="password"
                     name="auth-password"
@@ -87,10 +88,10 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                <label htmlFor="authConfirmPassword">
+                  Password
+                </label>
                 <div className="input-single">
-                  <label htmlFor="authConfirmPassword">
-                    Confirm Your Password
-                  </label>
                   <input
                     type="password"
                     name="auth-confirm-password"
@@ -100,16 +101,6 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                {/* <p>
-                  By clicking submit, you agree to{' '}
-                  <Link href="/privacy-policy">Terms of Use</Link>,{' '}
-                  <Link href="/privacy-policy">Privacy Policy</Link>,{' '}
-                  <Link href="/privacy-policy">E-sign</Link> &{' '}
-                  <Link href="/privacy-policy">
-                    communication Authorization
-                  </Link>
-                  .
-                </p> */}
                 <p className="auth-links secondary-text">
                   <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
                     Already have an account? Sign In
@@ -123,6 +114,18 @@ const SignUpBody = ({ onToggleForm }) => {
               </form>
               <div id="googleSignInButton" className="mt-3"></div>
               <GoogleLoginButton />
+              <div className="terms-text">
+                <p>
+                  By signing up, I agree to the Picklesquad 
+                  <a href="/terms-conditions" target="_blank" rel="noopener noreferrer">
+                    Terms of Use
+                  </a> 
+                  and 
+                  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+                    Privacy Policy.
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

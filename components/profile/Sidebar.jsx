@@ -9,6 +9,7 @@ const Sidebar = ({ programs }) => {
   const [showECardModal, setShowECardModal] = useState(false);
   const [isMember, setIsMember] = useState(false);
   const [user, setUser] = useState(null);
+  const [membershipType, setMembershipType] = useState('');
   const logoutUser = useLogout();
   console.log(programs);
 
@@ -17,6 +18,11 @@ const Sidebar = ({ programs }) => {
     setUser(storedUser);
     if (storedUser && storedUser.membership) {
       setIsMember(true);
+
+      // Assuming membershipType is stored within the membership object
+      if (storedUser.membership.membershipType) {
+        setMembershipType(storedUser.membership.membershipType);
+      }
     }
   }, []);
 
@@ -54,7 +60,9 @@ const Sidebar = ({ programs }) => {
       >
         <h4 className="profile--side__bar-user-name"><b>{user?.name}</b></h4>
         <div className="profile--side__bar-nav-link-div-2">
-          <p className="secondary-text">Membership Level</p>
+        <p className="membership-type secondary-text">
+          {(membershipType || 'Normal').toLowerCase().replace(/\b\w/g, char => char.toUpperCase())} User
+        </p>
         </div>
         <h6 className="profile--side__bar-header">
           <span className="booking_number">0&nbsp;</span>
