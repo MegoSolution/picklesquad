@@ -3,7 +3,7 @@ const OpenPlay = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/programmes/openplay.jpg"
+          src="/images/programmes/open-play.jpg"
           alt="Private Event"
           className="event-image"
         />

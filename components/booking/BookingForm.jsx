@@ -2,11 +2,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import {
   BASE_URL,
-  RP_APP_ID,
-  RP_CURRENCY,
-  RP_REQUEST_KEY,
-  RP_RETURN_URL,
-  RP_URL,
   SP_SECRET_KEY,
   SP_URL,
 } from '../../utils/constants';
@@ -14,6 +9,7 @@ import { calculateChecksum } from '@/utils/checksum';
 import { generateDates, genOrderId } from '@/utils/bookings';
 import { flushSync } from 'react-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import CourtGalleryModal from './CourtGalleryModal';
 
 const BookingForm = () => {
   const formRef = useRef();
@@ -39,6 +35,7 @@ const BookingForm = () => {
   const router = useRouter();
   const { locationId } = router.query; // Get locationId from query parameters
   const [bookingRes, setBookingRes] = useState(null);
+  const [showGallery, setShowGallery] = useState(false);
 
   const [formData, setFormData] = useState({
     amount: null,
@@ -48,8 +45,38 @@ const BookingForm = () => {
     checksum: null,
   });
 
-  // Generate dates for selection
-  const dates = generateDates();
+  // Add new state for advance booking days
+  const [advanceBookingDays, setAdvanceBookingDays] = useState(7); // Default to 7 days as fallback
+
+  // Add new function to fetch member benefits
+  const fetchMemberBenefits = async () => {
+    try {
+      const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens'))?.access.token;
+      
+      const response = await fetch(`${BASE_URL}/memberBenefitExtra/basic`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch member benefits');
+      }
+
+      const data = await response.json();
+      if (data.advanceBookingDays) {
+        setAdvanceBookingDays(data.advanceBookingDays);
+      }
+    } catch (error) {
+      console.error('Error fetching member benefits:', error);
+      // Keep default 7 days if API fails
+    }
+  };
+
+  // Update the generateDates call to use the dynamic advanceBookingDays
+  const dates = generateDates(advanceBookingDays+7);
   const today = dates[0].value;
 
   // TODO: Remove this before launch
@@ -418,21 +445,18 @@ const BookingForm = () => {
 
   useEffect(() => {
     if (localStorage) {
-      setMembership(!!localStorage.getItem('membership'));
       setSelectedDate(today);
       fetchAvailableTimes(today);
       fetchEquipment();
 
       const tokens = JSON.parse(localStorage.getItem('tokens'));
       const user = JSON.parse(localStorage.getItem('user'));
-      const memberId = JSON.parse(localStorage.getItem('membership'));
       const userId = user._id;
 
       setLocalStorageDetails({
         user: userId,
         tokens: tokens,
         BEARER_TOKEN: tokens?.access?.token || '',
-        membership: memberId,
       });
     }
   }, []);
@@ -473,19 +497,18 @@ const BookingForm = () => {
     }
   }, [formData.checksum]);
 
+  // Add useEffect to fetch member benefits when component mounts
+  useEffect(() => {
+    fetchMemberBenefits();
+  }, []);
+
   return (
     <div className="booking-container">
       <h3>Picklesquad</h3>
       <hr className="divider" />
 
-      <div className="section">
-        <button className="membership-toggle-button" onClick={toggleMembership}>
-          {membership ? 'Disable Membership' : 'Enable Membership'}
-        </button>
-      </div>
-
       {/* Select Date Section */}
-      <div className="section">
+      <div className="booking-section">
         <h4 className="ms-2">Select Date</h4>
         <div className="centerlized-container">
           <div className="date-container pt-3">
@@ -496,7 +519,7 @@ const BookingForm = () => {
                 className={`date-button ${
                   selectedDate === date.value ? 'selected' : ''
                 }`}
-                disabled={!membership && index >= dates.length - 7} // Disable the last 7 buttons if no membership
+                disabled={!membership && index >= dates.length - advanceBookingDays} // Disable the last 7 buttons if no membership
               >
                 {date.display}
               </button>
@@ -506,7 +529,7 @@ const BookingForm = () => {
       </div>
 
       {/* Select Time Section */}
-      <div className="section">
+      <div className="booking-section">
         <h4 className="ms-2">Select Time</h4>
         <div className="centerlized-container">
           {availableTimes.length > 0 ? (
@@ -543,8 +566,17 @@ const BookingForm = () => {
       </div>
 
       {/* Select Court Section */}
-      <div className="section">
-        <h4 className="ms-2">Select Court</h4>
+      <div className="booking-section">
+        <div className="court-section-header">
+          <h4 className="ms-2">Select Court</h4>
+          <a 
+            className="view-court-link"
+            onClick={() => setShowGallery(true)}
+            href="#"
+          >
+            View Court
+          </a>
+        </div>
         <div className="centerlized-container">
           {selectedStartTime === null ? (
             <p className="no-selected-time-message">
@@ -573,7 +605,7 @@ const BookingForm = () => {
       </div>
 
       {/* Equipment Selection Section */}
-      <div className="section">
+      <div className="booking-section">
         <h4 className="ms-2">Select Equipment</h4>
         <div className="equipment-container pt-3">
           {equipment.map((item) => (
@@ -612,7 +644,7 @@ const BookingForm = () => {
       </div>
 
       {/* Display Total Amount */}
-      <div className="section">
+      <div className="booking-section">
         <h4>Total Amount: RM{calculateTotal()}</h4>
       </div>
 
@@ -627,12 +659,23 @@ const BookingForm = () => {
       </form>
 
       {/* Booking Button */}
-      <div className="section">
+      <div className="booking-section">
         <button className="book-now-button" onClick={handleCheckout}>
           Check Out
         </button>
       </div>
       <Toaster />
+
+      {/* Court Gallery Modal */}
+      <CourtGalleryModal 
+        isOpen={showGallery}
+        onClose={() => setShowGallery(false)}
+        images={[
+          '/images/courts/court.jpg',
+          '/images/courts/court1.jpg',
+          '/images/courts/court2.jpg',
+        ]}
+      />
     </div>
   );
 };

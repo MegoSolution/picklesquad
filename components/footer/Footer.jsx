@@ -63,7 +63,8 @@ const Footer = () => {
               <p>(+60) 12-316 4698</p>
               <p>picklesquad624@gmail.com</p>
               <h5>Jelutong</h5>
-              <p>116, Jalan Jelutong, Jelutong, 11600 George Town, Pulau Pinang</p>
+              <p>Picklesquad Sdn Bhd (202401043375) <br/>
+              175, Jalan Jelutong , 11600 Georgetown , Penang , Malaysia</p>
               <h5>Bukit Mertajam</h5>
               <p>Bukit Mertajam, 14000 Penang</p>
             </div>
@@ -86,7 +87,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.instagram.com/picklesquad.my/">
                     <Image
-                      src="/images/picklesquad_image/footer/ig.png"
+                      src="/images/footer/ig.png"
                       alt="Instagram"
                       width={50}
                       height={50}
@@ -96,7 +97,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.facebook.com/">
                     <Image
-                      src="/images/picklesquad_image/footer/fb.png"
+                      src="/images/footer/fb.png"
                       alt="Facebook"
                       width={50}
                       height={50}
@@ -106,7 +107,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.xiaohongshu.com/">
                     <Image
-                      src="/images/picklesquad_image/footer/xhs.png"
+                      src="/images/footer/xhs.png"
                       alt="Xiaohongshu"
                       width={50}
                       height={50}

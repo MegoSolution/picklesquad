@@ -4,18 +4,19 @@
 
  .header {
   position: fixed;
-  top: 30px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: 99;
-  background: transparent;
+  background-color: #2c58a8;
 
   .nav {
     padding: 30px 60px;
-    background: none; /* Removes the background */
+    padding-bottom: 0%;
+    background-color: #2c58a8;
     border-radius: 5px;
-    box-shadow: none; /* Retain the shadow */
+    box-shadow: none;
   }
   
 
@@ -290,18 +291,20 @@
 }
 
 .header-active {
-  background-color: #2C58A8;
-  background-size: contain;
-  
-  animation: header 0.5s linear;
+  background-color: #2C58A8 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   top: 0px;
   z-index: 99;
 
   .nav {
-    box-shadow: none !important;
-    ;
-  background-size: contain;
-  
+    background-color: #2C58A8;
+  }
+
+  .nav__menu-link {
+    color: white;
+    &:hover {
+      color: $white;
+    }
   }
 }
 
@@ -404,6 +407,22 @@
       background-color: $white;
     }
   }
+}
+
+.header--secondary.header-active {
+  background-color: transparent;
+  .nav {
+    border-bottom: 1px solid transparent;
+  }
+}
+
+.header-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 /* ==== 

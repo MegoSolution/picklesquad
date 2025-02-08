@@ -1,16 +1,14 @@
-import Breadcrumb from "../breadcrumb/Breadcrumb";
-import SmallBanner from "../common/SmallBanner";
-
 const Banner = () => {
   return (
-    <SmallBanner title="Terms Of Use">
-      <Breadcrumb
-        breadcrumbs={[
-          ["Home", "/"],
-          ["Terms Of Use", "/"],
-        ]}
-      />
-    </SmallBanner>
+    <section className="privacy-policy_banner--inner terms-banner">
+      <div className="privacy-policy_banner--inner container">
+        <div className="row justify-content-center">
+          <div className="col-md-8 text-center">
+            <h2 className="banner-title">Terms and Condition</h2>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

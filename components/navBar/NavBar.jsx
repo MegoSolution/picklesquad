@@ -55,7 +55,7 @@ const NavBar = ({ cls = 'header--secondary' }) => {
 
   return (
     <header
-      className={`header ${cls} ${windowHeight > 50 ? 'header-active' : ''}`}
+      className={`header ${cls} ${windowHeight > 50 ? 'header-active' : ''} header-sticky`}
     >
       <div className="container">
         <div className="row">

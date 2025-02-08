@@ -1,3 +1,11 @@
+.booking-history-page-section {
+  padding: 40px 0 60px;  // 40px top, 60px bottom
+
+  @media (max-width: 768px) {
+    padding: 30px 0 40px;  // Slightly less padding on mobile
+  }
+}
+
 .toggle-container {
   display: flex;
   justify-content: space-between;
@@ -36,6 +44,46 @@
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: #f9f9f9;
+  display: flex;
+  gap: 20px;
+}
+
+.date-badge {
+  background-color: #2C58A8;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  align-self: stretch;
+
+  span {
+    color: white;
+    margin: 2px 0;
+    text-align: center;
+    
+    &:first-child {  // Weekday
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    
+    &:nth-child(2) {  // Month
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    
+    &:last-child {  // Day
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}
+
+.booking-details {
+  flex: 1;
 }
 
 .no-bookings-message {
@@ -110,6 +158,48 @@
   color: #0056b3;
 }
 
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &.active {
+    background-color: #2C58A8;
+    color: white;
+  }
+
+  &:hover {
+    background-color: #1a4080;
+    color: white;
+  }
+}
+
+.view-details-button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #2C58A8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #1a4080;
+  }
+}
+
 //modal
 
 .modal {
@@ -147,6 +237,72 @@
 
 .modal h4 {
   margin-top: 0;
+}
+
+// Add these pagination styles
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  min-width: 40px;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+
+  // Number buttons
+  &[class="pagination-button"] {
+    padding: 8px 0;  // Reduce padding for number buttons
+    text-align: center;
+  }
+
+  // Previous/Next buttons
+  &:first-child,
+  &:last-child {
+    min-width: 100px;  // Wider for Previous/Next buttons
+    padding: 8px 20px;  // More horizontal padding
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #2C58A8;
+    color: white;
+    border-color: #2C58A8;
+  }
+
+  &.active {
+    background-color: #2C58A8;
+    color: white;
+    border-color: #2C58A8;
+  }
+
+  &:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    color: #999;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 35px;
+    font-size: 13px;
+
+    // Adjust Previous/Next buttons on mobile
+    &:first-child,
+    &:last-child {
+      min-width: 85px;
+      padding: 8px 15px;
+    }
+  }
 }
 
 

@@ -1,6 +1,5 @@
 import Banner from "@/components/membership/Banner";
 import MembershipBody from "@/components/membership/MembershipBody";
-import withAuth from "@/pages/withAuth";
 
 function Membership() {
   return (
@@ -11,4 +10,4 @@ function Membership() {
   );
 }
 
-export default withAuth(Membership); 
+export default Membership; 

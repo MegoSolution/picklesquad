@@ -3,18 +3,20 @@ const Host = () => {
     <div className="private-event-section">
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/host.jpg"
+          src="/images/privateevent/host.jpg"
           alt="Private Event"
           className="event-image full-size-image" // Added class for full size
         />
       </div>
       <div className="text-container">
         <div className="event-content">
-          <h2 className="title">Host Your Own Private Event</h2>
+          <h2 className="title">Host Your Private Event at PickleSquad</h2>
           <p>
-            Experience exceptional private event hosting with PickleSquad, where every detail is tailored to your needs. Whether you’re planning a lively social gathering, a corporate retreat, or an unforgettable celebration, our dynamic space and dedicated team are here to make it extraordinary.<br />
-            <br />
-            PickleSquad’s versatile venue offers a unique blend of fun, energy, and sophistication, perfect for crafting unforgettable moments. From personalized event setups to seamless execution, we ensure your vision comes to life in a vibrant and engaging atmosphere. Make your next event one to remember with PickleSquad!
+          Looking for the perfect venue to host your private event? 
+          <br/>
+          PickleSquad offers a premium space designed to accommodate a variety of occasions—from corporate team-building activities and birthday celebrations to friendly tournaments and social gatherings. 
+          <br/>
+          Our state-of-the-art facilities ensure a memorable experience for you and your guests.
           </p>
           <a
             href="#Contact"

@@ -18,18 +18,18 @@ const About = () => {
 
       {/* Main Content */}
       <div className="container-fluid text-center">
-        <div className="about--secondary__content-wrapper about-text">
+        <div className="pt-50 about--secondary__content-wrapper about-text">
           <h5>About us</h5>
           <h2>Welcome To Picklesquad</h2>
           <div className="section__content-text">
             <p>
-              We are not just a pickleball destination; it’s a revolutionary
+              We are not just a pickleball destination; it's a revolutionary
               experience and awesome feeling you get from playing pickleball
               games on our world-class courts and hanging out with even cooler
               people.
             </p>
             <p>
-              Step onto the court with us, and together, let’s script the next
+              Step onto the court with us, and together, let's script the next
               chapter of pickleball excitement. Your story begins here.
             </p>
           </div>

@@ -18,7 +18,7 @@ const CoachSession = () => {
       </div>
       <div className="image-container">
         <img
-          src="/images/picklesquad_image/first-time.jpg"
+          src="/images/home/first-time.jpg"
           alt="Coach Session"
           className="session-image"
         />

@@ -1,151 +1,369 @@
+.booking-page-section {
+  padding: 40px 0 60px;  // 40px top, 60px bottom
+
+  @media (max-width: 768px) {
+    padding: 30px 0 40px;  // Slightly less padding on mobile
+  }
+}
+
 .booking-container {
   max-width: 50%;
-  margin: 0 auto;
+  margin: 50px auto 50px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
-}
 
-.divider {
-  border: none;
-  border-top: 2px solid #ddd; // Adjust thickness and color as needed
-  margin: 10px 0;
-}
-
-.section-about {
-  margin-bottom: 30px;
-  color: #2C58A8;
-
-}
-
-.centerlized-container {
-  display: flex;
-  justify-content: center;
-}
-
-.date-container,
-.time-container,
-.court-container {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  width: 550px;
-}
-
-.date-button,
-.time-button,
-.court-button {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-  width: 130px;
-}
-
-.time-button {
-  min-width: 130px;
-}
-
-.time-button {
-  padding: 10px;
-}
-
-.equipment-container {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.equipment-item {
-  padding: 10px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 45%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-
-  .equipment-name {
-    font-size: 18px !important;
-    text-align: center;
-    color: black;
+  @media (max-width: 768px) {
+    max-width: 95%;
+    padding: 15px 15px 20px;
   }
 
-  .equipment-price {
-    font-size: 18px !important;
-    color: #666;
-    text-align: center;
-    color: black;
+  h3 {
+    margin-bottom: 10px;
   }
 
-  .equipment-total {
-    font-size: 20px !important;
-    font-weight: 500;
+  .divider {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 8px 0 15px;
+  }
+
+  .booking-section {
+    margin-bottom: 20px;
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .pt-3 {
+    padding-top: 10px !important;
+  }
+
+  .section-about {
+    margin-bottom: 30px;
     color: #2C58A8;
-    margin: 5px 0;
+  }
+
+  .centerlized-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .date-container,
+  .time-container,
+  .court-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 550px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      gap: 8px;
+      justify-content: flex-start;
+      padding: 0 5px;
+    }
+  }
+
+  .date-button,
+  .time-button,
+  .court-button {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 130px;
+
+    @media (max-width: 768px) {
+      width: calc(33.33% - 8px);
+      padding: 8px 10px;
+      font-size: 14px;
+      min-width: unset;
+    }
+  }
+
+  .time-button {
+    min-width: 130px;
+
+    @media (max-width: 768px) {
+      min-width: unset;
+      font-size: 13px;
+      width: calc(33.33% - 8px);
+    }
+  }
+
+  .time-button {
+    padding: 10px;
+  }
+
+  .equipment-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  .equipment-item {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .equipment-name {
+      font-size: 18px !important;
+      text-align: center;
+      color: black;
+
+      @media (max-width: 768px) {
+        font-size: 16px !important;
+      }
+    }
+
+    .equipment-price {
+      font-size: 18px !important;
+      color: #666;
+      text-align: center;
+      color: black;
+
+      @media (max-width: 768px) {
+        font-size: 14px !important;
+      }
+    }
+
+    .equipment-total {
+      font-size: 20px !important;
+      font-weight: 500;
+      color: #2C58A8;
+      margin: 5px 0;
+      text-align: center;
+      color: black;
+
+      @media (max-width: 768px) {
+        font-size: 16px !important;
+      }
+    }
+  }
+
+  .equipment-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    
+    button {
+      font-size: 14px;
+      padding: 4px 8px;
+
+      @media (max-width: 768px) {
+        padding: 2px 6px;
+      }
+    }
+    
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .book-now-button {
+    padding: 15px 30px;
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
     text-align: center;
-    color: black;
+    text-transform: uppercase;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding: 12px 20px;
+      font-size: 14px;
+    }
   }
-}
 
-.equipment-image {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 5px;
-}
+  .book-now-button:disabled {
+    background-color: #ccc;
+  }
 
-.quantity-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 8px 0;
-  
-  button {
+  // Active State Styles
+  .selected {
+    background-color: #ff7f50;
+    color: #fff;
+  }
+
+  .no-courts-message,
+  .no-selected-time-message {
+    text-align: center;
+    color: red;
+    font-size: 24px;
+    margin-top: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  .date-button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Section headers
+  h3, h4 {
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .court-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .view-court-link {
+    color: #2C58A8;
     font-size: 14px;
-    padding: 4px 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #1a4080;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
-  
-  span {
-    font-size: 14px;
+
+  // Court Gallery Modal Styles
+  .court-gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90vw;
+      max-height: 90vh;
+      z-index: 1001;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      z-index: 1002;
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 80vw;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1002;
+
+      &.prev {
+        left: 10px;
+      }
+
+      &.next {
+        right: 10px;
+      }
+
+      &:hover {
+        background: white;
+      }
+    }
+
+    .image-counter {
+      text-align: center;
+      margin-top: 10px;
+      color: #666;
+    }
   }
-}
-
-.book-now-button {
-  padding: 15px 30px;
-  background-color: #ff7f50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.book-now-button:disabled {
-  background-color: #ccc;
-}
-
-// Active State Styles
-.selected {
-  background-color: #ff7f50;
-  color: #fff;
-}
-
-.no-courts-message,
-.no-selected-time-message {
-  text-align: center;
-  color: red;
-  font-size: 24px;
-  margin-top: 10px;
-}
-
-.date-button:disabled {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-  opacity: 0.6;
 }

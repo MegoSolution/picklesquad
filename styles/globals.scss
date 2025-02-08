@@ -71,3 +71,13 @@
 
 // responsive styles
 @import "./responsive";
+
+.about--secondary__content-wrapper {
+  @media (max-width: 768px) {
+    padding-top: 10px !important;
+    
+    h5 {
+      margin-bottom: 5px !important;
+    }
+  }
+}
