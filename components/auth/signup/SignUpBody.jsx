@@ -65,7 +65,7 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <label htmlFor="authEmail">Enter Your Email ID</label>
+                <label htmlFor="authEmail">Email</label>
                 <div className="input-single">
                   <input
                     type="email"
@@ -76,7 +76,7 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <label htmlFor="authPassword">Enter Your Password</label>
+                <label htmlFor="authPassword">Password</label>
                 <div className="input-single">
 
                   <input
@@ -89,7 +89,7 @@ const SignUpBody = ({ onToggleForm }) => {
                   />
                 </div>
                 <label htmlFor="authConfirmPassword">
-                  Confirm Your Password
+                  Password
                 </label>
                 <div className="input-single">
                   <input
