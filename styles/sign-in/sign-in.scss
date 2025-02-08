@@ -8,10 +8,7 @@
 }
 
 .auth-page {
-    background-image: url("/images/auth/auth-background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: #FFF8F0;
 }
 
 .sign-in-header{
@@ -20,4 +17,28 @@
 
 .sign-in-link{
     color: $primary-color;
+}
+
+.sign-in-logo{
+    display: block;
+    margin: 0 auto;
+    max-width: 35%;
+}
+
+.terms-text {
+    text-align: center;
+    margin-top: 10px;
+
+    p {
+        color: black;
+        font-size: 14px;
+        margin-bottom: 0;
+
+        a {
+            color: #0d6efd;
+            text-decoration: underline;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+    }
 }

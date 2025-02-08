@@ -7,14 +7,10 @@ export default function SignIn() {
   return (
     <>
       <GoogleOAuthProvider clientId="58880361690-dtpoqfr38r9n53dnmvvt2dul0fhfkml4.apps.googleusercontent.com">
-        {/* NavBar Section */}
-        <NavBar cls="" />
 
         {/* Auth Page Section */}
         <AuthPage />
 
-        {/* Footer Secrtion */}
-        <Footer />
       </GoogleOAuthProvider>
     </>
   );
