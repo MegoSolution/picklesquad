@@ -1,26 +1,50 @@
 .booking-page-section {
-  padding: 40px 0 60px;  // 40px top, 60px bottom
+  padding: 250px 0 60px;  // Increased top padding to account for navbar
+  background-color: #fff8f0;
 
   @media (max-width: 768px) {
-    padding: 30px 0 40px;  // Slightly less padding on mobile
+    padding: 200px 0 40px;  // Adjusted for mobile
   }
 }
 
 .booking-container {
-  max-width: 50%;
-  margin: 50px auto 50px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  max-width: 80%;
+  margin: 0 auto 50px;  // Changed from 50px auto 50px to 0 auto 50px since we have padding in parent
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
   @media (max-width: 768px) {
     max-width: 95%;
-    padding: 15px 15px 20px;
+    padding: 20px;
+    margin: 0 auto 30px;  // Adjusted margin for mobile
   }
 
   h3 {
     margin-bottom: 10px;
+    color: #2C58A8;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .section-title {
+    color: #2C58A8;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
   }
 
   .divider {
@@ -30,7 +54,7 @@
   }
 
   .booking-section {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 
     h4 {
       margin-bottom: 10px;
@@ -61,7 +85,6 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    width: 550px;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -79,7 +102,7 @@
     border-radius: 5px;
     cursor: pointer;
     text-transform: uppercase;
-    width: 130px;
+    width: 190px;
 
     @media (max-width: 768px) {
       width: calc(33.33% - 8px);
@@ -105,44 +128,70 @@
 
   .equipment-container {
     display: flex;
-    gap: 20px;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 0;
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
+      padding: 10px 0;
     }
   }
 
   .equipment-item {
-    padding: 10px 15px;
+    padding: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: calc(50% - 15px);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
     @media (max-width: 768px) {
       width: 100%;
-      padding: 10px;
+      padding: 25px;
+    }
+
+    .equipment-image {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 20px;
+      object-fit: contain;
+
+      @media (max-width: 768px) {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 15px;
+      }
     }
 
     .equipment-name {
-      font-size: 18px !important;
+      font-size: 20px !important;
+      font-weight: 600;
+      color: #2C58A8;
+      margin-bottom: 10px;
       text-align: center;
-      color: black;
 
       @media (max-width: 768px) {
-        font-size: 16px !important;
+        font-size: 18px !important;
       }
     }
 
     .equipment-price {
-      font-size: 18px !important;
+      font-size: 16px !important;
       color: #666;
       text-align: center;
-      color: black;
+      margin-bottom: 5px;
 
       @media (max-width: 768px) {
         font-size: 14px !important;
@@ -150,75 +199,103 @@
     }
 
     .equipment-total {
-      font-size: 20px !important;
-      font-weight: 500;
+      font-size: 22px !important;
+      font-weight: 600;
       color: #2C58A8;
-      margin: 5px 0;
+      margin: 15px 0;
       text-align: center;
-      color: black;
 
       @media (max-width: 768px) {
-        font-size: 16px !important;
+        font-size: 18px !important;
+        margin: 10px 0;
       }
     }
-  }
 
-  .equipment-image {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 5px;
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0;
+      
+      button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        border: 1px solid #2C58A8;
+        background-color: white;
+        color: #2C58A8;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    @media (max-width: 768px) {
-      width: 80px;
-      height: 80px;
-    }
-  }
+        &:hover {
+          background-color: #2C58A8;
+          color: white;
+        }
 
-  .quantity-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0;
-    
-    button {
-      font-size: 14px;
-      padding: 4px 8px;
-
-      @media (max-width: 768px) {
-        padding: 2px 6px;
+        @media (max-width: 768px) {
+          width: 28px;
+          height: 28px;
+          font-size: 14px;
+        }
       }
-    }
-    
-    span {
-      font-size: 14px;
+      
+      span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        min-width: 30px;
+        text-align: center;
+
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
     }
   }
 
   .book-now-button {
-    padding: 15px 30px;
-    background-color: #ff7f50;
-    color: #fff;
+    padding: 15px 50px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #2C58A8;
+    color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: all 0.3s ease;
     text-align: center;
     text-transform: uppercase;
-    width: 100%;
+    width: auto;
+    min-width: 200px;
+    margin: 0 auto;
+    display: block;
+
+    &:hover {
+      background-color: darken(#2C58A8, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(44, 88, 168, 0.3);
+    }
 
     @media (max-width: 768px) {
-      padding: 12px 20px;
+      padding: 12px 30px;
       font-size: 14px;
+      min-width: 180px;
     }
   }
 
   .book-now-button:disabled {
     background-color: #ccc;
+    transform: none;
+    box-shadow: none;
   }
 
   // Active State Styles
   .selected {
-    background-color: #ff7f50;
+    background-color: #2C58A8;
     color: #fff;
   }
 
@@ -253,7 +330,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
   }
 
   .view-court-link {

@@ -51,8 +51,12 @@ const LocationForm = () => {
 
   return (
     <div className="location-container">
-      <h3>Choose Court Location</h3>
-      <hr className="divider" />
+      <h3 className="location-title">Choose Court Location</h3>
+      <br />
+      <h4>Penang</h4>
+      <br />
+
+
 
       {loading && <p>Loading locations...</p>}
       {error && <p className="error">Error: {error}</p>}
@@ -74,11 +78,13 @@ const LocationForm = () => {
               className="location-image"
             />
             <div className="location-details">
-              <h4>{location.name}</h4>
+              <h3>{location.name}</h3>
               <p>{location.address}</p>
-              <p>{location.contact_number}</p>
+              <p className="location-blue">PIC: Henry</p>
+              <p className="location-blue">{location.contact_number}</p>
             </div>
           </div>
+
         ))}
       </div>
     </div>

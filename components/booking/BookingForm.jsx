@@ -504,8 +504,13 @@ const BookingForm = () => {
 
   return (
     <div className="booking-container">
-      <h3>Picklesquad</h3>
+      <h3>Book A Court</h3>
       <hr className="divider" />
+      
+      <h4 className="section-title">
+        <img src="/images/booking/booking-03.png" alt="Booking" />
+        Booking Details
+      </h4>
 
       {/* Select Date Section */}
       <div className="booking-section">
