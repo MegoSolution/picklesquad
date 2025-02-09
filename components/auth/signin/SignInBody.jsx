@@ -62,7 +62,9 @@ const SignInBody = ({ onToggleForm }) => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-xxl-6">
-            <img className="sign-in-logo" src="/images/Picklesquad_image/logo-07.png" alt="Logo" />
+            <Link href="/">
+              <img className="sign-in-logo" src="/images/Picklesquad_image/logo-07.png" alt="Logo" />
+            </Link>
               <div className="authentication__wrapper">
                 {showForgotPassword ? (
                   <>

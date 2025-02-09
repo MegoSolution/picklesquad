@@ -163,7 +163,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
         role="tablist"
       >
         <div>
-        <div className="faq__tab-single__inner">
+          <div className="faq__tab-single__inner">
             <div className="profile-form">
               <div className="profile-form-header">
                 <h5>Programs</h5>
@@ -183,20 +183,27 @@ const ProfileForm = ({ programs, onEditClick }) => {
                         </div>
                         <div className="programs-tab-title">
                           <h5>{program.description}</h5>
+                          <div className="program-tab-details">
+                            <p>Intensity : {program.intensity}</p>
+                            <p>Duration : {program.duration} minutes</p>
+                          </div>
                         </div>
                         <div className="programs-tab-time">
-                          <p>
-                            <b>
-                              <Image
+                          <div>
+                            <Image
                                 src="/images/profile/calendar.png"
                                 alt="Calendar"
                                 className="calendar"
                                 width={48}
                                 height={48}
-                              />{" "}
-                              {formatDate(program.startTime)} - {formatDate(program.endTime)}
+                              />
+                          </div>
+                          <div>
+                            <b>
+                              {" "}
+                              {formatDate(program.startTime)}
                             </b>
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </a>
@@ -204,6 +211,72 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 ) : (
                   <p>No programs available</p>
                 )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="profile__coach-tab-btns wow fadeInUp"
+        data-wow-duration="0.4s"
+        id="faq-tab"
+        role="tablist"
+      >
+        <div>
+          <div className="faq__tab-single__inner">
+            <div className="profile-form">
+              <div className="profile-form-header">
+                <h5>Coach</h5>
+                <div className="right-content">
+                  {/* <a href="/coach" className="view-all">View All</a> */}
+                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollLeft} />
+                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollRight} />
+                </div>
+              </div>
+              <div className="coach-tab-container" ref={scrollRef}>
+                <div className="coach-tab">
+                  <div className="coach-image">
+                    <Image
+                      src="/images/profile/coach-placeholder.png"
+                      alt="Coach"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <div className="coach-info">
+                    <h6>John Smith</h6>
+                    <p>Head Coach</p>
+                  </div>
+                </div>
+                <div className="coach-tab">
+                  <div className="coach-image">
+                    <Image
+                      src="/images/profile/coach-placeholder.png"
+                      alt="Coach"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <div className="coach-info">
+                    <h6>Sarah Johnson</h6>
+                    <p>Head Coach</p>
+                  </div>
+                </div>
+                <div className="coach-tab">
+                  <div className="coach-image">
+                    <Image
+                      src="/images/profile/coach-placeholder.png"
+                      alt="Coach"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <div className="coach-info">
+                    <h6>Mike Wilson</h6>
+                    <p>Head Coach</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

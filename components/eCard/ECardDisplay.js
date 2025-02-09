@@ -8,9 +8,10 @@ const ECardDisplay = () => {
   const [error, setError] = useState(null);
   const currentUser = useSelector(state => state.user);
   const accessToken = useSelector((state) => state.accessToken);
-  const memberId = useSelector((state) => state.user?.user?.membership || null);
+  const memberId = useSelector((state) => state.user?.user?.membership?._id || null);
 
   useEffect(() => {
+    console.log("Fetching membership details...", memberId);
     if (!memberId) return; 
  
     fetch(`/api/eCard?id=${memberId}`, {

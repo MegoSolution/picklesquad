@@ -9,7 +9,6 @@
 
 @media only screen and (min-width: 1400px) {
   .profile-page {
-    padding-top: 200px; /* Adjust this value based on your navbar height */
     margin-bottom: 10px;
     display: block;
   }
@@ -17,7 +16,6 @@
 
 @media only screen and (max-width: 1399.98px) {
   .profile-page {
-    padding-top: 180px; /* Adjust this value based on your navbar height */
     margin-bottom: 10px;
     display: block;
   }
@@ -25,7 +23,6 @@
 
 @media only screen and (max-width: 767.98px) {
   .profile-page {
-    padding-top: 160px; /* Adjust this value based on your navbar height */
     margin-bottom: 10px;
     display: block;
   }
@@ -33,7 +30,6 @@
 /* Responsive padding for the profile page */
 @media only screen and (max-width: 575.98px) {
   .profile-page {
-    padding-top: 150px; /* Adjust this value based on your navbar height */
     margin-bottom: 10px;
     display: block;
   }
@@ -375,9 +371,13 @@
     
     .booking-details{
       p {
-        text-align:left;
-        color:#fff;
-
+        text-align: left;
+        color: #fff;
+      }
+      b.date-flex {
+        display: flex;
+        align-items: center;
+        gap: 10px; // Adjust the gap as needed
       }
     }
   }
@@ -397,9 +397,17 @@
 
 .profile__tab-btns{
   background-color: #F6EFDC;
-  padding: 30px 20px;
+  padding: 20px 20px;
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.profile__coach-tab-btns{
+  background-color: #FFFFFF;
+  padding: 20px 20px;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
   margin-bottom: 30px;
 }
 
@@ -407,7 +415,7 @@
   background-color: #FFFFFF;
   padding: 30px 20px;
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  border-radius: 20px;
   margin-bottom: 30px;
 }
 
@@ -460,6 +468,13 @@
   width: 100%; /* Set buttons to occupy equal widths */
 }
 
+/* Mobile view adjustments: Full width for buttons on phone view */
+@media only screen and (max-width: 767.98px) {
+  .profile__tab-btns-2 .picklesquad-btns {
+    width: 100%;
+  }
+}
+
 .picklesquad-header {
   margin-bottom:10px;
 
@@ -475,8 +490,9 @@
   margin-bottom:10px;
 
   p {
-    color:#A04A34;
+    color:$primary-color;
     font-weight:600;
+    font-size:16px;
   }
 }
 
@@ -484,17 +500,24 @@
 /* Programs Tab Container */
 .programs-tab {
   position: relative;
-  width: 60%; /* Adjust width as per container */
-  border-radius: 15px; /* Rounded edges for cards */
-  overflow: hidden; /* Clip content to rounded corners */
-  background-size: cover; /* Fit background image */
-  background-position: center; /* Center the background */
-  color: white; /* Text color for overlay */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 60%;
+  border-radius: 15px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 10px 10px 0px 0px;
-  min-width: 50%;
+  min-width: 60%;
   margin-right: 10px;
   margin-bottom: 10px;
+
+  /* Mobile view adjustments */
+  @media only screen and (max-width: 767.98px) {
+    width: 85%;
+    min-width: 85%;
+    margin: 10px 5px;
+  }
 }
 
 /* Background Image */
@@ -513,16 +536,24 @@
 /* Text Content */
 .programs-tab .programs-tab-btns {
   position: relative;
-  z-index: 2; /* Above background image */
-  background-color: rgba(255, 255, 255, 1); /* Light background for buttons */
-  color: #3E65B6; /* Blue text */
-  padding: 5px 10px;
-  border-radius: 20px; /* Rounded badge shape */
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 1);
+  color: #3E65B6;
+  padding: 8px 10px;
+  border-radius: 20px;
   margin: 5% 0% 0% 5%;
   font-size: 14px;
-  border-radius: 15px; /* Makes the button pill-shaped */
-  max-width: 50%; /* Set width to make it a pill shape */
-  max-height: 35px; /* Set height to match the desired size */
+  border-radius: 15px;
+  max-width: 50%;
+
+  @media only screen and (max-width: 767.98px) {
+    max-width: 70%;
+    padding: 6px 8px;
+    
+    p {
+      font-size: 14px;
+    }
+  }
 
   p{
     align-items: center;
@@ -537,31 +568,72 @@
   position: relative;
   z-index: 2; /* Above background */
   padding: 0px 10px;
-  margin: 10px 0px 25% 15px;
+  margin: -10% 0px 0% 5%;
   font-size: 18px;
   font-weight: bold;
 
-  h5{
+  h5 {
     color: white;
-    font-size:130%;
+    font-size: 130%;
     font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .program-tab-details {
+    margin-top: 15%;
+
+    p {
+      color: white;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+
+  @media only screen and (max-width: 767.98px) {
+    margin: -15% 0px 0% 5%;
+    
+    h5 {
+      font-size: 110%;
+    }
+    
+    .program-tab-details {
+      margin-top: 10%;
+      
+      p {
+        font-size: 14px;
+      }
+    }
   }
 }
 
 /* Calendar and Schedule Text */
-.programs-tab-time p {
-  position: relative;
-  z-index: 2;
-  font-size: 17px;
-  margin: 10px 15px 20px;
+.programs-tab-time {
+  display: flex;
   align-items: center;
+  margin: 0px 15px 20px;
+  font-size: 17px;
   color: white;
   font-weight: 300;
+  position: relative;
+  z-index: 2;
+
+  /* Style for the date text container */
+  div:last-child {
+    margin-top: 5px;
+  }
 }
 
 .programs-tab-container {
   display: flex;
   overflow-x: auto;
+
+  @media only screen and (max-width: 767.98px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 .profile--side__bar-header .booking_number{
@@ -591,5 +663,102 @@
 
   label{
     font-weight: bold;
+  }
+}
+
+.nav {
+  @media (max-width: 991px) {
+    .nav__logo {
+      margin:auto;
+    }
+  }
+}
+
+.profile-icons {
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}
+
+/* Coach Tab Container */
+.coach-tab-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+.coach-tab {
+  min-width: 200px;
+  background-color: #3E65B6;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .coach-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .coach-info {
+    h6 {
+      color: $primary-color;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color:#FFFFFF;
+    }
+
+    p {
+      color: #F6EFDC;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 767.98px) {
+    min-width: 160px;
+    padding: 15px;
+
+    .coach-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .coach-info {
+      h6 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
   }
 }

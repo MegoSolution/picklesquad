@@ -32,14 +32,17 @@ const refreshAccessToken = async (refreshToken) => {
 };
 
 const withAuth = (WrappedComponent, allowedRoles = []) => {
-  return (props) => {
+  const AuthComponent = (props) => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
       const tokens = JSON.parse(localStorage.getItem('tokens'));
-      if (!tokens) {
-        router.push('/sign-in');
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (!tokens || !storedUser) {
+        router.replace('/sign-in'); // Use `replace` to prevent back navigation
         return;
       }
 
@@ -47,22 +50,28 @@ const withAuth = (WrappedComponent, allowedRoles = []) => {
       if (isTokenExpired(access.token)) {
         refreshAccessToken(refresh.token).then((newAccessToken) => {
           if (!newAccessToken) {
-            router.push('/sign-in');
+            router.replace('/sign-in');
           } else {
+            setUser(storedUser);
             setLoading(false);
           }
         });
       } else {
+        setUser(storedUser);
         setLoading(false);
       }
     }, []);
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+    if (loading) return <div>Loading...</div>;
 
     return <WrappedComponent {...props} />;
   };
+
+  // Preserve `getLayout` correctly
+  AuthComponent.getLayout = WrappedComponent.getLayout || ((page) => page);
+
+  return AuthComponent;
 };
 
 export default withAuth;
+
