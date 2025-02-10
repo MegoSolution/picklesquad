@@ -1,34 +1,41 @@
-const Host = () => {
+const Advance = () => {
   return (
-    <div className="private-event-section">
-      <div className="image-container">
-        <img
-          src="/images/privateevent/host.jpg"
-          alt="Private Event"
-          className="event-image full-size-image" // Added class for full size
-        />
-      </div>
-      <div className="text-container">
-        <div className="event-content">
-          <h2 className="title">Host Your Private Event at PickleSquad</h2>
+    <div id="Intro" className="coach-session-section">
+      <div className="text-container-coach">
+        <div className="session-content">
+          <h2 className="title-coach">
+          Personalize Your Pickleball Party
+          </h2>
           <p>
-          Looking for the perfect venue to host your private event? 
-          <br/>
-          PickleSquad offers a premium space designed to accommodate a variety of occasions—from corporate team-building activities and birthday celebrations to friendly tournaments and social gatherings. 
-          <br/>
-          Our state-of-the-art facilities ensure a memorable experience for you and your guests.
+          Love pickleball? Take it to the next level with a private session
+          just for you and your guests! Whether you're celebrating a
+          birthday, a bachelorette party, a graduation, or simply planning
+          a fun family day out, we’ve got you covered.
+          <br /><br />
+          Just gather your squad, step onto the court, and enjoy a
+          stress-free, action-packed experience—because great moments
+          are meant to be shared!     
           </p>
+
           <a
             href="#Contact"
             scroll={false}
-            className="btn btn-light book-now-btn gap-button" // Added class for gap
+            className="session-btn"
           >
             Contact Us Now
           </a>
         </div>
       </div>
+      <div className="image-container-event">
+        <img
+          src="/images/privateevent/2.png"
+          alt="Coach Session"
+          className="session-image"
+        />
+      </div>
     </div>
   );
 };
 
-export default Host;
+export default Advance;
+
