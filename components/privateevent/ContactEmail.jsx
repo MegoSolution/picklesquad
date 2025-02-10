@@ -22,12 +22,10 @@ const ContactEmail = ({ cls = "" }) => {
   };
 
   return (
-    <section id="Contact"  className={`section join-club ${cls}`}>
+    <section id="Contact"  >
       <div className="container">
         <div className="row">
-          <div className="col-lg-6">
             <div className="section__content">
-              <h5 className="section__content-sub-title">Contact Us</h5>
               <h2 className="section__content-title">Tell Us About Your Event</h2>
               <div className="join-club__form">
                 <form onSubmit={handleSubmit} name="joinClubForm">
@@ -72,13 +70,15 @@ const ContactEmail = ({ cls = "" }) => {
                   </div>
                   <div className="input-group">
                   <div className="input-single">
-                    <input
-                      type="date"
-                      name="user-date"
-                      id="userDate"
-                      required
-                      placeholder="Select Date *"
-                    />
+                  <input
+                    type="text"
+                    name="user-date"
+                    id="userDate"
+                    required
+                    placeholder="Date"
+                    onFocus={(e) => (e.target.type = "date")}
+                    onBlur={(e) => (e.target.type = "text")}
+                  />
                   </div>
                   <div className="input-single">
                     <input
@@ -96,18 +96,17 @@ const ContactEmail = ({ cls = "" }) => {
                       placeholder="Remarks"
                     ></textarea>
                   </div>
-                  <div className="button-container">
-  <button type="submit" className="btn btn-primary first-time-btn">
-    Submit Now
-  </button>
-</div>
+                  <div className="event-button-container">
+                    <button type="submit" className="event-cmn-button">
+                      Submit Now
+                    </button>
+                  </div>
 
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

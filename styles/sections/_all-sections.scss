@@ -1122,26 +1122,291 @@ html {
   height: 100%;
 }
 
+.session2-btn{
+  background-color: #F3E7C5; /* Retain the original color */
+  color: #2c58a8 !important;
+  font-weight: bold;
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 22px; /* Standard button font size */
+  width: auto; /* Default width */
+  margin-bottom: 0; /* Ensure spacing below is consistent */
+  white-space: nowrap;
+}
+
+.session2-btn:hover {
+  background-color: #ffffff;
+  color: #2c58a8;
+}
+.session-btn {
+  background: #8B5E3B;
+  color: white;
+  font-weight: bold;
+  padding: 12px 30px; /* Add padding for height */
+  border-radius: 50px; /* Make the button oval */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 22px; /* Standard button font size */
+  width: auto; /* Default width */
+  margin-bottom: 20px;
+}
+
+.session-btn:hover {
+  background: #6a4428;
+  color: #f8f3e9;
+}
+
+/* Session Details Box */
+.session-details-box {
+  border: 1px solid #3B5998;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  padding-bottom: 0%;
+  align-items: center;
+}
+
+/* Session Row - Two Items */
+.session-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+/* Session Item */
+.session-item {
+  font-size: 14px;
+  color: #3B5998;
+  font-weight: 600;
+}
+
+/* Vertical Divider */
+.session-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #3B5998;
+}
+
+/* Horizontal Line */
+.session-divider-line {
+  border: 0;
+  border-top: 1px solid #3B5998;
+}
+
+/* Session Note */
+.session-note {
+  font-size: 14px;
+  color: #3B5998;
+  font-weight: 600;
+}
+
+.session-content p.session-item {
+  font-weight: normal;
+  line-height: 1.6;
+  color: #3B5998;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Session Details Box */
+.session-details-box2 {
+  border: 1px solid white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  padding-bottom: 0%;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Session Row - Two Items */
+.session-row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  flex-wrap: wrap;
+}
+
+.session-row3 {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 10px;
+  text-align: center;
+}
+
+.session-item2 {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  white-space: normal; /* Allows line breaks */
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Session Item */
+.session-content p.session-item2 {
+  font-weight: normal;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Vertical Divider */
+.session-divider2 {
+  width: 1px;
+  height: 20px;
+  background-color: white;
+}
+
+/* Horizontal Line */
+.session-divider-line2 {
+  border: 0;
+  border-top: 1px solid white;
+}
+
+/* Session Note */
+.session-note2 {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .session-row,
+  .session-row2,
+  .session-row3 {
+    flex-direction: column; /* Stacks items */
+    gap: 20px;
+  }
+
+  .session-item,
+  .session-item2 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .session-divider,
+  .session-divider2 {
+    display: none; /* Hides vertical divider on small screens */
+  }
+
+  .session-details-box,
+  .session-details-box2 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.event-button-container {
+  display: flex;
+  justify-content: center; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+
+.event-cmn-button {
+  min-width: 180px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    min-width: 140px;
+    padding: 12px 20px;
+  }
+}
+
+.event-cmn-button {
+  background-color: #2C58A8;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: darken(#2C58A8, 10%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(44, 88, 168, 0.3);
+  }
+}
 
 //coach
 .coach-session-section {
   display: flex;
   flex-direction: row; /* Default layout: text left, image right */
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   overflow: hidden;
+}
+
+/* Faded overlay effect */
+.image-container-event::before {
+  content: "";
+  position: absolute;
+  left: 0; /* Change from left to right */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, #f8f3e9 20%, rgba(248, 243, 233, 0) 100%);
+}
+
+.image-container-event2::before {
+  content: "";
+  position: absolute;
+  right: 0; 
+  width: 50%; /* Covers part of the image */
+  height: 100%;
+  background: linear-gradient(to left, #2c58a8 20%, rgba(44, 88, 168, 0) 100%);
+}
+
+/* Faded overlay effect */
+.image-container-coach::before {
+  content: "";
+  position: absolute;
+  right: 0; /* Change from left to right */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, #f8f3e9 20%, rgba(248, 243, 233, 0) 100%);
+}
+
+.image-container-coach2::before {
+  content: "";
+  position: absolute;
+  left: 0; /* Fade starts from the left */
+  width: 50%; /* Covers part of the image */
+  height: 100%;
+  background: linear-gradient(to right, #2c58a8 20%, rgba(44, 88, 168, 0) 100%);
 }
 
 /* Text Container */
 .text-container-coach {
   flex: 1;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   background-color: #f8f3e9; /* Light cream background */
   color: #2c58a8; /* Dark blue text color */
   padding: 40px; /* Add padding for better spacing */
-  height: 100%;
+  min-height: 450px;
 }
 
 .session-content {
@@ -1149,17 +1414,30 @@ html {
   text-align: left;
 }
 
+
 .session-content .sub-title {
   font-size: 1.5rem;
-  font-weight: bold;
   color: #2c58a8;
   margin-bottom: 10px;
 }
 
-.session-content .title {
+.session-content .sub-title2 {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 10px;
+}
 
+.session-content .title2 {
+  font-size: 48px;
   font-weight: bold;
-  color: #2c58a8;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.session-content .title-coach {
+  font-size: 48px;
+  font-weight: bold;
+  color: 2c58a8;
   margin-bottom: 20px;
 }
 
@@ -1168,10 +1446,64 @@ html {
   line-height: 1.6;
   color: #2c58a8;
   margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.session-content p.session-description {
+  font-weight: normal;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 18px;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 }
 
 .session-details {
   margin-bottom: 20px;
+}
+
+
+.programmes-join-us {
+  padding: 60px 0;
+  background-color: #8B5E3B;
+  text-align: center;
+  position: relative;
+
+  .join-us-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .join-us-title {
+    color: white;
+    font-size: 40px;
+    margin: 0 !important;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .join-us-text {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    opacity: 0.9;
+
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+
+    .join-us-title {
+      font-size: 28px;
+    }
+
+    .join-us-text {
+      font-size: 16px;
+    }
+  }
 }
 
 .details-table {
@@ -1412,6 +1744,34 @@ html {
   color: #f8f3e9; /* Light cream */
 }
 
+.image-container-coach,
+.image-container-coach2,
+.image-container-event,
+.image-container-event2 {
+  position: relative;
+  width: 50%; /* Default for larger screens */
+  overflow: hidden;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .image-container-coach,
+  .image-container-coach2,
+  .image-container-event,
+  .image-container-event2 {
+    width: 100%;
+    order: 1;
+    height: 350px;
+  }
+
+  .image-container-coach::before,
+  .image-container-coach2::before,
+  .image-container-event::before,
+  .image-container-event2::before {
+    content: none; /* Remove gradient on mobile */
+  }
+}
+
 /* Image Container */
 .image-container {
   flex: 1;
@@ -1471,6 +1831,123 @@ html {
   }
 }
 
+/* private event Section */
+.event-intro-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url('/images/privateevent/1.jpg') center/cover no-repeat;
+  padding: 50px;
+  color: white;
+  background-position: left 150% center;
+  align-items: center; /* Ensures vertical centering */
+  justify-content: flex-start; /* Aligns content more to the left */
+  padding: 150px 10% 50px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 130vh; /* Ensures image fills the screen */
+    padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
+    background-position: center;
+    background-size: cover; /* Ensures the image fits better */
+  } 
+}
+
+.event-intro-section::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background: linear-gradient(to left, #5f95f8 40%, rgba(248, 243, 233, 0) 100%);
+  z-index: 1; /* Ensures it overlays the background */
+}
+
+/* Ensures content is above the overlay */
+.event-intro-section * {
+  position: relative;
+  z-index: 2;
+}
+
+/* programmes Section */
+.programmes-intro-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url('/images/programmes/top.jpg') center/cover no-repeat;
+  padding: 50px;
+  color: white;
+  background-position: left 150% center;
+  align-items: center; /* Ensures vertical centering */
+  justify-content: flex-start; /* Aligns content more to the left */
+  padding: 150px 10% 50px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 130vh; /* Ensures image fills the screen */
+    padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
+    background-position: center;
+    background-size: cover; /* Ensures the image fits better */
+  } 
+}
+
+.programmes-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for better readability */
+}
+
+.programmes-intro-content {
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  padding-left: 100px;
+  padding-top: 150px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.programmes-intro-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+  @media (max-width: 768px) {
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+.programmes-intro-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0;
+  opacity: 0.95;
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 0;
+    margin: 0 auto 25px;
+    text-align: center;
+  }
+}
+
+
+
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
   .coach-session-section {
@@ -1504,6 +1981,7 @@ html {
     width: 70%; /* Button spans almost full width on mobile */
     padding: 14px 0; /* Adjust padding for height */
     font-size: 1rem; /* Standard font size for mobile */
+    margin-top: 20px; /* Add spacing above the button */
   }
 }
 
@@ -1571,7 +2049,6 @@ html {
   background-color: #2c58a8; /* Blue background */
   color: white;
   padding: 40px; /* Add padding for better spacing */
-  height: 100%;
 }
 
 .event-content {

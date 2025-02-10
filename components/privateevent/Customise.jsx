@@ -1,29 +1,43 @@
-const Customise = () => {
+const Intro = () => {
   return (
-    <div id="View" className="coach-session-section">
-      <div className="text-container-coach">
-        <div className="session-content">
-          <h5 className="sub-title">Private Event</h5>
-          <h2 className="title">Customise Your Pickleball Experience</h2>
-          <p>
-          Love the thrill of pickleball?  Whether you're hosting a birthday bash, a graduation party, a team-building event, or a unique family reunion, our courts provide the perfect stage for your celebration.
-          <br/><br/>
-With personalized setups tailored to your theme and needs, PickleSquad transforms the court into your playground for unforgettable memories. Create your ultimate pickleball celebration with PickleSquad today!
-          </p>
-          <a href="#Contact" scroll={false}  className="btn btn-primary first-time-btn">
-            Learn More
-          </a>
-        </div>
-      </div>
-      <div className="image-container">
+    <div id="Intro" className="coach-session-section">
+      <div className="image-container-event2">
         <img
-          src="/images/privateevent/view.png"
+          src="/images/privateevent/3.jpg"
           alt="Coach Session"
           className="session-image"
         />
+      </div>
+
+      <div className="text-container">
+        <div className="session-content">
+          <h2 className="title2">
+          Turn Moments into Memories
+          </h2>
+          <p className="session-description">
+          Ditch the boring venues and host your next event in a space
+          that’s full of energy! Beyond just a pickleball club, PickleSquad
+          offers a dynamic setting perfect for corporate retreats,
+          team-building activities, charity fundraisers, or even product
+          launches that demand attention.
+          <br /><br />
+          Our dedicated event planner will be with you every step of
+          the way, ensuring a seamless and memorable experience.
+          Let’s create something extraordinary together!        
+          </p>
+
+          {/* Join Us Button */}
+          <a
+            href="#Contact"
+            scroll={false}
+            className="btn btn-light book-now-btn gap-button" // Added class for gap
+          >
+            Contact Us Now
+          </a>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Customise;
+export default Intro;
