@@ -53,15 +53,21 @@
 .profile__tab-programs-tab-2 {
   padding: 5%;
   position: relative;
-}
 
-.profile__tab-programs-tab-2 .arrows {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 10px;
+  .arrows {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+  }
+
+  h6{
+    color: $primary-color;
+    font-size:medium;
+    margin-left: 3%;
+  }
 }
 
 .profile__tab-programs-tab-2 .arrow-left,
@@ -69,11 +75,7 @@
   cursor: pointer;
   width: 24px; /* Adjust the size as needed */
   height: 24px; /* Adjust the size as needed */
-}
-
-.profile__tab-programs-tab-2 h6{
-  color: $primary-color;
-  font-size:medium;
+  transition: transform 0.3s ease; /* Added transition for smooth animation */
 }
 
 .profile__tab-programs-tab-3 .secondary-text{
@@ -391,8 +393,15 @@
       cursor: pointer;
       width: 24px; /* Adjust the size as needed */
       height: 24px; /* Adjust the size as needed */
+      transition: transform 0.3s ease; /* Added transition for smooth animation */
     }
   }
+}
+
+/* Global arrow active animation */
+.arrow-left:active,
+.arrow-right:active {
+  transform: scale(0.9); /* Slightly shrink the arrow on click */
 }
 
 .profile__tab-btns{
@@ -622,6 +631,37 @@
     margin-top: 5px;
   }
 }
+
+.sidebar-program-item{
+  margin-top: 3%;
+  /* Calendar and Schedule Text */
+  .sidebar-programs-tab-time {
+    display: flex;
+    font-size: 16px;
+
+    /* Style for the date text container */
+    div:last-child {
+      color: $primary-color;
+      margin-top: 9%;
+    }
+  }
+  
+  .sidebar-program-item-name{
+    margin-left: 4%;
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  /* Mobile view adjustments */
+  @media only screen and (max-width: 767.98px) {
+
+  }
+}
+
+
 
 .programs-tab-container {
   display: flex;
