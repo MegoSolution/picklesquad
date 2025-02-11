@@ -28,6 +28,8 @@ import '../styles/eCard/eCard.scss';
 import '../styles/sign-in/sign-in.scss';
 import '../styles/landingpage/landingpage.scss';
 import '../styles/career/career.scss';
+import '../styles/event/events.scss';
+
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {

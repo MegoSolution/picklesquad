@@ -1,0 +1,205 @@
+.events {
+  padding: 250px 0px 100px;
+  position: relative;
+  background-image: 
+    url("/images/upcomingevent/upcoming-event-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 150% center;
+  min-height: 80vh;
+  
+  @media (max-width: 768px) {
+    padding: 200px 20px 60px;
+    background-position: center;
+    min-height: auto;
+    background-image: 
+      url("/images/upcomingevent/upcoming-event-background.png");
+  }
+
+  .section__header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+
+    h3 {
+      color: white;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      
+      @media (max-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  // Carousel custom styles
+  .events-slider {
+    .slick-slide {
+      padding: 0 10px;
+    }
+
+    .slick-prev,
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      z-index: 2;
+      
+      &:before {
+        font-size: 40px;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        display: none !important;
+      }
+    }
+
+    .slick-prev {
+      left: -50px;
+    }
+
+    .slick-next {
+      right: -50px;
+    }
+
+    .slick-dots {
+      bottom: -40px;
+
+      li {
+        button:before {
+          color: white;
+        }
+
+        &.slick-active button:before {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.event-card-events {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 10px;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &__image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-align: right;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+
+    h4 {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0 0 2px 0;
+      color: white !important;
+    }
+
+    h5 {
+      font-size: 32px;
+      font-weight: 600;
+      color: white !important;
+      margin: 0;
+    }
+  }
+
+  &__content {
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    .btn-enrol {
+      width: 50%;
+      padding: 12px;
+      background: #8B4513;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background: darken(#8B4513, 5%);
+      }
+    }
+
+    .btn-learn {
+      color: #2C58A8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 0;
+      text-align: center;
+      display: block;
+      width: 100%;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Additional responsive styles
+@media (max-width: 992px) {
+  .events {
+    .events-slider {
+      .slick-prev {
+        left: -30px;
+      }
+
+      .slick-next {
+        right: -30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .events {
+    padding-top: 120px;
+    
+    .container {
+      padding: 0 15px;
+    }
+  }
+
+  .event-card {
+    margin: 5px;
+
+    &__content {
+      padding: 15px;
+    }
+  }
+} 
