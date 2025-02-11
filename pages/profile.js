@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 function Profile() {
   const [programs, setPrograms] = useState([]);
+  const [programBookings, setProgramBookings] = useState([]);
   const [tokens, setTokens] = useState(null);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function Profile() {
 
     if (storedTokens) {
       fetchPrograms(storedTokens);
+      fetchUserProgramBookings(storedTokens);
     }
   }, []);
 
@@ -35,9 +37,24 @@ function Profile() {
     }
   };
 
+  const fetchUserProgramBookings = async (userId) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/programBookings`, {
+        headers: {
+          Authorization: `Bearer ${tokens.access.token}`,
+        },
+        params: { user: userId }, // Passing user ID as a filter
+      });
+      setProgramBookings(response.data.results);
+    } catch (error) {
+      console.error("Error fetching program bookings:", error);
+      return [];
+    }
+  };
+
   return (
     <>
-    <section className="faq profile-page">
+    <section className="profile-page">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -65,7 +82,7 @@ function Profile() {
 
       <div className="container">
         <div className="row justify-content-center section__row">
-          <Sidebar programs={programs} />
+          <Sidebar programs={programBookings} />
           <div className="col-lg-8 col-xl-6 section__col">
             <ProfileBody programs={programs} />
           </div>

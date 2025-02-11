@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState, useEffect } from "react";
 import { useLogout } from '../auth/SignOutBody';
 import ECardModal from '../eCard/ECardModal';
+import { motion, AnimatePresence } from "framer-motion";
 
 const Sidebar = ({ programs }) => {
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
@@ -11,7 +12,6 @@ const Sidebar = ({ programs }) => {
   const [user, setUser] = useState(null);
   const [membershipType, setMembershipType] = useState('');
   const logoutUser = useLogout();
-  console.log(programs);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -19,7 +19,6 @@ const Sidebar = ({ programs }) => {
     if (storedUser && storedUser.membership) {
       setIsMember(true);
 
-      // Assuming membershipType is stored within the membership object
       if (storedUser.membership.membershipType) {
         setMembershipType(storedUser.membership.membershipType);
       }
@@ -31,15 +30,17 @@ const Sidebar = ({ programs }) => {
   };
 
   const handlePreviousProgram = () => {
-    setCurrentProgramIndex((prevIndex) => (prevIndex - 1 + programs.length) % programs.length);
+    setCurrentProgramIndex(
+      (prevIndex) => (prevIndex - 1 + programs.length) % programs.length
+    );
   };
 
   const currentProgram = programs[currentProgramIndex];
 
   const formatDate = (dateString) => {
-    const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', options);
+    return date.toLocaleDateString('en-US', options);
   };
 
   const handleShowECard = () => {
@@ -52,17 +53,12 @@ const Sidebar = ({ programs }) => {
 
   return (
     <div className="col-lg-3 col-xl-3 section__col">
-      <div
-        className="profile__tab wow fadeInUp"
-        data-wow-duration="0.4s"
-        id="faq-tab"
-        role="tablist"
-      >
+      <div className="profile__tab wow fadeInUp" data-wow-duration="0.4s">
         <h4 className="profile--side__bar-user-name"><b>{user?.name}</b></h4>
         <div className="profile--side__bar-nav-link-div-2">
-        <p className="membership-type secondary-text">
-          {(membershipType || 'Normal').toLowerCase().replace(/\b\w/g, char => char.toUpperCase())} User
-        </p>
+          <p className="membership-type secondary-text">
+            {(membershipType || 'Normal').toLowerCase().replace(/\b\w/g, char => char.toUpperCase())} User
+          </p>
         </div>
         <h6 className="profile--side__bar-header">
           <span className="booking_number">0&nbsp;</span>
@@ -71,59 +67,74 @@ const Sidebar = ({ programs }) => {
           </a>
         </h6>
         <div className="profile--side__bar-nav-link-div">
-          <Link href="/profile" className="profile--side__bar-nav-link">
-            My Profile
-          </Link>
+          <Link href="/profile" className="profile--side__bar-nav-link">My Profile</Link>
         </div>
         <div className="profile--side__bar-nav-link-div">
-          <Link href="/booking-history" className="profile--side__bar-nav-link">
-            My Bookings
-          </Link>
+          <Link href="/booking-history" className="profile--side__bar-nav-link">My Bookings</Link>
         </div>
         <div className="profile--side__bar-nav-link-div">
           {isMember ? (
-            <a className="profile--side__bar-nav-link" onClick={handleShowECard}>
-              Show E-Card
-            </a>
+            <a className="profile--side__bar-nav-link" onClick={handleShowECard}>Show E-Card</a>
           ) : (
-            <a
-              className="profile--side__bar-nav-link disabled"
-              title="Only for Member"
-              onClick={(e) => e.preventDefault()} // Prevent default action for disabled link
-            >
-              Show E-Card
-            </a>
+            <a className="profile--side__bar-nav-link disabled" title="Only for Member" onClick={(e) => e.preventDefault()}>Show E-Card</a>
           )}
         </div>
         <div className="profile--side__bar-nav-link-div">
-          <a className="profile--side__bar-nav-link" onClick={logoutUser}>
-            Logout
-          </a>
+          <a className="profile--side__bar-nav-link" onClick={logoutUser}>Logout</a>
         </div>
       </div>
-      <div
-        className="profile__tab-programs-tab-1 wow fadeInUp"
-        data-wow-duration="0.4s"
-        role="tablist"
-      >
+
+      {/* Programs Section */}
+      <div className="profile__tab-programs-tab-1 wow fadeInUp" data-wow-duration="0.4s">
         <div className="profile__tab-programs-tab-2">
-          <h6><b>Latest Programs</b></h6>
+          <h6><b>My Programs</b></h6>
           <div className="arrows">
             <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={handlePreviousProgram} />
             <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={handleNextProgram} />
           </div>
         </div>
+
         <div className="profile__tab-programs-tab-3">
-          {programs.length > 0 ? (
-            <div key={currentProgram.id} className="program-item">
-              <p className="secondary-text"><b>{currentProgram.name}</b></p>
-              <p><b><Image src="/images/profile/calendar-blue.png" alt="Calendar" className="calendar" width={48} height={48} /> {formatDate(currentProgram.startTime)} - {formatDate(currentProgram.endTime)} </b></p>
-            </div>
-          ) : (
-            <p>No programs available</p>
-          )}
+          <AnimatePresence mode="wait">
+            {programs.length > 0 ? (
+              <motion.div
+                key={currentProgram.id} // Key ensures re-render for animation
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="sidebar-program-item"
+              >
+                <div className="sidebar-program-item-name">
+                  <p className="secondary-text"><b>{currentProgram.name}</b></p>
+                </div>
+                <div className="sidebar-programs-tab-time">
+                  <div>
+                    <Image src="/images/profile/calendar-blue.png" alt="Calendar" className="calendar" width={48} height={48} />
+                  </div>
+                  <div>
+                    <b>{formatDate(currentProgram.startTime)} - {formatDate(currentProgram.endTime)}</b>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="no-program"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="sidebar-program-item"
+              >
+                <div className="sidebar-program-item-name">
+                  <p className="secondary-text"><b>No program registered</b></p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
+
       {showECardModal && <ECardModal onClose={handleCloseECardModal} />}
     </div>
   );

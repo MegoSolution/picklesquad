@@ -12,7 +12,8 @@ const ProfileForm = ({ programs, onEditClick }) => {
   const [totalBookingsResults, setBookingsTotalResults] = useState(0);
   const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
-  const scrollRef = useRef(null);
+  const programsScrollRef = useRef(null);
+  const coachScrollRef = useRef(null);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -65,12 +66,20 @@ const ProfileForm = ({ programs, onEditClick }) => {
     setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
   };
 
-  const scrollLeft = () => {
-    scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
+  const scrollProgramsLeft = () => {
+    programsScrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
   };
 
-  const scrollRight = () => {
-    scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
+  const scrollProgramsRight = () => {
+    programsScrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
+  };
+
+  const scrollCoachLeft = () => {
+    coachScrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
+  };
+
+  const scrollCoachRight = () => {
+    coachScrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
   };
 
   const currentBooking = bookings[currentBookingIndex];
@@ -168,15 +177,15 @@ const ProfileForm = ({ programs, onEditClick }) => {
               <div className="profile-form-header">
                 <h5>Programs</h5>
                 <div className="right-content">
-                  <a href="/bookings" className="view-all">View All</a>
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollLeft} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollRight} />
+                  <a href="/program" className="view-all">View All</a>
+                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollProgramsLeft} />
+                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollProgramsRight} />
                 </div>
               </div>
-              <div className="programs-tab-container" ref={scrollRef}>
+              <div className="programs-tab-container" ref={programsScrollRef}>
                 {programs && programs.length > 0 ? (
                   programs.map((program) => (
-                    <a key={program.id} href={`/programs/${program.id}`} className="programs-tab">
+                    <a key={program.id} href={`/program-details/${program.id}`} className="programs-tab">
                       <div>
                         <div className="programs-tab-btns">
                           <p>{program.name}</p>
@@ -230,11 +239,11 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 <h5>Coach</h5>
                 <div className="right-content">
                   {/* <a href="/coach" className="view-all">View All</a> */}
-                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollLeft} />
-                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollRight} />
+                  <Image src="/images/profile/left-arrow.png" alt="Left Arrow" className="arrow-left" width={24} height={24} onClick={scrollCoachLeft} />
+                  <Image src="/images/profile/right-arrow.png" alt="Right Arrow" className="arrow-right" width={24} height={24} onClick={scrollCoachRight} />
                 </div>
               </div>
-              <div className="coach-tab-container" ref={scrollRef}>
+              <div className="coach-tab-container" ref={coachScrollRef}>
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
