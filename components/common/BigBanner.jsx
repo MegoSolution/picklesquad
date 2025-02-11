@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const BigBanner = () => {
   return (
@@ -10,27 +10,24 @@ const BigBanner = () => {
               className="banner__content wow fadeInUp"
               data-wow-duration="0.4s"
             >
-              
-              <h1 className="banner__content-title">
-              Ready to Pick Up The Paddle?
-              </h1>
+              <h1 className="banner__content-title">Welcome to PickleSquad?</h1>
               <p className="primary-text banner__content-text">
-              Start experiencing the awesomeness of pickleball
-with your family and friends by booking one of our
-courts – or if you feel like learning how to nail that
-perfect serve, feel free to take up a lesson.
+                At PickleSquad, we’re redefining the pickleball experience in
+                Penang by blending top-notch facilities with a vibrant community
+                More than just a place to play, it’s where passion meets
+                connection. Whether you're here to improve, meet fellow players,
+                or enjoy the game, our courts welcome all skill levels. From
+                seasoned pros to first-timers, this is where friendships grow
+                and everyone thrives through the love of pickleball.
               </p>
-             <br/>
-             <div className="button-container">
-              <Link href="/sign-in" className="cmn-button-home">
-                Let's Play
-              </Link>
-              <Link href="/programmes" className="cmn-button-home">
-                First Time
-              </Link>
-            </div>
-            <br /><br />
-              
+              <br />
+              <div className="button-container">
+                <Link href="/programmes" className="cmn-button-home">
+                  Learn More
+                </Link>
+              </div>
+              <br />
+              <br />
             </div>
           </div>
         </div>
