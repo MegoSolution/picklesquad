@@ -49,7 +49,7 @@
 // about section
 .about {
   overflow-x: clip;
-  background-image: url("/images/player-bg.png");
+  background-image: url('/images/player-bg.png');
   background-repeat: no-repeat;
   background-size: auto;
   background-position: right 5% bottom 40px;
@@ -104,7 +104,7 @@
       }
     }
   }
-  
+
   .about__section-inner {
     margin-top: 32px;
     display: flex;
@@ -141,20 +141,20 @@
 }
 
 .about--secondary {
-  background-color: #2C58A8;
+  background-color: #2c58a8;
   overflow-x: clip;
-  padding-bottom: 50px; 
-  
+  padding-bottom: 50px;
+
   .about--secondary__content-wrapper {
     background-color: #fff8f0; /* White box background */
     max-width: 1200px; /* Limit the width */
     margin: 0 auto; /* Center align horizontally */
-    
+
     border-radius: 10px; /* Rounded corners for the box */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     position: relative;
-    z-index: 2; 
-    text-align: center;  
+    z-index: 2;
+    text-align: center;
     margin-top: -10%;
     padding-top: 100px; /* Add padding to the top */
     padding-bottom: 100px; /* Add padding to the bottom */
@@ -163,20 +163,16 @@
   .background-image {
     width: 120%;
     height: auto; /* Maintain the image's aspect ratio */
-    display:flex; /* Ensure the image behaves as a block element */
+    display: flex; /* Ensure the image behaves as a block element */
   }
 
-.background-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the entire area */
-}
-  
-  
-  
-  
-  
+  .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+  }
+
   .about--secondary__thumb {
     position: relative;
     margin-bottom: 30px;
@@ -194,29 +190,26 @@
       direction: ltr;
 
       .section__content {
-        max-width: 800px;       /* Restrict the width for better readability */
-        margin: 0 auto;         /* Center the content horizontally */
+        max-width: 800px; /* Restrict the width for better readability */
+        margin: 0 auto; /* Center the content horizontally */
       }
-      
+
       h5.section__content-sub-title {
         font-size: 18px;
-        color: #2C58A8;
+        color: #2c58a8;
         margin-bottom: 15px;
         margin-top: 10px;
       }
-    
+
       h2.section__content-title {
         font-size: 45px;
         margin-bottom: 20px;
-        
+
         font-weight: bold;
         white-space: nowrap; /* Prevent text wrapping */
         overflow: hidden; /* Optional: Hide overflow if the text is too long */
         text-overflow: ellipsis; /* Optional: Add ellipsis for overflowed text */
       }
-    
-      
-      
 
       p {
         color: $white;
@@ -241,42 +234,37 @@
   .about--secondary__single {
     margin-top: 20px;
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  .about--secondary__single-item {
-    max-width: 100%;
-  margin: 0 auto;
-  padding: 15px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-    background-color: #f3e9b8; /* Add red background */
-  color: #2C58A8;
-  
-     
+    .about--secondary__single-item {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 15px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #f3e9b8; /* Add red background */
+      color: #2c58a8;
+
       h6 {
         text-align: center; /* Center-align the text */
         margin-bottom: auto; /* Push the text upwards */
-        color: #2C58A8;
+        color: #2c58a8;
       }
-    
-      
     }
-    
 
     .about--secondary__single-item__icon {
       max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto;
-    
+
       img {
         width: 100px; /* Adjust the image size as needed */
         height: 100px; /* Maintain aspect ratio */
         object-fit: contain;
       }
     }
-    
   }
 }
 
@@ -501,7 +489,7 @@
   z-index: 1;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -528,7 +516,7 @@
 
 .training--tertiary {
   background-color: $secondary-color;
-  background-image: url("/images/dots.png"), url("/images/dots.png");
+  background-image: url('/images/dots.png'), url('/images/dots.png');
   background-repeat: no-repeat;
   background-size: auto, auto;
   background-position: left 16% bottom 22%, right 16% bottom 22%;
@@ -586,7 +574,7 @@
 
 // counter
 .counter {
-  background: url("/images/grass.png");
+  background: url('/images/grass.png');
   background-repeat: no-repeat;
   background-size: auto;
   background-position: bottom left;
@@ -594,10 +582,10 @@
   z-index: 1;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
-    background-color: #2C58A8;
+    background-color: #2c58a8;
     z-index: -1;
     margin-top: -30px;
   }
@@ -933,14 +921,14 @@
   z-index: 1;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0px;
     bottom: unset;
     height: 64%;
     background-color: $secondary-color;
     z-index: -1;
-    background-image: url("/images/flag-bg.png"), url("/images/ball-bg.png");
+    background-image: url('/images/flag-bg.png'), url('/images/ball-bg.png');
     background-repeat: no-repeat, no-repeat;
     background-size: 160px, 200px;
     background-position: left 30px bottom 30px, right 20px bottom 60px;
@@ -1011,7 +999,7 @@
 
 .testimonial--tertiary {
   background-color: $white;
-  background-image: url("/images/player-bg.png");
+  background-image: url('/images/player-bg.png');
   background-repeat: no-repeat;
   background-size: 130px;
   background-position: right 60px bottom 120px;
@@ -1025,11 +1013,9 @@
   }
 }
 
-
-
 // join club
 .join-club {
-  background-image: url("/images/privateevent/contact.jpg"),
+  background-image: url('/images/privateevent/contact.jpg'),
     linear-gradient(#f8f3e9 50%, #f8f3e9 50%);
   background-repeat: no-repeat;
   background-size: auto 100%, 100%;
@@ -1040,7 +1026,6 @@
       margin-bottom: 0px;
       text-align: center;
     }
-
   }
 
   .join-club__form {
@@ -1053,13 +1038,13 @@
 }
 
 .join-club--secondary {
-  background-image: url("/images/join-bg-two.png"),
+  background-image: url('/images/join-bg-two.png'),
     linear-gradient($secondary-color 50%, $secondary-color 50%);
   background-position: right -100px top, left top;
 }
 
 .join--tertiary {
-  background-image: url("/images/join-bg-three.png");
+  background-image: url('/images/join-bg-three.png');
 
   .section__content {
     padding: 40px;
@@ -1086,7 +1071,7 @@
 
 //private event
 .join--tertiary--pe {
-  background-image: url("/images/picklesquad_image/private-event.jpg");
+  background-image: url('/images/picklesquad_image/private-event.jpg');
 
   .section__content--pe {
     padding: 40px;
@@ -1122,8 +1107,8 @@ html {
   height: 100%;
 }
 
-.session2-btn{
-  background-color: #F3E7C5; /* Retain the original color */
+.session2-btn {
+  background-color: #f3e7c5; /* Retain the original color */
   color: #2c58a8 !important;
   font-weight: bold;
   padding: 12px 30px; /* Add padding for height */
@@ -1143,7 +1128,7 @@ html {
   color: #2c58a8;
 }
 .session-btn {
-  background: #8B5E3B;
+  background: #8b5e3b;
   color: white;
   font-weight: bold;
   padding: 12px 30px; /* Add padding for height */
@@ -1164,7 +1149,7 @@ html {
 
 /* Session Details Box */
 .session-details-box {
-  border: 1px solid #3B5998;
+  border: 1px solid #3b5998;
   padding: 15px;
   padding-left: 50px;
   padding-right: 50px;
@@ -1185,7 +1170,7 @@ html {
 /* Session Item */
 .session-item {
   font-size: 14px;
-  color: #3B5998;
+  color: #3b5998;
   font-weight: 600;
 }
 
@@ -1193,26 +1178,26 @@ html {
 .session-divider {
   width: 1px;
   height: 20px;
-  background-color: #3B5998;
+  background-color: #3b5998;
 }
 
 /* Horizontal Line */
 .session-divider-line {
   border: 0;
-  border-top: 1px solid #3B5998;
+  border-top: 1px solid #3b5998;
 }
 
 /* Session Note */
 .session-note {
   font-size: 14px;
-  color: #3B5998;
+  color: #3b5998;
   font-weight: 600;
 }
 
 .session-content p.session-item {
   font-weight: normal;
   line-height: 1.6;
-  color: #3B5998;
+  color: #3b5998;
   margin-bottom: 30px;
   font-size: 14px;
 }
@@ -1240,9 +1225,9 @@ html {
 
 .session-row3 {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 10px;
   text-align: center;
 }
@@ -1313,9 +1298,9 @@ html {
 
 .event-button-container {
   display: flex;
-  justify-content: center; 
-  margin-top: 20px; 
-  margin-bottom: 20px; 
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .event-cmn-button {
@@ -1337,12 +1322,12 @@ html {
 }
 
 .event-cmn-button {
-  background-color: #2C58A8;
+  background-color: #2c58a8;
   color: white;
   border: none;
 
   &:hover {
-    background-color: darken(#2C58A8, 10%);
+    background-color: darken(#2c58a8, 10%);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(44, 88, 168, 0.3);
@@ -1360,18 +1345,22 @@ html {
 
 /* Faded overlay effect */
 .image-container-event::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0; /* Change from left to right */
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, #f8f3e9 20%, rgba(248, 243, 233, 0) 100%);
+  background: linear-gradient(
+    to right,
+    #f8f3e9 20%,
+    rgba(248, 243, 233, 0) 100%
+  );
 }
 
 .image-container-event2::before {
-  content: "";
+  content: '';
   position: absolute;
-  right: 0; 
+  right: 0;
   width: 50%; /* Covers part of the image */
   height: 100%;
   background: linear-gradient(to left, #2c58a8 20%, rgba(44, 88, 168, 0) 100%);
@@ -1379,16 +1368,20 @@ html {
 
 /* Faded overlay effect */
 .image-container-coach::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0; /* Change from left to right */
   width: 50%;
   height: 100%;
-  background: linear-gradient(to left, #f8f3e9 20%, rgba(248, 243, 233, 0) 100%);
+  background: linear-gradient(
+    to left,
+    #f8f3e9 20%,
+    rgba(248, 243, 233, 0) 100%
+  );
 }
 
 .image-container-coach2::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0; /* Fade starts from the left */
   width: 50%; /* Covers part of the image */
@@ -1413,7 +1406,6 @@ html {
   max-width: 500px;
   text-align: left;
 }
-
 
 .session-content .sub-title {
   font-size: 1.5rem;
@@ -1465,10 +1457,9 @@ html {
   margin-bottom: 20px;
 }
 
-
 .programmes-join-us {
   padding: 60px 0;
-  background-color: #8B5E3B;
+  background-color: #8b5e3b;
   text-align: center;
   position: relative;
 
@@ -1490,7 +1481,6 @@ html {
     font-size: 20px;
     margin: 0;
     opacity: 0.9;
-
   }
 
   @media (max-width: 768px) {
@@ -1531,7 +1521,6 @@ html {
   color: #2c58a8;
 }
 
-
 /*two*/
 .session-details--two {
   margin-bottom: 20px;
@@ -1561,7 +1550,6 @@ html {
   text-align: right;
   color: #ffffff;
 }
-
 
 .additional-info {
   margin-top: 20px;
@@ -1635,8 +1623,8 @@ html {
 
 /* Right Column Styling */
 .table-right-pricing {
-  background-color: #F3E7C5; /* Cream color */
-  color: #2C58A8; /* Blue text color */
+  background-color: #f3e7c5; /* Cream color */
+  color: #2c58a8; /* Blue text color */
   flex: 2; /* Column takes up two parts of the width */
   padding: 15px;
   font-size: 1.1rem; /* Slightly smaller text */
@@ -1663,7 +1651,7 @@ html {
   display: flex;
   align-items: center; /* Vertically aligns items */
   justify-content: flex-start; /* Aligns items to the left */
-  color: #F3E7C5; /* Cream color */
+  color: #f3e7c5; /* Cream color */
   font-weight: bold;
   font-size: 1rem;
   margin-bottom: 10px; /* Spacing below the header */
@@ -1680,13 +1668,13 @@ html {
 
 .pricing-header-title {
   font-size: 1rem; /* Title size */
-  color: #F3E7C5;
+  color: #f3e7c5;
   margin: 0; /* Removes default margin */
 }
 
 .pricing-header-time {
   font-size: 1.2rem; /* Time size */
-  color: #F3E7C5;
+  color: #f3e7c5;
   margin: 0; /* Removes default margin */
 }
 /* Logo Styling for Opening Hours */
@@ -1702,7 +1690,7 @@ html {
   width: 100%; /* Full width table */
   border-collapse: collapse; /* Collapse borders for neatness */
   text-align: center; /* Center-align text */
-  background-color: #F3E7C5; /* Cream background */
+  background-color: #f3e7c5; /* Cream background */
   border: 1px solid #ffffff; /* White border around table */
 }
 
@@ -1716,12 +1704,11 @@ html {
 
 /* Value Cells in Pricing Table */
 .pricing-value {
-  color: #2C58A8; /* Blue text */
+  color: #2c58a8; /* Blue text */
   padding: 10px; /* Padding for spacing */
   font-weight: bold; /* Bold text */
   border: 2px solid #ffffff; /* White border around cells */
 }
-
 
 /* Button Styling */
 .first-time-btn {
@@ -1850,17 +1837,21 @@ html {
     padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
     background-position: center;
     background-size: cover; /* Ensures the image fits better */
-  } 
+  }
 }
 
 .event-intro-section::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background: linear-gradient(to left, #5f95f8 40%, rgba(248, 243, 233, 0) 100%);
+  background: linear-gradient(
+    to left,
+    #5f95f8 40%,
+    rgba(248, 243, 233, 0) 100%
+  );
   z-index: 1; /* Ensures it overlays the background */
 }
 
@@ -1889,7 +1880,7 @@ html {
     padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
     background-position: center;
     background-size: cover; /* Ensures the image fits better */
-  } 
+  }
 }
 
 .programmes-intro-overlay {
@@ -1920,7 +1911,7 @@ html {
   font-weight: 700;
   margin-bottom: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  
+
   @media (max-width: 768px) {
     font-size: 32px;
     margin-bottom: 20px;
@@ -1937,7 +1928,7 @@ html {
   max-width: 600px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
-  
+
   @media (max-width: 768px) {
     font-size: 16px;
     padding: 0;
@@ -1945,8 +1936,6 @@ html {
     text-align: center;
   }
 }
-
-
 
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
@@ -2057,19 +2046,16 @@ html {
 }
 
 .event-content .sub-title {
-
   color: #ffffff !important;
   margin-bottom: 15px;
 }
 
 .event-content .title {
-
   color: #ffffff !important;
   margin-bottom: 20px;
 }
 
 .event-content p {
-
   line-height: 1.5;
   color: #ffffff !important;
   margin-bottom: 30px;
@@ -2077,7 +2063,7 @@ html {
 
 /* Updated Button Styling */
 .book-now-btn {
-  background-color: #F3E7C5; /* Retain the original color */
+  background-color: #f3e7c5; /* Retain the original color */
   color: #2c58a8;
   font-weight: bold;
   padding: 12px 30px; /* Add padding for height */
@@ -2098,8 +2084,8 @@ html {
   color: #2c58a8;
 }
 
-.book-now-btn-nav{
-  background-color: #F3E7C5; /* Retain the original color */
+.book-now-btn-nav {
+  background-color: #f3e7c5; /* Retain the original color */
   color: #2c58a8 !important;
   font-weight: bold;
   padding: 12px 30px; /* Add padding for height */
@@ -2724,7 +2710,7 @@ html {
       margin: 30px 0px;
       position: relative;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         right: 0px;
         bottom: 0px;
@@ -2787,7 +2773,7 @@ html {
       margin-bottom: 0px;
     }
 
-    input[type="radio"] {
+    input[type='radio'] {
       appearance: none;
       background-color: #fff;
       margin: 0;
@@ -2807,7 +2793,7 @@ html {
 
       &::after {
         content: none;
-        font-family: "Font Awesome 6 Free";
+        font-family: 'Font Awesome 6 Free';
         font-weight: 900;
         color: $white;
         position: absolute;
@@ -2821,11 +2807,11 @@ html {
         border: 1px solid $primary-color;
 
         &::before {
-          content: "";
+          content: '';
         }
 
         &::after {
-          content: "\f00c";
+          content: '\f00c';
         }
       }
     }
@@ -3026,7 +3012,7 @@ html {
     margin-bottom: 50px;
 
     h3 {
-      color: #2C58A8;
+      color: #2c58a8;
       font-size: 36px;
       font-weight: 700;
 
@@ -3053,7 +3039,7 @@ html {
       background-color: transparent;
       border: none;
       border-bottom: 2px solid #e0e0e0;
-      color: #2C58A8;
+      color: #2c58a8;
       font-weight: 600;
       font-size: 18px;
       transition: all 0.3s ease;
@@ -3067,13 +3053,12 @@ html {
         height: 20px;
       }
 
-
       &.active {
-        border-bottom: 2px solid #2C58A8;
+        border-bottom: 2px solid #2c58a8;
       }
 
       &:hover {
-        border-bottom: 2px solid #2C58A8;
+        border-bottom: 2px solid #2c58a8;
       }
     }
   }
@@ -3103,18 +3088,18 @@ html {
     .accordion-button {
       font-weight: 600;
       font-size: 18px;
-      color: #2C58A8;
+      color: #2c58a8;
       background-color: transparent;
       border-radius: 0 !important;
       box-shadow: none;
-      border-bottom: 2px solid #2C58A8;
+      border-bottom: 2px solid #2c58a8;
       width: 100%;
       text-align: left;
 
       &:not(.collapsed) {
-        color: #2C58A8;
+        color: #2c58a8;
         background-color: transparent;
-        border-bottom: 2px solid #2C58A8;
+        border-bottom: 2px solid #2c58a8;
       }
 
       &:focus {
@@ -3122,13 +3107,13 @@ html {
       }
 
       &::after {
-        color: #2C58A8;
+        color: #2c58a8;
       }
     }
 
     .accordion-body {
       width: 100%;
-      
+
       ul {
         list-style-type: disc; // Add bullet points
         padding-left: 20px; // Add left padding for the bullets
@@ -3147,7 +3132,7 @@ html {
         margin: 0;
         white-space: normal;
         word-wrap: break-word;
-        
+
         &:last-child {
           margin-bottom: 0; // Remove margin from last item
         }
@@ -3162,12 +3147,12 @@ html {
       }
 
       a {
-        color: #2C58A8; // Using your theme blue color
+        color: #2c58a8; // Using your theme blue color
         text-decoration: underline;
         font-weight: 500;
-        
+
         &:hover {
-          color: darken(#2C58A8, 10%);
+          color: darken(#2c58a8, 10%);
         }
       }
     }
@@ -3204,7 +3189,7 @@ html {
   z-index: 3;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0px;
     z-index: 2;
@@ -3909,7 +3894,7 @@ html {
   position: relative;
   z-index: 1;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -3938,7 +3923,7 @@ html {
 
 // join club
 .join-club--main {
-  background-image: url("/images/join-bg-four.png"),
+  background-image: url('/images/join-bg-four.png'),
     linear-gradient($white 50%, $white 50%);
 
   input,
@@ -3974,7 +3959,7 @@ html {
   position: relative;
   z-index: 1;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0px;
     right: 0px;
@@ -4117,8 +4102,8 @@ html {
   }
 }
 
-.error__message{
-  p{
+.error__message {
+  p {
     color: #ff4d4d;
     font-weight: bold;
   }
@@ -4214,8 +4199,8 @@ html {
       }
       &:checked {
         &::before {
-          content: "\f00c";
-          font-family: "Font Awesome 6 Free";
+          content: '\f00c';
+          font-family: 'Font Awesome 6 Free';
           font-weight: 900;
         }
       }
@@ -4390,7 +4375,7 @@ html {
     border-radius: 5px;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0px;
       background: rgba(12, 169, 64, 0.9);
@@ -4548,16 +4533,16 @@ html {
     gap: 10px;
     cursor: pointer;
 
-    input[type="color"] {
+    input[type='color'] {
       -webkit-appearance: none;
       border: none;
       @include box(30px);
       cursor: pointer;
     }
-    input[type="color"]::-webkit-color-swatch-wrapper {
+    input[type='color']::-webkit-color-swatch-wrapper {
       padding: 0;
     }
-    input[type="color"]::-webkit-color-swatch {
+    input[type='color']::-webkit-color-swatch {
       border: none;
       border: 1px solid #ebebeb;
       border-radius: 50%;
@@ -4620,9 +4605,13 @@ html {
   }
 }
 
-.profile-icon{
+.profile-icon {
   max-width: 80px;
 }
 /* ==== 
  --------- (5.0) all sections styles end ---------
  ==== */
+
+.cmn-button-home:hover {
+  color: white;
+}

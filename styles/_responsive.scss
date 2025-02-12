@@ -52,55 +52,54 @@
   background-size: cover; /* Ensure the image covers the entire section */
   background-position: center; /* Center the background image */
 }
- // heading styles
- h1,
- .banner__content-title {
-   font-size: 36px;
-   line-height: 46px;
-   
- }
+// heading styles
+h1,
+.banner__content-title {
+  font-size: 36px;
+  line-height: 46px;
+}
 
- h2,
- .section__content-title,
- .section__header-title {
-   font-size: 65px ;
-   line-height: 65px;
+h2,
+.section__content-title,
+.section__header-title {
+  font-size: 65px;
+  line-height: 65px;
   margin-bottom: 25px;
-  color: #2C58A8;
- }
+  color: #2c58a8;
+}
 
- h3 {
-   font-size: 24px;
-   line-height: 34px;
- }
+h3 {
+  font-size: 24px;
+  line-height: 34px;
+}
 
- h4 {
-   font-size: 20px;
-   line-height: 30px;
- }
+h4 {
+  font-size: 20px;
+  line-height: 30px;
+}
 
- h5 {
-   font-size: 30px;
-   line-height: 28px;
-   color:#2C58A8;
-   margin-top: 50px;
-   margin-bottom: 20px;
- }
- p{
+h5 {
+  font-size: 30px;
+  line-height: 28px;
+  color: #2c58a8;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+p {
   font-size: 25px;
-   line-height: 28px;
-   color:#2C58A8;
- }
- h6 {
-   font-size: 16px;
-   line-height: 26px;
- }
+  line-height: 28px;
+  color: #2c58a8;
+}
+h6 {
+  font-size: 16px;
+  line-height: 26px;
+}
 
 /* H5 styling for the title */
 .about-text h5 {
   font-size: 30px;
   line-height: 40px;
-  color: #2C58A8;
+  color: #2c58a8;
   margin-bottom: 20px;
 }
 
@@ -109,19 +108,18 @@
   font-size: 65px;
   line-height: 75px;
   margin-bottom: 20px;
-  color: #2C58A8;
+  color: #2c58a8;
 }
 
 /* P styling for the paragraphs */
 .section__content-text p {
   font-size: 25px;
   line-height: 28px;
-  color: #2C58A8;
+  color: #2c58a8;
   margin-bottom: 40px !important;
   margin-left: 80px;
   margin-right: 80px;
 }
-
 
 .padding-about {
   padding-left: 50px;
@@ -140,7 +138,7 @@
 }
 
 .pricing-background {
-  background-image: url("/images/home/membership.jpg"); /* Ensure this path is correct */
+  background-image: url('/images/home/membership.jpg'); /* Ensure this path is correct */
   background-size: cover; /* Ensure the image scales properly */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Avoid repeating the image */
@@ -149,17 +147,15 @@
 }
 
 .pricing-plan {
-  background-image: url("/images/pricing.png");
+  background-image: url('/images/pricing.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-
 .banner__content {
-  max-width: 500px; /* Limit the width of the text content */
+  max-width: 750px; /* Limit the width of the text content */
   text-align: left; /* Align text to the left */
-  margin-right: auto; /* Push the content to the left */
 }
 
 .banner__content-pricing-title {
@@ -169,7 +165,6 @@
   color: #ffffff;
   margin-bottom: 30px; /* Adjust margin for better spacing */
   margin-top: 20px; /* Top margin remains */
-  
 }
 
 .banner__content-title {
@@ -177,9 +172,6 @@
   line-height: 80px; /* Adequate spacing between lines */
   font-weight: bold;
   color: #ffffff;
-
-  margin-top: 250px; /* Top margin remains */
-  
 }
 
 .banner__content-text {
@@ -187,9 +179,7 @@
   line-height: 30px; /* Enhanced spacing for multi-line text */
   color: #ffffff;
   margin-bottom: 40px; /* Increase margin for spacing */
- 
 }
-
 
 .banner__content-cta {
   display: flex;
@@ -203,11 +193,10 @@
   border-radius: 50px; /* Fully rounded edges */
   text-align: center; /* Center the text */
   color: #ffffff; /* White text color */
-  background-color: #2C58A8; /* Blue background */
+  background-color: #2c58a8; /* Blue background */
   border: 2px solid #ffffff; /* White border */
   display: inline-block; /* Ensure proper alignment and spacing */
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */
- 
 }
 .cmn-button-home {
   padding: 15px 50px; /* Adjust padding for a longer and taller button */
@@ -216,7 +205,7 @@
   border-radius: 50px; /* Fully rounded edges */
   text-align: center; /* Center the text */
   color: #ffffff; /* White text color */
-  background-color: #2C58A8; /* Blue background */
+  background-color: #2c58a8; /* Blue background */
   border: 2px solid #ffffff; /* White border */
   display: inline-block; /* Ensure proper alignment and spacing */
   transition: all 0.3s ease; /* Add a smooth transition for hover effects */
@@ -228,9 +217,9 @@
   border-radius: 50px; /* Make the button oval */
   font-size: 15px; /* Standard button font size */
   font-weight: bold; /* Bold text */
-  color: #2C58A8; /* Blue text color */
+  color: #2c58a8; /* Blue text color */
   background-color: #f3e9b8; /* Light yellow background */
-  border: 2px solid #2C58A8; /* Blue border */
+  border: 2px solid #2c58a8; /* Blue border */
   border-radius: 20px; /* Rounded corners */
   text-align: center; /* Center-align text */
   text-decoration: none; /* Remove underline */
@@ -244,7 +233,7 @@
 
 /* Hover Effect */
 .cmn-button-nav:hover {
-  background-color: #2C58A8; /* Change background to blue on hover */
+  background-color: #2c58a8; /* Change background to blue on hover */
   color: #ffffff !important; /* Change text color to light yellow on hover */
   border-color: #f3e9b8; /* Change border to light yellow */
 }
@@ -339,15 +328,11 @@
   margin-bottom: 0; /* Ensure spacing below is consistent */
 }
 
-
-
-
 .cmn-button--secondary {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
 }
-
 
 @media only screen and (max-width: 1720.98px) {
   // join club
@@ -371,7 +356,7 @@
     background-position: center; /* Center the background image */
   }
 
-  .home-page{
+  .home-page {
     margin-top: 150px;
   }
 
@@ -385,12 +370,12 @@
     background-repeat: no-repeat; /* Prevent image repetition */
     background-size: cover; /* Ensure the image covers the entire section */
     background-position: center; /* Center the background image */
-  } 
-  
+  }
+
   .banner--tertiary {
-    background-image: url("/images/flag-alt.png"),
+    background-image: url('/images/flag-alt.png'),
       linear-gradient(110deg, #fdfffa 48%, rgba(255, 255, 255, 0) 100%),
-      url("/images/banner/banner-three.jpg");
+      url('/images/banner/banner-three.jpg');
     background-size: 120px, 100%, auto 100%;
   }
 
@@ -403,33 +388,29 @@
 @media only screen and (max-width: 1619.98px) {
   .banner {
     background-position: left -110px center, right -200px bottom, left top;
-
   }
-/* About Section */
-.about {
-  
-  background-image: url("/images/player-bg.png");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: right 5% bottom 40px;
+  /* About Section */
+  .about {
+    background-image: url('/images/player-bg.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: right 5% bottom 40px;
 
-  .about__thumb {
-    position: relative;
+    .about__thumb {
+      position: relative;
 
-    .about__experience {
-      width: 340px;
-      height: 340px;
-      border: 10px solid #ffffff;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      background-color: #2C58A8;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      direction: ltr;
-
-      
+      .about__experience {
+        width: 340px;
+        height: 340px;
+        border: 10px solid #ffffff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background-color: #2c58a8;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        direction: ltr;
 
         span {
           font-size: inherit;
@@ -504,8 +485,6 @@
   object-fit: cover; /* Ensures the image covers the entire area */
 }
 
-
-
 .about--secondary__thumb {
   position: relative;
   margin-bottom: 30px;
@@ -523,13 +502,13 @@
     direction: ltr;
 
     .section__content {
-      max-width: 800px;       /* Restrict the width for better readability */
-      margin: 0 auto;         /* Center the content horizontally */
+      max-width: 800px; /* Restrict the width for better readability */
+      margin: 0 auto; /* Center the content horizontally */
     }
 
     h5.section__content-sub-title {
       font-size: 18px;
-      color: #2C58A8;
+      color: #2c58a8;
       margin-bottom: 15px;
       margin-top: 10px;
     }
@@ -579,7 +558,7 @@
   margin-bottom: 20px;
   box-sizing: border-box;
   background-color: #f3e9b8; /* Keep your existing background color */
-  color: #2C58A8;
+  color: #2c58a8;
   border-radius: 10px; /* Rounded corners for a polished look */
   text-align: center;
   min-height: 250px; /* Ensure all cards have the same height */
@@ -610,13 +589,12 @@
   font-size: 14px; /* Adjust button font size */
   padding: 10px 15px; /* Add padding for a better button feel */
   border-radius: 5px;
-  background-color: #2C58A8; /* Button background color */
+  background-color: #2c58a8; /* Button background color */
   color: #fff; /* Button text color */
   text-decoration: none;
   display: inline-block;
   margin-top: auto; /* Ensure the button stays at the bottom */
 }
-
 
 .about--tertiary {
   background-color: var(--secondary-color);
@@ -663,7 +641,6 @@
     }
   }
 
- 
   .about--secondary__tabs {
     margin-top: 30px;
 
@@ -764,58 +741,54 @@
     height: 50px;
   }
 
-  
-@media (max-width: 540px) {
-  .about--secondary__content-wrapper {
-    padding: 200px 10px;
-    margin-top: 0;
-    max-width: 100%;
-    border-radius: 5px;
-    min-height: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-  
+  @media (max-width: 540px) {
+    .about--secondary__content-wrapper {
+      padding: 200px 10px;
+      margin-top: 0;
+      max-width: 100%;
+      border-radius: 5px;
+      min-height: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about--secondary__single-item {
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .about--secondary__single-item__icon img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .header {
+      padding: 10px;
+    }
+
+    .header img {
+      width: 120px;
+    }
+
+    .about__thumb {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .about__thumb .about__experience {
+      width: 300px;
+      bottom: -20px;
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
-
-  .about--secondary__single-item {
-    padding: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .about--secondary__single-item__icon img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
-
-
-  .header {
-    padding: 10px;
-  }
-
-  .header img {
-    width: 120px;
-  }
-
-  .about__thumb {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .about__thumb .about__experience {
-    width: 300px;
-    bottom: -20px;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
 
   // event
   .event--secondary {
@@ -908,11 +881,10 @@
         #ffffff 0%,
         rgba(255, 255, 255, 0) 0%
       ),
-      url("/images/banner/banner-ipad.jpg");
+      url('/images/banner/banner-ipad.jpg');
     background-repeat: no-repeat; /* Ensures the background image never repeats */
-   
   }
-  
+
   .banner--inner {
     padding: 180px 0px 80px;
   }
@@ -1105,7 +1077,6 @@
   .banner__content-title {
     font-size: 50px;
     line-height: 60px;
-   
   }
 
   h2,
@@ -1114,7 +1085,6 @@
     font-size: 40px;
     line-height: 50px;
     text-align: center;
-    
   }
 
   h3 {
@@ -1294,7 +1264,7 @@
 
     .nav__menu-link {
       width: 100%;
-      background-color: #2C58A8;
+      background-color: #2c58a8;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1314,13 +1284,11 @@
 
   .header-active {
     top: 0px;
-    
   }
 
   .header--secondary {
     .nav {
       padding: 27px 0px 26px;
-      
     }
 
     .nav__menu-item--dropdown {
@@ -1365,7 +1333,7 @@
     }
 
     .nav__menu-active {
-      background-color: #FFF8F0;
+      background-color: #fff8f0;
     }
 
     .social {
@@ -1448,9 +1416,6 @@
     }
   }
 
-  
-  
-
   // testimonial
   .testimonial {
     &::before {
@@ -1488,14 +1453,14 @@
         #ffffff 0%,
         rgba(255, 255, 255, 0) 0%
       ),
-      url("/images/banner/banner-ipad.jpg");
+      url('/images/banner/banner-ipad.jpg');
   }
 
   // banner tertiary
   .banner--tertiary {
-    background-image: url("/images/flag-alt.png"),
+    background-image: url('/images/flag-alt.png'),
       linear-gradient(110deg, #fdfffa 48%, rgba(255, 255, 255, 0) 100%),
-      url("/images/banner/banner-three.jpg");
+      url('/images/banner/banner-three.jpg');
     background-size: 70px, 100%, auto 100%;
   }
 
@@ -1714,7 +1679,6 @@
     .nav__bar {
       .icon-bar {
         background-color: $white;
-        
       }
     }
   }
@@ -1743,13 +1707,13 @@
         #ffffff 0%,
         rgba(255, 255, 255, 0) 0%
       ),
-      url("/images/banner/banner-ipad.jpg");
+      url('/images/banner/banner-ipad.jpg');
   }
 
   .banner--tertiary {
-    background-image: url("/images/flag-alt.png"),
+    background-image: url('/images/flag-alt.png'),
       linear-gradient(110deg, #fdfffae6 100%, rgba(255, 255, 255, 0) 100%),
-      url("/images/banner/banner-three.png");
+      url('/images/banner/banner-three.png');
   }
 
   // about
@@ -1938,23 +1902,22 @@
     justify-content: center; /* Center links on mobile */
     gap: 10px; /* Add space between items */
   }
-  
+
   .footer-links li {
     display: inline; /* Inline elements to appear in one line */
   }
-  
+
   .footer-links li:not(:last-child)::after {
-    content: "|"; /* Add separator after each item except the last */
+    content: '|'; /* Add separator after each item except the last */
     margin-left: 10px; /* Add space between the item and the separator */
     color: #ffffff; /* Ensure the separator matches the text color */
   }
-  
+
   // heading styles
   h1,
   .banner__content-title {
     font-size: 36px;
     line-height: 46px;
-    
   }
 
   h2,
@@ -1962,8 +1925,8 @@
   .section__header-title {
     font-size: 30px;
     line-height: 40px;
-   text-align: center;
-   color: #2C58A8;
+    text-align: center;
+    color: #2c58a8;
   }
 
   h3 {
@@ -2022,19 +1985,18 @@
       margin-bottom: 10px;
       text-align: center;
     }
-  
+
     .section__content-title,
     .banner__content-title {
       margin-bottom: 10px;
     }
-  
+
     .section__content-cta,
     .banner__content-cta {
       margin-top: 30px;
-      
     }
   }
-  
+
   .cmn-button {
     padding: 10px 100px; /* Adjust padding for a longer and taller button */
     font-size: 16px; /* Adjust text size */
@@ -2042,22 +2004,21 @@
     border-radius: 50px; /* Fully rounded edges */
     text-align: center; /* Center the text */
     color: #ffffff; /* White text color */
-    background-color: #2C58A8; /* Blue background */
+    background-color: #2c58a8; /* Blue background */
     border: 2px solid #ffffff; /* White border */
     display: inline-block; /* Ensure proper alignment and spacing */
     transition: all 0.3s ease; /* Add a smooth transition for hover effects */
   }
-  
+
   .cmn-button--secondary {
     background-color: transparent;
     border: 2px solid #ffffff;
     color: #ffffff;
   }
-  
+
   .section__cta {
     margin-top: 30px;
   }
-  
 
   .progress-wrap {
     @include box(40px);
@@ -2082,8 +2043,6 @@
       margin-bottom: 5px;
 
       &:nth-last-of-type(1) {
-        
-
         .cmn-button {
           width: 100%;
           justify-content: center;
@@ -2105,7 +2064,6 @@
   .header--secondary {
     .nav {
       padding: 23px 0px 24px;
-      
     }
 
     .nav__menu-item {
@@ -2121,7 +2079,6 @@
 
         .cmn-button {
           border: 1px solid $primary-color;
-          
 
           &:hover {
             border: 1px solid rgba(242, 255, 246, 0.32);
@@ -2202,14 +2159,14 @@
   // pricing
   .pricing--secondary .toggle-plan {
     margin-top: 20px;
-    
+
     justify-content: center;
     gap: 10px; /* Adds spacing between the buttons */
     border: 1px solid #cce1cb; /* Adds the border for the toggle group */
     border-radius: 8px;
     padding: 5px;
   }
-  
+
   .pricing--secondary .toggle-plan a {
     padding: 8px 20px;
     border-radius: 5px;
@@ -2220,17 +2177,16 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }
-  
+
   .pricing--secondary .toggle-plan a.active {
     background-color: #934523;
     color: #ffffff; /* White text for better contrast */
   }
-  
+
   .pricing--secondary .toggle-plan a.inactive {
     background-color: #ffffff; /* Transparent for unselected */
     color: #2c2c2c;
   }
-  
 
   // facility secondary
   .facility--secondary {
@@ -2330,7 +2286,7 @@
   .footer {
     padding-top: 80px;
     background-color: #2c58a8;
-  
+
     h5 {
       font-size: 24px;
       line-height: 32px;
@@ -2338,10 +2294,10 @@
       margin-bottom: 20px; /* Add spacing below heading */
       text-align: center; /* Center-align heading */
     }
-  
+
     .footer__single-social {
       text-align: center;
-  
+
       .social-icons {
         list-style: none; /* Remove bullet points */
         padding: 0;
@@ -2350,18 +2306,18 @@
         justify-content: center; /* Align icons horizontally */
         gap: 20px; /* Add spacing between icons */
       }
-  
+
       .social-icons li {
         display: inline-block;
-  
+
         a {
           display: inline-block;
           transition: transform 0.3s ease; /* Smooth transition effect */
-  
+
           &:hover {
             transform: scale(1.1); /* Slight zoom effect on hover */
           }
-  
+
           img {
             width: 35px; /* Icon width */
             height: 35px; /* Icon height */
@@ -2370,24 +2326,24 @@
         }
       }
     }
-  
+
     .footer__single-content {
       margin-top: 15px;
       text-align: center;
-  
+
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
-  
+
         li {
           margin-bottom: 8px;
-  
+
           a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
-  
+
             &:hover {
               color: #ffd700; /* Gold hover color */
             }
@@ -2395,29 +2351,29 @@
         }
       }
     }
-  
+
     hr {
       margin-top: 40px;
       border-color: #fff; /* White horizontal line */
     }
-  
+
     .copyright {
       text-align: center;
       color: #fff;
       margin-top: 20px;
-  
+
       .row {
         display: flex;
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center-align all content */
         justify-content: center; /* Vertically center-align content */
         gap: 10px; /* Add spacing between copyright text and links */
-  
+
         .col-lg-6,
         .col-md-6,
         .col-12 {
           text-align: center;
-  
+
           ul {
             list-style: none;
             padding: 0;
@@ -2425,13 +2381,13 @@
             display: flex;
             justify-content: center; /* Center-align the links */
             gap: 15px;
-  
+
             li {
               a {
                 color: #fff;
                 text-decoration: none;
                 transition: color 0.3s ease;
-  
+
                 &:hover {
                   color: #ffd700;
                 }
@@ -2442,7 +2398,7 @@
       }
     }
   }
-  
+
   /* Responsive Styles */
   @media (max-width: 1024px) {
     .footer {
@@ -2452,12 +2408,12 @@
           gap: 15px; /* Adjust spacing for tablets */
         }
       }
-  
+
       .copyright {
         .row {
           flex-direction: column; /* Stack items vertically */
           text-align: center;
-  
+
           ul {
             justify-content: center;
           }
@@ -2465,14 +2421,14 @@
       }
     }
   }
-  
+
   @media (max-width: 768px) {
     .footer {
       .footer__single-social {
         .social-icons {
           gap: 10px; /* Adjust spacing for smaller screens */
         }
-  
+
         .social-icons li a img {
           width: 45px; /* Adjust icon size for smaller screens */
           height: 45px;
@@ -2480,29 +2436,29 @@
       }
     }
   }
-  
+
   @media (max-width: 480px) {
     .footer {
       padding-top: 40px;
-  
+
       h5 {
         font-size: 20px;
         line-height: 28px;
       }
-  
+
       .social-icons {
         gap: 8px; /* Reduce spacing for small screens */
       }
-  
+
       .social-icons li a img {
         width: 45px; /* Smaller size for small devices */
         height: 45px;
       }
-  
+
       .copyright {
         .row {
           flex-direction: column; /* Stack items vertically */
-  
+
           ul {
             gap: 10px; /* Reduce spacing for small screens */
           }
@@ -2518,7 +2474,7 @@
   /* Pagination */
   .pagination {
     gap: 8px;
-  
+
     a,
     button {
       width: 35px;
@@ -2526,7 +2482,7 @@
       border-radius: 5px;
     }
   }
-  
+
   // header
   .header {
     .nav {
@@ -2544,12 +2500,11 @@
   .header--secondary {
     .nav {
       padding: 26px 0px 27px;
-    
     }
   }
 
   .banner--secondary {
-    background-image: url("/images/banner/banner-phone.png");
+    background-image: url('/images/banner/banner-phone.png');
     background-repeat: no-repeat;
     background-size: cover; /* Makes the background image cover the entire area */
     background-position: center top; /* Focus on the top center */
@@ -2568,11 +2523,11 @@
   .banner--inner {
     padding: 200px 20px 40px; /* Moves the content further down */
   }
-  
+
   .banner__content {
     text-align: center; /* Centers text content */
   }
-  
+
   .banner__content-title {
     font-size: 28px; /* Match the font size of the second image */
     line-height: 38px;
@@ -2587,27 +2542,27 @@
     margin-top: 50px;
     margin-bottom: 15px;
   }
-  
+
   .banner__content-text {
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
     margin-bottom: 20px;
   }
-  
+
   .banner__content-cta {
     display: flex;
     flex-direction: column; /* Stacks buttons vertically */
     align-items: center; /* Centers the buttons */
     gap: 10px; /* Adds space between the buttons */
   }
-  
+
   .cmn-button {
     display: block; /* Ensure the button takes up full width in its container */
     margin: 20px auto; /* Centers the button horizontally */
     font-size: 1rem; /* Adjust font size */
     font-weight: bold; /* Makes the text bold */
-    background-color: #F3E7C5; /* Button color */
+    background-color: #f3e7c5; /* Button color */
     color: #ffffff; /* Text color */
     border: none; /* Remove borders */
     border-radius: 5px; /* Rounded corners */
@@ -2620,12 +2575,9 @@
     margin-top: 20px; /* Adds space above the button */
   }
   .cmn-button--secondary {
-    
-    border: 2px solid #2C58A8;
-    color: #2C58A8;
+    border: 2px solid #2c58a8;
+    color: #2c58a8;
   }
-  
-  
 
   // overview
   .overview {
@@ -2956,17 +2908,17 @@
       justify-content: center; /* Center links on mobile */
       gap: 10px; /* Add space between items */
     }
-    
+
     .footer-links li {
       display: inline; /* Inline elements to appear in one line */
     }
-    
+
     .footer-links li:not(:last-child)::after {
-      content: "|"; /* Add separator after each item except the last */
+      content: '|'; /* Add separator after each item except the last */
       margin-left: 10px; /* Add space between the item and the separator */
       color: #ffffff; /* Ensure the separator matches the text color */
     }
-    
+
     .shop__card-info {
       padding: 0px;
     }
@@ -3005,7 +2957,6 @@
     .section__content-cta,
     .banner__content-cta {
       flex-direction: column;
-      
 
       .cmn-button {
         width: 100%;
@@ -3022,17 +2973,16 @@
     justify-content: center; /* Center links on mobile */
     gap: 10px; /* Add space between items */
   }
-  
+
   .footer-links li {
     display: inline; /* Inline elements to appear in one line */
   }
-  
+
   .footer-links li:not(:last-child)::after {
-    content: "|"; /* Add separator after each item except the last */
+    content: '|'; /* Add separator after each item except the last */
     margin-left: 10px; /* Add space between the item and the separator */
     color: #ffffff; /* Ensure the separator matches the text color */
   }
-  
 
   .banner--secondary {
     background-image: linear-gradient(
@@ -3040,15 +2990,13 @@
         #ffffff 0%,
         rgba(255, 255, 255, 0) 0%
       ),
-      url("/images/banner/banner-phone.png");
-    
+      url('/images/banner/banner-phone.png');
   }
-  
 
   .banner--tertiary {
-    background-image: url("/images/flag-alt.png"),
+    background-image: url('/images/flag-alt.png'),
       linear-gradient(110deg, #fdfffae6 100%, rgba(255, 255, 255, 0) 100%),
-      url("/images/banner/banner-phone.png");
+      url('/images/banner/banner-phone.png');
     background-size: 30px, 100%, auto 100%;
   }
 
@@ -3087,19 +3035,18 @@
 
   // about
   .about--secondary {
-    
-      .row {
-        display: contents;
+    .row {
+      display: contents;
 
-        .col-6 {
-          width: 100%;
-        }
+      .col-6 {
+        width: 100%;
       }
+    }
 
-      .about--secondary__single-item {
-        padding: 20px 16px;
-        overflow: hidden;
-      }
+    .about--secondary__single-item {
+      padding: 20px 16px;
+      overflow: hidden;
+    }
   }
   .about--secondary__single {
     display: flex;

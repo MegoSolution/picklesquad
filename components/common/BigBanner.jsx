@@ -5,7 +5,14 @@ const BigBanner = () => {
     <section className="banner--secondary">
       <div className="container ">
         <div className="row justify-content-end home-page">
-          <div className="col-12 col-lg-6 col-xl-7">
+          <div
+            className="col-12"
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+          >
             <div
               className="banner__content wow fadeInUp"
               data-wow-duration="0.4s"
