@@ -183,26 +183,18 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                       }
                     )}
 
-                    {/* Sign In/Sign Up or Book Now */}
-                    {!user ? (
-                      <li className="nav__menu-item d-block d-md-none">
-                        <Link
-                          href="/sign-in"
-                          className="cmn-button cmn-button--secondary"
-                        >
-                          Sign In
-                        </Link>
-                      </li>
-                    ) : (
-                      <li className="nav__menu-item d-block d-md-none">
-                        <button
-                          onClick={handleBookNowClick}
-                          className="cmn-button cmn-button--secondary"
-                        >
-                          Book Now
-                        </button>
-                      </li>
-                    )}
+                    {/* Sign In (only if there is no user) */}
+{!user && (
+  <li className="nav__menu-item d-block d-md-none">
+    <Link
+      href="/sign-in"
+      className="cmn-button cmn-button--secondary"
+    >
+      Sign In
+    </Link>
+  </li>
+)}
+
                   </ul>
                 </div>
 
@@ -215,15 +207,10 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                             href="/sign-in"
                             className="btn btn-light book-now-btn-nav"
                           >
-                            Sign In
+                            Sign In/Sign Up
                           </Link>
                         )}
-                        <button
-                          onClick={handleBookNowClick}
-                          className="btn btn-light book-now-btn-nav"
-                        >
-                          Book Now
-                        </button>
+                        
                       </>
                     ) : (
                       <>
