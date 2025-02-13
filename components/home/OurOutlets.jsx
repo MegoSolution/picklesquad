@@ -30,6 +30,7 @@ const OurOutlets = () => {
       style={{
         paddingTop: 50,
       }}
+      id="our-outlets" 
     >
       <div className="container">
         <div className="row justify-content-center">

@@ -14,64 +14,48 @@ const Footer = () => {
     >
       <div className="container">
         <div className="row">
-          {/* Left Column: Logo */}
-          <div className="col-lg-3 col-md-3 text-center text-lg-start">
+          {/* Left Column: Quick Links */}
+          <div className="col-lg-4 col-md-4 text-center text-lg-start">
             <div className="footer__single-content">
-              <Link href="/" className="footer__single-logo">
-                <Image src={logo_light} alt="Logo" width={150} height={50} />
-              </Link>
+              <h5>Quick Links</h5>
+              <ul className="footer-links">
+                <li>
+                  <Link href="/faq" style={{ color: "#FFFFFF" }}>
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#our-outlets" style={{ color: "#FFFFFF" }}>
+                    Location
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/career" style={{ color: "#FFFFFF" }}>
+                    Career
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/programmes" style={{ color: "#FFFFFF" }}>
+                    Upcoming Event
+                  </Link>
+                </li>
+                
+              </ul>
             </div>
           </div>
 
-          {/* Center Column: Quick Links */}
-          <div className="col-lg-3 col-md-3 text-center text-lg-start">
-  <div className="footer__single-content">
-    <ul className="footer-links">
-      <li>
-        <Link href="/" style={{ color: "#FFFFFF" }}>
-          About Us
-        </Link>
-      </li>
-      <li>
-        <Link href="/programmes" style={{ color: "#FFFFFF" }}>
-          Programmes
-        </Link>
-      </li>
-      <li>
-        <Link href="/private-event" style={{ color: "#FFFFFF" }}>
-          Private Event
-        </Link>
-      </li>
-      <li>
-        <Link href="/pricing" style={{ color: "#FFFFFF" }}>
-          Pricing
-        </Link>
-      </li>
-      <li>
-        <Link href="/contact-us" style={{ color: "#FFFFFF" }}>
-          Contact Us
-        </Link>
-      </li>
-    </ul>
-  </div>
-</div>
-
-          {/* Right Column: Contact Us */}
-          <div className="col-lg-3 col-md-3 text-center text-lg-start">
+          {/* Center Column: Contact Us */}
+          <div className="col-lg-4 col-md-4 text-center text-lg-start">
             <div className="footer__single-content">
               <h5>Contact Us</h5>
               <p>(+60) 12-316 4698</p>
               <p>picklesquad624@gmail.com</p>
-              <h5>Jelutong</h5>
-              <p>Picklesquad Sdn Bhd (202401043375) <br/>
-              175, Jalan Jelutong , 11600 Georgetown , Penang , Malaysia</p>
-              <h5>Bukit Mertajam</h5>
-              <p>Bukit Mertajam, 14000 Penang</p>
+              
             </div>
           </div>
 
-          {/* Social Column */}
-          <div className="col-lg-3 col-md-3 text-center">
+          {/* Right Column: Social Links */}
+          <div className="col-lg-4 col-md-4 text-center">
             <div className="footer__single">
               <h5>Social</h5>
               <ul
@@ -80,8 +64,8 @@ const Footer = () => {
                   listStyleType: "none",
                   padding: 0,
                   display: "flex",
-                  justifyContent: "center", // Center icons horizontally
-                  gap: "10px", // Add space between icons
+                  justifyContent: "center",
+                  gap: "10px",
                 }}
               >
                 <li>
@@ -124,16 +108,6 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="row">
           <div className="col-12 text-center">
-            <p
-              style={{
-                marginBottom: "10px",
-                padding: "10px 0",
-                fontSize: "18px",
-                color: "#FFFFFF",
-              }}
-            >
-              &copy; 2024 PickleSquad. All rights reserved.
-            </p>
             <ul
               className="footer-bottom-links"
               style={{
@@ -143,15 +117,10 @@ const Footer = () => {
                 fontSize: "14px",
               }}
             >
-              <li style={{ display: "inline-block", marginRight: "15px" }}>
-                <Link href="/support" style={{ color: "#FFFFFF" }}>
-                  Support
-                </Link>
-                <span style={{ marginLeft: "10px", color: "#FFFFFF" }}>|</span>
-              </li>
+             
               <li style={{ display: "inline-block", marginRight: "15px" }}>
                 <Link href="/terms-conditions" style={{ color: "#FFFFFF" }}>
-                  Terms of Use
+                  Terms & Conditions
                 </Link>
                 <span style={{ marginLeft: "10px", color: "#FFFFFF" }}>|</span>
               </li>
@@ -161,6 +130,16 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
+            <p
+              style={{
+                marginBottom: "10px",
+                padding: "10px 0",
+                fontSize: "16px",
+                color: "#FFFFFF",
+              }}
+            >
+              &copy; 2024 Picklesquad Sdn Bhd (202401043375) All rights reserved.
+            </p>
           </div>
         </div>
       </div>

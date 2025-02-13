@@ -1,14 +1,8 @@
 export const navData = [
   {
-    id: "au@81",
-    itm: "Home",
-    url: "/",
-    dropdown: false
-  },
-  {
     id: "du@01s",
     itm: "About Us",
-    url: "/about",
+    url: "/",
     dropdown: false
   },
   {
@@ -24,9 +18,22 @@ export const navData = [
     dropdown: false
   },
   {
-    id: "du@03s", 
-    itm: "Pricing Plan", 
+    id: "du@03s-mem",
+    itm: "Membership",
+    url: "/membership",
+    dropdown: false
+  },
+  
+  {
+    id: "au@901",
+    itm: "Pricing",
     url: "/pricing",
+    dropdown: false
+  },
+  {
+    id: "du@03s-pro",
+    itm: "Proshop",
+    url: "/",
     dropdown: false
   }
 ];
