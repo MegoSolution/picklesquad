@@ -91,3 +91,20 @@
   border-style: dashed;
   border-width: 1px;
 }
+
+.receipt-payment-failure-try-again {
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  background-color: #2c58a8;
+}
+
+.receipt-payment-failure-try-again:hover {
+  background-color: #112852;
+  color: white;
+}
