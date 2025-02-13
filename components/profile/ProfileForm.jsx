@@ -153,7 +153,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
               <a href="/location">Book A Court</a>
             </div>
             <div className="picklesquad-btns">
-              <a href="/program">Program</a>
+              <a href="/programmes">Program</a>
             </div>
             <div className="picklesquad-btns">
               <a href="/coach">Coach</a>
@@ -193,7 +193,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                         <div className="programs-tab-title">
                           <h5>{program.description}</h5>
                           <div className="program-tab-details">
-                            <p>Intensity : {program.intensity}</p>
+                            <p>Intensity : {program.intensity_level}</p>
                             <p>Duration : {program.duration} minutes</p>
                           </div>
                         </div>
