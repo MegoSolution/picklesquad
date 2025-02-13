@@ -27,6 +27,10 @@
     justify-content: space-between;
     gap: 100px;
     min-width: 100%;
+
+    @media (max-width: 768px) {
+      gap: 25%;
+    }
   }
 
   .nav__menu {
