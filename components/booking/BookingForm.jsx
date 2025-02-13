@@ -1,10 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
-import {
-  BASE_URL,
-  SP_SECRET_KEY,
-  SP_URL,
-} from '../../utils/constants';
+import { BASE_URL, SP_SECRET_KEY, SP_URL } from '../../utils/constants';
 import { calculateChecksum } from '@/utils/checksum';
 import { generateDates, genOrderId } from '@/utils/bookings';
 import { flushSync } from 'react-dom';
@@ -51,8 +47,9 @@ const BookingForm = () => {
   // Add new function to fetch member benefits
   const fetchMemberBenefits = async () => {
     try {
-      const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens'))?.access.token;
-      
+      const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens'))?.access
+        .token;
+
       const response = await fetch(`${BASE_URL}/memberBenefitExtra/basic`, {
         method: 'GET',
         headers: {
@@ -76,27 +73,11 @@ const BookingForm = () => {
   };
 
   // Update the generateDates call to use the dynamic advanceBookingDays
-  const dates = generateDates(advanceBookingDays+7);
+  const dates = generateDates(advanceBookingDays + 7);
   const today = dates[0].value;
-
-  // TODO: Remove this before launch
-  const toggleMembership = () => {
-    if (localStorage.getItem('membership')) {
-      localStorage.removeItem('membership');
-      setMembership(false);
-    } else {
-      const randomMembershipId = `MEM-${Math.random()
-        .toString(36)
-        .substring(2, 8)}`;
-      localStorage.setItem('membership', randomMembershipId);
-      setMembership(true);
-    }
-  };
 
   // Fetch available times for the selected date
   const fetchAvailableTimes = (date) => {
-    const BEARER_TOKEN = JSON.parse(localStorage.getItem('tokens')).access
-      .token;
     fetch(
       `${BASE_URL}/bookings/availability/times?date=${date}&locationId=${locationId}`,
       {
@@ -506,7 +487,7 @@ const BookingForm = () => {
     <div className="booking-container">
       <h3>Book A Court</h3>
       <hr className="divider" />
-      
+
       <h4 className="section-title">
         <img src="/images/booking/booking-03.png" alt="Booking" />
         Booking Details
@@ -524,7 +505,9 @@ const BookingForm = () => {
                 className={`date-button ${
                   selectedDate === date.value ? 'selected' : ''
                 }`}
-                disabled={!membership && index >= dates.length - advanceBookingDays} // Disable the last 7 buttons if no membership
+                disabled={
+                  !membership && index >= dates.length - advanceBookingDays
+                } // Disable the last 7 buttons if no membership
               >
                 {date.display}
               </button>
@@ -574,7 +557,7 @@ const BookingForm = () => {
       <div className="booking-section">
         <div className="court-section-header">
           <h4 className="ms-2">Select Court</h4>
-          <a 
+          <a
             className="view-court-link"
             onClick={() => setShowGallery(true)}
             href="#"
@@ -672,7 +655,7 @@ const BookingForm = () => {
       <Toaster />
 
       {/* Court Gallery Modal */}
-      <CourtGalleryModal 
+      <CourtGalleryModal
         isOpen={showGallery}
         onClose={() => setShowGallery(false)}
         images={[

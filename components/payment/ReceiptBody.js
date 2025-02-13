@@ -37,22 +37,39 @@ const ReceiptBody = () => {
       setLoading(false);
     };
 
+    const flagBookingAsFailed = async (bookingId) => {
+      const response = await fetch(`${BASE_URL}/bookings/${bookingId}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${localStorageDetails.BEARER_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status: 'canceled',
+        }),
+      });
+
+      if (response.ok) {
+        setPaymentSuccess(false);
+      }
+    };
+
     const paymentSuccess = router.query.status_id === '1';
 
-    if (
-      !paymentSuccess ||
-      !router.query.order_id ||
-      !router.query.transaction_id
-    ) {
+    if (!router.query.order_id || !router.query.transaction_id) {
       setLoading(false);
       return;
     }
 
-    setPaymentSuccess(true);
-
     const bookingId = resolveBookingIdFromMandateRef(router.query.order_id);
 
     fetchData(bookingId);
+
+    setPaymentSuccess(paymentSuccess);
+
+    if (!paymentSuccess) {
+      flagBookingAsFailed(bookingId);
+    }
   }, [router.query, localStorageDetails.BEARER_TOKEN]);
 
   useEffect(() => {
@@ -88,7 +105,7 @@ const ReceiptBody = () => {
                 </h4>
 
                 {/* Card Component to show some booking information */}
-                {data && (
+                {data && paymentSuccess && (
                   <div className="my-5">
                     <div className="card-body">
                       <div className="card-body-header">
@@ -175,10 +192,30 @@ const ReceiptBody = () => {
                 )}
 
                 {!paymentSuccess && (
-                  <h4>
-                    If you have any questions or concerns, please contact us at
-                    support@picklesquad.com.
-                  </h4>
+                  <div
+                    className="flex flex-column justify-content-start align-items-start"
+                    style={{
+                      marginTop: '10px',
+                    }}
+                  >
+                    <h4>
+                      If you have any questions or concerns, please contact us
+                      at support@picklesquad.com.
+                    </h4>
+
+                    {data && (
+                      <button
+                        className="receipt-payment-failure-try-again"
+                        onClick={() => {
+                          router.push(
+                            '/booking?locationId=' + data.court.location.id
+                          );
+                        }}
+                      >
+                        Try Again
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
