@@ -5,7 +5,6 @@ export default function ProgramDetails() {
   return (
     <>
       {/* Banner Section */}
-      <Banner />
 
       <ProgramDetailsBody />
     </>
