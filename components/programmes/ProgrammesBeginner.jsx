@@ -24,6 +24,7 @@ const Intro = () => {
               <div className="session-item2">
                 <strong>Intensity :</strong> 1-2
               </div>
+              <hr className="session-divider-line-m2" />
               <div className="session-divider2"></div>
               <div className="session-item2">
                 <strong>Duration :</strong> 90 minutes

@@ -30,6 +30,7 @@ const JoinUs = () => {
                 <strong>Intensity :</strong> 0-1
               </div>
               <div className="session-divider"></div>
+              <hr className="session-divider-line-m" />
               <div className="session-item">
                 <strong>Duration :</strong> 90 minutes
               </div>
