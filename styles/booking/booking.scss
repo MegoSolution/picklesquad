@@ -26,14 +26,15 @@
     margin-bottom: 10px;
     color: #2C58A8;
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 800;
     text-align: center;
   }
 
+  
   .section-title {
     color: #2C58A8;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     margin: 20px 0;
     display: flex;
     align-items: center;
@@ -49,7 +50,7 @@
 
   .divider {
     border: none;
-    border-top: 2px solid #ddd;
+    border-top: 2px solid black;
     margin: 8px 0 15px;
   }
 
@@ -99,13 +100,12 @@
   .court-button {
     padding: 10px 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
     cursor: pointer;
     text-transform: uppercase;
-    width: 190px;
+    width: 130px;
 
     @media (max-width: 768px) {
-      width: calc(33.33% - 8px);
+      width: calc(25% - 8px);
       padding: 8px 10px;
       font-size: 14px;
       min-width: unset;
@@ -130,7 +130,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 20px 0;
 
     @media (max-width: 768px) {
@@ -141,14 +141,14 @@
   }
 
   .equipment-item {
-    padding: 35px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(50% - 15px);
+    width: 30%;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: white;
+    border-radius: 30px;
+    background-color: #F0F0F0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 
@@ -159,13 +159,12 @@
 
     @media (max-width: 768px) {
       width: 100%;
-      padding: 25px;
     }
 
     .equipment-image {
       width: 180px;
       height: 180px;
-      margin-bottom: 20px;
+      //margin-bottom: 20px;
       object-fit: contain;
 
       @media (max-width: 768px) {
@@ -178,8 +177,8 @@
     .equipment-name {
       font-size: 20px !important;
       font-weight: 600;
-      color: #2C58A8;
-      margin-bottom: 10px;
+      color: black;
+      //margin-bottom: 10px;
       text-align: center;
 
       @media (max-width: 768px) {
@@ -188,14 +187,10 @@
     }
 
     .equipment-price {
-      font-size: 16px !important;
-      color: #666;
+      font-size: 18px !important;
+      color: black;
       text-align: center;
       margin-bottom: 5px;
-
-      @media (max-width: 768px) {
-        font-size: 14px !important;
-      }
     }
 
     .equipment-total {
@@ -214,16 +209,16 @@
     .quantity-control {
       display: flex;
       align-items: center;
-      gap: 15px;
+      //gap: 15px;
       margin: 10px 0;
       
       button {
         width: 32px;
         height: 32px;
-        font-size: 16px;
-        border: 1px solid #2C58A8;
-        background-color: white;
-        color: #2C58A8;
+        font-size: 32px;
+        //border: 1px solid #2C58A8;
+        //background-color: white;
+        //color: #2C58A8;
         border-radius: 50%;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -264,7 +259,7 @@
     background-color: #2C58A8;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -334,14 +329,14 @@
 
   .view-court-link {
     color: #2C58A8;
-    font-size: 14px;
-    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
       color: #1a4080;
-      text-decoration: underline;
     }
 
     @media (max-width: 768px) {

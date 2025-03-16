@@ -1,6 +1,5 @@
 .location-container {
   margin: 200px auto 50px;
-  padding: 20px;
   text-align: center;
   position: relative;
   min-height: 600px;
@@ -9,8 +8,7 @@
   max-width: 1200px;
 
   @media (max-width: 768px) {
-    margin-top: 150px;
-    padding: 15px;
+    margin-top: 100px;
     min-height: auto;
     padding-bottom: 40px;
   }
@@ -93,7 +91,6 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;
   margin: 0;
 
   @media (max-width: 768px) {
@@ -101,15 +98,13 @@
   }
 }
 .location-details {
-  padding: 15px;
+  padding: 15px 15px 10px 15px;
 
   @media (max-width: 768px) {
-    padding: 12px;
+    padding: 12px 12px 8px 12px;
   }
 
   h3 {
-    color: #2C58A8;
-    margin: 0 0 8px 0;
     min-height: 24px;
     line-height: 24px;
     font-family: "Metropolis", sans-serif;
@@ -124,20 +119,19 @@
 
     @media (max-width: 768px) {
       font-size: 20px;
-      min-height: 20px;
-      line-height: 20px;
     }
 
   }
 
   p {
-    color: black;
+    color: #2C58A8;
     font-size: 20px;
     margin: 0;
     font-family: "Metropolis", sans-serif;
     
     @media (max-width: 768px) {
       font-size: 14px;
+      line-height: 20px;
     }
   }
 }
@@ -164,7 +158,13 @@
   }
 }
 
-.location-blue {
-  color: #2C58A8 !important;
+.black_underline {
+  text-decoration: underline;
+  color: black !important;
+  
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }
 
