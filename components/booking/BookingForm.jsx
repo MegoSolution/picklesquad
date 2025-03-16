@@ -579,7 +579,7 @@ const BookingForm = () => {
             onClick={() => setShowGallery(true)}
             href="#"
           >
-            View Court
+            Court Layout
           </a>
         </div>
         <div className="centerlized-container">
@@ -622,11 +622,17 @@ const BookingForm = () => {
               />
               <p className="equipment-name">{item.name}</p>
               <p className="equipment-price">
+                RM{(membership && item.discountedCost
+                    ? item.discountedCost
+                    : item.rent_per_cost)} 
+              </p>
+              {/*
+              <p className="equipment-price">
                 Normal Price: RM{item.rent_per_cost} each
               </p>
               <p className="equipment-price">
                 Member Price: RM{item.discountedCost} each
-              </p>
+              </p>*/}
               <div className="quantity-control">
                 <button onClick={() => handleQuantityChange(item._id, -1)}>
                   -
@@ -636,22 +642,23 @@ const BookingForm = () => {
                   +
                 </button>
               </div>
+              {/*
               <p className="equipment-total">
                 Total: RM
                 {(quantities[item._id] || 0) *
                   (membership && item.discountedCost
                     ? item.discountedCost
                     : item.rent_per_cost)}
-              </p>
+              </p>*/}
             </div>
           ))}
         </div>
       </div>
-
-      {/* Display Total Amount */}
+      
+      {/* Display Total Amount 
       <div className="booking-section">
         <h4>Total Amount: RM{calculateTotal()}</h4>
-      </div>
+      </div>*/}
 
       <form method="post" action={SP_URL} ref={formRef}>
         <input type="hidden" name="detail" value={formData.bookingId} />

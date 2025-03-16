@@ -80,8 +80,8 @@ const LocationForm = () => {
             <div className="location-details">
               <h3>{location.name}</h3>
               <p>{location.address}</p>
-              <p className="location-blue">PIC: Henry</p>
-              <p className="location-blue">{location.contact_number}</p>
+              <p className="black_underline">See Location</p>
+              <p>{location.contact_number}</p>
             </div>
           </div>
 
