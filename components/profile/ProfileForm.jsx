@@ -4,11 +4,9 @@ import Image from 'next/image';
 import Modal from './Modal';
 import { BASE_URL } from '../../utils/constants';
 
-const ProfileForm = ({ programs, bookings, totalBookingsResults }) => {
+const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null);
-  const [tokens, setTokens] = useState(null);
-  const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const programsScrollRef = useRef(null);
   const coachScrollRef = useRef(null);
@@ -18,8 +16,6 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults }) => {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const storedTokens = JSON.parse(localStorage.getItem('tokens'));
-    setUser(storedUser);
-    setTokens(storedTokens);
 
     if (storedUser && storedTokens) {
       console.log(storedUser);
@@ -107,6 +103,7 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults }) => {
               <div className="profile-header">
                 <button 
                   className="edit-button d-none d-md-flex" 
+                  onClick={onEditClick}
                 >
                   Edit Profile
                 </button>

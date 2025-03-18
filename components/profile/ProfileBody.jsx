@@ -17,15 +17,14 @@ const ProfileBody = ({ programs, bookings, totalBookingsResults }) => {
 
   return (
     <div className="profile__body">
-      <ProfileForm 
-        programs={programs} 
-        bookings={bookings}
-        totalBookingsResults={totalBookingsResults}
-      />
       {isEditing ? (
         <EditProfileForm user={user} onClose={handleCloseEdit} />
       ) : (
-        <ProfileForm programs={programs} onEditClick={handleEditClick} />
+        <ProfileForm
+        programs={programs} 
+        bookings={bookings}
+        totalBookingsResults={totalBookingsResults}
+         onEditClick={handleEditClick} />
       )}
     </div>
   );
