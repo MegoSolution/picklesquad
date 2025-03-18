@@ -153,7 +153,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 {bookings.length > 0 ? (
                   <div 
                     key={currentBooking._id} 
-                    className={`booking-details ${bookingTransition ? `booking-transition ${transitionDirection}` : ''}`}
+                    className={`profile-booking-details ${bookingTransition ? `booking-transition ${transitionDirection}` : ''}`}
                   >
                     <p key={`${currentBooking._id}-date`}><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} />{formatDate(currentBooking.date)}</b></p>
                     <p key={`${currentBooking._id}-time`}><b><Image src="/images/profile/time-icon.png" alt="Time" className="time" width={48} height={48} />{currentBooking.startTime} - {currentBooking.endTime}</b></p>
