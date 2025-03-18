@@ -493,9 +493,7 @@ h6 {
 .pricing-table-wrapper {
   width: 100%;
   margin: 30px 0 15px;
-   /* Add the following two lines: */
-   overflow-x: auto;
-   -webkit-overflow-scrolling: touch; /* for smoother scrolling on iOS */
+  
 }
 
 .pricing-table-exact {

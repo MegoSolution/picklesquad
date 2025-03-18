@@ -42,9 +42,11 @@ const JoinUs = () => {
             </td>
             <td>
               <span className="price-amount">RM950</span>
+              <div className="price-session">(RM190/session)</div>
             </td>
             <td>
               <span className="price-amount">RM1800</span>
+              <div className="price-session">(RM180/session)</div>
             </td>
           </tr>
         </tbody>
