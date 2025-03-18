@@ -17,7 +17,7 @@ const BigBanner = () => {
               className="banner__content wow fadeInUp"
               data-wow-duration="0.4s"
             >
-              <h1 className="banner__content-title">Welcome to PickleSquad?</h1>
+              <h1 className="banner__content-title">Welcome to PickleSquad!</h1>
               <p className="primary-text banner__content-text">
                 At PickleSquad, we’re redefining the pickleball experience in
                 Penang by blending top-notch facilities with a vibrant community
