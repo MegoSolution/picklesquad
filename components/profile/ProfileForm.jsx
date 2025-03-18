@@ -102,7 +102,10 @@ const ProfileForm = ({ programs, onEditClick }) => {
           <div className="faq__tab-single__inner">
             <div className="profile-form-2">
               <div className="profile-header">
-                <button className="edit-button" onClick={onEditClick}>
+                <button 
+                  className="edit-button d-none d-md-flex" 
+                  onClick={onEditClick}
+                >
                   Edit Profile
                 </button>
                 <div className="profile-form-header-2">
@@ -152,6 +155,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
             <div className="picklesquad-btns">
               <a href="/location">Book A Court</a>
             </div>
+            <hr className="picklesquad-separator"/>
             <div className="picklesquad-btns">
               <a href="/programmes">Program</a>
             </div>
