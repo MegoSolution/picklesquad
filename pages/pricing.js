@@ -1,6 +1,6 @@
 import PricingBanner from "@/components/common/PricingBanner";
-import AllPricingPlan from "@/components/pricing/AllPricingPlan";
-
+import CourtRental from "@/components/pricing/CourtRental";
+import Programmes from "@/components/pricing/Programmes";
 
 export default function Pricing() {
   return (
@@ -9,9 +9,10 @@ export default function Pricing() {
      <PricingBanner />
 
       {/* Banner Secrtion */}
-      <AllPricingPlan />
+      <CourtRental />
 
-      
+      {/* Banner Secrtion */}
+      <Programmes />
     </>
   );
 }

@@ -110,7 +110,239 @@ h6 {
   margin-bottom: 20px;
   color: #2c58a8;
 }
+/* General table container styles */
+.tables-container {
+  margin: 30px 0;
+  font-family: Arial, sans-serif;
+}
 
+/* Opening hours section styles */
+.opening-hours h3, .equipment-section h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.opening-hours h3::before, .equipment-section h3::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.opening-hours h3::before {
+  background-image: url('/images/clock-icon.svg'); /* Replace with your clock icon */
+  background-size: cover;
+}
+
+.equipment-section h3::before {
+  background-image: url('/images/equipment-icon.svg'); /* Replace with your equipment icon */
+  background-size: cover;
+}
+
+.opening-hours p {
+  margin: 5px 0 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table styles */
+.info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  table-layout: fixed;
+}
+
+.info-table th, 
+.info-table td {
+  padding: 12px 15px;
+  background-color: #2C58A8;
+  border: 1px solid #ffffff;
+  color: white;
+  line-height: 1.5;
+}
+
+/* Basic cell styling */
+.info-table td {
+  vertical-align: middle;
+  background-color: #2C58A8;
+  color: white
+}
+
+/* Blue left column styling */
+.info-table td:first-child {
+  background-color: #2C58A8;
+  color: white;
+  font-weight: 600;
+  width: 30%;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* Content column styling */
+.info-table td:nth-child(2) {
+  width: 70%;
+}
+
+/* Header row styling for multi-column tables */
+.info-table thead th {
+  text-align: center;
+  background-color: #2C58A8;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.info-table thead th:first-child {
+  background-color: #2C58A8;
+  border: none;
+}
+
+/* Rate table specific styling */
+.rates-table td:first-child {
+  width: 25%;
+}
+
+.rates-table th, 
+.rates-table td {
+  width: 25%;
+  text-align: center;
+}
+
+.rates-table td:first-child {
+  text-align: left;
+}
+
+/* Equipment table specific styling */
+.equipment-table td:first-child {
+  width: 50%;
+}
+
+.equipment-table td:nth-child(2) {
+  width: 50%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-table {
+    font-size: 12px;
+  }
+  
+  .info-table th, 
+  .info-table td {
+    padding: 8px;
+  }
+}
+
+/* Section headers */
+.section-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color : #934523;
+}
+
+.section-header::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* Additional helper classes */
+.text-center {
+  text-align: center;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+/* Hours header styling */
+
+.hours-header {
+  background-color: #f5f2e8;  /* Light beige background color */
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.hours-title {
+  color: #934523;  /* Brown text color */
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 14px;
+  display: flex;
+}
+
+.hours-time {
+  color: #934523;  /* Same brown text color */
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+}
+.cmn-button-court-rental {
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #934523;
+  border: 2px solid #ffffff;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+/* Equipment table */
+.equipment-section .info-table tr td:first-child {
+  background-color: #2c5aa0;
+  color: white;
+  font-weight: 600;
+  width: 50%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .info-table {
+    font-size: 12px;
+  }
+  
+  .info-table th, .info-table td {
+    padding: 8px;
+  }
+}
+
+/* Button styling */
+.session-btn {
+  display: inline-block;
+  background-color: #2c5aa0;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.session-btn:hover {
+  background-color: #1e4375;
+}
 /* P styling for the paragraphs */
 .section__content-text p {
   font-size: 25px;
@@ -1267,7 +1499,7 @@ h6 {
       background-color: #2c58a8;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 12px 16px;
       border-radius: 5px;
     }
@@ -2185,93 +2417,6 @@ h6 {
     color: #2c2c2c;
   }
 
-  // facility secondary
-  .facility--secondary {
-    .section__header-cta {
-      margin-top: 20px;
-    }
-  }
-
-  // testimonial
-  .testimonial {
-    .testimonial__slider-card {
-      padding: 30px 20px;
-
-      .testimonial__slider-card__body-review {
-        i {
-          font-size: 20px;
-        }
-      }
-    }
-  }
-
-  .testimonial--secondary {
-    .quotation {
-      i {
-        font-size: 24px;
-      }
-    }
-  }
-
-  .facility__slider-wrapper {
-    padding: 30px 12px;
-    .cmn-button {
-      display: none !important;
-    }
-  }
-
-  .facility__overview {
-    padding: 30px 16px !important;
-  }
-
-  .facility__overview-single {
-    gap: 12px;
-  }
-
-  // cart
-  .cart {
-    .cart-items-wrapper {
-      overflow-x: auto;
-
-      table {
-        min-width: 600px;
-      }
-    }
-
-    .cart__wrapper-footer {
-      flex-direction: column;
-      align-items: flex-start;
-
-      form {
-        width: 100%;
-
-        input {
-          flex-grow: 1;
-        }
-      }
-    }
-
-    .cart__graph {
-      ul {
-        margin: 20px 0px;
-      }
-    }
-  }
-
-  .payment-success {
-    margin-top: 180px;
-
-    .payment-success__header {
-      i {
-        font-size: 40px;
-      }
-
-      h3 {
-        margin: 20px 0px 10px;
-      }
-    }
-  }
-
   // blog details
   .blog-details__inner {
     .blog-details__meta {
@@ -2559,8 +2704,8 @@ h6 {
     margin: 20px auto; /* Centers the button horizontally */
     font-size: 1rem; /* Adjust font size */
     font-weight: bold; /* Makes the text bold */
-    background-color: #f3e7c5; /* Button color */
-    color: #ffffff; /* Text color */
+    background-color: #94BBC4; /* Button color */
+    /*color: #ffffff; /* Text color */
     border: none; /* Remove borders */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer on hover */
@@ -2571,10 +2716,8 @@ h6 {
     text-align: center; /* Centers the button horizontally */
     margin-top: 20px; /* Adds space above the button */
   }
-  .cmn-button--secondary {
-    border: 2px solid #2c58a8;
-    color: #2c58a8;
-  }
+  
+  
 
   // overview
   .overview {
