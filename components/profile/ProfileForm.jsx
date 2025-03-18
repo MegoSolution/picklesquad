@@ -16,6 +16,7 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const storedTokens = JSON.parse(localStorage.getItem('tokens'));
+    setUser(storedUser);
 
     if (storedUser && storedTokens) {
       console.log(storedUser);
