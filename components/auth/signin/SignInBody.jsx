@@ -93,36 +93,45 @@ const SignInBody = ({ onToggleForm }) => {
                 ) : (
                   <div>
                     <h4 className='sign-in-header'>Sign In</h4>
+                    <p style={{ color: 'black' }}>
+                      Don't have an account? 
+                      <a onClick={onToggleForm} className="sign-in-link">
+                        Sign up
+                      </a>
+                    </p>
                     <div className="error__inner">
                       {error && <p className="error">{error}</p>}
                     </div>
                     <form action="#" method="post" onSubmit={useLogin}>
                       <div className="input-single">
-                        <label htmlFor="authEmailIn">Enter Your Email ID</label>
+                        <label htmlFor="authEmailIn">Email</label>
                         <input
                           type="email"
                           name="auth-email-in"
                           id="authEmailIn"
                           required
-                          placeholder="Your email ID here"
                           onChange={(e) => setEmail(e.target.value)} />
                       </div>
                       <div className="input-single">
-                        <label htmlFor="authPassword">Enter Password</label>
+                        <label htmlFor="authPassword">Password</label>
                         <input
                           type="password"
                           name="auth-password"
                           id="authPassword"
                           required
-                          placeholder="Enter Your Password"
                           onChange={(e) => setPassword(e.target.value)} />
                       </div>
-                      <p className="auth-links secondary-text">
-                        <a onClick={onToggleForm} className="sign-in-link">
-                          Don't have an account? Sign Up
-                        </a>
+                      <div className="auth-links secondary-text d-flex justify-content-between align-items-center mb-3">
+                        <div className="remember-me-container d-flex align-items-center">
+                          <input
+                            type="checkbox"
+                            id="rememberMe"
+                            className="me-2"
+                          />
+                          <label htmlFor="rememberMe" style={{ fontWeight: 'normal', margin: 0 }}>Remember me</label>
+                        </div>
                         <a onClick={() => setShowForgotPassword(true)}>Forgot Password?</a>
-                      </p>
+                      </div>
                       <div className="section__cta text-start">
                         <button type="submit" className="sign-up-button">
                           Sign In

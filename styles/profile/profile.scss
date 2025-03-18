@@ -709,14 +709,16 @@
 .nav {
   @media (max-width: 991px) {
     .nav__logo {
-      margin:auto;
+      margin: 0;
     }
   }
 }
 
 .profile-icons {
   @media (max-width: 991px) {
-    display: none !important;
+    display: flex !important;
+    
+
   }
 }
 

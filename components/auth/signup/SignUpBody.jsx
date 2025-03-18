@@ -53,7 +53,13 @@ const SignUpBody = ({ onToggleForm }) => {
             <img className="sign-in-logo" src="/images/Picklesquad_image/logo-07.png" alt="Logo" />
           </Link>
             <div className="authentication__wrapper">
-            <h4 className='sign-in-header'>Sign Up</h4>
+              <h4 className='sign-in-header'>Sign Up</h4>
+              <p style={{ color: 'black' }}>
+                Already have a Picklesquad account?
+                <a onClick={onToggleForm} className="sign-in-link">
+                  Log in
+                </a>
+              </p>
               <div className="error__message">{error && <p>{error}</p>}</div>
               <form action="#" method="post" onSubmit={handleSignUp}>
                 <label htmlFor="authName">Name</label>
@@ -103,11 +109,6 @@ const SignUpBody = ({ onToggleForm }) => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                <p className="auth-links secondary-text">
-                  <a onClick={onToggleForm} style={{ cursor: 'pointer' }}>
-                    Already have an account? Sign In
-                  </a>
-                </p>
                 <div className="section__cta text-start">
                   <button type="submit" className="sign-up-button">
                     Sign Up

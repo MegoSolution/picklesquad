@@ -4737,6 +4737,10 @@ html {
 
 .profile-icon {
   max-width: 80px;
+
+  @media (max-width: 991px) {
+    max-width: 52px;
+  }
 }
 /* ==== 
  --------- (5.0) all sections styles end ---------
