@@ -4,7 +4,7 @@ const JoinUs = () => {
       <div className="image-container-coach">
         <img
           src="/images/pricing/court-rental.jpg"
-          alt="Court Rental"
+          alt="Court"
           className="session-image"
         />
       </div>
@@ -60,13 +60,13 @@ experience to the next level—book now and let the games begin!
     <tbody>
       <tr>
         <td>PEAK HOURS</td>
-        <td>RM4/min</td>
-        <td>RM6/min</td>
+        <td>RM70</td>
+        <td>RM80</td>
       </tr>
       <tr>
         <td>OFF-PEAK HOURS</td>
-        <td>RM3/min</td>
-        <td>RM4/min</td>
+        <td>RM50</td>
+        <td>RM60</td>
       </tr>
     </tbody>
   </table>
