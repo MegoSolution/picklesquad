@@ -14,6 +14,8 @@ const ProfileForm = ({ programs, onEditClick }) => {
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const programsScrollRef = useRef(null);
   const coachScrollRef = useRef(null);
+  const [bookingTransition, setBookingTransition] = useState(false);
+  const [transitionDirection, setTransitionDirection] = useState('');
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -59,11 +61,35 @@ const ProfileForm = ({ programs, onEditClick }) => {
   };
 
   const handleNextBooking = () => {
-    setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
+    // Set transition state before changing the index
+    setTransitionDirection('slide-left');
+    setBookingTransition(true);
+    
+    // Use setTimeout to wait for the animation to start before changing content
+    setTimeout(() => {
+      setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
+      
+      // Reset transition after a brief delay to allow the entrance animation
+      setTimeout(() => {
+        setBookingTransition(false);
+      }, 50);
+    }, 300); // Match this timing with your CSS transition duration
   };
 
   const handlePreviousBooking = () => {
-    setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
+    // Set transition state before changing the index
+    setTransitionDirection('slide-right');
+    setBookingTransition(true);
+    
+    // Use setTimeout to wait for the animation to start before changing content
+    setTimeout(() => {
+      setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
+      
+      // Reset transition after a brief delay to allow the entrance animation
+      setTimeout(() => {
+        setBookingTransition(false);
+      }, 50);
+    }, 300); // Match this timing with your CSS transition duration
   };
 
   const scrollProgramsLeft = () => {
@@ -125,7 +151,10 @@ const ProfileForm = ({ programs, onEditClick }) => {
               </div>
               <div className="activity-tab">
                 {bookings.length > 0 ? (
-                  <div key={currentBooking._id} className="booking-details">
+                  <div 
+                    key={currentBooking._id} 
+                    className={`booking-details ${bookingTransition ? `booking-transition ${transitionDirection}` : ''}`}
+                  >
                     <p key={`${currentBooking._id}-date`}><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} />{formatDate(currentBooking.date)}</b></p>
                     <p key={`${currentBooking._id}-time`}><b><Image src="/images/profile/time-icon.png" alt="Time" className="time" width={48} height={48} />{currentBooking.startTime} - {currentBooking.endTime}</b></p>
                     <p key={`${currentBooking._id}-court`}><b><Image src="/images/profile/court-icon.png" alt="Court" className="court" width={48} height={48} />{currentBooking.court.name}</b></p>

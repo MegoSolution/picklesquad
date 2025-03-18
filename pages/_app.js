@@ -29,6 +29,7 @@ import '../styles/sign-in/sign-in.scss';
 import '../styles/landingpage/landingpage.scss';
 import '../styles/career/career.scss';
 import '../styles/event/events.scss';
+import '../styles/booking-transitions.scss';
 
 
 export default function App({ Component, pageProps }) {
