@@ -1,5 +1,5 @@
 /* Booking transition animations */
-.booking-details {
+.profile-booking-details {
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform: translateX(0);
   opacity: 1;
@@ -38,6 +38,6 @@
   }
 }
 
-.booking-details:not(.booking-transition) {
+.profile-booking-details:not(.booking-transition) {
   animation: slideInFromRight 0.3s ease forwards;
 } 
