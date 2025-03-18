@@ -43,10 +43,7 @@ const ProgramDetailsBody = () => {
       }
     },
     terms: `
-    Bookings are non-refundable
-    Rescheduling is allowed with at least 24 hours' notice before the class starts, but only once
-    Cancellations made less than 24 hours before the class are non-refundable and cannot be rescheduled
-    Each registration is valid for one individual only`
+     *** REMARK: Each registration is valid for one individual.`
   };
 
   // Dummy related programs
@@ -118,23 +115,15 @@ const ProgramDetailsBody = () => {
 
         <div className="program-details-content">
           <div className="program-info">
-            <div className="course-outline">
-              <h3>Course Outline:</h3>
-              <div className="course-outline-container">
-                <div className="course-outline-left">
-                  {program.courseOutlineLeft.map((item, index) => (
-                    <p key={index}>• {item}</p>
-                  ))}
-                </div>
-                <div className="course-outline-right">
-                  {program.courseOutlineRight.map((item, index) => (
-                    <p key={index}>• {item}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-
             <div className="program-details-grid">
+              <div className="detail-item">
+                <span>Looking to dip your toes into the exciting world of Pickleball? Here’s a warm welcome to our Intro to Pickleball program. Highly 
+                recommended for first-timers. Learn the basics of the game in a supportive environment and set your Pickleball journey in motion!</span>
+              </div>
+              <div className="detail-item">
+                <strong> What to expect:</strong> 
+                <span>Learn the fundamentals of Pickleball, the equipment used, rules, scoring, court lines & how to hit basic shots.</span>
+              </div>
               <div className="detail-item">
                 <strong>Skill Level:</strong> 
                 <span>{program.details.skillLevel}</span>
@@ -175,13 +164,9 @@ const ProgramDetailsBody = () => {
                 <strong>Court:</strong> 
                 <span>{program.court.name} - {program.court.location.name}</span>
               </div>
-            </div>
-
-            
-            
-            <div className="detail-item">
-              <strong>Terms & Conditions:</strong>
-              <span style={{ whiteSpace: 'pre-line' }}>{program.terms}</span>
+            </div>            
+            <div className="remark">
+              <strong>{program.terms}</strong>
             </div>
           </div>
         </div>

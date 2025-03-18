@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from '../../utils/constants';
 
 const BookingHistoryForm = () => {
-  const [viewMode, setViewMode] = useState('upcoming'); // Changed default to 'upcoming'
+  const [viewMode, setViewMode] = useState('all'); // Changed default to 'all'
   const [bookings, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null); // Store selected booking for modal
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal vis
@@ -120,9 +120,9 @@ const BookingHistoryForm = () => {
     <div className="booking-history-container">
       <h3 className="section-title">Booking History</h3>
 
-      {/* Tabs */}
+      {/* Tabs for desktop */}
       <div className="tabs-container">
-        {['upcoming', 'history'].map((tab) => (
+        {['all', 'upcoming', 'completed'].map((tab) => (
           <button
             key={tab}
             className={`tab-button ${viewMode === tab ? "active" : ""}`}
@@ -133,53 +133,52 @@ const BookingHistoryForm = () => {
         ))}
       </div>
 
+      {/* Dropdown for mobile */}
+      <div className="filter-dropdown">
+        <select 
+          value={viewMode}
+          onChange={(e) => toggleViewMode(e.target.value)}
+        >
+          <option value="all">ALL</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+
       {/* Booking List */}
       <div className="bookings-list">
         {bookings.length > 0 ? (
           bookings.map((booking) => (
             <div key={booking._id} className="booking-item">
               <div className="date-badge">
-                <span>
-                  {new Date(booking.date).toLocaleString("en-US", {
-                    weekday: "short",
-                  })}
-                </span>
-                <span>
-                  {new Date(booking.date).toLocaleDateString("en-US", {
-                    month: "short",
-                  })}
-                </span>
+                <span>{new Date(booking.date).toLocaleString("en-US", { month: "short", }).toUpperCase()}</span>
                 <span>{new Date(booking.date).getDate()}</span>
+                <span>{new Date(booking.date).toLocaleString("en-US", { weekday: "short", }).toUpperCase()}</span>
               </div>
               <div className="booking-details">
-                <p>
-                  <strong>Booking ID:</strong> {booking._id}
-                </p>
-                <p>
-                  <strong>Court:</strong>{" "}
-                  {booking.court?.name || "Not Specified"}
-                </p>
-                <p>
-                  <strong>Location:</strong>{" "}
-                  {booking.court?.location?.name || "Not Specified"}
-                </p>
-                <p>
-                  <strong>Time:</strong> {booking.startTime} -{" "}
-                  {booking.endTime}
-                </p>
-                <p>
-                  <strong>Paid:</strong> RM{booking.totalCost}
-                </p>
-                <p className={`status ${booking.status.toLowerCase()}`}>
-                  {booking.status.charAt(0).toUpperCase() +
-                    booking.status.slice(1)}
-                </p>
-                <button 
-                  className="view-details-button"
-                  onClick={() => handleViewDetails(booking)}
-                >
-                  View Details
-                </button>
+                <div className="booking-info">
+                  <p>
+                    <strong>Booking ID:</strong><br /> {booking._id}
+                  </p>
+                  <p>
+                    <strong>Activities:</strong><br />{booking.court?.name || "Not Specified"}, {booking.court.location?.name || "Not Specified"}
+                  </p>
+                  <p>
+                    <strong>Times:</strong><br /> {booking.startTime} - {booking.endTime}
+                  </p>
+                  <p>
+                    <strong>Paid:</strong><br /> RM{booking.totalCost}
+                  </p>
+                  <p className={`status ${booking.status.toLowerCase()}`}>
+                    {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                  </p>
+                  <button 
+                    className="view-details-button"
+                    onClick={() => handleViewDetails(booking)}
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
             </div>
           ))
@@ -187,8 +186,8 @@ const BookingHistoryForm = () => {
           <p className="no-bookings-message">
             {viewMode === 'upcoming'
               ? 'You have no upcoming bookings.'
-              : viewMode === 'history'
-              ? 'You have no booking history.'
+              : viewMode === 'completed'
+              ? 'You have no completed bookings.'
               : 'You have no bookings.'}
           </p>
         )}

@@ -1,3 +1,22 @@
+.booking-history{
+  background-color: #fff8f0;
+}
+
+.booking-history-container {
+  background-color: #fff;
+  margin-top: 50px;
+  padding: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h3{
+    color: #2C58A8;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+}
+
 .booking-history-page-section {
   padding: 40px 0 60px;  // 40px top, 60px bottom
 
@@ -38,19 +57,9 @@
   margin-top: 20px;
 }
 
-.booking-item {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  display: flex;
-  gap: 20px;
-}
-
 .date-badge {
-  background-color: #2C58A8;
-  color: white;
+  background-color: transparent;
+  color: #333;
   padding: 15px;
   border-radius: 5px;
   display: flex;
@@ -59,31 +68,84 @@
   justify-content: center;
   min-width: 80px;
   align-self: stretch;
+  position: relative;
 
   span {
-    color: white;
+    color: #333;
     margin: 2px 0;
     text-align: center;
     
-    &:first-child {  // Weekday
+    &:first-child {  // Month
       font-size: 16px;
       text-transform: uppercase;
     }
     
-    &:nth-child(2) {  // Month
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-    
-    &:last-child {  // Day
-      font-size: 24px;
+    &:nth-child(2) {  // Day
+      font-size: 28px;
       font-weight: bold;
     }
+    
+    &:last-child {  // Weekday
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: 1px;
+    background-color: #E0E0E0;
   }
 }
 
 .booking-details {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+
+  .booking-info {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-left: 15px;
+      position: relative;
+    }
+
+    p {
+      font-size: 16px;
+      text-align: left;
+      color: black;
+      
+      strong {
+        font-weight: 500;
+        margin-right: 8px;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
 }
 
 .no-bookings-message {
@@ -162,41 +224,63 @@
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .tab-button {
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  background-color: #f0f0f0;
+  background-color: transparent;
   color: #333;
   font-size: 16px;
   transition: all 0.3s ease;
-
+  position: relative;
+  
   &.active {
-    background-color: #2C58A8;
-    color: white;
+    color: #2C58A8;
+    background-color: transparent;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background-color: #2C58A8;
+    }
   }
 
   &:hover {
-    background-color: #1a4080;
-    color: white;
+    background-color: transparent;
+    color: #2C58A8;
   }
 }
 
 .view-details-button {
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #2C58A8;
-  color: white;
+  margin-top: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #2C58A8;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  text-decoration: underline;
+  font-size: 16px;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #1a4080;
+    color: #1a4080;
+  }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
   }
 }
 
@@ -305,4 +389,57 @@
   }
 }
 
+.status {
+  &.upcoming {
+    color: #FFB800;
+  }
+  
+  &.completed {
+    color: #28A745;
+  }
+  
+  &.canceled {
+    color: #DC3545;
+  }
+}
 
+.status {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+// First, add the dropdown styles
+.filter-dropdown {
+  display: none;
+  position: relative;
+  margin-bottom: 20px;
+  width: 200px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    appearance: none;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding-right: 30px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    pointer-events: none;
+  }
+}
