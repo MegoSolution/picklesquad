@@ -1,20 +1,48 @@
 import { useEffect, useState } from "react";
 import ProgramCard from "./ProgramCard";
-import Pagination from "../pagination/PaginationProgram";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { BASE_URL } from '../../utils/constants';
 import { useSelector } from "react-redux";
 
 const ProgramForm = () => {
   const [programData, setProgramData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const itemsPerPage = 9;
   const accessToken = useSelector((state) => state.accessToken);
 
-  const fetchPrograms = (page) => {
-    fetch(`/api/program?page=${page}&limit=${itemsPerPage}`, {
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "0",
+    speed: 500,
+    slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          centerMode: false,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+        }
+      }
+    ]
+  };
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/programs`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${accessToken}`, 
+        Authorization: `Bearer ${accessToken}`,
       },
     })
       .then((response) => {
@@ -25,38 +53,25 @@ const ProgramForm = () => {
       })
       .then((data) => {
         setProgramData(data.results || []);
-        setTotalItems(data.totalResults || 0);
-        setCurrentPage(data.page || 1);
       })
       .catch((error) => console.error("Error fetching programs:", error));
-  };
-
-  useEffect(() => {
-    fetchPrograms(currentPage); 
-  }, [currentPage]);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page); 
-  };
+  }, []);
 
   return (
-    <div className="programs-container">
-      <div className="programs-grid">
+    <section className="programs-container section">
+      <div className="section__header">
+        <h3>Programs</h3>
+      </div>
+      <Slider {...settings} className="programs-slider">
         {programData.map((program, index) => (
-          <div key={program.id || index} className="program-card">
-            <ProgramCard data={program || {}} />
+          <div key={program.id || index}>
+            <div className="program-card">
+              <ProgramCard data={program} />
+            </div>
           </div>
         ))}
-      </div>
-      <div className="program-page-navigation">
-      <Pagination
-          currentPage={currentPage}
-          totalItems={totalItems}
-          itemsPerPage={itemsPerPage}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
+      </Slider>
+    </section>
   );
 };
 
