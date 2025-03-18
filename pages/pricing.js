@@ -1,6 +1,9 @@
 import PricingBanner from "@/components/common/PricingBanner";
-import AllPricingPlan from "@/components/pricing/AllPricingPlan";
-
+import CourtRental from "@/components/pricing/CourtRental";
+import Programmes from "@/components/pricing/Programmes";
+import PrivateLesson from "@/components/pricing/PrivateLesson";
+import OpenPlay from "@/components/pricing/OpenPlay";
+import PrivateEvent from "@/components/pricing/PrivateEvent";
 
 export default function Pricing() {
   return (
@@ -9,9 +12,19 @@ export default function Pricing() {
      <PricingBanner />
 
       {/* Banner Secrtion */}
-      <AllPricingPlan />
+      <CourtRental />
 
-      
+      {/* Banner Secrtion */}
+      <Programmes />
+
+      {/* Banner Secrtion */}
+      <PrivateLesson />
+
+       {/* Banner Secrtion */}
+       <OpenPlay />
+
+      {/* Banner Secrtion */}
+      <PrivateEvent />
     </>
   );
 }

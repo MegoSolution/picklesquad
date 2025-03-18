@@ -12,13 +12,19 @@ const PricingBanner = () => {
             >
               
               <h1 className="banner__content-pricing-title">
-              Book Your Session
+              Ready, Set, Play!
               </h1>
               <p className="primary-text banner__content-text">
-              Experience the excitement of pickleball on our premium, state-of-the-art courts. Designed with precision, our court surface ensures excellent grip, minimizing slips and elevating your gameplay to the next level.</p>
+              Step onto the best pickleball courts in town and elevate your game!
+Whether you're here to practice, compete, or enjoy a casual match
+with friends, our top-quality facilities offer an unforgettable
+experience.
+
+Book your session and get in on the action today!
+              </p>
               
                 <Link href="/join-club" className="cmn-button">
-                View Schedule
+                Book Now
                 </Link>
         
               

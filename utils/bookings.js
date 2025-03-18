@@ -6,8 +6,9 @@ const generateDates = (totalDays = 14) => {
     futureDate.setDate(today.getDate() + i);
     const day = futureDate.toLocaleDateString('en-US', { weekday: 'short' });
     const date = futureDate.getDate();
+    const month = futureDate.toLocaleDateString('en-US', { month: 'short' });
     datesArray.push({
-      display: `${day} ${date}`,
+      display: `${month} ${date} ${day} `,
       value: futureDate.toISOString().split('T')[0], // Format as YYYY-MM-DD
     });
   }
