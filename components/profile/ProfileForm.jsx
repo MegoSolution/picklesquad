@@ -4,12 +4,10 @@ import Image from 'next/image';
 import Modal from './Modal';
 import { BASE_URL } from '../../utils/constants';
 
-const ProfileForm = ({ programs, onEditClick }) => {
+const ProfileForm = ({ programs, bookings, totalBookingsResults }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null);
   const [tokens, setTokens] = useState(null);
-  const [bookings, setBookings] = useState([]);
-  const [totalBookingsResults, setBookingsTotalResults] = useState(0);
   const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const programsScrollRef = useRef(null);
@@ -24,7 +22,6 @@ const ProfileForm = ({ programs, onEditClick }) => {
     setTokens(storedTokens);
 
     if (storedUser && storedTokens) {
-      fetchBookings(storedUser, storedTokens);
       console.log(storedUser);
 
       if (!storedUser.birthdate && !storedUser.gender && !storedUser.phoneNumber) {
@@ -34,27 +31,6 @@ const ProfileForm = ({ programs, onEditClick }) => {
       console.log('No user or tokens found'); // Debugging log
     }
   }, []);
-
-  const fetchBookings = async (user, tokens) => {
-    try {
-      const response = await axios.get(`${BASE_URL}/bookings`, {
-        headers: {
-          Authorization: `Bearer ${tokens.access.token}`,
-        },
-        params: { 
-          user: user._id,
-          status: 'confirmed',
-          mode: 'upcoming', // Use mode to fetch upcoming bookings
-        },
-      });
-
-      setBookings(response.data.results);
-      setBookingsTotalResults(response.data.totalResults);
-    } catch (err) {
-      setError('Failed to fetch user data.');
-      console.error('Error fetching bookings:', err); // Debugging log
-    }
-  };
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -67,7 +43,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
     
     // Use setTimeout to wait for the animation to start before changing content
     setTimeout(() => {
-      setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
+      setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings?.length);
       
       // Reset transition after a brief delay to allow the entrance animation
       setTimeout(() => {
@@ -83,7 +59,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
     
     // Use setTimeout to wait for the animation to start before changing content
     setTimeout(() => {
-      setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
+      setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings?.length) % bookings?.length);
       
       // Reset transition after a brief delay to allow the entrance animation
       setTimeout(() => {
@@ -108,7 +84,8 @@ const ProfileForm = ({ programs, onEditClick }) => {
     coachScrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
   };
 
-  const currentBooking = bookings[currentBookingIndex];
+  const currentBooking = bookings?.length > 0 ? bookings[currentBookingIndex] : null;
+
 
   const formatDate = (dateString) => {
     const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' };
@@ -130,7 +107,6 @@ const ProfileForm = ({ programs, onEditClick }) => {
               <div className="profile-header">
                 <button 
                   className="edit-button d-none d-md-flex" 
-                  onClick={onEditClick}
                 >
                   Edit Profile
                 </button>
@@ -150,7 +126,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 </div>
               </div>
               <div className="activity-tab">
-                {bookings.length > 0 ? (
+                {bookings?.length > 0 ? (
                   <div 
                     key={currentBooking._id} 
                     className={`profile-booking-details ${bookingTransition ? `booking-transition ${transitionDirection}` : ''}`}
@@ -184,7 +160,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
             <div className="picklesquad-btns">
               <a href="/location">Book A Court</a>
             </div>
-            <hr className="picklesquad-separator"/>
+            <hr className="picklesquad-separator d-md-none"/>
             <div className="picklesquad-btns">
               <a href="/programmes">Program</a>
             </div>
