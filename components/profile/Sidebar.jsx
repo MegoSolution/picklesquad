@@ -6,7 +6,7 @@ import ECardModal from '../eCard/ECardModal';
 import { motion, AnimatePresence } from "framer-motion";
 import EditProfileForm from './EditProfileForm';
 
-const Sidebar = ({ programs, onSettingsClick }) => {
+const Sidebar = ({ programs, totalBookingsResults, bookings }) => {
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
   const [showECardModal, setShowECardModal] = useState(false);
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
@@ -15,6 +15,7 @@ const Sidebar = ({ programs, onSettingsClick }) => {
   const [membershipType, setMembershipType] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const logoutUser = useLogout();
+  console.log(programs);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -71,9 +72,6 @@ const Sidebar = ({ programs, onSettingsClick }) => {
   const handleSettingsClick = (e) => {
     e.preventDefault();
     setShowEditProfileForm(true);
-    if (onSettingsClick) {
-      onSettingsClick();
-    }
   };
 
   const handleCloseEditProfileForm = () => {
@@ -111,7 +109,7 @@ const Sidebar = ({ programs, onSettingsClick }) => {
         <div className="profile-links">
           <Link href="/profile">
             <span className="profile--side__bar-header">
-              <span className="booking_number">0</span>
+              <span className="booking_number">{totalBookingsResults || 0}</span>
               <a className="profile--side__bar-nav-link" href="/booking-history">
                 Bookings
               </a>
@@ -147,7 +145,7 @@ const Sidebar = ({ programs, onSettingsClick }) => {
           </p>
         </div>
         <h6 className="profile--side__bar-header">
-          <span className="booking_number">0&nbsp;</span>
+          <span className="booking_number">{totalBookingsResults || 0}&nbsp;</span>
           <a className="profile--side__bar-nav-link" href="/booking-history">
             Bookings
           </a>
@@ -193,14 +191,14 @@ const Sidebar = ({ programs, onSettingsClick }) => {
                   className="sidebar-program-item"
                 >
                   <div className="sidebar-program-item-name">
-                    <p className="secondary-text"><b>{currentProgram.name}</b></p>
+                    <p className="secondary-text"><b>{currentProgram.program.name}</b></p>
                   </div>
                   <div className="sidebar-programs-tab-time">
                     <div>
                       <Image src="/images/profile/calendar-blue.png" alt="Calendar" className="calendar" width={48} height={48} />
                     </div>
                     <div>
-                      <b>{formatDate(currentProgram.startTime)} - {formatDate(currentProgram.endTime)}</b>
+                      <b>{formatDate(currentProgram.program.startTime)} - {formatDate(currentProgram.program.endTime)}</b>
                     </div>
                   </div>
                 </motion.div>

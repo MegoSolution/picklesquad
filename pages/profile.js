@@ -12,15 +12,17 @@ import Image from 'next/image';
 function Profile() {
   const [programs, setPrograms] = useState([]);
   const [programBookings, setProgramBookings] = useState([]);
-  const [tokens, setTokens] = useState(null);
+  const [bookings, setBookings] = useState([]);
+  const [totalBookingsResults, setBookingsTotalResults] = useState(0);
 
   useEffect(() => {
     const storedTokens = JSON.parse(localStorage.getItem('tokens'));
-    setTokens(storedTokens);
+    const storedUser = JSON.parse(localStorage.getItem('user'));
 
     if (storedTokens) {
       fetchPrograms(storedTokens);
-      fetchUserProgramBookings(storedTokens);
+      fetchUserProgramBookings(storedUser, storedTokens);
+      fetchBookings(storedUser, storedTokens);
     }
   }, []);
 
@@ -37,18 +39,39 @@ function Profile() {
     }
   };
 
-  const fetchUserProgramBookings = async (userId) => {
+  const fetchUserProgramBookings = async (user, tokens) => {
     try {
       const response = await axios.get(`${BASE_URL}/programBookings`, {
         headers: {
           Authorization: `Bearer ${tokens.access.token}`,
         },
-        params: { user: userId }, // Passing user ID as a filter
+        params: { user: user._id }, // Passing user ID as a filter
       });
       setProgramBookings(response.data.results);
+      console.log(response.data.results);
     } catch (error) {
       console.error("Error fetching program bookings:", error);
       return [];
+    }
+  };
+
+  const fetchBookings = async (user, tokens) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/bookings`, {
+        headers: {
+          Authorization: `Bearer ${tokens.access.token}`,
+        },
+        params: { 
+          user: user._id,
+          status: 'confirmed',
+          mode: 'upcoming', // Use mode to fetch upcoming bookings
+        },
+      });
+
+      setBookings(response.data.results);
+      setBookingsTotalResults(response.data.totalResults);
+    } catch (err) {
+      console.error('Error fetching bookings:', err);
     }
   };
 
@@ -82,9 +105,17 @@ function Profile() {
 
       <div className="container">
         <div className="row justify-content-center section__row">
-          <Sidebar programs={programBookings} />
+          <Sidebar 
+            programs={programBookings} 
+            totalBookingsResults={totalBookingsResults}
+            bookings={bookings} 
+          />
           <div className="col-lg-8 col-xl-6 section__col">
-            <ProfileBody programs={programs} />
+            <ProfileBody 
+              programs={programs} 
+              bookings={bookings}
+              totalBookingsResults={totalBookingsResults}
+            />
           </div>
         </div>
       </div>
