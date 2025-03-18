@@ -12,6 +12,10 @@
     margin-bottom: 10px;
     display: block;
   }
+
+  .picklesquad-separator {
+    display:none;
+  }
 }
 
 @media only screen and (max-width: 1399.98px) {
@@ -48,6 +52,11 @@
   background-color: #ffffff;
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
+  
+  /* Hide the entire programs section on mobile */
+  @media only screen and (max-width: 767.98px) {
+    display: none;
+  }
 }
 
 .profile__tab-programs-tab-2 {
@@ -126,6 +135,11 @@
   p{
     color: $primary-color;
     font-size: medium;
+  }
+  
+  /* Hide on mobile view */
+  @media only screen and (max-width: 767.98px) {
+    display: none;
   }
 }
 
@@ -318,7 +332,6 @@
   }
   p{
     color: $primary-color;
-    font-weight: 550;
   }
 }
 
@@ -470,7 +483,7 @@
 }
 
 .profile__tab-btns-2 .picklesquad-btns:first-child:hover {
-  background-color: #A04A34; /* Lighter red hover effect for 'BOOK A COURT' */
+  background-color: #8C3320; /* Lighter red hover effect for 'BOOK A COURT' */
 }
 
 .profile__tab-btns-2 .picklesquad-btns:last-child {
@@ -480,7 +493,17 @@
 /* Mobile view adjustments: Full width for buttons on phone view */
 @media only screen and (max-width: 767.98px) {
   .profile__tab-btns-2 .picklesquad-btns {
+    width: 48%;
+  }
+
+  .picklesquad-separator {
+    color:#8B3C26;
+    margin: 5px;
+    height: 2px;
     width: 100%;
+    border: none;
+    background-color:#8B3C26;
+    opacity: 1.0 !important;
   }
 }
 
@@ -499,7 +522,7 @@
   margin-bottom:10px;
 
   p {
-    color:$primary-color;
+    color:#8B3C26;
     font-weight:600;
     font-size:16px;
   }
@@ -709,14 +732,16 @@
 .nav {
   @media (max-width: 991px) {
     .nav__logo {
-      margin:auto;
+      margin: 0;
     }
   }
 }
 
 .profile-icons {
   @media (max-width: 991px) {
-    display: none !important;
+    display: flex !important;
+    
+
   }
 }
 
@@ -800,5 +825,99 @@
         font-size: 12px;
       }
     }
+  }
+}
+
+// Mobile profile tab styles
+.profile__tab-mobile {
+  display: none; // Hidden by default
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  
+  // Profile avatar
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  
+  // User name
+  .profile-name {
+    color: #3E65B6;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-right: 20px;
+  }
+  
+  // User type/membership
+  .profile-type {
+    color: #8B3C26;
+    font-size: 16px;
+  }
+  
+  // Navigation links container
+  .profile-links {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 20px;
+    
+    a {
+      color: #3E65B6;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 0 5px;
+      margin-right:6px;
+      text-decoration: none;
+      position: relative;
+      
+      &:not(:last-child):after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 20px;
+        width: 1px;
+        background-color: #CCCCCC;
+      }
+    }
+  }
+  
+  // Settings icon
+  .profile-settings {
+    position: absolute;
+    top: 5%;
+    right: 20px;
+    color: #3E65B6;
+    font-size: 20px;
+  }
+}
+
+// Show mobile profile tab on mobile screens
+@media only screen and (max-width: 767.98px) {
+  .profile__tab {
+    display: none; // Hide the regular profile tab
+  }
+  
+  .profile__tab-mobile {
+    display: block; // Show mobile version
   }
 }

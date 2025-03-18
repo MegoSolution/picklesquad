@@ -29,6 +29,11 @@ const EditProfileForm = ({ user, onClose }) => {
           },
         }
       );
+      
+      // Update user in localStorage with the new data
+      const updatedUser = { ...user, name, email, birthDate, gender, phoneNumber };
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      
       onClose();
     } catch (err) {
       setError('Failed to update profile.' + err);

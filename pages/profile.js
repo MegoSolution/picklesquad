@@ -61,17 +61,17 @@ function Profile() {
             <nav className="nav d-flex justify-content-between align-items-center">
               <div className="nav__logo nav__logo--mobile">
                 <Link href="/">
-                  <Image src={Logo} alt="Logo" />
+                  <Image src={Logo} alt="Logo" style={{maxWidth: '130px'}} />
                 </Link>
               </div>
-              <div className="profile-icons d-none d-lg-flex align-items-center">
-                <Link href="/" className="profile-icon ms-3">
+              <div className="profile-icons d-flex align-items-center">
+                <Link href="/" className="profile-icon ms-3 d-none d-lg-block">
                   <Image src="/images/profile/profile-home.png" alt="Profile" width={100} height={100} />
                 </Link>
                 <Link href="/profile" className="profile-icon ms-3">
                   <Image src="/images/profile/profile-bell.png" alt="Profile" width={100} height={100}/>
                 </Link>
-                <Link href="/profile" className="profile-icon ms-3">
+                <Link href="/profile" className="profile-icon ms-3 d-none d-lg-block">
                   <Image src="/images/profile-icon-1.png" alt="Profile" width={100} height={100} />
                 </Link>
               </div>
