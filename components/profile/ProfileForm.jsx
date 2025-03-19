@@ -195,10 +195,10 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) 
                     <a key={program.id} href={`/program-details/${program.id}`} className="programs-tab">
                       <div>
                         <div className="programs-tab-btns">
-                          <p>{program.name}</p>
+                          <p>Group Lesson</p>
                         </div>
                         <div className="programs-tab-title">
-                          <h5>{program.description}</h5>
+                          <h5>{program.name}</h5>
                           <div className="program-tab-details">
                             <p>Intensity : {program.intensity_level}</p>
                             <p>Duration : {program.duration} minutes</p>
@@ -254,7 +254,7 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) 
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}
@@ -268,7 +268,7 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) 
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}
@@ -282,7 +282,7 @@ const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) 
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}
