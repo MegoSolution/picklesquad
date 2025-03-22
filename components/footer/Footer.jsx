@@ -4,14 +4,19 @@ import logo_light from "/public/images/Picklesquad_image/logo-07.png";
 
 const Footer = () => {
   return (
-    <footer
-      className="footer"
-      style={{
-        backgroundColor: "#2C58A8",
-        color: "#FFFFFF",
-        paddingBottom: "20px",
-      }}
-    >
+    <footer 
+    className="footer" 
+    style={{ 
+      backgroundImage: "url('/images/footer/footer.jpg')", 
+      backgroundSize: "100% 100%",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      color: "#FFFFFF", 
+      paddingBottom: "20px",
+      width: "100%",
+      minHeight: "250px"  // Adjust this value based on your image height
+    }}
+  >
       <div className="container">
         <div className="row">
           {/* Left Column: Quick Links */}
