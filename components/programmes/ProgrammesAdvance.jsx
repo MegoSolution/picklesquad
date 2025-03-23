@@ -47,7 +47,7 @@ const Advance = () => {
           </div>
 
           {/* Join Us Button */}
-          <a href="/book" className="session-btn">
+          <a href="/book" className="session1-btn">
           Book a Session
           </a>
         </div>

@@ -1121,13 +1121,18 @@ html {
   width: auto; /* Default width */
   margin-bottom: 0; /* Ensure spacing below is consistent */
   white-space: nowrap;
+  @media (max-width: 768px) {
+    width: 75%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
 }
 
 .session2-btn:hover {
   background-color: #ffffff;
   color: #2c58a8;
 }
-.session-btn {
+.session1-btn {
   background: #8b5e3b;
   color: white;
   font-weight: bold;
@@ -1139,10 +1144,16 @@ html {
   text-align: center;
   font-size: 22px; /* Standard button font size */
   width: auto; /* Default width */
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Ensure spacing below is consistent */
+  white-space: nowrap;
+  @media (max-width: 768px) {
+    width: 75%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
 }
 
-.session-btn:hover {
+.session1-btn:hover {
   background: #6a4428;
   color: #f8f3e9;
 }
@@ -2060,7 +2071,7 @@ html {
   margin-bottom: 30px;
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 0.85rem;
     padding: 0;
     margin: 0 auto 25px;
     text-align: center;
