@@ -1421,6 +1421,64 @@ html {
   );
 }
 
+.about-session-section {
+  display: flex;
+  flex-direction: row; /* Default layout: text left, image right */
+  width: 100%;
+  min-height: 50vh;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .about-session-section {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Adjust height for smaller screens */
+  }
+}
+
+/* Faded overlay effect */
+.image-container-about::before {
+  content: '';
+  position: absolute;
+  right: 0; /* Change from left to right */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, #2c58a8 10%, rgba(44, 88, 168, 0) 100%);
+  padding-bottom: 0;
+}
+
+.image-container-about {
+  position: relative;
+  width: 50%; /* Default for larger screens */
+  overflow: hidden;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .image-container-about {
+    width: 100%;
+    order: 1;
+    height: 350px;
+  }
+
+  .image-container-about::before {
+    content: none; /* Remove gradient on mobile */
+  }
+}
+
+/* Text Container */
+.text-container-about {
+  flex: 1;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: white; /* Dark blue text color */
+  padding-right: 8vw; /* Add padding for better spacing */
+  min-height: 450px;
+}
+
 .image-container-coach2::before {
   content: '';
   position: absolute;
@@ -1441,6 +1499,21 @@ html {
   color: #2c58a8; /* Dark blue text color */
   padding: 40px; /* Add padding for better spacing */
   min-height: 450px;
+}
+
+.about-content p {
+  font-weight: normal;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.about-content h2 {
+  font-size: 65px;
+  line-height: 65px;
+  margin-bottom: 25px;
+  color: white;
 }
 
 .session-content {
@@ -1488,6 +1561,7 @@ html {
   margin-bottom: 30px;
   font-size: 18px;
 }
+
 
 .session-content p.session-description {
   font-weight: normal;
