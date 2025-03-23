@@ -20,7 +20,7 @@ const Advance = () => {
           <a
             href="#Contact"
             scroll={false}
-            className="session-btn"
+            className="session1-btn"
           >
             Contact Us Now
           </a>
