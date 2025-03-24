@@ -104,8 +104,8 @@ const OurFeatures = () => {
                 src={featuresOption[selectedFeature].image}
                 alt="Background Image"
                 className="about-background-image"
-                width={1000}
-                height={500}
+                width={550}
+                height={300}
               />
               <h3
                 style={{
