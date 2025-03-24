@@ -5,6 +5,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    a {
+        color: $primary-color !important;
+    }
 }
 
 .auth-page {
@@ -17,6 +21,9 @@
 
 .sign-in-link{
     color: $primary-color;
+    text-decoration: underline;
+    margin-left: 8px;
+    font-weight: bold;
 }
 
 .sign-in-logo{

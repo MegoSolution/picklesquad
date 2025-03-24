@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ProfileForm from './ProfileForm';
 import EditProfileForm from './EditProfileForm';
 
-const ProfileBody = ({ programs }) => {
+const ProfileBody = ({ programs, bookings, totalBookingsResults }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
@@ -16,13 +16,17 @@ const ProfileBody = ({ programs }) => {
   };
 
   return (
-    <>
+    <div className="profile__body">
       {isEditing ? (
         <EditProfileForm user={user} onClose={handleCloseEdit} />
       ) : (
-        <ProfileForm programs={programs} onEditClick={handleEditClick} />
+        <ProfileForm
+        programs={programs} 
+        bookings={bookings}
+        totalBookingsResults={totalBookingsResults}
+         onEditClick={handleEditClick} />
       )}
-    </>
+    </div>
   );
 };
 

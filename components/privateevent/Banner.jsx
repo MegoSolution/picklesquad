@@ -3,12 +3,13 @@ const ProgrammesBanner = () => {
     <div>
       {/* Top Hero Section */}
       <div className="event-intro-section">
-        <div className="programmes-intro-overlay"></div>
-        <div className="programmes-intro-content">
-          <h2 className="programmes-intro-title">
+      <div className="event-intro-image"></div>
+        <div className="event-intro-overlay"></div>
+        <div className="event-intro-content">
+          <h2 className="event-intro-title">
           Level Up Your Events
           </h2>
-          <p className="programmes-intro-text">
+          <p className="event-intro-text">
             Looking for a venue that goes beyond the ordinary?
             At PickleSquad, we turn your private events into unforgettable
             experiences with the perfect blend of fun, energy, and community.

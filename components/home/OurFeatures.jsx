@@ -14,35 +14,35 @@ const OurFeatures = () => {
       key: 'private-court-access',
       title: 'Private Court Access',
       description:
-        'Experience top-tier play on professional flooring with spacious layouts, giving you the comfort and quality of a true tournament setting.',
+        'Enjoy exclusive access to your own court, perfect for uninterrupted games, private bookings, and personal training sessions.',
       image: '/images/home/tournament-grade-courts.jpg',
     },
     {
       key: 'chill-zone',
       title: 'Chill Zone',
       description:
-        'Experience top-tier play on professional flooring with spacious layouts, giving you the comfort and quality of a true tournament setting.',
+        'Relax and recharge between games in our cozy chill zone—complete with comfy seating, ambient lighting, and a laid-back vibe.',
       image: '/images/home/tournament-grade-courts.jpg',
     },
     {
       key: 'premium-restrooms-showers',
       title: 'Premium Restrooms & Showers',
       description:
-        'Experience top-tier play on professional flooring with spacious layouts, giving you the comfort and quality of a true tournament setting.',
+        'Freshen up in our modern, hotel-style restrooms and showers, designed for comfort, cleanliness, and convenience.',
       image: '/images/home/tournament-grade-courts.jpg',
     },
     {
       key: 'malaysia-largest-paddle',
       title: 'Malaysia’s Largest Paddle',
       description:
-        'Experience top-tier play on professional flooring with spacious layouts, giving you the comfort and quality of a true tournament setting.',
+        'Step into the largest paddle facility in Malaysia—offering unmatched space, court availability, and an elite playing experience.',
       image: '/images/home/tournament-grade-courts.jpg',
     },
     {
       key: 'all-weather-play',
       title: 'All-Weather Play',
       description:
-        'Experience top-tier play on professional flooring with spacious layouts, giving you the comfort and quality of a true tournament setting.',
+        'Rain or shine, the game goes on! Our covered courts ensure consistent playability no matter the weather conditions.',
       image: '/images/home/tournament-grade-courts.jpg',
     },
   ];

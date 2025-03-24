@@ -3,6 +3,7 @@ const ProgrammesBanner = () => {
     <div>
       {/* Top Hero Section */}
       <div className="programmes-intro-section">
+      <div className="programmes-intro-image"></div>
         <div className="programmes-intro-overlay"></div>
         <div className="programmes-intro-content">
           <h2 className="programmes-intro-title">

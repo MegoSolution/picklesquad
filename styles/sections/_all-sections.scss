@@ -1121,13 +1121,18 @@ html {
   width: auto; /* Default width */
   margin-bottom: 0; /* Ensure spacing below is consistent */
   white-space: nowrap;
+  @media (max-width: 768px) {
+    width: 75%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
 }
 
 .session2-btn:hover {
   background-color: #ffffff;
   color: #2c58a8;
 }
-.session-btn {
+.session1-btn {
   background: #8b5e3b;
   color: white;
   font-weight: bold;
@@ -1139,10 +1144,16 @@ html {
   text-align: center;
   font-size: 22px; /* Standard button font size */
   width: auto; /* Default width */
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Ensure spacing below is consistent */
+  white-space: nowrap;
+  @media (max-width: 768px) {
+    width: 75%;
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
 }
 
-.session-btn:hover {
+.session1-btn:hover {
   background: #6a4428;
   color: #f8f3e9;
 }
@@ -1185,6 +1196,11 @@ html {
 .session-divider-line {
   border: 0;
   border-top: 1px solid #3b5998;
+}
+
+.session-divider-line-m,
+.session-divider-line-m2 {
+  display: none;
 }
 
 /* Session Note */
@@ -1274,20 +1290,45 @@ html {
   .session-row,
   .session-row2,
   .session-row3 {
-    flex-direction: column; /* Stacks items */
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers text horizontally */
+    justify-content: center; /* Centers content vertically */
+    gap: 20px; /* Adds spacing between items */
+    text-align: center;
+    position: relative;
   }
 
   .session-item,
   .session-item2 {
     text-align: center;
-    width: 100%;
+    padding: 10px 0; /* Adds spacing around text */
+    line-height: 1.5; /* Improves vertical alignment */
+    width: 100%; /* Ensures proper centering */
   }
 
   .session-divider,
   .session-divider2 {
     display: none; /* Hides vertical divider on small screens */
   }
+
+  .session-divider-line-m
+   {
+    border: 0;
+    border-top: 1px solid #3b5998;
+    display: block !important;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .session-divider-line-m2
+  {
+   border: 0;
+   border-top: 1px solid white;
+   display: block !important;
+   width: 100%;
+   margin: 10px 0;
+ }
 
   .session-details-box,
   .session-details-box2 {
@@ -1380,6 +1421,64 @@ html {
   );
 }
 
+.about-session-section {
+  display: flex;
+  flex-direction: row; /* Default layout: text left, image right */
+  width: 100%;
+  min-height: 50vh;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .about-session-section {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Adjust height for smaller screens */
+  }
+}
+
+/* Faded overlay effect */
+.image-container-about::before {
+  content: '';
+  position: absolute;
+  right: 0; /* Change from left to right */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, #2c58a8 10%, rgba(44, 88, 168, 0) 100%);
+  padding-bottom: 0;
+}
+
+.image-container-about {
+  position: relative;
+  width: 50%; /* Default for larger screens */
+  overflow: hidden;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .image-container-about {
+    width: 100%;
+    order: 1;
+    height: 350px;
+  }
+
+  .image-container-about::before {
+    content: none; /* Remove gradient on mobile */
+  }
+}
+
+/* Text Container */
+.text-container-about {
+  flex: 1;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: white; /* Dark blue text color */
+  padding-right: 8vw; /* Add padding for better spacing */
+  min-height: 450px;
+}
+
 .image-container-coach2::before {
   content: '';
   position: absolute;
@@ -1400,6 +1499,21 @@ html {
   color: #2c58a8; /* Dark blue text color */
   padding: 40px; /* Add padding for better spacing */
   min-height: 450px;
+}
+
+.about-content p {
+  font-weight: normal;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.about-content h2 {
+  font-size: 65px;
+  line-height: 65px;
+  margin-bottom: 25px;
+  color: white;
 }
 
 .session-content {
@@ -1424,6 +1538,10 @@ html {
   font-weight: bold;
   color: white;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 }
 
 .session-content .title-coach {
@@ -1431,6 +1549,9 @@ html {
   font-weight: bold;
   color: 2c58a8;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 }
 
 .session-content p {
@@ -1440,6 +1561,7 @@ html {
   margin-bottom: 30px;
   font-size: 18px;
 }
+
 
 .session-content p.session-description {
   font-weight: normal;
@@ -1770,6 +1892,10 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the image fills its container */
+
+  @media (max-width: 768px) {
+    height: 400px; /* Adjust height for mobile screens */
+  }
 }
 
 /* Responsive Styles for Tablets and Smaller Screens */
@@ -1833,10 +1959,14 @@ html {
   overflow: hidden;
 
   @media (max-width: 768px) {
-    min-height: 130vh; /* Ensures image fills the screen */
-    padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
-    background-position: center;
-    background-size: cover; /* Ensures the image fits better */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
   }
 }
 
@@ -1853,12 +1983,33 @@ html {
     rgba(248, 243, 233, 0) 100%
   );
   z-index: 1; /* Ensures it overlays the background */
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 /* Ensures content is above the overlay */
 .event-intro-section * {
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .programmes-intro-image {
+    width: 100%;
+    height: 50vh; /* Adjusts the height of the image */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #b66c53 100%), 
+                url('/images/programmes/top.jpg') no-repeat center/cover;
+    background-position: right 55% center; /* Moves the image slightly to the right */
+  }
+  .event-intro-image {
+    width: 100%;
+    height: 50vh; /* Adjusts the height of the image */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, #5f95f8 100%), 
+                url('/images/privateevent/1.jpg') no-repeat center/cover;
+    background-position: right 55% center; 
+  }
 }
 
 /* programmes Section */
@@ -1876,10 +2027,14 @@ html {
   overflow: hidden;
 
   @media (max-width: 768px) {
-    min-height: 130vh; /* Ensures image fills the screen */
-    padding: 30vh 5vw; /* Adjusts text padding to keep it inside */
-    background-position: center;
-    background-size: cover; /* Ensures the image fits better */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
   }
 }
 
@@ -1887,6 +2042,9 @@ html {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.3); /* Dark overlay for better readability */
+  @media (max-width: 768px) {
+    background: none;
+  }
 }
 
 .programmes-intro-content {
@@ -1902,6 +2060,7 @@ html {
     padding: 20px;
     margin: 0;
     text-align: center;
+    background: #b66c53;
   }
 }
 
@@ -1931,6 +2090,62 @@ html {
 
   @media (max-width: 768px) {
     font-size: 16px;
+    padding: 0;
+    margin: 0 auto 25px;
+    text-align: center;
+  }
+}
+
+
+.event-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for better readability */
+}
+
+.event-intro-content {
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  padding-left: 100px;
+  padding-top: 150px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    background: #4268ae;
+  }
+}
+
+.event-intro-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+.event-intro-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0;
+  opacity: 0.95;
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
     padding: 0;
     margin: 0 auto 25px;
     text-align: center;
@@ -3004,12 +3219,12 @@ html {
   background-color: #fff8f0;
 
   @media (max-width: 768px) {
-    padding: 200px 0 60px;
+    padding: 150px 0 60px !important;
   }
 
   .section__header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     h3 {
       color: #2c58a8;
@@ -4607,6 +4822,10 @@ html {
 
 .profile-icon {
   max-width: 80px;
+
+  @media (max-width: 991px) {
+    max-width: 52px;
+  }
 }
 /* ==== 
  --------- (5.0) all sections styles end ---------

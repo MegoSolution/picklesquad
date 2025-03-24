@@ -5,6 +5,10 @@
   padding: 20px;
 }
 
+.program-section {
+  background-color: #fff8f0;
+}
+
 .program-section .program-card {
   display: flex;
   flex-direction: column;
@@ -27,6 +31,10 @@
 .program-section .program__content {
   flex-grow: 1; /* Ensures content grows to fill available space */
   margin-bottom: 10px;
+
+  h5 {
+    margin-top: 0 !important;
+  }
 }
 
 .program-section .program__thumb {
@@ -106,4 +114,335 @@
   background-color: #007bff;
   color: #fff;
   border-color: #0056b3;
+}
+
+.programs-container {
+  margin-top: 30px;
+  padding: 100px 0px 0px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom 130% center;
+  min-height: 60vh;
+
+  .section__header {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #2C58A8;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      
+      @media (max-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .container {
+    max-width: 70%;
+    margin: 0 auto;
+    
+    @media (max-width: 768px) {
+      max-width: 90%;
+      padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 50px 0px 60px;
+    margin-top: 0;
+    background-position: center;
+    min-height: auto;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Carousel custom styles
+  .programs-slider {
+    .slick-slide {
+      transition: transform 0.3s ease;
+      transform: scale(0.85);
+      padding: 0 10px;
+    }
+
+    .slick-center {
+      transform: scale(1);
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slick-prev,
+    .slick-next {
+      width: 80px;
+      height: 80px;
+      z-index: 2;
+      
+      &:before {
+        font-size: 80px;
+        color: #8B4513;
+        background-color: none;
+      }
+
+      @media (max-width: 768px) {
+        display: none !important;
+      }
+    }
+
+    .slick-prev {
+      left: -50px;
+    }
+
+    .slick-next {
+      right: -50px;
+    }
+
+    .slick-dots {
+      display: none !important;
+
+      li {
+        button:before {
+          color: white;
+        }
+
+        &.slick-active button:before {
+          color: white;
+        }
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .slick-slide {
+        transform: scale(0.95);
+      }
+
+      .slick-center {
+        transform: scale(1);
+      }
+
+      .slick-dots {
+        display: block !important;
+        bottom: -30px;
+        
+        li {
+          width: 20px;
+          height: 20px;
+          
+          button {
+            width: 20px;
+            height: 20px;
+            
+            &:before {
+              font-size: 16px;
+              line-height: 20px;
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+
+      .slick-track {
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+.program-card {
+  background: white;
+  border-radius: 10%;
+  overflow: hidden;
+  margin: 10px;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__image {
+    width: 100%;
+    height: 500px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      height: 300px;
+    }
+  }
+
+  &__content {
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    h3 {
+      font-size: 2vw;
+      font-weight: 600;
+      color: #2C58A8;
+      text-align: center;
+      margin-bottom: 15px;
+
+      @media (max-width: 768px) {
+        font-size: 24px;
+      }
+    }
+
+    p {
+      font-size: 1.2vw;
+      color: #666;
+      text-align: center;
+      margin-bottom: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    .btn-learn {
+      color: #2C58A8;
+      text-decoration: underline;
+      font-size: 24px;
+      font-weight: 500;
+      padding: 8px 0;
+      text-align: center;
+      display: block;
+      width: 100%;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.sign-up-program {
+  width: 85%;
+  padding: 12px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: darken(#8B4513, 5%);
+    color: white !important;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    font-size: 20px;
+    padding: 10px;
+  }
+}
+
+.program-page-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  
+  .pagination {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    button {
+      padding: 10px 20px;
+      border: 2px solid #2C58A8;
+      border-radius: 8px;
+      background: white;
+      color: #2C58A8;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover, &.active {
+        color: white !important;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .programs-container {
+    
+    .container {
+      max-width: 95%;
+      padding: 5%;
+    }
+  }
+
+  .program-card {
+    border-radius: 20px;
+    margin: 5px;
+
+    &__image {
+      height: 250px;
+    }
+
+    &__content {
+      padding: 15px;
+
+      .btn-enrol {
+        font-size: 18px;
+        padding: 8px;
+      }
+
+      .btn-learn {
+        font-size: 14px;
+      }
+    }
+  }
 }

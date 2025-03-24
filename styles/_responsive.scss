@@ -110,7 +110,649 @@ h6 {
   margin-bottom: 20px;
   color: #2c58a8;
 }
+/* General table container styles */
+.tables-container {
+  margin: 30px 0;
+  font-family: Arial, sans-serif;
+}
 
+/* Opening hours section styles */
+.opening-hours h3, .equipment-section h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.opening-hours h3::before, .equipment-section h3::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.opening-hours h3::before {
+  background-image: url('/images/clock-icon.svg'); /* Replace with your clock icon */
+  background-size: cover;
+}
+
+.equipment-section h3::before {
+  background-image: url('/images/equipment-icon.svg'); /* Replace with your equipment icon */
+  background-size: cover;
+}
+
+.opening-hours p {
+  margin: 5px 0 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table styles */
+.info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  table-layout: fixed;
+}
+
+.info-table th, 
+.info-table td {
+  padding: 12px 15px;
+  background-color: #2C58A8;
+  border: 1px solid #ffffff;
+  color: white;
+  line-height: 1.5;
+}
+
+/* Basic cell styling */
+.info-table td {
+  vertical-align: middle;
+  background-color: #2C58A8;
+  color: white
+}
+
+/* Blue left column styling */
+.info-table td:first-child {
+  background-color: #2C58A8;
+  color: white;
+  font-weight: 600;
+  width: 30%;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* Content column styling */
+.info-table td:nth-child(2) {
+  width: 70%;
+}
+
+/* Header row styling for multi-column tables */
+.info-table thead th {
+  text-align: center;
+  background-color: #2C58A8;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.info-table thead th:first-child {
+  background-color: #2C58A8;
+  border: none;
+}
+
+/* Rate table specific styling */
+.rates-table td:first-child {
+  width: 25%;
+}
+
+.rates-table th, 
+.rates-table td {
+  width: 25%;
+  text-align: center;
+}
+
+.rates-table td:first-child {
+  text-align: left;
+}
+
+/* Equipment table specific styling */
+.equipment-table td:first-child {
+  width: 50%;
+}
+
+.equipment-table td:nth-child(2) {
+  width: 50%;
+}
+/* Table styles */
+.info-table-2 {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  table-layout: fixed;
+}
+
+.info-table-2 th, 
+.info-table-2 td {
+  padding: 12px 15px;
+  background-color: #ffffff;
+  border: 1px solid #2C58A8;
+  color: white;
+  line-height: 1.5;
+}
+
+/* Basic cell styling */
+.info-table-2 td {
+  vertical-align: middle;
+  background-color: #ffffff;
+  color: #2C58A8
+}
+
+/* Blue left column styling */
+.info-table-2 td:first-child {
+  background-color: #ffffff;
+  color: #2C58A8;
+  font-weight: 600;
+  width: 30%;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* Content column styling */
+.info-table-2 td:nth-child(2) {
+  width: 70%;
+}
+
+/* Header row styling for multi-column tables */
+.info-table-2 thead th {
+  text-align: center;
+  background-color: #2C58A8;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.info-table-2 thead th:first-child {
+  background-color: #2C58A8;
+  border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-table {
+    font-size: 12px;
+  }
+  
+  .info-table th, 
+  .info-table td {
+    padding: 8px;
+  }
+}
+
+/* Section headers */
+.section-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color : #934523;
+}
+
+.section-header::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* Additional helper classes */
+.text-center {
+  text-align: center;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+/* Hours header styling */
+
+.hours-header {
+  background-color: #f5f2e8;  /* Light beige background color */
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.hours-title {
+  color: #934523;  /* Brown text color */
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 14px;
+  display: flex;
+}
+
+.hours-time {
+  color: #934523;  /* Same brown text color */
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+}
+.cmn-button-court-rental {
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #934523;
+  border: 2px solid #ffffff;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+/* Pricing table container */
+.pricing-table-container {
+  margin: 30px 0;
+  width: 100%;
+}
+
+/* Pricing table styling */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2c58a8; /* Dark blue background */
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+  table-layout: fixed; /* This ensures fixed column widths */
+}
+
+.pricing-table th,
+.pricing-table td {
+  border: 1px solid #ffffff; /* Lighter blue border */
+  padding: 12px 8px; /* Reduced padding for better fit */
+  text-align: center;
+  vertical-align: middle;
+  word-break: break-word; /* Allow text to break */
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Header row styling */
+.pricing-table thead th {
+  background-color: #2c58a8; /* Slightly darker blue for header */
+  font-weight: 500;
+  text-transform: none;
+  font-size: 18px;
+  padding: 15px 8px;
+}
+
+/* First column styling (Lesson column) */
+.pricing-table th:first-child,
+.pricing-table td:first-child {
+  text-align: left;
+  width: 32%;
+}
+
+/* Column width adjustments */
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  width: 18%;
+}
+
+.pricing-table th:nth-child(3),
+.pricing-table td:nth-child(3),
+.pricing-table th:nth-child(4),
+.pricing-table td:nth-child(4) {
+  width: 25%;
+}
+
+/* Level name styling */
+.level-name {
+  font-weight: 600;
+}
+
+/* Price styling */
+.price-main {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* Per session rate styling */
+.price-per-session {
+  font-size: 12px; /* Smaller font size */
+  color: #ffffff; /* Light blue for per-session text */
+  margin-top: 3px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Table notes styling */
+.table-notes {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.table-notes p {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.4;
+  display: flex;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pricing-table {
+    font-size: 14px;
+  }
+  
+  .pricing-table th,
+  .pricing-table td {
+    padding: 8px 5px;
+    font-size: 11px;
+  }
+  
+  .price-main {
+    font-size: 14px;
+  }
+  
+  .price-per-session {
+    font-size: 10px;
+  }
+}
+
+.cmn-button-pricing2 {
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: 600 ;
+  border-radius: 50px;
+  text-align: center;
+  color: #934523;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+/* Exact Pricing Table Styles */
+.pricing-table-wrapper {
+  width: 100%;
+  margin: 30px 0 15px;
+  
+}
+
+.pricing-table-exact {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-table-exact th,
+.pricing-table-exact td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #1a4187;
+}
+
+/* Header row styling */
+.pricing-table-exact .header-row th {
+  background-color: #2c58a8;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 15px 12px;
+}
+
+/* Price row styling */
+.pricing-table-exact .price-row td {
+  background-color: #2c58a8;
+  color: white;
+  padding: 15px 12px;
+  border-top: 1px solid #1a4187;
+}
+
+/* First column styling */
+.pricing-table-exact th:first-child,
+.pricing-table-exact td:first-child {
+  text-align: left;
+}
+
+/* Price amount styling */
+.price-amount {
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+}
+
+/* Price per session styling */
+.price-session {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 3px;
+}
+
+/* Pricing Notes Styles */
+.pricing-notes {
+  margin: 10px 0;
+  color: #2c58a8;
+  font-size: 14px;
+}
+
+.pricing-notes p {
+  margin: 5px 0;
+  line-height: 1.4;
+  font-size: 16px;
+  display: flex;
+}
+
+/* Add Ons Styles */
+.pricing-add-ons {
+  margin: 15px 0;
+  color: #2c58a8;
+  font-size: 14px;
+}
+
+.pricing-add-ons h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pricing-add-ons p {
+  margin: 5px 0;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+/* Image Styles */
+.pricing-image-wrapper {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pricing-feature-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .price-amount {
+    font-size: 16px;
+  }
+  
+  .price-session {
+    font-size: 10px;
+  }
+  
+  .pricing-table-exact th,
+  .pricing-table-exact td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-table-exact {
+    font-size: 12px;
+  }
+  
+  .price-amount {
+    font-size: 14px;
+  }
+  
+  .price-session {
+    font-size: 9px;
+  }
+  
+  .pricing-table-exact th,
+  .pricing-table-exact td {
+    padding: 8px 4px;
+  }
+}
+
+.add-ons-list {
+  list-style-type: disc;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.add-ons-list li {
+  margin-bottom: 5px;
+  line-height: 1.4;
+  font-size: 16px;
+  color: #2C58A8;
+}
+
+/* Equipment table */
+.equipment-section .info-table tr td:first-child {
+  background-color: #2c5aa0;
+  color: white;
+  font-weight: 600;
+  width: 50%;
+}
+/* Responsive Pricing Container */
+.pricing-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Desktop Styles */
+.desktop-pricing {
+  display: block;
+}
+
+.mobile-pricing {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .desktop-pricing {
+    display: none;
+  }
+  
+  .mobile-pricing {
+    display: block;
+    width: 100%;
+    margin-top: 0 !important;
+  }
+
+  .pricing-vertical {
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #2C58A8;
+    background-color: #2C58A8;
+    
+  }
+
+  .pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ffffff;
+   
+  }
+
+  .pricing-row:last-child {
+    border-bottom: none;
+  }
+
+  .session-col {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  .price-col {
+    text-align: right;
+    color: #ffffff;
+  }
+
+  .price-amount {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 16px;
+  }
+
+  .price-session {
+    font-size: 12px;
+    color: #ffffff;
+    display: block;
+    margin-top: 4px;
+  }
+}
+
+/* Existing desktop table styles remain unchanged */
+/* Responsive styles */
+@media (max-width: 768px) {
+  .info-table {
+    font-size: 12px;
+  }
+  
+  .info-table th, .info-table td {
+    padding: 8px;
+  }
+}
+
+/* Button styling */
+.session-btn {
+  display: inline-block;
+  background-color: #2c5aa0;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.session-btn:hover {
+  background-color: #1e4375;
+}
 /* P styling for the paragraphs */
 .section__content-text p {
   font-size: 25px;
@@ -238,17 +880,18 @@ h6 {
   border-color: #f3e9b8; /* Change border to light yellow */
 }
 
-.booking-history-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 .section-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+
+  @media(max-width: 768px) {
+    text-align: center; // Add text alignment
+    display: flex;
+    justify-content: center; // Center horizontally
+    align-items: center; // Center vertically
+    width: 100%; // Ensure full width
+  }
 }
 
 .tabs-container {
@@ -279,14 +922,23 @@ h6 {
   margin-top: 20px;
 }
 
+
+
 .booking-item {
   display: flex;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: white;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
+  padding: 10px;
   margin-bottom: 10px;
+  height: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 768px) {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    height: min-content;
+  }
 }
 
 .date-badge {
@@ -1267,7 +1919,7 @@ h6 {
       background-color: #2c58a8;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 12px 16px;
       border-radius: 5px;
     }
@@ -2185,93 +2837,6 @@ h6 {
     color: #2c2c2c;
   }
 
-  // facility secondary
-  .facility--secondary {
-    .section__header-cta {
-      margin-top: 20px;
-    }
-  }
-
-  // testimonial
-  .testimonial {
-    .testimonial__slider-card {
-      padding: 30px 20px;
-
-      .testimonial__slider-card__body-review {
-        i {
-          font-size: 20px;
-        }
-      }
-    }
-  }
-
-  .testimonial--secondary {
-    .quotation {
-      i {
-        font-size: 24px;
-      }
-    }
-  }
-
-  .facility__slider-wrapper {
-    padding: 30px 12px;
-    .cmn-button {
-      display: none !important;
-    }
-  }
-
-  .facility__overview {
-    padding: 30px 16px !important;
-  }
-
-  .facility__overview-single {
-    gap: 12px;
-  }
-
-  // cart
-  .cart {
-    .cart-items-wrapper {
-      overflow-x: auto;
-
-      table {
-        min-width: 600px;
-      }
-    }
-
-    .cart__wrapper-footer {
-      flex-direction: column;
-      align-items: flex-start;
-
-      form {
-        width: 100%;
-
-        input {
-          flex-grow: 1;
-        }
-      }
-    }
-
-    .cart__graph {
-      ul {
-        margin: 20px 0px;
-      }
-    }
-  }
-
-  .payment-success {
-    margin-top: 180px;
-
-    .payment-success__header {
-      i {
-        font-size: 40px;
-      }
-
-      h3 {
-        margin: 20px 0px 10px;
-      }
-    }
-  }
-
   // blog details
   .blog-details__inner {
     .blog-details__meta {
@@ -2487,6 +3052,8 @@ h6 {
     }
 
     .nav__logo {
+      margin-right:25% !important;
+
       img {
         max-width: 130px;
         height: 100%;
@@ -2559,8 +3126,8 @@ h6 {
     margin: 20px auto; /* Centers the button horizontally */
     font-size: 1rem; /* Adjust font size */
     font-weight: bold; /* Makes the text bold */
-    background-color: #f3e7c5; /* Button color */
-    color: #ffffff; /* Text color */
+    background-color: #94BBC4; /* Button color */
+    /*color: #ffffff; /* Text color */
     border: none; /* Remove borders */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer on hover */
@@ -2571,10 +3138,8 @@ h6 {
     text-align: center; /* Centers the button horizontally */
     margin-top: 20px; /* Adds space above the button */
   }
-  .cmn-button--secondary {
-    border: 2px solid #2c58a8;
-    color: #2c58a8;
-  }
+  
+  
 
   // overview
   .overview {

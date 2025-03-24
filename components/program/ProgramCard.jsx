@@ -36,7 +36,7 @@ const ProgramCard = ({ data }) => {
         <Link
           href={`/program-details/${id}`}
           title="View Details"
-          className="sign-up-button"
+          className="sign-up-program"
         >
           View Details
         </Link>

@@ -184,22 +184,22 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                     )}
 
                     {/* Sign In (only if there is no user) */}
-{!user && (
-  <li className="nav__menu-item d-block d-md-none">
-    <Link
-      href="/sign-in"
-      className="cmn-button cmn-button--secondary"
-    >
-      Sign In
-    </Link>
-  </li>
-)}
+                  {!user && (
+                    <li className="nav__menu-item d-block d-md-none">
+                      <Link
+                        href="/sign-in"
+                        className="cmn-button cmn-button--secondary"
+                      >
+                        Sign In
+                      </Link>
+                    </li>
+                  )}
 
                   </ul>
                 </div>
 
                 <div className="nav__uncollapsed">
-                  <div className="nav__uncollapsed-item d-none d-md-flex">
+                  <div className="nav__uncollapsed-item d-md-flex">
                     {!user ? (
                       <>
                         {pathname !== '/sign-in' && pathname !== '/sign-up' && (
@@ -216,17 +216,19 @@ const NavBar = ({ cls = 'header--secondary' }) => {
                       <>
                         <button
                           onClick={handleBookNowClick}
-                          className="btn btn-light book-now-btn-nav"
+                          className="btn btn-light d-none d-md-block book-now-btn-nav"
                         >
                           Book Now
                         </button>
-                        <Link href="/profile" className="profile-icon">
+
+                        <Link href="/profile" className="profile-icon d-md-block">
                           <img src="/images/profile-icon-1.png" alt="Profile" />
                         </Link>
                       </>
                     )}
                   </div>
                 </div>
+                
                 <button
                   className="nav__bar d-block d-xl-none"
                   onClick={() => setActive(!active)}

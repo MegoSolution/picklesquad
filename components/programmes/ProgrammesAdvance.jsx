@@ -34,6 +34,7 @@ const Advance = () => {
               <div className="session-item">
                 <strong>Intensity :</strong> 3-5
               </div>
+              <hr className="session-divider-line-m" />
               <div className="session-divider"></div>
               <div className="session-item">
                 <strong>Duration :</strong> 90 minutes
@@ -46,7 +47,7 @@ const Advance = () => {
           </div>
 
           {/* Join Us Button */}
-          <a href="/book" className="session-btn">
+          <a href="/book" className="session1-btn">
           Book a Session
           </a>
         </div>

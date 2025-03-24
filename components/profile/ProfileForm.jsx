@@ -4,25 +4,21 @@ import Image from 'next/image';
 import Modal from './Modal';
 import { BASE_URL } from '../../utils/constants';
 
-const ProfileForm = ({ programs, onEditClick }) => {
+const ProfileForm = ({ programs, bookings, totalBookingsResults, onEditClick }) => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null);
-  const [tokens, setTokens] = useState(null);
-  const [bookings, setBookings] = useState([]);
-  const [totalBookingsResults, setBookingsTotalResults] = useState(0);
-  const [error, setError] = useState('');
   const [currentBookingIndex, setCurrentBookingIndex] = useState(0);
   const programsScrollRef = useRef(null);
   const coachScrollRef = useRef(null);
+  const [bookingTransition, setBookingTransition] = useState(false);
+  const [transitionDirection, setTransitionDirection] = useState('');
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const storedTokens = JSON.parse(localStorage.getItem('tokens'));
     setUser(storedUser);
-    setTokens(storedTokens);
 
     if (storedUser && storedTokens) {
-      fetchBookings(storedUser, storedTokens);
       console.log(storedUser);
 
       if (!storedUser.birthdate && !storedUser.gender && !storedUser.phoneNumber) {
@@ -33,37 +29,40 @@ const ProfileForm = ({ programs, onEditClick }) => {
     }
   }, []);
 
-  const fetchBookings = async (user, tokens) => {
-    try {
-      const response = await axios.get(`${BASE_URL}/bookings`, {
-        headers: {
-          Authorization: `Bearer ${tokens.access.token}`,
-        },
-        params: { 
-          user: user._id,
-          status: 'confirmed',
-          mode: 'upcoming', // Use mode to fetch upcoming bookings
-        },
-      });
-
-      setBookings(response.data.results);
-      setBookingsTotalResults(response.data.totalResults);
-    } catch (err) {
-      setError('Failed to fetch user data.');
-      console.error('Error fetching bookings:', err); // Debugging log
-    }
-  };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
   const handleNextBooking = () => {
-    setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings.length);
+    // Set transition state before changing the index
+    setTransitionDirection('slide-left');
+    setBookingTransition(true);
+    
+    // Use setTimeout to wait for the animation to start before changing content
+    setTimeout(() => {
+      setCurrentBookingIndex((prevIndex) => (prevIndex + 1) % bookings?.length);
+      
+      // Reset transition after a brief delay to allow the entrance animation
+      setTimeout(() => {
+        setBookingTransition(false);
+      }, 50);
+    }, 300); // Match this timing with your CSS transition duration
   };
 
   const handlePreviousBooking = () => {
-    setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings.length) % bookings.length);
+    // Set transition state before changing the index
+    setTransitionDirection('slide-right');
+    setBookingTransition(true);
+    
+    // Use setTimeout to wait for the animation to start before changing content
+    setTimeout(() => {
+      setCurrentBookingIndex((prevIndex) => (prevIndex - 1 + bookings?.length) % bookings?.length);
+      
+      // Reset transition after a brief delay to allow the entrance animation
+      setTimeout(() => {
+        setBookingTransition(false);
+      }, 50);
+    }, 300); // Match this timing with your CSS transition duration
   };
 
   const scrollProgramsLeft = () => {
@@ -82,7 +81,8 @@ const ProfileForm = ({ programs, onEditClick }) => {
     coachScrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
   };
 
-  const currentBooking = bookings[currentBookingIndex];
+  const currentBooking = bookings?.length > 0 ? bookings[currentBookingIndex] : null;
+
 
   const formatDate = (dateString) => {
     const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' };
@@ -102,7 +102,10 @@ const ProfileForm = ({ programs, onEditClick }) => {
           <div className="faq__tab-single__inner">
             <div className="profile-form-2">
               <div className="profile-header">
-                <button className="edit-button" onClick={onEditClick}>
+                <button 
+                  className="edit-button d-none d-md-flex" 
+                  onClick={onEditClick}
+                >
                   Edit Profile
                 </button>
                 <div className="profile-form-header-2">
@@ -121,8 +124,11 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 </div>
               </div>
               <div className="activity-tab">
-                {bookings.length > 0 ? (
-                  <div key={currentBooking._id} className="booking-details">
+                {bookings?.length > 0 ? (
+                  <div 
+                    key={currentBooking._id} 
+                    className={`profile-booking-details ${bookingTransition ? `booking-transition ${transitionDirection}` : ''}`}
+                  >
                     <p key={`${currentBooking._id}-date`}><b><Image src="/images/profile/calendar.png" alt="Calendar" className="calendar" width={48} height={48} />{formatDate(currentBooking.date)}</b></p>
                     <p key={`${currentBooking._id}-time`}><b><Image src="/images/profile/time-icon.png" alt="Time" className="time" width={48} height={48} />{currentBooking.startTime} - {currentBooking.endTime}</b></p>
                     <p key={`${currentBooking._id}-court`}><b><Image src="/images/profile/court-icon.png" alt="Court" className="court" width={48} height={48} />{currentBooking.court.name}</b></p>
@@ -152,6 +158,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
             <div className="picklesquad-btns">
               <a href="/location">Book A Court</a>
             </div>
+            <hr className="picklesquad-separator d-md-none"/>
             <div className="picklesquad-btns">
               <a href="/programmes">Program</a>
             </div>
@@ -188,10 +195,10 @@ const ProfileForm = ({ programs, onEditClick }) => {
                     <a key={program.id} href={`/program-details/${program.id}`} className="programs-tab">
                       <div>
                         <div className="programs-tab-btns">
-                          <p>{program.name}</p>
+                          <p>Group Lesson</p>
                         </div>
                         <div className="programs-tab-title">
-                          <h5>{program.description}</h5>
+                          <h5>{program.name}</h5>
                           <div className="program-tab-details">
                             <p>Intensity : {program.intensity_level}</p>
                             <p>Duration : {program.duration} minutes</p>
@@ -247,7 +254,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}
@@ -261,7 +268,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}
@@ -275,7 +282,7 @@ const ProfileForm = ({ programs, onEditClick }) => {
                 <div className="coach-tab">
                   <div className="coach-image">
                     <Image
-                      src="/images/profile/coach-placeholder.png"
+                      src="/images/programmes/coach.jpg"
                       alt="Coach"
                       width={80}
                       height={80}

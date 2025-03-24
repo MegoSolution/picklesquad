@@ -1,0 +1,43 @@
+/* Booking transition animations */
+.profile-booking-details {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.booking-transition.slide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.booking-transition.slide-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Optional: Add entrance animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.profile-booking-details:not(.booking-transition) {
+  animation: slideInFromRight 0.3s ease forwards;
+} 
