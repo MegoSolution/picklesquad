@@ -97,10 +97,7 @@ const OurFeatures = () => {
             </div>
           </div>
           <div
-            className="col-lg-8"
-            style={{
-              paddingLeft: 60,
-            }}
+            className="col-lg-8 feature-col"
           >
             <div className="flex flex-column mb-3 justify-content-center align-items-start">
               <Image

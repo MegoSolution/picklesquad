@@ -1107,6 +1107,14 @@ html {
   height: 100%;
 }
 
+.feature-col {
+  padding-left: 60px;
+
+  @media (max-width: 768px) {
+    padding: 10px; /* or inherit */
+  }
+}
+
 .session2-btn {
   background-color: #f3e7c5; /* Retain the original color */
   color: #2c58a8 !important;
@@ -1121,10 +1129,14 @@ html {
   width: auto; /* Default width */
   margin-bottom: 0; /* Ensure spacing below is consistent */
   white-space: nowrap;
+
   @media (max-width: 768px) {
+    display: block;
+    margin: 0 auto;
     width: 75%;
     padding: 12px 0;
     font-size: 0.95rem;
+    
   }
 }
 
@@ -1445,6 +1457,10 @@ html {
   height: 100%;
   background: linear-gradient(to left, #2c58a8 10%, rgba(44, 88, 168, 0) 100%);
   padding-bottom: 0;
+
+  @media (max-width: 768px) {
+    background: none;
+  }
 }
 
 .image-container-about {
@@ -1452,6 +1468,12 @@ html {
   width: 50%; /* Default for larger screens */
   overflow: hidden;
   flex: 1;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    order: 1; // Makes image appear first on mobile
+    background: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1477,6 +1499,11 @@ html {
   color: white; /* Dark blue text color */
   padding-right: 8vw; /* Add padding for better spacing */
   min-height: 450px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    order: 2; // Makes text appear second on mobile
+  }
 }
 
 .image-container-coach2::before {
@@ -1507,6 +1534,7 @@ html {
   color: white;
   margin-bottom: 30px;
   font-size: 18px;
+  
 }
 
 .about-content h2 {
@@ -1514,6 +1542,12 @@ html {
   line-height: 65px;
   margin-bottom: 25px;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 }
 
 .session-content {
